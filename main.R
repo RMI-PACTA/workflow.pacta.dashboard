@@ -1,40 +1,67 @@
 library(dplyr)
+library(jsonlite)
+library(pacta.portfolio.report)
+library(pacta.portfolio.utils)
+library(readr)
 
 
 # input and output directories -------------------------------------------------
 
 input_dir <- "~/Desktop/test_pacta/test_outputs"
 output_dir <- "./output"
+data_dir <- "~/data/pactadatadev/workflow-data-preparation-outputs/2023Q4_20240701T114132Z"
 
 
-# config parameters ------------------------------------------------------------
+# portfolio/user parameters ----------------------------------------------------
 
 investor_name <- "investor_name"
 portfolio_name <- "portfolio_name"
+peer_group <- "peer_group"
+language_select <- "EN"
+
 currency_exchange_value <- 1
 display_currency <- "USD"
-language_select <- "EN"
-pacta_sectors <- c("Power", "Automotive", "Oil&Gas", "Coal", "Steel", "Cement", "Aviation")
 
-peer_group <- "peer_group"
-select_scenario_other <- "select_scenario_other"
-select_scenario <- "select_scenario"
-start_year <- 2023
-green_techs <- "green_techs"
-equity_market_levels <- "equity_market_levels"
-all_tech_levels <- "all_tech_levels"
+select_scenario_other <- "WEO2023_NZE_2050"
+select_scenario <- "WEO2023_NZE_2050"
 
-tech_roadmap_sectors <- "tech_roadmap_sectors"
-year_span <- "year_span"
-scen_geo_levels <- "scen_geo_levels"
+green_techs <- c("RenewablesCap", "HydroCap", "NuclearCap", "Hybrid", "Electric", "FuelCell", "Hybrid_HDV", "Electric_HDV", "FuelCell_HDV","Electric Arc Furnace")
+tech_roadmap_sectors <- c("Automotive", "Power", "Oil&Gas", "Coal")
+
+power_tech_levels = c("RenewablesCap", "HydroCap", "NuclearCap", "GasCap", "OilCap", "CoalCap")
+oil_gas_levels = c("Oil", "Gas")
+coal_levels = c("Coal")
+auto_levels = c("Electric", "Electric_HDV", "FuelCell","FuelCell_HDV", "Hybrid","Hybrid_HDV", "ICE", "ICE_HDV")
+cement_levels = c("Integrated facility", "Grinding")
+steel_levels = c("Electric Arc Furnace", "Open Hearth Furnace", "Basic Oxygen Furnace")
+aviation_levels = c("Freight", "Passenger", "Mix", "Other")
+all_tech_levels = c(power_tech_levels, auto_levels, oil_gas_levels, coal_levels, cement_levels, steel_levels, aviation_levels)
+
+
+# config parameters from manifest ----------------------------------------------
+
+manifest <- jsonlite::read_json(path = file.path(input_dir, "manifest.json"))
+
+start_year <- manifest$params$analysis$startYear
+year_span <- manifest$params$analysis$timeHorizon
+pacta_sectors <- unlist(manifest$params$analysis$sectorList)
+equity_market_levels <- unlist(manifest$params$analysis$equityMarketList)
+scen_geo_levels <- unlist(manifest$params$analysis$scenarioGeographiesList)
+
+
+# load results from input directory --------------------------------------------
+
+audit_file <- readRDS(file.path(input_dir, "audit_file.rds"))
+equity_results_portfolio <- readRDS(file.path(input_dir, "Equity_results_portfolio.rds"))
+bonds_results_portfolio <- readRDS(file.path(input_dir, "Bonds_results_portfolio.rds"))
 
 
 # data from PACTA inputs used to generate the results --------------------------
 
-indices_equity_results_portfolio <- NULL
-indices_bonds_results_portfolio <- NULL
-peers_equity_results_portfolio <- NULL
-peers_bonds_results_portfolio <- NULL
+indices_bonds_results_portfolio <- readRDS(file.path(data_dir, "Indices_bonds_results_portfolio.rds"))
+indices_equity_results_portfolio <- readRDS(file.path(data_dir, "Indices_equity_results_portfolio.rds"))
+peers_bonds_results_portfolio <- pacta.portfolio.utils::empty_portfolio_results()
+peers_equity_results_portfolio <- pacta.portfolio.utils::empty_portfolio_results()
 
 
 # translations -----------------------------------------------------------------
@@ -67,14 +94,7 @@ dictionary <-
 header_dictionary <- pacta.portfolio.report:::replace_contents(header_dictionary, display_currency)
 
 
-# load results from input directory --------------------------------------------
-
-audit_file <- readRDS(file.path(input_dir, "audit_file.rds"))
-equity_results_portfolio <- readRDS(file.path(input_dir, "Equity_results_portfolio.rds"))
-bonds_results_portfolio <- readRDS(file.path(input_dir, "Bonds_results_portfolio.rds"))
-
-
-# add investor_name and portfolio_name to results dataframes because -----------
+# add investor_name and portfolio_name to results data frames because ----------
 # pacta.portfolio.report functions expect that ---------------------------------
 
 audit_file <-
