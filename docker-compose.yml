@@ -1,0 +1,17 @@
+---
+services:
+  workflow.pacta.dashboard:
+    build: .
+    volumes:
+      - type: bind
+        source: ${INPUT_DIR}
+        target: /workflow.pacta.dashboard/inputs
+        read_only: true
+      - type: bind
+        source: ${DATA_DIR}
+        target: /workflow.pacta.dashboard/data
+        read_only: true
+      - type: bind
+        source: ${OUTPUT_DIR}
+        target: /workflow.pacta.dashboard/outputs
+        read_only: false
