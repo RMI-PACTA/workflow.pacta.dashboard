@@ -7,9 +7,9 @@ library(readr)
 
 # input and output directories -------------------------------------------------
 
-input_dir <- "~/Desktop/test_pacta/test_outputs"
-output_dir <- "./output"
-data_dir <- "~/data/pactadatadev/workflow-data-preparation-outputs/2023Q4_20240701T114132Z"
+input_dir <- "./inputs"
+output_dir <- "./outputs"
+data_dir <- "./data"
 
 
 # portfolio/user parameters ----------------------------------------------------

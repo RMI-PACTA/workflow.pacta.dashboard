@@ -41,3 +41,17 @@ The following parameters are also necessary, but it is currently unclear how or 
 - `tech_roadmap_sectors`
 - `all_tech_levels`
 Some of these parameters may not be strictly necessary and could be ignored if the data transformation functions were re-implemented and adjusted specifically for this context, e.g. `investor_name` and `portfolio_name` are likely unnecessary holdovers from a former time when those functions had to deal with the possibility of multiple portfolios being processed at the same time.
+
+## Running using Docker
+
+First, you will need a `.env` file with:
+```
+INPUT_DIR=/path/to/input/dir
+DATA_DIR=/path/to/data/dir
+OUTPUT_DIR=/path/to/output/dir
+```
+
+Then, you can run the script using `docker-compose`:
+```
+docker-compose up --build
+```
