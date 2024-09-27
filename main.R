@@ -3,6 +3,7 @@ library(jsonlite)
 library(pacta.portfolio.report)
 library(pacta.portfolio.utils)
 library(readr)
+library(tidyr)
 
 prep_techmix_sector <-
   function(equity_results_portfolio,
