@@ -52,6 +52,7 @@ scen_geo_levels <- unlist(manifest$params$analysis$scenarioGeographiesList)
 # load results from input directory --------------------------------------------
 
 audit_file <- readRDS(file.path(input_dir, "audit_file.rds"))
+emissions <- readRDS(file.path(input_dir, "emissions.rds"))
 equity_results_portfolio <- readRDS(file.path(input_dir, "Equity_results_portfolio.rds"))
 bonds_results_portfolio <- readRDS(file.path(input_dir, "Bonds_results_portfolio.rds"))
 equity_results_map <- readRDS(file.path(input_dir, "Equity_results_map.rds"))
@@ -101,6 +102,13 @@ header_dictionary <- pacta.portfolio.report:::replace_contents(header_dictionary
 
 audit_file <-
   audit_file %>%
+  mutate(
+    investor_name = investor_name,
+    portfolio_name = portfolio_name
+  )
+
+emissions <-
+  emissions %>%
   mutate(
     investor_name = investor_name,
     portfolio_name = portfolio_name
@@ -162,6 +170,32 @@ audit_file %>%
   jsonlite::write_json(path = file.path(output_dir, "data_value_pie_bonds.json"))
 
 
+# data_emissions_equity.json ---------------------------------------------------
+
+emissions %>%
+  pacta.portfolio.report:::prep_emissions_pie(
+    asset_type = "Equity",
+    investor_name = investor_name,
+    portfolio_name = portfolio_name,
+    pacta_sectors = pacta_sectors
+  ) %>%
+  pacta.portfolio.report:::translate_df_contents("data_emissions_pie_equity", dictionary) %>%
+  jsonlite::write_json(path = file.path(output_dir, "data_emissions_pie_equity.json"))
+
+
+# data_emissions_bonds.json ----------------------------------------------------
+
+emissions %>%
+  pacta.portfolio.report:::prep_emissions_pie(
+    asset_type = "Bonds",
+    investor_name = investor_name,
+    portfolio_name = portfolio_name,
+    pacta_sectors = pacta_sectors
+  ) %>%
+  pacta.portfolio.report:::translate_df_contents("data_emissions_pie_bonds", dictionary) %>%
+  jsonlite::write_json(path = file.path(output_dir, "data_emissions_pie_bonds.json"))
+
+
 # data_value_pie_equity.json ---------------------------------------------------
 
 audit_file %>%
@@ -174,8 +208,6 @@ audit_file %>%
   ) %>%
   pacta.portfolio.report:::translate_df_contents("data_value_pie_equity", dictionary) %>%
   jsonlite::write_json(path = file.path(output_dir, "data_value_pie_equity.json"))
-
-
 # data_techmix.json ------------------------------------------------------------
 
 pacta.portfolio.report:::prep_techexposure(
