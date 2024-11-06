@@ -184,8 +184,11 @@ scen_geo_levels <- unlist(manifest$params$analysis$scenarioGeographiesList)
 # load results from input directory --------------------------------------------
 
 audit_file <- readRDS(file.path(input_dir, "audit_file.rds"))
+emissions <- readRDS(file.path(input_dir, "emissions.rds"))
 equity_results_portfolio <- readRDS(file.path(input_dir, "Equity_results_portfolio.rds"))
 bonds_results_portfolio <- readRDS(file.path(input_dir, "Bonds_results_portfolio.rds"))
+equity_results_map <- readRDS(file.path(input_dir, "Equity_results_map.rds"))
+bonds_results_map <- readRDS(file.path(input_dir, "Bonds_results_map.rds"))
 
 
 # data from PACTA inputs used to generate the results --------------------------
@@ -236,6 +239,13 @@ audit_file <-
     portfolio_name = portfolio_name
   )
 
+emissions <-
+  emissions %>%
+  mutate(
+    investor_name = investor_name,
+    portfolio_name = portfolio_name
+  )
+
 equity_results_portfolio <-
   equity_results_portfolio %>%
   mutate(
@@ -245,6 +255,20 @@ equity_results_portfolio <-
 
 bonds_results_portfolio <-
   bonds_results_portfolio %>%
+  mutate(
+    investor_name = investor_name,
+    portfolio_name = portfolio_name
+  )
+
+equity_results_map <-
+  equity_results_map %>%
+  mutate(
+    investor_name = investor_name,
+    portfolio_name = portfolio_name
+  )
+
+bonds_results_map <-
+  bonds_results_map %>%
   mutate(
     investor_name = investor_name,
     portfolio_name = portfolio_name
@@ -276,6 +300,32 @@ audit_file %>%
   ) %>%
   pacta.portfolio.report:::translate_df_contents("data_value_pie_bonds", dictionary) %>%
   jsonlite::write_json(path = file.path(output_dir, "data_value_pie_bonds.json"))
+
+
+# data_emissions_equity.json ---------------------------------------------------
+
+emissions %>%
+  pacta.portfolio.report:::prep_emissions_pie(
+    asset_type = "Equity",
+    investor_name = investor_name,
+    portfolio_name = portfolio_name,
+    pacta_sectors = pacta_sectors
+  ) %>%
+  pacta.portfolio.report:::translate_df_contents("data_emissions_pie_equity", dictionary) %>%
+  jsonlite::write_json(path = file.path(output_dir, "data_emissions_pie_equity.json"))
+
+
+# data_emissions_bonds.json ----------------------------------------------------
+
+emissions %>%
+  pacta.portfolio.report:::prep_emissions_pie(
+    asset_type = "Bonds",
+    investor_name = investor_name,
+    portfolio_name = portfolio_name,
+    pacta_sectors = pacta_sectors
+  ) %>%
+  pacta.portfolio.report:::translate_df_contents("data_emissions_pie_bonds", dictionary) %>%
+  jsonlite::write_json(path = file.path(output_dir, "data_emissions_pie_bonds.json"))
 
 
 # data_value_pie_equity.json ---------------------------------------------------
@@ -314,6 +364,7 @@ pacta.portfolio.report:::prep_techexposure(
   pacta.portfolio.report:::translate_df_contents("techexposure_data", dictionary) %>%
   jsonlite::write_json(path = file.path(output_dir, "data_techexposure.json"))
 
+
 # data_techmix_sector.json -----------------------------------------------------
 
 prep_techmix_sector(
@@ -332,6 +383,19 @@ prep_techmix_sector(
   all_tech_levels
   ) %>%
   jsonlite::write_json(path = file.path(output_dir, "data_techmix_sector.json"))
+
+
+# data_map.json
+
+pacta.portfolio.report:::prep_exposure_map(
+  equity_results_map = equity_results_map,
+  bonds_results_map = bonds_results_map,
+  portfolio_name = portfolio_name,
+  start_year = start_year
+  ) %>%
+  pacta.portfolio.report:::translate_df_contents("data_map", dictionary) %>%
+  jsonlite::write_json(path = file.path(output_dir, "data_map.json"))
+
 
 # data_trajectory_alignment.json -----------------------------------------------
 
