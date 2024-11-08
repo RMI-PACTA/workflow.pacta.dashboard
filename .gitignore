@@ -1,4 +1,6 @@
 .env
+.Rproj.user
 inputs/
 outputs/
 data/
+.Rhistory
