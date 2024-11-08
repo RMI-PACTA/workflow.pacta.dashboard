@@ -139,9 +139,9 @@ techexposure_data
 
 # input and output directories -------------------------------------------------
 
-input_dir <- "./inputs"
-output_dir <- "./outputs"
-data_dir <- "./data"
+input_dir <- "../inputs"
+output_dir <- "../outputs"
+data_dir <- "../data"
 
 
 # portfolio/user parameters ----------------------------------------------------
