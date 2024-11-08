@@ -136,6 +136,42 @@ if (nrow(techexposure_data) > 0) {
 techexposure_data
   }
 
+prep_exposure_stats <- function(audit_file, investor_name, portfolio_name, pacta_sectors) {
+  audit_table <- pacta.portfolio.report:::prep_audit_table(
+      audit_file,
+      investor_name = investor_name,
+      portfolio_name = portfolio_name,
+      currency_exchange_value = currency_exchange_value
+    )
+  
+  exposure_stats <- audit_file %>%
+      filter(.data$investor_name == .env$investor_name &
+        .data$portfolio_name == .env$portfolio_name) %>%
+      filter(.data$asset_type %in% c("Bonds", "Equity")) %>%
+      filter(.data$valid_input == TRUE) %>%
+      mutate(across(c("bics_sector", "financial_sector"), as.character)) %>%
+      mutate(
+        sector =
+          if_else(!.data$financial_sector %in% .env$pacta_sectors,
+            "Other",
+            .data$financial_sector
+          )
+      ) %>%
+      group_by(.data$asset_type, .data$sector) %>%
+      summarise(
+        value = sum(.data$value_usd, na.rm = TRUE) / .env$currency_exchange_value,
+        .groups = "drop"
+      ) %>%
+      group_by(.data$asset_type) %>%
+      mutate(
+        perc_asset_val_sector = .data$value / sum(.data$value, na.rm = TRUE)
+      ) %>%
+    ungroup() %>%
+    inner_join(audit_table, by = join_by(asset_type == asset_type_analysis)) %>%
+    select("asset_type", "percentage_value_invested", "sector", "perc_asset_val_sector")
+  exposure_stats
+}
+
 
 # input and output directories -------------------------------------------------
 
@@ -434,3 +470,13 @@ pacta.portfolio.report:::prep_emissions_trajectory(
   ) %>%
   pacta.portfolio.report:::translate_df_contents("data_emissions", dictionary) %>%
   jsonlite::write_json(path = file.path(output_dir, "data_emissions.json"))
+
+# data_exposure_stats.json
+
+prep_exposure_stats(
+  audit_file = audit_file,
+  investor_name = investor_name,
+  portfolio_name = portfolio_name,
+  pacta_sectors = pacta_sectors
+  ) %>%
+  jsonlite::write_json(path = file.path(output_dir, "data_exposure_stats.json"))
