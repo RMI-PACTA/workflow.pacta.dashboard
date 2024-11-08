@@ -157,16 +157,14 @@ prep_exposure_stats <- function(audit_file, investor_name, portfolio_name, pacta
             .data$financial_sector
           )
       ) %>%
-      group_by(.data$asset_type, .data$sector) %>%
       summarise(
         value = sum(.data$value_usd, na.rm = TRUE) / .env$currency_exchange_value,
-        .groups = "drop"
+        .by = c("asset_type", "sector")
       ) %>%
-      group_by(.data$asset_type) %>%
       mutate(
-        perc_asset_val_sector = .data$value / sum(.data$value, na.rm = TRUE)
+        perc_asset_val_sector = .data$value / sum(.data$value, na.rm = TRUE),
+        .by = c("asset_type")
       ) %>%
-    ungroup() %>%
     inner_join(audit_table, by = join_by(asset_type == asset_type_analysis)) %>%
     select("asset_type", "percentage_value_invested", "sector", "perc_asset_val_sector")
   exposure_stats
