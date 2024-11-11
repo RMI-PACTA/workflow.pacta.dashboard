@@ -137,6 +137,8 @@ techexposure_data
   }
 
 prep_exposure_stats <- function(audit_file, investor_name, portfolio_name, pacta_sectors) {
+  pacta_asset_classes <- c("Bonds", "Equity")
+  
   audit_table <- pacta.portfolio.report:::prep_audit_table(
       audit_file,
       investor_name = investor_name,
@@ -148,7 +150,7 @@ prep_exposure_stats <- function(audit_file, investor_name, portfolio_name, pacta
     filter(
       .data$investor_name == .env$investor_name &
       .data$portfolio_name == .env$portfolio_name) %>%
-    filter(.data$asset_type %in% c("Bonds", "Equity")) %>%
+    filter(.data$asset_type %in% pacta_asset_classes) %>%
     filter(.data$valid_input == TRUE) %>%
     mutate(across(c("bics_sector", "financial_sector"), as.character)) %>%
     mutate(
@@ -167,6 +169,28 @@ prep_exposure_stats <- function(audit_file, investor_name, portfolio_name, pacta
       .by = c("asset_type")
     ) %>%
     inner_join(audit_table, by = join_by(asset_type == asset_type_analysis)) %>%
+    select("asset_type", "percentage_value_invested", "sector", "perc_asset_val_sector")
+  
+  asset_classes_in_portfolio <- intersect(pacta_asset_classes, unique(exposure_stats$asset_type))
+  
+  all_stats_with_zero_sector_exposure <- expand.grid(
+    asset_type = asset_classes_in_portfolio,
+    sector = pacta_sectors,
+    val_sector = 0
+    ) %>% inner_join(
+      distinct(select(exposure_stats, c("asset_type", "percentage_value_invested"))),
+      by = join_by(asset_type)
+    )
+  
+  exposure_stats_all <- all_stats_with_zero_sector_exposure %>%
+    left_join(exposure_stats, by = join_by(asset_type, sector, percentage_value_invested)) %>%
+    mutate(
+      perc_asset_val_sector = if_else(
+        is.na(.data$perc_asset_val_sector),
+        .data$val_sector, 
+        .data$perc_asset_val_sector
+      )
+    ) %>%
     mutate(
       asset_type = case_when(
         .data$asset_type == "Bonds" ~ "Corporate Bonds",
@@ -174,7 +198,8 @@ prep_exposure_stats <- function(audit_file, investor_name, portfolio_name, pacta
       )
     ) %>%
     select("asset_type", "percentage_value_invested", "sector", "perc_asset_val_sector")
-  exposure_stats
+  
+  exposure_stats_all
 }
 
 
