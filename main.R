@@ -145,27 +145,34 @@ prep_exposure_stats <- function(audit_file, investor_name, portfolio_name, pacta
     )
   
   exposure_stats <- audit_file %>%
-      filter(.data$investor_name == .env$investor_name &
-        .data$portfolio_name == .env$portfolio_name) %>%
-      filter(.data$asset_type %in% c("Bonds", "Equity")) %>%
-      filter(.data$valid_input == TRUE) %>%
-      mutate(across(c("bics_sector", "financial_sector"), as.character)) %>%
-      mutate(
-        sector =
-          if_else(!.data$financial_sector %in% .env$pacta_sectors,
-            "Other",
-            .data$financial_sector
-          )
-      ) %>%
-      summarise(
-        value = sum(.data$value_usd, na.rm = TRUE) / .env$currency_exchange_value,
-        .by = c("asset_type", "sector")
-      ) %>%
-      mutate(
-        perc_asset_val_sector = .data$value / sum(.data$value, na.rm = TRUE),
-        .by = c("asset_type")
-      ) %>%
+    filter(
+      .data$investor_name == .env$investor_name &
+      .data$portfolio_name == .env$portfolio_name) %>%
+    filter(.data$asset_type %in% c("Bonds", "Equity")) %>%
+    filter(.data$valid_input == TRUE) %>%
+    mutate(across(c("bics_sector", "financial_sector"), as.character)) %>%
+    mutate(
+      sector =
+        if_else(!.data$financial_sector %in% .env$pacta_sectors,
+          "Other",
+          .data$financial_sector
+        )
+    ) %>%
+    summarise(
+      value = sum(.data$value_usd, na.rm = TRUE) / .env$currency_exchange_value,
+      .by = c("asset_type", "sector")
+    ) %>%
+    mutate(
+      perc_asset_val_sector = .data$value / sum(.data$value, na.rm = TRUE),
+      .by = c("asset_type")
+    ) %>%
     inner_join(audit_table, by = join_by(asset_type == asset_type_analysis)) %>%
+    mutate(
+      asset_type = case_when(
+        .data$asset_type == "Bonds" ~ "Corporate Bonds",
+        .data$asset_type == "Equity" ~ "Listed Equity"
+      )
+    ) %>%
     select("asset_type", "percentage_value_invested", "sector", "perc_asset_val_sector")
   exposure_stats
 }
