@@ -4,3 +4,6 @@ inputs/
 outputs/
 data/
 .Rhistory
+analysis_output_dir/**/*
+benchmarks_dir/**/*
+dashboard_output_dir/**/*

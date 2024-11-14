@@ -2,16 +2,21 @@
 services:
   workflow.pacta.dashboard:
     build: .
+    # stdin_open: true
+    # tty: true
+    # entrypoint: ["R", "--args"]
+    # command: '{\"portfolio\": {\"files\": [\"default_portfolio.csv\"], \"holdingsDate\": \"2023-12-31\", \"name\": \"FooPortfolio\"}, \"inherit\": \"GENERAL_2023Q4\"}'
     volumes:
       - type: bind
-        source: ${INPUT_DIR}
+        source: ${analysis_output_dir:-./analysis_output_dir}
         target: /workflow.pacta.dashboard/inputs
+        # target: /mnt/analysis_output_dir
         read_only: true
       - type: bind
-        source: ${DATA_DIR}
+        source: ${benchmarks_dir:-./benchmarks_dir}
         target: /workflow.pacta.dashboard/data
         read_only: true
       - type: bind
-        source: ${OUTPUT_DIR}
+        source: ${dashboard_output_dir:-./dashboard_output_dir}
         target: /workflow.pacta.dashboard/outputs
         read_only: false
