@@ -2,7 +2,12 @@ Package: workflow.pacta.dashboard
 Title: Run PACTA dashboard JSON generation
 Version: 0.0.0.9001
 Authors@R:
-    c(person(given = "CJ",
+    c(person(given = "Alex",
+             family = "Axthelm",
+             role = c("aut", "cre", "ctr"),
+             email = "aaxthelm@rmi.org",
+             comment = c(ORCID = "0000-0001-8579-8565")),
+      person(given = "CJ",
              family = "Yetman",
              role = c("aut", "ctr"),
              email = "cj@cjyetman.com",

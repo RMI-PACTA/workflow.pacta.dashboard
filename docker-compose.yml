@@ -2,8 +2,9 @@
 services:
   workflow.pacta.dashboard:
     build: .
-    # stdin_open: true
-    # tty: true
+    stdin_open: true
+    tty: true
+    entrypoint: ["bash"]
     # entrypoint: ["R", "--args"]
     # command: '{\"portfolio\": {\"files\": [\"default_portfolio.csv\"], \"holdingsDate\": \"2023-12-31\", \"name\": \"FooPortfolio\"}, \"inherit\": \"GENERAL_2023Q4\"}'
     volumes:
