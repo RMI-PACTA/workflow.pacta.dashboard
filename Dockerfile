@@ -26,4 +26,4 @@ COPY . /workflow.pacta.dashboard/
 RUN Rscript -e "pak::local_install(root = '/workflow.pacta.dashboard')"
 
 # set default run behavior
-ENTRYPOINT ["Rscript", "--vanilla", "/workflow.pacta.report/inst/extdata/scripts/prepare_dashboard_data.R"]
+ENTRYPOINT ["Rscript", "--vanilla", "/workflow.pacta.dashboard/inst/extdata/scripts/prepare_dashboard_data.R"]
