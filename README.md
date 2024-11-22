@@ -13,6 +13,8 @@ The files currently needed from the `input_dir` are:
 - `audit_file.rds`
 - `Equity_results_portfolio.rds`
 - `Bonds_results_portfolio.rds`
+- `Equity_results_company.rds`
+- `Bonds_results_company.rds`
 - `manifest.json`
 If/when more plots are added to the dashboard, other files from `input_dir` may also be needed.
 
