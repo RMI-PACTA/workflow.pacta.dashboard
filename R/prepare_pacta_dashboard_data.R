@@ -1,4 +1,28 @@
-prepare_pacta_dashboard_data <- function() {
+prepare_pacta_dashboard_data <- function(
+  params,
+  analysis_output_dir = Sys.getenv("ANALYSIS_OUTPUT_DIR"),
+  dashboard_data_dir = Sys.getenv("DASHBOARD_DATA_DIR"),
+  benchmarks_dir = Sys.getenv("BENCHMARKS_DIR")
+) {
+  log_debug("Checking configuration.")
+  if (is.null(analysis_output_dir) || analysis_output_dir == "") {
+    log_error("ANALYSIS_OUTPUTS_DIR not set.")
+    stop("ANALYSIS_OUTPUTS_DIR not set.")
+  }
+  if (is.null(benchmarks_dir) || benchmarks_dir == "") {
+    log_error("BENCHMARKS_DIR not set.")
+    stop("BENCHMARKS_DIR not set.")
+  }
+  if (is.null(dashboard_data_dir) || dashboard_data_dir == "") {
+    log_error("DASHBOARD_DATA_DIR not set.")
+    stop("DASHBOARD_DATA_DIR not set.")
+  } else {
+    if (!pacta.workflow.utils::check_dir_writable(dashboard_data_dir)) {
+      log_warn("Directory \"{dashboard_data_dir}\" is not writable.")
+      stop("Directory \"{dashboard_data_dir}\" is not writable.")
+    }
+  }
+
 library(dplyr)
 library(jsonlite)
 library(pacta.portfolio.report)
@@ -8,9 +32,10 @@ library(tidyr)
 
 # input and output directories -------------------------------------------------
 
-input_dir <- "./inputs"
-output_dir <- "./outputs"
-data_dir <- "./data"
+# TODO: Remove these renames
+input_dir <- analysis_output_dir
+output_dir <- dashboard_data_dir
+data_dir <- benchmarks_dir
 
 # portfolio/user parameters ----------------------------------------------------
 
