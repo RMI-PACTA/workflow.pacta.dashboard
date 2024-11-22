@@ -1,3 +1,4 @@
+prepare_pacta_dashboard_data <- function() {
 library(dplyr)
 library(jsonlite)
 library(pacta.portfolio.report)
@@ -314,3 +315,4 @@ prep_exposure_stats(
   pacta_sectors = pacta_sectors
   ) %>%
   jsonlite::write_json(path = file.path(output_dir, "data_exposure_stats.json"))
+}
