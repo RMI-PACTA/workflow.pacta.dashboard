@@ -6,208 +6,11 @@ library(pacta.portfolio.utils)
 library(readr)
 library(tidyr)
 
-
-
-# prep_company_bubble ----------------------------------------------------------
-# based on pacta.portfolio.report:::prep_company_bubble, but does not filter to
-# allocation == "portfolio_weight" nor by scenario and scenario source
-
-prep_company_bubble <-
-  function(equity_results_company,
-           bonds_results_company,
-           portfolio_name,
-           start_year,
-           green_techs) {
-    
-    equity_data <-
-      equity_results_company %>%
-      filter(.data$portfolio_name == .env$portfolio_name) %>%
-      filter(.data$ald_sector %in% c("Power", "Automotive")) %>%
-      filter(.data$equity_market == "GlobalMarket") %>%
-      filter(.data$scenario_geography == "Global") %>%
-      filter(.data$year %in% c(.env$start_year, .env$start_year + 5)) %>%
-      mutate(
-        plan_buildout = last(.data$plan_tech_prod, order_by = .data$year) - first(.data$plan_tech_prod, order_by = .data$year),
-        scen_buildout = last(.data$scen_tech_prod, order_by = .data$year) - first(.data$scen_tech_prod, order_by = .data$year),
-        .by = c("company_name", "technology", "scenario_source", "scenario", "allocation")
-      ) %>%
-      filter(.data$year == .env$start_year) %>%
-      mutate(green = .data$technology %in% .env$green_techs) %>%
-      reframe(
-        plan_tech_share = sum(.data$plan_tech_share, na.rm = TRUE),
-        plan_buildout = sum(.data$plan_buildout, na.rm = TRUE),
-        scen_buildout = sum(.data$scen_buildout, na.rm = TRUE),
-        plan_carsten = sum(.data$plan_carsten, na.rm = TRUE),
-        port_weight = unique(.data$port_weight),
-        .by = c("company_name", "allocation", "scenario_source",
-                "scenario", "ald_sector", "green", "year")
-      ) %>%
-      mutate(y = .data$plan_buildout / .data$scen_buildout) %>%
-      filter(.data$green) %>%
-      select(-"plan_buildout", -"scen_buildout", -"green") %>%
-      filter(!is.na(.data$plan_tech_share)) %>%
-      mutate(y = pmax(.data$y, 0, na.rm = TRUE)) %>%
-      mutate(asset_class = "Listed Equity")
-    
-    bonds_data <-
-      bonds_results_company %>%
-      filter(.data$portfolio_name == .env$portfolio_name) %>%
-      filter(.data$ald_sector %in% c("Power", "Automotive")) %>%
-      filter(.data$equity_market == "GlobalMarket") %>%
-      filter(.data$scenario_geography == "Global") %>%
-      filter(.data$year %in% c(.env$start_year, .env$start_year + 5)) %>%
-      mutate(
-        plan_buildout = last(.data$plan_tech_prod, order_by = .data$year) - first(.data$plan_tech_prod, order_by = .data$year),
-        scen_buildout = last(.data$scen_tech_prod, order_by = .data$year) - first(.data$scen_tech_prod, order_by = .data$year),
-        .by = c("company_name", "technology", "scenario_source", "scenario", "allocation")
-      ) %>%
-      filter(.data$year == .env$start_year) %>%
-      mutate(green = .data$technology %in% .env$green_techs) %>%
-      reframe(
-        plan_tech_share = sum(.data$plan_tech_share, na.rm = TRUE),
-        plan_buildout = sum(.data$plan_buildout, na.rm = TRUE),
-        scen_buildout = sum(.data$scen_buildout, na.rm = TRUE),
-        plan_carsten = sum(.data$plan_carsten, na.rm = TRUE),
-        port_weight = unique(.data$port_weight),
-        .by = c("company_name", "allocation", "scenario_source",
-                "scenario", "ald_sector", "green", "year")
-      ) %>%
-      mutate(y = .data$plan_buildout / .data$scen_buildout) %>%
-      filter(.data$green) %>%
-      select(-"plan_buildout", -"scen_buildout", -"green") %>%
-      filter(!is.na(.data$plan_tech_share)) %>%
-      mutate(y = pmax(.data$y, 0, na.rm = TRUE)) %>%
-      mutate(asset_class = "Corporate Bonds")
-    
-    bind_rows(equity_data, bonds_data)
-  }
-
-
-# prep_key_bars_company --------------------------------------------------------
-# based on pacta.portfolio.report:::prep_key_bars_company, but does not filter 
-# to allocation == "portfolio_weight"  nor by scenario and scenario source
-
-prep_key_bars_company <-
-  function(equity_results_company,
-           bonds_results_company,
-           portfolio_name,
-           start_year,
-           pacta_sectors_not_analysed,
-           all_tech_levels) {
-    
-    equity_data_company <-
-      equity_results_company %>%
-      filter(.data$portfolio_name == .env$portfolio_name) %>%
-      filter(.data$year %in% c(.env$start_year + 5)) %>%
-      filter(.data$equity_market %in% c("Global", "GlobalMarket")) %>%
-      filter(.data$scenario_geography == "Global") %>%
-      filter(.data$ald_sector %in% c("Power", "Automotive")) %>%
-      select(-"id") %>%
-      rename(id = "company_name") %>%
-      select("id", "ald_sector", "technology", "plan_tech_share", "port_weight",
-             "allocation", "scenario_source", "scenario", "year") %>%
-      arrange(desc(.data$port_weight)) %>%
-      mutate(asset_class = "Listed Equity") %>%
-      mutate_at("id", as.character) %>% # convert the col type to character to prevent errors in case empty df is binded by rows
-      group_by(.data$ald_sector, .data$technology) %>% # select at most 15 companies with the highest weigths per sector+technology
-      arrange(dplyr::desc(.data$port_weight), .by_group = TRUE) %>%
-      slice(1:15)  %>%
-      filter(!is.null(.data$port_weight)) %>%
-      filter(!is.null(.data$plan_tech_share))
-    
-    bonds_data_company <-
-      bonds_results_company %>%
-      filter(.data$portfolio_name == .env$portfolio_name) %>%
-      filter(.data$year %in% c(.env$start_year + 5)) %>%
-      filter(.data$equity_market %in% c("Global", "GlobalMarket")) %>%
-      filter(.data$scenario_geography == "Global") %>%
-      filter(.data$ald_sector %in% c("Power", "Automotive")) %>%
-      select(-"id") %>%
-      rename(id = "company_name") %>%
-      select("id", "ald_sector", "technology", "plan_tech_share", "port_weight",
-             "allocation", "scenario_source", "scenario", "year") %>%
-      group_by(.data$id, .data$ald_sector, .data$technology) %>%
-      mutate(port_weight = sum(.data$port_weight, na.rm = TRUE)) %>%
-      group_by(.data$id, .data$technology) %>%
-      filter(row_number() == 1) %>%
-      filter(!.data$ald_sector %in% .env$pacta_sectors_not_analysed | !grepl("Aligned", .data$id)) %>%
-      arrange(desc(.data$port_weight)) %>%
-      mutate(asset_class = "Corporate Bonds") %>%
-      mutate_at("id", as.character) %>% # convert the col type to character to prevent errors in case empty df is bound by rows
-      group_by(.data$ald_sector, .data$technology) %>% # select at most 15 companies with the highest weigths per sector+technology
-      arrange(.data$port_weight, .by_group = TRUE) %>%
-      slice(1:15) %>%
-      group_by(.data$ald_sector) %>%
-      arrange(factor(.data$technology, levels = .env$all_tech_levels)) %>%
-      arrange(dplyr::desc(.data$port_weight), .by_group = TRUE) %>%
-      filter(!is.null(.data$port_weight)) %>%
-      filter(!is.null(.data$plan_tech_share))
-    
-    bind_rows(equity_data_company, bonds_data_company) %>%
-      mutate(scenario = sub("_", " ", .data$scenario))
-  }
-
-
-# prep_key_bars_portfolio ------------------------------------------------------
-# based on pacta.portfolio.report:::prep_key_bars_portfolio, but does not filter 
-# to allocation == "portfolio_weight" nor by scenario and scenario source
-
-prep_key_bars_portfolio <-
-  function(equity_results_portfolio,
-           bonds_results_portfolio,
-           portfolio_name,
-           start_year,
-           pacta_sectors_not_analysed,
-           all_tech_levels) {
-    equity_data_portfolio <-
-      equity_results_portfolio %>%
-      filter(.data$portfolio_name == .env$portfolio_name) %>%
-      filter(.data$equity_market %in% c("Global", "GlobalMarket")) %>%
-      filter(.data$year %in% c(.env$start_year + 5)) %>%
-      filter(.data$ald_sector %in% c("Power", "Automotive")) %>%
-      filter(.data$scenario_geography == "Global") %>%
-      mutate(port_weight = 1) %>%
-      select("ald_sector", "technology", "plan_tech_share", "scen_tech_share",
-             "port_weight", "scenario", "scenario_source", "allocation", "year") %>%
-      pivot_longer(c("plan_tech_share", "scen_tech_share"), names_to = "plan") %>%
-      mutate(id = if_else(.data$plan == "plan_tech_share", "Portfolio", "Aligned* Portfolio")) %>%
-      rename(plan_tech_share = "value") %>%
-      select("id", "ald_sector", "technology", "plan_tech_share", "port_weight",
-             "scenario", "scenario_source", "allocation", "year") %>%
-      filter(!.data$ald_sector %in% .env$pacta_sectors_not_analysed | !grepl("Aligned", .data$id)) %>%
-      mutate(asset_class = "Listed Equity") %>%
-      mutate_at("id", as.character) # convert the col type to character to prevent errors in case empty df is bound by rows
-    
-    bonds_data_portfolio <-
-      bonds_results_portfolio %>%
-      filter(.data$portfolio_name == .env$portfolio_name) %>%
-      filter(.data$equity_market %in% c("Global", "GlobalMarket")) %>%
-      filter(.data$year %in% c(.env$start_year + 5)) %>%
-      filter(.data$ald_sector %in% c("Power", "Automotive")) %>%
-      filter(.data$scenario_geography == "Global") %>%
-      mutate(port_weight = 1) %>%
-      select("ald_sector", "technology", "plan_tech_share", "scen_tech_share",
-             "port_weight", "scenario", "scenario_source", "allocation", "year") %>%
-      pivot_longer(c("plan_tech_share", "scen_tech_share"), names_to = "plan") %>%
-      mutate(id = if_else(.data$plan == "plan_tech_share", "Portfolio", "Aligned* Portfolio")) %>%
-      rename(plan_tech_share = "value") %>%
-      select("id", "ald_sector", "technology", "plan_tech_share", "port_weight",
-             "scenario", "scenario_source", "allocation", "year") %>%
-      mutate(asset_class = "Corporate Bonds") %>%
-      mutate_at("id", as.character) %>%
-      arrange(factor(.data$technology, levels = .env$all_tech_levels))
-    
-    bind_rows(equity_data_portfolio, bonds_data_portfolio) %>%
-      mutate(scenario = sub("_", " ", .data$scenario))
-  }
-
-
 # input and output directories -------------------------------------------------
 
 input_dir <- "./inputs"
 output_dir <- "./outputs"
 data_dir <- "./data"
-
 
 # portfolio/user parameters ----------------------------------------------------
 
@@ -526,7 +329,6 @@ prep_exposure_stats(
   pacta_sectors = pacta_sectors
   ) %>%
   jsonlite::write_json(path = file.path(output_dir, "data_exposure_stats.json"))
-}
 
 # data_company_bubble.json -----------------------------------------------------
 
@@ -567,3 +369,4 @@ prep_key_bars_portfolio(
   ) %>% 
   pacta.portfolio.report:::translate_df_contents("data_key_bars_portfolio", dictionary) %>%
   jsonlite::write_json(path = file.path(output_dir, "data_techexposure_company_portfolio.json"))
+}
