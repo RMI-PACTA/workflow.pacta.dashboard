@@ -47,7 +47,7 @@ prep_key_bars_company <- function(
     dplyr::mutate_at("id", as.character) %>%
     # select at most 15 companies with the highest weigths per
     # sector+technology
-    group_by(.data$ald_sector, .data$technology) %>%
+    dplyr::group_by(.data$ald_sector, .data$technology) %>%
     arrange(dplyr::desc(.data$port_weight), .by_group = TRUE) %>%
     slice(1:15)  %>%
     dplyr::filter(!is.null(.data$port_weight)) %>%
@@ -83,13 +83,13 @@ prep_key_bars_company <- function(
       "scenario",
       "year"
     ) %>%
-    group_by(
+    dplyr::group_by(
       .data$id,
       .data$ald_sector,
       .data$technology
     ) %>%
     dplyr::mutate(port_weight = sum(.data$port_weight, na.rm = TRUE)) %>%
-    group_by(.data$id, .data$technology) %>%
+    dplyr::group_by(.data$id, .data$technology) %>%
     dplyr::filter(row_number() == 1) %>%
     dplyr::filter(
       !.data$ald_sector %in% .env$pacta_sectors_not_analysed |
@@ -105,13 +105,13 @@ prep_key_bars_company <- function(
     ) %>%
     # select at most 15 companies with the highest weigths per
     # sector+technology
-    group_by(
+    dplyr::group_by(
       .data$ald_sector,
       .data$technology
     ) %>%
     arrange(.data$port_weight, .by_group = TRUE) %>%
     slice(1:15) %>%
-    group_by(.data$ald_sector) %>%
+    dplyr::group_by(.data$ald_sector) %>%
     arrange(
       factor(
         .data$technology,

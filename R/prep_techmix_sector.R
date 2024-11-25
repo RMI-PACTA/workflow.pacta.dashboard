@@ -82,7 +82,7 @@ prep_techmix_sector <- function(
     techexposure_data <-
       techexposure_data %>%
       dplyr::mutate(green = .data$technology %in% .env$green_techs) %>%
-      group_by(
+      dplyr::group_by(
         .data$asset_class,
         .data$equity_market,
         .data$portfolio_name,
@@ -106,7 +106,7 @@ prep_techmix_sector <- function(
           0
         )
       ) %>%
-      group_by(
+      dplyr::group_by(
         .data$asset_class,
         .data$equity_market,
         .data$portfolio_name,
@@ -119,7 +119,7 @@ prep_techmix_sector <- function(
         green_sum_prod = sum(.data$production_plan),
         green_sum_scenario = sum(.data$scenario_plan)
       ) %>%
-      ungroup() %>%
+      dplyr::ungroup() %>%
       select(
         "asset_class",
         "investor_name",
@@ -153,7 +153,7 @@ prep_techmix_sector <- function(
         )
       ) %>%
       select(-c("green_sum_prod", "green_sum_scenario")) %>%
-      ungroup() %>%
+      dplyr::ungroup() %>%
       dplyr::mutate(
         this_portfolio = .data$portfolio_name == .env$portfolio_name,
         val_type = if_else(
