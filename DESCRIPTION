@@ -32,7 +32,8 @@ Imports:
     pacta.portfolio.report,
     pacta.portfolio.utils,
     pacta.workflow.utils,
-    readr
+    readr,
+    rlang
 Remotes:
     RMI-PACTA/pacta.portfolio.report,
     RMI-PACTA/pacta.portfolio.utils,
