@@ -12,16 +12,16 @@ prep_key_bars_company <- function(
 
   equity_data_company <-
     equity_results_company %>%
-    filter(.data$portfolio_name == .env$portfolio_name) %>%
-    filter(.data$year %in% c(.env$start_year + 5)) %>%
-    filter(
+    dplyr::filter(.data$portfolio_name == .env$portfolio_name) %>%
+    dplyr::filter(.data$year %in% c(.env$start_year + 5)) %>%
+    dplyr::filter(
       .data$equity_market %in% c(
         "Global",
         "GlobalMarket"
       )
     ) %>%
-    filter(.data$scenario_geography == "Global") %>%
-    filter(
+    dplyr::filter(.data$scenario_geography == "Global") %>%
+    dplyr::filter(
       .data$ald_sector %in% c(
         "Power",
         "Automotive"
@@ -50,21 +50,21 @@ prep_key_bars_company <- function(
     group_by(.data$ald_sector, .data$technology) %>%
     arrange(dplyr::desc(.data$port_weight), .by_group = TRUE) %>%
     slice(1:15)  %>%
-    filter(!is.null(.data$port_weight)) %>%
-    filter(!is.null(.data$plan_tech_share))
+    dplyr::filter(!is.null(.data$port_weight)) %>%
+    dplyr::filter(!is.null(.data$plan_tech_share))
 
   bonds_data_company <-
     bonds_results_company %>%
-    filter(.data$portfolio_name == .env$portfolio_name) %>%
-    filter(.data$year %in% c(.env$start_year + 5)) %>%
-    filter(
+    dplyr::filter(.data$portfolio_name == .env$portfolio_name) %>%
+    dplyr::filter(.data$year %in% c(.env$start_year + 5)) %>%
+    dplyr::filter(
       .data$equity_market %in% c(
         "Global",
         "GlobalMarket"
       )
     ) %>%
-    filter(.data$scenario_geography == "Global") %>%
-    filter(
+    dplyr::filter(.data$scenario_geography == "Global") %>%
+    dplyr::filter(
       .data$ald_sector %in% c(
         "Power",
         "Automotive"
@@ -90,8 +90,8 @@ prep_key_bars_company <- function(
     ) %>%
     mutate(port_weight = sum(.data$port_weight, na.rm = TRUE)) %>%
     group_by(.data$id, .data$technology) %>%
-    filter(row_number() == 1) %>%
-    filter(
+    dplyr::filter(row_number() == 1) %>%
+    dplyr::filter(
       !.data$ald_sector %in% .env$pacta_sectors_not_analysed |
         !grepl("Aligned", .data$id)
     ) %>%
@@ -122,8 +122,8 @@ prep_key_bars_company <- function(
       dplyr::desc(.data$port_weight),
       .by_group = TRUE
     ) %>%
-    filter(!is.null(.data$port_weight)) %>%
-    filter(!is.null(.data$plan_tech_share))
+    dplyr::filter(!is.null(.data$port_weight)) %>%
+    dplyr::filter(!is.null(.data$plan_tech_share))
 
   bind_rows(equity_data_company, bonds_data_company) %>%
     mutate(scenario = sub("_", " ", .data$scenario))
