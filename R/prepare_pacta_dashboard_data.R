@@ -24,10 +24,6 @@ prepare_pacta_dashboard_data <- function(
   }
 
   library(dplyr)
-  library(jsonlite)
-  library(pacta.portfolio.report)
-  library(pacta.portfolio.utils)
-  library(readr)
 
   # input and output directories
 
