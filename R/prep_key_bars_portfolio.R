@@ -17,7 +17,7 @@ prep_key_bars_portfolio <- function(
     dplyr::filter(.data$year %in% c(.env$start_year + 5)) %>%
     dplyr::filter(.data$ald_sector %in% c("Power", "Automotive")) %>%
     dplyr::filter(.data$scenario_geography == "Global") %>%
-    mutate(port_weight = 1) %>%
+    dplyr::mutate(port_weight = 1) %>%
     select(
       "ald_sector",
       "technology",
@@ -36,7 +36,7 @@ prep_key_bars_portfolio <- function(
       ),
       names_to = "plan"
     ) %>%
-    mutate(
+    dplyr::mutate(
       id = if_else(
         .data$plan == "plan_tech_share",
         "Portfolio",
@@ -59,10 +59,10 @@ prep_key_bars_portfolio <- function(
       !.data$ald_sector %in% .env$pacta_sectors_not_analysed |
         !grepl("Aligned", .data$id)
     ) %>%
-    mutate(asset_class = "Listed Equity") %>%
+    dplyr::mutate(asset_class = "Listed Equity") %>%
     # convert the col type to character to prevent errors in case empty df is
     # bound by rows
-    mutate_at("id", as.character)
+    dplyr::mutate_at("id", as.character)
 
   bonds_data_portfolio <-
     bonds_results_portfolio %>%
@@ -81,7 +81,7 @@ prep_key_bars_portfolio <- function(
       )
     ) %>%
     dplyr::filter(.data$scenario_geography == "Global") %>%
-    mutate(port_weight = 1) %>%
+    dplyr::mutate(port_weight = 1) %>%
     select(
       "ald_sector",
       "technology",
@@ -100,7 +100,7 @@ prep_key_bars_portfolio <- function(
       ),
       names_to = "plan"
     ) %>%
-    mutate(
+    dplyr::mutate(
       id = if_else(
         .data$plan == "plan_tech_share",
         "Portfolio",
@@ -119,10 +119,10 @@ prep_key_bars_portfolio <- function(
       "allocation",
       "year"
     ) %>%
-    mutate(asset_class = "Corporate Bonds") %>%
-    mutate_at("id", as.character) %>%
+    dplyr::mutate(asset_class = "Corporate Bonds") %>%
+    dplyr::mutate_at("id", as.character) %>%
     arrange(factor(.data$technology, levels = .env$all_tech_levels))
 
   bind_rows(equity_data_portfolio, bonds_data_portfolio) %>%
-    mutate(scenario = sub("_", " ", .data$scenario))
+    dplyr::mutate(scenario = sub("_", " ", .data$scenario))
 }

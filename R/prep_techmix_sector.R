@@ -81,7 +81,7 @@ prep_techmix_sector <- function(
   if (nrow(techexposure_data) > 0) {
     techexposure_data <-
       techexposure_data %>%
-      mutate(green = .data$technology %in% .env$green_techs) %>%
+      dplyr::mutate(green = .data$technology %in% .env$green_techs) %>%
       group_by(
         .data$asset_class,
         .data$equity_market,
@@ -90,11 +90,11 @@ prep_techmix_sector <- function(
         .data$scenario,
         .data$year
       ) %>%
-      mutate(
+      dplyr::mutate(
         plan_alloc_wt_sec_prod = sum(.data$plan_alloc_wt_tech_prod),
         scen_alloc_wt_sec_prod = sum(.data$scen_alloc_wt_tech_prod)
       ) %>%
-      mutate(
+      dplyr::mutate(
         production_plan = if_else(
           .data$plan_alloc_wt_tech_prod > 0,
           .data$plan_alloc_wt_tech_prod / .data$plan_alloc_wt_sec_prod,
@@ -115,7 +115,7 @@ prep_techmix_sector <- function(
         .data$year,
         .data$green
       ) %>%
-      mutate(
+      dplyr::mutate(
         green_sum_prod = sum(.data$production_plan),
         green_sum_scenario = sum(.data$scenario_plan)
       ) %>%
@@ -145,7 +145,7 @@ prep_techmix_sector <- function(
         names_to = "val_type",
         values_to = "value"
       ) %>%
-      mutate(
+      dplyr::mutate(
         green_sum = if_else(
           .data$val_type == "production_plan",
           .data$green_sum_prod,
@@ -154,7 +154,7 @@ prep_techmix_sector <- function(
       ) %>%
       select(-c("green_sum_prod", "green_sum_scenario")) %>%
       ungroup() %>%
-      mutate(
+      dplyr::mutate(
         this_portfolio = .data$portfolio_name == .env$portfolio_name,
         val_type = if_else(
           .data$this_portfolio == TRUE,
@@ -162,7 +162,7 @@ prep_techmix_sector <- function(
           paste0(.data$val_type, "_benchmark")
         )
       ) %>%
-      mutate(
+      dplyr::mutate(
         equity_market =  case_when(
           .data$equity_market == "GlobalMarket" ~ "Global Market",
           .data$equity_market == "DevelopedMarket" ~ "Developed Market",
@@ -174,7 +174,7 @@ prep_techmix_sector <- function(
       dplyr::filter(
         .data$val_type != "scenario_plan_benchmark"
       ) %>%
-      mutate(
+      dplyr::mutate(
         val_type =  case_when(
           .data$val_type == "production_plan_portfolio" ~ "Portfolio",
           .data$val_type == "scenario_plan_portfolio" ~ "Scenario",

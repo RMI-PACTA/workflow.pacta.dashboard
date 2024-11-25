@@ -214,49 +214,49 @@ prepare_pacta_dashboard_data <- function(
   # pacta.portfolio.report functions expect that
 
   audit_file <- audit_file %>%
-    mutate(
+    dplyr::mutate(
       investor_name = investor_name,
       portfolio_name = portfolio_name
     )
 
   emissions <- emissions %>%
-    mutate(
+    dplyr::mutate(
       investor_name = investor_name,
       portfolio_name = portfolio_name
     )
 
   equity_results_portfolio <- equity_results_portfolio %>%
-    mutate(
+    dplyr::mutate(
       investor_name = investor_name,
       portfolio_name = portfolio_name
     )
 
   bonds_results_portfolio <- bonds_results_portfolio %>%
-    mutate(
+    dplyr::mutate(
       investor_name = investor_name,
       portfolio_name = portfolio_name
     )
 
   equity_results_map <- equity_results_map %>%
-    mutate(
+    dplyr::mutate(
       investor_name = investor_name,
       portfolio_name = portfolio_name
     )
 
   bonds_results_map <- bonds_results_map %>%
-    mutate(
+    dplyr::mutate(
       investor_name = investor_name,
       portfolio_name = portfolio_name
     )
 
   equity_results_company <- equity_results_company %>%
-    mutate(
+    dplyr::mutate(
       investor_name = investor_name,
       portfolio_name = portfolio_name
     )
 
   bonds_results_company <- bonds_results_company %>%
-    mutate(
+    dplyr::mutate(
       investor_name = investor_name,
       portfolio_name = portfolio_name
     )

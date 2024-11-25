@@ -41,10 +41,10 @@ prep_key_bars_company <- function(
       "year"
     ) %>%
     arrange(desc(.data$port_weight)) %>%
-    mutate(asset_class = "Listed Equity") %>%
+    dplyr::mutate(asset_class = "Listed Equity") %>%
     # convert the col type to character to prevent errors in case empty df is
     # binded by rows
-    mutate_at("id", as.character) %>%
+    dplyr::mutate_at("id", as.character) %>%
     # select at most 15 companies with the highest weigths per
     # sector+technology
     group_by(.data$ald_sector, .data$technology) %>%
@@ -88,7 +88,7 @@ prep_key_bars_company <- function(
       .data$ald_sector,
       .data$technology
     ) %>%
-    mutate(port_weight = sum(.data$port_weight, na.rm = TRUE)) %>%
+    dplyr::mutate(port_weight = sum(.data$port_weight, na.rm = TRUE)) %>%
     group_by(.data$id, .data$technology) %>%
     dplyr::filter(row_number() == 1) %>%
     dplyr::filter(
@@ -96,10 +96,10 @@ prep_key_bars_company <- function(
         !grepl("Aligned", .data$id)
     ) %>%
     arrange(desc(.data$port_weight)) %>%
-    mutate(asset_class = "Corporate Bonds") %>%
+    dplyr::mutate(asset_class = "Corporate Bonds") %>%
     # convert the col type to character to prevent errors in case empty df is
     # bound by rows
-    mutate_at(
+    dplyr::mutate_at(
       "id",
       as.character
     ) %>%
@@ -126,5 +126,5 @@ prep_key_bars_company <- function(
     dplyr::filter(!is.null(.data$plan_tech_share))
 
   bind_rows(equity_data_company, bonds_data_company) %>%
-    mutate(scenario = sub("_", " ", .data$scenario))
+    dplyr::mutate(scenario = sub("_", " ", .data$scenario))
 }
