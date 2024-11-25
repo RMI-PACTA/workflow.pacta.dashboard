@@ -11,13 +11,13 @@ prep_key_bars_portfolio <- function(
   all_tech_levels
 ) {
   equity_data_portfolio <-
-    equity_results_portfolio %>%
-    dplyr::filter(.data$portfolio_name == .env$portfolio_name) %>%
-    dplyr::filter(.data$equity_market %in% c("Global", "GlobalMarket")) %>%
-    dplyr::filter(.data$year %in% c(.env$start_year + 5)) %>%
-    dplyr::filter(.data$ald_sector %in% c("Power", "Automotive")) %>%
-    dplyr::filter(.data$scenario_geography == "Global") %>%
-    dplyr::mutate(port_weight = 1) %>%
+    equity_results_portfolio |>
+    dplyr::filter(.data$portfolio_name == .env$portfolio_name) |>
+    dplyr::filter(.data$equity_market %in% c("Global", "GlobalMarket")) |>
+    dplyr::filter(.data$year %in% c(.env$start_year + 5)) |>
+    dplyr::filter(.data$ald_sector %in% c("Power", "Automotive")) |>
+    dplyr::filter(.data$scenario_geography == "Global") |>
+    dplyr::mutate(port_weight = 1) |>
     select(
       "ald_sector",
       "technology",
@@ -28,22 +28,22 @@ prep_key_bars_portfolio <- function(
       "scenario_source",
       "allocation",
       "year"
-    ) %>%
+    ) |>
     tidyr::pivot_longer(
       c(
         "plan_tech_share",
         "scen_tech_share"
       ),
       names_to = "plan"
-    ) %>%
+    ) |>
     dplyr::mutate(
       id = if_else(
         .data$plan == "plan_tech_share",
         "Portfolio",
         "Aligned* Portfolio"
       )
-    ) %>%
-    rename(plan_tech_share = "value") %>%
+    ) |>
+    rename(plan_tech_share = "value") |>
     select(
       "id",
       "ald_sector",
@@ -54,34 +54,34 @@ prep_key_bars_portfolio <- function(
       "scenario_source",
       "allocation",
       "year"
-    ) %>%
+    ) |>
     dplyr::filter(
       !.data$ald_sector %in% .env$pacta_sectors_not_analysed |
         !grepl("Aligned", .data$id)
-    ) %>%
-    dplyr::mutate(asset_class = "Listed Equity") %>%
+    ) |>
+    dplyr::mutate(asset_class = "Listed Equity") |>
     # convert the col type to character to prevent errors in case empty df is
     # bound by rows
     dplyr::mutate_at("id", as.character)
 
   bonds_data_portfolio <-
-    bonds_results_portfolio %>%
-    dplyr::filter(.data$portfolio_name == .env$portfolio_name) %>%
+    bonds_results_portfolio |>
+    dplyr::filter(.data$portfolio_name == .env$portfolio_name) |>
     dplyr::filter(
       .data$equity_market %in% c(
         "Global",
         "GlobalMarket"
       )
-    ) %>%
-    dplyr::filter(.data$year %in% c(.env$start_year + 5)) %>%
+    ) |>
+    dplyr::filter(.data$year %in% c(.env$start_year + 5)) |>
     dplyr::filter(
       .data$ald_sector %in% c(
         "Power",
         "Automotive"
       )
-    ) %>%
-    dplyr::filter(.data$scenario_geography == "Global") %>%
-    dplyr::mutate(port_weight = 1) %>%
+    ) |>
+    dplyr::filter(.data$scenario_geography == "Global") |>
+    dplyr::mutate(port_weight = 1) |>
     select(
       "ald_sector",
       "technology",
@@ -92,22 +92,22 @@ prep_key_bars_portfolio <- function(
       "scenario_source",
       "allocation",
       "year"
-    ) %>%
+    ) |>
     tidyr::pivot_longer(
       c(
         "plan_tech_share",
         "scen_tech_share"
       ),
       names_to = "plan"
-    ) %>%
+    ) |>
     dplyr::mutate(
       id = if_else(
         .data$plan == "plan_tech_share",
         "Portfolio",
         "Aligned* Portfolio"
       )
-    ) %>%
-    rename(plan_tech_share = "value") %>%
+    ) |>
+    rename(plan_tech_share = "value") |>
     select(
       "id",
       "ald_sector",
@@ -118,11 +118,11 @@ prep_key_bars_portfolio <- function(
       "scenario_source",
       "allocation",
       "year"
-    ) %>%
-    dplyr::mutate(asset_class = "Corporate Bonds") %>%
-    dplyr::mutate_at("id", as.character) %>%
+    ) |>
+    dplyr::mutate(asset_class = "Corporate Bonds") |>
+    dplyr::mutate_at("id", as.character) |>
     arrange(factor(.data$technology, levels = .env$all_tech_levels))
 
-  bind_rows(equity_data_portfolio, bonds_data_portfolio) %>%
+  bind_rows(equity_data_portfolio, bonds_data_portfolio) |>
     dplyr::mutate(scenario = sub("_", " ", .data$scenario))
 }

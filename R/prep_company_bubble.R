@@ -10,22 +10,22 @@ prep_company_bubble <- function(
 ) {
 
   equity_data <-
-    equity_results_company %>%
-    dplyr::filter(.data$portfolio_name == .env$portfolio_name) %>%
+    equity_results_company |>
+    dplyr::filter(.data$portfolio_name == .env$portfolio_name) |>
     dplyr::filter(
       .data$ald_sector %in% c(
         "Power",
         "Automotive"
       )
-    ) %>%
-    dplyr::filter(.data$equity_market == "GlobalMarket") %>%
-    dplyr::filter(.data$scenario_geography == "Global") %>%
+    ) |>
+    dplyr::filter(.data$equity_market == "GlobalMarket") |>
+    dplyr::filter(.data$scenario_geography == "Global") |>
     dplyr::filter(
       .data$year %in% c(
         .env$start_year,
         .env$start_year + 5
       )
-    ) %>%
+    ) |>
     dplyr::mutate(
       plan_buildout = (
         last(.data$plan_tech_prod, order_by = .data$year) -
@@ -42,9 +42,9 @@ prep_company_bubble <- function(
         "scenario",
         "allocation"
       )
-    ) %>%
-    dplyr::filter(.data$year == .env$start_year) %>%
-    dplyr::mutate(green = .data$technology %in% .env$green_techs) %>%
+    ) |>
+    dplyr::filter(.data$year == .env$start_year) |>
+    dplyr::mutate(green = .data$technology %in% .env$green_techs) |>
     reframe(
       plan_tech_share = sum(.data$plan_tech_share, na.rm = TRUE),
       plan_buildout = sum(.data$plan_buildout, na.rm = TRUE),
@@ -60,35 +60,35 @@ prep_company_bubble <- function(
         "green",
         "year"
       )
-    ) %>%
-    dplyr::mutate(y = .data$plan_buildout / .data$scen_buildout) %>%
-    dplyr::filter(.data$green) %>%
+    ) |>
+    dplyr::mutate(y = .data$plan_buildout / .data$scen_buildout) |>
+    dplyr::filter(.data$green) |>
     select(
       -"plan_buildout",
       -"scen_buildout",
       -"green"
-    ) %>%
-    dplyr::filter(!is.na(.data$plan_tech_share)) %>%
-    dplyr::mutate(y = pmax(.data$y, 0, na.rm = TRUE)) %>%
+    ) |>
+    dplyr::filter(!is.na(.data$plan_tech_share)) |>
+    dplyr::mutate(y = pmax(.data$y, 0, na.rm = TRUE)) |>
     dplyr::mutate(asset_class = "Listed Equity")
 
   bonds_data <-
-    bonds_results_company %>%
-    dplyr::filter(.data$portfolio_name == .env$portfolio_name) %>%
+    bonds_results_company |>
+    dplyr::filter(.data$portfolio_name == .env$portfolio_name) |>
     dplyr::filter(
       .data$ald_sector %in% c(
         "Power",
         "Automotive"
       )
-    ) %>%
-    dplyr::filter(.data$equity_market == "GlobalMarket") %>%
-    dplyr::filter(.data$scenario_geography == "Global") %>%
+    ) |>
+    dplyr::filter(.data$equity_market == "GlobalMarket") |>
+    dplyr::filter(.data$scenario_geography == "Global") |>
     dplyr::filter(
       .data$year %in% c(
         .env$start_year,
         .env$start_year + 5
       )
-    ) %>%
+    ) |>
     dplyr::mutate(
       plan_buildout = (
         last(.data$plan_tech_prod, order_by = .data$year) -
@@ -105,9 +105,9 @@ prep_company_bubble <- function(
         "scenario",
         "allocation"
       )
-    ) %>%
-    dplyr::filter(.data$year == .env$start_year) %>%
-    dplyr::mutate(green = .data$technology %in% .env$green_techs) %>%
+    ) |>
+    dplyr::filter(.data$year == .env$start_year) |>
+    dplyr::mutate(green = .data$technology %in% .env$green_techs) |>
     reframe(
       plan_tech_share = sum(.data$plan_tech_share, na.rm = TRUE),
       plan_buildout = sum(.data$plan_buildout, na.rm = TRUE),
@@ -123,16 +123,16 @@ prep_company_bubble <- function(
         "green",
         "year"
       )
-    ) %>%
-    dplyr::mutate(y = .data$plan_buildout / .data$scen_buildout) %>%
-    dplyr::filter(.data$green) %>%
+    ) |>
+    dplyr::mutate(y = .data$plan_buildout / .data$scen_buildout) |>
+    dplyr::filter(.data$green) |>
     select(
       -"plan_buildout",
       -"scen_buildout",
       -"green"
-    ) %>%
-    dplyr::filter(!is.na(.data$plan_tech_share)) %>%
-    dplyr::mutate(y = pmax(.data$y, 0, na.rm = TRUE)) %>%
+    ) |>
+    dplyr::filter(!is.na(.data$plan_tech_share)) |>
+    dplyr::mutate(y = pmax(.data$y, 0, na.rm = TRUE)) |>
     dplyr::mutate(asset_class = "Corporate Bonds")
 
   bind_rows(equity_data, bonds_data)

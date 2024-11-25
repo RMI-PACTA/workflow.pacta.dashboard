@@ -208,49 +208,49 @@ prepare_pacta_dashboard_data <- function(
   # add investor_name and portfolio_name to results data frames because
   # pacta.portfolio.report functions expect that
 
-  audit_file <- audit_file %>%
+  audit_file <- audit_file |>
     dplyr::mutate(
       investor_name = investor_name,
       portfolio_name = portfolio_name
     )
 
-  emissions <- emissions %>%
+  emissions <- emissions |>
     dplyr::mutate(
       investor_name = investor_name,
       portfolio_name = portfolio_name
     )
 
-  equity_results_portfolio <- equity_results_portfolio %>%
+  equity_results_portfolio <- equity_results_portfolio |>
     dplyr::mutate(
       investor_name = investor_name,
       portfolio_name = portfolio_name
     )
 
-  bonds_results_portfolio <- bonds_results_portfolio %>%
+  bonds_results_portfolio <- bonds_results_portfolio |>
     dplyr::mutate(
       investor_name = investor_name,
       portfolio_name = portfolio_name
     )
 
-  equity_results_map <- equity_results_map %>%
+  equity_results_map <- equity_results_map |>
     dplyr::mutate(
       investor_name = investor_name,
       portfolio_name = portfolio_name
     )
 
-  bonds_results_map <- bonds_results_map %>%
+  bonds_results_map <- bonds_results_map |>
     dplyr::mutate(
       investor_name = investor_name,
       portfolio_name = portfolio_name
     )
 
-  equity_results_company <- equity_results_company %>%
+  equity_results_company <- equity_results_company |>
     dplyr::mutate(
       investor_name = investor_name,
       portfolio_name = portfolio_name
     )
 
-  bonds_results_company <- bonds_results_company %>%
+  bonds_results_company <- bonds_results_company |>
     dplyr::mutate(
       investor_name = investor_name,
       portfolio_name = portfolio_name
@@ -259,22 +259,22 @@ prepare_pacta_dashboard_data <- function(
 
   # data_included_table.json
 
-  audit_file %>%
+  audit_file |>
     pacta.portfolio.report:::prep_audit_table(
       investor_name = investor_name,
       portfolio_name = portfolio_name,
       currency_exchange_value = currency_exchange_value
-    ) %>%
+    ) |>
     pacta.portfolio.report:::translate_df_contents(
       "data_included_table",
       dictionary,
       inplace = TRUE
-    ) %>%
+    ) |>
     pacta.portfolio.report:::translate_df_headers(
       "data_included_table",
       language_select,
       header_dictionary
-    ) %>%
+    ) |>
     jsonlite::write_json(
       path = file.path(output_dir, "data_included_table.json")
     )
@@ -282,18 +282,18 @@ prepare_pacta_dashboard_data <- function(
 
   # data_value_pie_bonds.json
 
-  audit_file %>%
+  audit_file |>
     pacta.portfolio.report:::prep_exposure_pie(
       asset_type = "Bonds",
       investor_name = investor_name,
       portfolio_name = portfolio_name,
       pacta_sectors = pacta_sectors,
       currency_exchange_value = currency_exchange_value
-    ) %>%
+    ) |>
     pacta.portfolio.report:::translate_df_contents(
       "data_value_pie_bonds",
       dictionary
-    ) %>%
+    ) |>
     jsonlite::write_json(
       path = file.path(output_dir, "data_value_pie_bonds.json")
     )
@@ -301,17 +301,17 @@ prepare_pacta_dashboard_data <- function(
 
   # data_emissions_equity.json
 
-  emissions %>%
+  emissions |>
     pacta.portfolio.report:::prep_emissions_pie(
       asset_type = "Equity",
       investor_name = investor_name,
       portfolio_name = portfolio_name,
       pacta_sectors = pacta_sectors
-    ) %>%
+    ) |>
     pacta.portfolio.report:::translate_df_contents(
       "data_emissions_pie_equity",
       dictionary
-    ) %>%
+    ) |>
     jsonlite::write_json(
       path = file.path(output_dir, "data_emissions_pie_equity.json")
     )
@@ -319,17 +319,17 @@ prepare_pacta_dashboard_data <- function(
 
   # data_emissions_bonds.json
 
-  emissions %>%
+  emissions |>
     pacta.portfolio.report:::prep_emissions_pie(
       asset_type = "Bonds",
       investor_name = investor_name,
       portfolio_name = portfolio_name,
       pacta_sectors = pacta_sectors
-    ) %>%
+    ) |>
     pacta.portfolio.report:::translate_df_contents(
       "data_emissions_pie_bonds",
       dictionary
-    ) %>%
+    ) |>
     jsonlite::write_json(
       path = file.path(output_dir, "data_emissions_pie_bonds.json")
     )
@@ -337,18 +337,18 @@ prepare_pacta_dashboard_data <- function(
 
   # data_value_pie_equity.json
 
-  audit_file %>%
+  audit_file |>
     pacta.portfolio.report:::prep_exposure_pie(
       asset_type = "Equity",
       investor_name = investor_name,
       portfolio_name = portfolio_name,
       pacta_sectors = pacta_sectors,
       currency_exchange_value = currency_exchange_value
-    ) %>%
+    ) |>
     pacta.portfolio.report:::translate_df_contents(
       "data_value_pie_equity",
       dictionary
-    ) %>%
+    ) |>
     jsonlite::write_json(
       path = file.path(output_dir, "data_value_pie_equity.json")
     )
@@ -372,11 +372,11 @@ prepare_pacta_dashboard_data <- function(
     green_techs = green_techs,
     equity_market_levels = equity_market_levels,
     all_tech_levels = all_tech_levels
-  ) %>%
+  ) |>
     pacta.portfolio.report:::translate_df_contents(
       "techexposure_data",
       dictionary
-    ) %>%
+    ) |>
     jsonlite::write_json(
       path = file.path(output_dir, "data_techexposure.json")
     )
@@ -398,7 +398,7 @@ prepare_pacta_dashboard_data <- function(
     peer_group,
     green_techs,
     all_tech_levels
-  ) %>%
+  ) |>
     jsonlite::write_json(
       path = file.path(output_dir, "data_techmix_sector.json")
     )
@@ -410,11 +410,11 @@ prepare_pacta_dashboard_data <- function(
     bonds_results_map = bonds_results_map,
     portfolio_name = portfolio_name,
     start_year = start_year
-  ) %>%
+  ) |>
     pacta.portfolio.report:::translate_df_contents(
       "data_map",
       dictionary
-    ) %>%
+    ) |>
     jsonlite::write_json(
       path = file.path(output_dir, "data_map.json")
     )
@@ -437,11 +437,11 @@ prepare_pacta_dashboard_data <- function(
     year_span = year_span,
     scen_geo_levels = scen_geo_levels,
     all_tech_levels = all_tech_levels
-  ) %>%
+  ) |>
     pacta.portfolio.report:::translate_df_contents(
       "data_trajectory_alignment",
       dictionary
-    ) %>%
+    ) |>
     jsonlite::write_json(
       path = file.path(output_dir, "data_trajectory_alignment.json")
     )
@@ -459,11 +459,11 @@ prepare_pacta_dashboard_data <- function(
     pacta_sectors = pacta_sectors,
     year_span = year_span,
     start_year = start_year
-  ) %>%
+  ) |>
     pacta.portfolio.report:::translate_df_contents(
       "data_emissions",
       dictionary
-    ) %>%
+    ) |>
     jsonlite::write_json(
       path = file.path(output_dir, "data_emissions.json")
     )
@@ -475,7 +475,7 @@ prepare_pacta_dashboard_data <- function(
     investor_name = investor_name,
     portfolio_name = portfolio_name,
     pacta_sectors = pacta_sectors
-  ) %>%
+  ) |>
     jsonlite::write_json(
       path = file.path(output_dir, "data_exposure_stats.json")
     )
@@ -488,11 +488,11 @@ prepare_pacta_dashboard_data <- function(
     portfolio_name = portfolio_name,
     start_year = start_year,
     green_techs = green_techs
-  ) %>%
+  ) |>
     pacta.portfolio.report:::translate_df_contents(
       "data_company_bubble",
       dictionary
-    ) %>%
+    ) |>
     jsonlite::write_json(
       path = file.path(output_dir, "data_company_bubble.json")
     )
@@ -507,11 +507,11 @@ prepare_pacta_dashboard_data <- function(
     start_year = start_year,
     pacta_sectors_not_analysed = pacta_sectors_not_analysed,
     all_tech_levels = all_tech_levels
-  ) %>%
+  ) |>
     pacta.portfolio.report:::translate_df_contents(
       "data_key_bars_company",
       dictionary
-    ) %>%
+    ) |>
     jsonlite::write_json(
       path = file.path(output_dir, "data_techexposure_company_companies.json")
     )
@@ -526,11 +526,11 @@ prepare_pacta_dashboard_data <- function(
     start_year = start_year,
     pacta_sectors_not_analysed = pacta_sectors_not_analysed,
     all_tech_levels = all_tech_levels
-  ) %>%
+  ) |>
     pacta.portfolio.report:::translate_df_contents(
       "data_key_bars_portfolio",
       dictionary
-    ) %>%
+    ) |>
     jsonlite::write_json(
       path = file.path(output_dir, "data_techexposure_company_portfolio.json")
     )
