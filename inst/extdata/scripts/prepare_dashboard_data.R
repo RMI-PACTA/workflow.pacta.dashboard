@@ -29,4 +29,3 @@ dashboard_manifest_info <- workflow.pacta.dashboard:::prepare_pacta_dashboard_da
 #   manifest_path = file.path(Sys.getenv("REPORT_OUTPUT_DIR"), "manifest.json"),
 #   raw_params = raw_params
 # )
-

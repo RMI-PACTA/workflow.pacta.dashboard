@@ -69,4 +69,3 @@ prep_company_bubble <- function(
 
   bind_rows(equity_data, bonds_data)
 }
-

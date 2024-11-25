@@ -56,7 +56,7 @@ prep_exposure_stats <- function(
     mutate(
       perc_asset_val_sector = if_else(
         is.na(.data$perc_asset_val_sector),
-        .data$val_sector, 
+        .data$val_sector,
         .data$perc_asset_val_sector
       )
     ) %>%
@@ -70,4 +70,3 @@ prep_exposure_stats <- function(
 
   exposure_stats_all
 }
-

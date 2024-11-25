@@ -1,5 +1,5 @@
 # prep_key_bars_company --------------------------------------------------------
-# based on pacta.portfolio.report:::prep_key_bars_company, but does not filter 
+# based on pacta.portfolio.report:::prep_key_bars_company, but does not filter
 # to allocation == "portfolio_weight"  nor by scenario and scenario source
 prep_key_bars_company <- function(
   equity_results_company,
@@ -59,4 +59,3 @@ prep_key_bars_company <- function(
   bind_rows(equity_data_company, bonds_data_company) %>%
     mutate(scenario = sub("_", " ", .data$scenario))
 }
-

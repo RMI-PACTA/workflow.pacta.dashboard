@@ -356,7 +356,7 @@ prepare_pacta_dashboard_data <- function(
     start_year = start_year,
     green_techs = green_techs
   ) %>%
-    pacta.portfolio.report:::translate_df_contents("data_company_bubble", dictionary) %>% 
+    pacta.portfolio.report:::translate_df_contents("data_company_bubble", dictionary) %>%
     jsonlite::write_json(path = file.path(output_dir, "data_company_bubble.json"))
 
 
@@ -383,7 +383,7 @@ prepare_pacta_dashboard_data <- function(
     start_year = start_year,
     pacta_sectors_not_analysed = pacta_sectors_not_analysed,
     all_tech_levels = all_tech_levels
-  ) %>% 
+  ) %>%
     pacta.portfolio.report:::translate_df_contents("data_key_bars_portfolio", dictionary) %>%
     jsonlite::write_json(path = file.path(output_dir, "data_techexposure_company_portfolio.json"))
 }
