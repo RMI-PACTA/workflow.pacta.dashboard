@@ -100,12 +100,12 @@ prep_techmix_sector <- function(
         scen_alloc_wt_sec_prod = sum(.data$scen_alloc_wt_tech_prod)
       ) |>
       dplyr::mutate(
-        production_plan = if_else(
+        production_plan = dplyr::if_else(
           .data$plan_alloc_wt_tech_prod > 0,
           .data$plan_alloc_wt_tech_prod / .data$plan_alloc_wt_sec_prod,
           0
         ),
-        scenario_plan = if_else(
+        scenario_plan = dplyr::if_else(
           .data$scen_alloc_wt_tech_prod > 0,
           .data$scen_alloc_wt_tech_prod / .data$scen_alloc_wt_sec_prod,
           0
@@ -151,7 +151,7 @@ prep_techmix_sector <- function(
         values_to = "value"
       ) |>
       dplyr::mutate(
-        green_sum = if_else(
+        green_sum = dplyr::if_else(
           .data$val_type == "production_plan",
           .data$green_sum_prod,
           .data$green_sum_scenario
@@ -161,7 +161,7 @@ prep_techmix_sector <- function(
       dplyr::ungroup() |>
       dplyr::mutate(
         this_portfolio = .data$portfolio_name == .env$portfolio_name,
-        val_type = if_else(
+        val_type = dplyr::if_else(
           .data$this_portfolio == TRUE,
           paste0(.data$val_type, "_portfolio"),
           paste0(.data$val_type, "_benchmark")

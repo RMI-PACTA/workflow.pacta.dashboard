@@ -37,7 +37,7 @@ prep_key_bars_portfolio <- function(
       names_to = "plan"
     ) |>
     dplyr::mutate(
-      id = if_else(
+      id = dplyr::if_else(
         .data$plan == "plan_tech_share",
         "Portfolio",
         "Aligned* Portfolio"
@@ -101,7 +101,7 @@ prep_key_bars_portfolio <- function(
       names_to = "plan"
     ) |>
     dplyr::mutate(
-      id = if_else(
+      id = dplyr::if_else(
         .data$plan == "plan_tech_share",
         "Portfolio",
         "Aligned* Portfolio"

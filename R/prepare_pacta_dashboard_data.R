@@ -23,8 +23,6 @@ prepare_pacta_dashboard_data <- function(
     }
   }
 
-  library(dplyr)
-
   # input and output directories
 
   # TODO: Remove these renames
@@ -474,7 +472,8 @@ prepare_pacta_dashboard_data <- function(
     audit_file = audit_file,
     investor_name = investor_name,
     portfolio_name = portfolio_name,
-    pacta_sectors = pacta_sectors
+    pacta_sectors = pacta_sectors,
+    currency_exchange_value = currency_exchange_value
   ) |>
     jsonlite::write_json(
       path = file.path(output_dir, "data_exposure_stats.json")
