@@ -98,21 +98,13 @@ prep_techmix_sector <- function(
       ungroup() %>%
       select("asset_class", "investor_name", "portfolio_name", "scenario_source", "scenario", "allocation", "equity_market", "year", "ald_sector", "technology", "production_plan", "scenario_plan", "green", "green_sum_prod", "green_sum_scenario") %>%
       pivot_longer(
-        cols = -c(
-          "asset_class",
-          "investor_name",
-          "portfolio_name",
-          "scenario_source",
-          "scenario",
-          "allocation",
-          "equity_market",
-          "year",
-          "ald_sector",
-          "technology",
-          "green","green_sum_prod",
-          "green_sum_scenario"
+        cols = c(
+          "production_plan",
+          "scenario_plan"
         ),
-        names_to = "val_type", values_to = "value") %>%
+        names_to = "val_type",
+        values_to = "value"
+      ) %>%
       mutate(
         green_sum = if_else(.data$val_type == "production_plan", .data$green_sum_prod, .data$green_sum_scenario)
       ) %>%
