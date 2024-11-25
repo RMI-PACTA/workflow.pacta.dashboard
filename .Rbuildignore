@@ -1,3 +1,7 @@
 ^.*\.Rproj$
-^\.Rproj\.user$
+^.github/
+^.lintr$
+^Dockerfile$
 ^LICENSE\.md$
+^\.Rproj\.user$
+^docker-compose.yml$
