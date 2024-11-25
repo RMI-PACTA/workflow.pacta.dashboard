@@ -198,21 +198,6 @@ prepare_pacta_dashboard_data <- function(
     col_types = readr::cols()
   )
 
-  js_translations <- jsonlite::fromJSON(
-    txt = system.file(
-      "extdata/translation/js_labels.json",
-      package = "pacta.portfolio.report"
-    )
-  )
-
-  sector_order <- readr::read_csv(
-    system.file(
-      "extdata/sector_order/sector_order.csv",
-      package = "pacta.portfolio.report"
-    ),
-    col_types = readr::cols()
-  )
-
   dictionary <-
     pacta.portfolio.report:::choose_dictionary_language(
       data = dataframe_translations,

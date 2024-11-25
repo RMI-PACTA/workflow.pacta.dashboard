@@ -25,17 +25,17 @@ prep_techmix_sector <- function(
     ) %>%
     filter(!is.na(.data$ald_sector))
 
-  asset_classes <- portfolio %>%
+  unique_asset_classes <- portfolio %>%
     pull("asset_class") %>%
     unique()
 
-  equity_sectors <- portfolio %>%
+  unique_equity_sectors <- portfolio %>%
     filter(.data$asset_class == "Listed Equity") %>%
     filter(.data$allocation == "portfolio_weight") %>%
     pull("ald_sector") %>%
     unique()
 
-  bonds_sectors <- portfolio %>%
+  unique_bonds_sectors <- portfolio %>%
     filter(.data$asset_class == "Corporate Bonds") %>%
     pull("ald_sector") %>%
     unique()
@@ -45,14 +45,14 @@ prep_techmix_sector <- function(
     `Corporate Bonds` = indices_bonds_results_portfolio
   ) %>%
     bind_rows(.id = "asset_class") %>%
-    filter(.data$asset_class %in% .env$asset_classes) %>%
+    filter(.data$asset_class %in% unique_asset_classes) %>%
     filter(
       (
         .data$asset_class == "Listed Equity" &
-          .data$ald_sector %in% .env$equity_sectors
+          .data$ald_sector %in% unique_equity_sectors
       ) | (
         .data$asset_class == "Corporate Bonds" &
-          .data$ald_sector %in% .env$bonds_sectors
+          .data$ald_sector %in% unique_bonds_sectors
       )
     )
 
@@ -61,14 +61,14 @@ prep_techmix_sector <- function(
     `Corporate Bonds` = peers_bonds_results_portfolio
   ) %>%
     bind_rows(.id = "asset_class") %>%
-    filter(.data$asset_class %in% .env$asset_classes) %>%
+    filter(.data$asset_class %in% unique_asset_classes) %>%
     filter(
       (
         .data$asset_class == "Listed Equity" &
-          .data$ald_sector %in% .env$equity_sectors
+          .data$ald_sector %in% unique_equity_sectors
       ) | (
         .data$asset_class == "Corporate Bonds" &
-          .data$ald_sector %in% .env$bonds_sectors
+          .data$ald_sector %in% unique_bonds_sectors
       )
     ) %>%
     filter(.data$investor_name == .env$peer_group)
