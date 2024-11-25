@@ -4,7 +4,10 @@ prep_exposure_stats <- function(
   portfolio_name,
   pacta_sectors
 ) {
-  pacta_asset_classes <- c("Bonds", "Equity")
+  pacta_asset_classes <- c(
+    "Bonds",
+    "Equity"
+  )
 
   audit_table <- pacta.portfolio.report:::prep_audit_table(
     audit_file,
@@ -37,9 +40,17 @@ prep_exposure_stats <- function(
       .by = c("asset_type")
     ) %>%
     inner_join(audit_table, by = join_by(asset_type == asset_type_analysis)) %>%
-    select("asset_type", "percentage_value_invested", "sector", "perc_asset_val_sector")
+    select(
+      "asset_type",
+      "percentage_value_invested",
+      "sector",
+      "perc_asset_val_sector"
+    )
 
-  asset_classes_in_portfolio <- intersect(pacta_asset_classes, unique(exposure_stats$asset_type))
+  asset_classes_in_portfolio <- intersect(
+    pacta_asset_classes,
+    unique(exposure_stats$asset_type)
+  )
 
   all_stats_with_zero_sector_exposure <- expand.grid(
     asset_type = asset_classes_in_portfolio,
@@ -47,12 +58,24 @@ prep_exposure_stats <- function(
     val_sector = 0
   ) %>%
     inner_join(
-      distinct(select(exposure_stats, c("asset_type", "percentage_value_invested"))),
+      distinct(
+        select(
+          exposure_stats,
+          c("asset_type", "percentage_value_invested")
+        )
+      ),
       by = join_by(asset_type)
     )
 
   exposure_stats_all <- all_stats_with_zero_sector_exposure %>%
-    left_join(exposure_stats, by = join_by(asset_type, sector, percentage_value_invested)) %>%
+    left_join(
+      exposure_stats,
+      by = join_by(
+        asset_type,
+        sector,
+        percentage_value_invested
+      )
+    ) %>%
     mutate(
       perc_asset_val_sector = if_else(
         is.na(.data$perc_asset_val_sector),
@@ -66,7 +89,12 @@ prep_exposure_stats <- function(
         .data$asset_type == "Equity" ~ "Listed Equity"
       )
     ) %>%
-    select("asset_type", "percentage_value_invested", "sector", "perc_asset_val_sector")
+    select(
+      "asset_type",
+      "percentage_value_invested",
+      "sector",
+      "perc_asset_val_sector"
+    )
 
   exposure_stats_all
 }

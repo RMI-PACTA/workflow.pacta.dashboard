@@ -47,8 +47,13 @@ prep_techmix_sector <- function(
     bind_rows(.id = "asset_class") %>%
     filter(.data$asset_class %in% .env$asset_classes) %>%
     filter(
-      .data$asset_class == "Listed Equity" & .data$ald_sector %in% .env$equity_sectors |
-        .data$asset_class == "Corporate Bonds" & .data$ald_sector %in% .env$bonds_sectors
+      (
+        .data$asset_class == "Listed Equity" &
+          .data$ald_sector %in% .env$equity_sectors
+      ) | (
+        .data$asset_class == "Corporate Bonds" &
+          .data$ald_sector %in% .env$bonds_sectors
+      )
     )
 
   peers <- list(
@@ -58,8 +63,13 @@ prep_techmix_sector <- function(
     bind_rows(.id = "asset_class") %>%
     filter(.data$asset_class %in% .env$asset_classes) %>%
     filter(
-      .data$asset_class == "Listed Equity" & .data$ald_sector %in% .env$equity_sectors |
-        .data$asset_class == "Corporate Bonds" & .data$ald_sector %in% .env$bonds_sectors
+      (
+        .data$asset_class == "Listed Equity" &
+          .data$ald_sector %in% .env$equity_sectors
+      ) | (
+        .data$asset_class == "Corporate Bonds" &
+          .data$ald_sector %in% .env$bonds_sectors
+      )
     ) %>%
     filter(.data$investor_name == .env$peer_group)
 
@@ -85,18 +95,48 @@ prep_techmix_sector <- function(
         scen_alloc_wt_sec_prod = sum(.data$scen_alloc_wt_tech_prod)
       ) %>%
       mutate(
-        production_plan = if_else(.data$plan_alloc_wt_tech_prod > 0, .data$plan_alloc_wt_tech_prod / .data$plan_alloc_wt_sec_prod, 0),
-        scenario_plan = if_else(.data$scen_alloc_wt_tech_prod > 0, .data$scen_alloc_wt_tech_prod / .data$scen_alloc_wt_sec_prod, 0)
+        production_plan = if_else(
+          .data$plan_alloc_wt_tech_prod > 0,
+          .data$plan_alloc_wt_tech_prod / .data$plan_alloc_wt_sec_prod,
+          0
+        ),
+        scenario_plan = if_else(
+          .data$scen_alloc_wt_tech_prod > 0,
+          .data$scen_alloc_wt_tech_prod / .data$scen_alloc_wt_sec_prod,
+          0
+        )
       ) %>%
       group_by(
-        .data$asset_class, .data$equity_market, .data$portfolio_name, .data$ald_sector, .data$scenario, .data$year, .data$green
+        .data$asset_class,
+        .data$equity_market,
+        .data$portfolio_name,
+        .data$ald_sector,
+        .data$scenario,
+        .data$year,
+        .data$green
       ) %>%
       mutate(
         green_sum_prod = sum(.data$production_plan),
         green_sum_scenario = sum(.data$scenario_plan)
       ) %>%
       ungroup() %>%
-      select("asset_class", "investor_name", "portfolio_name", "scenario_source", "scenario", "allocation", "equity_market", "year", "ald_sector", "technology", "production_plan", "scenario_plan", "green", "green_sum_prod", "green_sum_scenario") %>%
+      select(
+        "asset_class",
+        "investor_name",
+        "portfolio_name",
+        "scenario_source",
+        "scenario",
+        "allocation",
+        "equity_market",
+        "year",
+        "ald_sector",
+        "technology",
+        "production_plan",
+        "scenario_plan",
+        "green",
+        "green_sum_prod",
+        "green_sum_scenario"
+      ) %>%
       pivot_longer(
         cols = c(
           "production_plan",
@@ -106,13 +146,21 @@ prep_techmix_sector <- function(
         values_to = "value"
       ) %>%
       mutate(
-        green_sum = if_else(.data$val_type == "production_plan", .data$green_sum_prod, .data$green_sum_scenario)
+        green_sum = if_else(
+          .data$val_type == "production_plan",
+          .data$green_sum_prod,
+          .data$green_sum_scenario
+        )
       ) %>%
       select(-c("green_sum_prod", "green_sum_scenario")) %>%
       ungroup() %>%
       mutate(
         this_portfolio = .data$portfolio_name == .env$portfolio_name,
-        val_type = if_else(.data$this_portfolio == TRUE, paste0(.data$val_type, "_portfolio"), paste0(.data$val_type, "_benchmark"))
+        val_type = if_else(
+          .data$this_portfolio == TRUE,
+          paste0(.data$val_type, "_portfolio"),
+          paste0(.data$val_type, "_benchmark")
+        )
       ) %>%
       mutate(
         equity_market =  case_when(
@@ -136,13 +184,41 @@ prep_techmix_sector <- function(
       ) %>%
       arrange(
         .data$asset_class,
-        factor(.data$equity_market, levels = c("Global Market", "Developed Market", "Emerging Market")),
+        factor(
+          .data$equity_market,
+          levels = c(
+            "Global Market",
+            "Developed Market",
+            "Emerging Market"
+          )
+        ),
         desc(.data$this_portfolio),
-        factor(.data$val_type, levels = c("Portfolio", "Scenario", "Benchmark")),
+        factor(
+          .data$val_type,
+          levels = c(
+            "Portfolio",
+            "Scenario",
+            "Benchmark"
+          )
+        ),
         .data$portfolio_name,
         factor(.data$technology, levels = .env$all_tech_levels)
       ) %>%
-      select("asset_class", "equity_market", "portfolio_name", "scenario", "scenario_source", "this_portfolio", "val_type", "ald_sector", "technology", "value", "green", "green_sum", "year") %>%
+      select(
+        "asset_class",
+        "equity_market",
+        "portfolio_name",
+        "scenario",
+        "scenario_source",
+        "this_portfolio",
+        "val_type",
+        "ald_sector",
+        "technology",
+        "value",
+        "green",
+        "green_sum",
+        "year"
+      ) %>%
       filter(
         !(.data$year == .env$start_year & .data$val_type == "Scenario")
       )

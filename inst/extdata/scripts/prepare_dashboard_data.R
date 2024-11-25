@@ -18,7 +18,7 @@ logger::log_threshold(Sys.getenv("LOG_LEVEL", "INFO"))
 #   force_array = c("portfolio", "files")
 # )
 
-dashboard_manifest_info <- workflow.pacta.dashboard:::prepare_pacta_dashboard_data(
+manifest_info <- workflow.pacta.dashboard:::prepare_pacta_dashboard_data(
   # params = params
 )
 
