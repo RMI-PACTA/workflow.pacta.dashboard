@@ -59,7 +59,8 @@ prepare_pacta_dashboard_data <- function(
     "FuelCell",
     "Hybrid_HDV",
     "Electric_HDV",
-    "FuelCell_HDV","Electric Arc Furnace"
+    "FuelCell_HDV",
+    "Electric Arc Furnace"
   )
   tech_roadmap_sectors <- c(
     "Automotive",
@@ -73,7 +74,7 @@ prepare_pacta_dashboard_data <- function(
     "Cement"
   )
 
-  power_tech_levels = c(
+  power_tech_levels <- c(
     "RenewablesCap",
     "HydroCap",
     "NuclearCap",
@@ -81,14 +82,14 @@ prepare_pacta_dashboard_data <- function(
     "OilCap",
     "CoalCap"
   )
-  oil_gas_levels = c(
+  oil_gas_levels <- c(
     "Oil",
     "Gas"
   )
-  coal_levels = c(
+  coal_levels <- c(
     "Coal"
   )
-  auto_levels = c(
+  auto_levels <- c(
     "Electric",
     "Electric_HDV",
     "FuelCell",
@@ -98,22 +99,22 @@ prepare_pacta_dashboard_data <- function(
     "ICE",
     "ICE_HDV"
   )
-  cement_levels = c(
+  cement_levels <- c(
     "Integrated facility",
     "Grinding"
   )
-  steel_levels = c(
+  steel_levels <- c(
     "Electric Arc Furnace",
     "Open Hearth Furnace",
     "Basic Oxygen Furnace"
   )
-  aviation_levels = c(
+  aviation_levels <- c(
     "Freight",
     "Passenger",
     "Mix",
     "Other"
   )
-  all_tech_levels = c(
+  all_tech_levels <- c(
     power_tech_levels,
     auto_levels,
     oil_gas_levels,
