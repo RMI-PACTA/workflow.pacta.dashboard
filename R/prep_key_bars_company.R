@@ -27,9 +27,9 @@ prep_key_bars_company <- function(
         "Automotive"
       )
     ) |>
-    select(-"id") |>
-    rename(id = "company_name") |>
-    select(
+    dplyr::select(-"id") |>
+    dplyr::rename(id = "company_name") |>
+    dplyr::select(
       "id",
       "ald_sector",
       "technology",
@@ -40,7 +40,9 @@ prep_key_bars_company <- function(
       "scenario",
       "year"
     ) |>
-    arrange(desc(.data$port_weight)) |>
+    dplyr::arrange(
+      dplyr::desc(.data$port_weight)
+    ) |>
     dplyr::mutate(asset_class = "Listed Equity") |>
     # convert the col type to character to prevent errors in case empty df is
     # binded by rows
@@ -48,8 +50,11 @@ prep_key_bars_company <- function(
     # select at most 15 companies with the highest weigths per
     # sector+technology
     dplyr::group_by(.data$ald_sector, .data$technology) |>
-    arrange(dplyr::desc(.data$port_weight), .by_group = TRUE) |>
-    slice(1:15)  |>
+    dplyr::arrange(
+      dplyr::desc(.data$port_weight),
+      .by_group = TRUE
+    ) |>
+    dplyr::slice(1:15)  |>
     dplyr::filter(!is.null(.data$port_weight)) |>
     dplyr::filter(!is.null(.data$plan_tech_share))
 
@@ -70,9 +75,9 @@ prep_key_bars_company <- function(
         "Automotive"
       )
     ) |>
-    select(-"id") |>
-    rename(id = "company_name") |>
-    select(
+    dplyr::select(-"id") |>
+    dplyr::rename(id = "company_name") |>
+    dplyr::select(
       "id",
       "ald_sector",
       "technology",
@@ -90,12 +95,14 @@ prep_key_bars_company <- function(
     ) |>
     dplyr::mutate(port_weight = sum(.data$port_weight, na.rm = TRUE)) |>
     dplyr::group_by(.data$id, .data$technology) |>
-    dplyr::filter(row_number() == 1) |>
+    dplyr::filter(dplyr::row_number() == 1) |>
     dplyr::filter(
       !.data$ald_sector %in% .env$pacta_sectors_not_analysed |
         !grepl("Aligned", .data$id)
     ) |>
-    arrange(desc(.data$port_weight)) |>
+    dplyr::arrange(
+      dplyr::desc(.data$port_weight)
+    ) |>
     dplyr::mutate(asset_class = "Corporate Bonds") |>
     # convert the col type to character to prevent errors in case empty df is
     # bound by rows
@@ -109,22 +116,22 @@ prep_key_bars_company <- function(
       .data$ald_sector,
       .data$technology
     ) |>
-    arrange(.data$port_weight, .by_group = TRUE) |>
-    slice(1:15) |>
+    dplyr::arrange(.data$port_weight, .by_group = TRUE) |>
+    dplyr::slice(1:15) |>
     dplyr::group_by(.data$ald_sector) |>
-    arrange(
+    dplyr::arrange(
       factor(
         .data$technology,
         levels = .env$all_tech_levels
       )
     ) |>
-    arrange(
+    dplyr::arrange(
       dplyr::desc(.data$port_weight),
       .by_group = TRUE
     ) |>
     dplyr::filter(!is.null(.data$port_weight)) |>
     dplyr::filter(!is.null(.data$plan_tech_share))
 
-  bind_rows(equity_data_company, bonds_data_company) |>
+  dplyr::bind_rows(equity_data_company, bonds_data_company) |>
     dplyr::mutate(scenario = sub("_", " ", .data$scenario))
 }

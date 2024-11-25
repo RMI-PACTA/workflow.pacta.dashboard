@@ -18,7 +18,7 @@ prep_key_bars_portfolio <- function(
     dplyr::filter(.data$ald_sector %in% c("Power", "Automotive")) |>
     dplyr::filter(.data$scenario_geography == "Global") |>
     dplyr::mutate(port_weight = 1) |>
-    select(
+    dplyr::select(
       "ald_sector",
       "technology",
       "plan_tech_share",
@@ -43,7 +43,7 @@ prep_key_bars_portfolio <- function(
         "Aligned* Portfolio"
       )
     ) |>
-    rename(plan_tech_share = "value") |>
+    dplyr::rename(plan_tech_share = "value") |>
     select(
       "id",
       "ald_sector",
@@ -82,7 +82,7 @@ prep_key_bars_portfolio <- function(
     ) |>
     dplyr::filter(.data$scenario_geography == "Global") |>
     dplyr::mutate(port_weight = 1) |>
-    select(
+    dplyr::select(
       "ald_sector",
       "technology",
       "plan_tech_share",
@@ -107,7 +107,7 @@ prep_key_bars_portfolio <- function(
         "Aligned* Portfolio"
       )
     ) |>
-    rename(plan_tech_share = "value") |>
+    dplyr::rename(plan_tech_share = "value") |>
     select(
       "id",
       "ald_sector",
@@ -121,8 +121,8 @@ prep_key_bars_portfolio <- function(
     ) |>
     dplyr::mutate(asset_class = "Corporate Bonds") |>
     dplyr::mutate_at("id", as.character) |>
-    arrange(factor(.data$technology, levels = .env$all_tech_levels))
+    dplyr::arrange(factor(.data$technology, levels = .env$all_tech_levels))
 
-  bind_rows(equity_data_portfolio, bonds_data_portfolio) |>
+  dplyr::bind_rows(equity_data_portfolio, bonds_data_portfolio) |>
     dplyr::mutate(scenario = sub("_", " ", .data$scenario))
 }

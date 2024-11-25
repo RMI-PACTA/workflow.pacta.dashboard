@@ -25,7 +25,7 @@ prep_exposure_stats <- function(
     dplyr::filter(.data$asset_type %in% pacta_asset_classes) |>
     dplyr::filter(.data$valid_input == TRUE) |>
     dplyr::mutate(
-      across(
+      dplyr::across(
         c(
           "bics_sector",
           "financial_sector"
@@ -40,7 +40,7 @@ prep_exposure_stats <- function(
           .data$financial_sector
         )
     ) |>
-    summarise(
+    dplyr::summarise(
       value = sum(.data$value_usd, na.rm = TRUE) / .env$currency_exchange_value,
       .by = c("asset_type", "sector")
     ) |>
@@ -48,11 +48,11 @@ prep_exposure_stats <- function(
       perc_asset_val_sector = .data$value / sum(.data$value, na.rm = TRUE),
       .by = c("asset_type")
     ) |>
-    inner_join(
+    dplyr::inner_join(
       audit_table,
-      by = join_by("asset_type" == "asset_type_analysis")
+      by = dplyr::join_by("asset_type" == "asset_type_analysis")
     ) |>
-    select(
+    dplyr::select(
       "asset_type",
       "percentage_value_invested",
       "sector",
@@ -69,20 +69,20 @@ prep_exposure_stats <- function(
     sector = pacta_sectors,
     val_sector = 0
   ) |>
-    inner_join(
-      distinct(
-        select(
+    dplyr::inner_join(
+      dplyr::distinct(
+        dplyr::select(
           exposure_stats,
           c("asset_type", "percentage_value_invested")
         )
       ),
-      by = join_by("asset_type" == "asset_type")
+      by = dplyr::join_by("asset_type" == "asset_type")
     )
 
   exposure_stats_all <- all_stats_with_zero_sector_exposure |>
-    left_join(
+    dplyr::left_join(
       exposure_stats,
-      by = join_by(
+      by = dplyr::join_by(
         "asset_type" == "asset_type",
         "sector" == "sector",
         "percentage_value_invested" == "percentage_value_invested"
@@ -96,12 +96,12 @@ prep_exposure_stats <- function(
       )
     ) |>
     dplyr::mutate(
-      asset_type = case_when(
+      asset_type = dplyr::case_when(
         .data$asset_type == "Bonds" ~ "Corporate Bonds",
         .data$asset_type == "Equity" ~ "Listed Equity"
       )
     ) |>
-    select(
+    dplyr::select(
       "asset_type",
       "percentage_value_invested",
       "sector",

@@ -18,7 +18,7 @@ prep_techmix_sector <- function(
     `Listed Equity` = equity_results_portfolio,
     `Corporate Bonds` = bonds_results_portfolio
   ) |>
-    bind_rows(.id = "asset_class") |>
+    dplyr::bind_rows(.id = "asset_class") |>
     dplyr::filter(
       .data$investor_name == .env$investor_name,
       .data$portfolio_name == .env$portfolio_name
@@ -26,25 +26,25 @@ prep_techmix_sector <- function(
     dplyr::filter(!is.na(.data$ald_sector))
 
   unique_asset_classes <- portfolio |>
-    pull("asset_class") |>
+    dplyr::pull("asset_class") |>
     unique()
 
   unique_equity_sectors <- portfolio |>
     dplyr::filter(.data$asset_class == "Listed Equity") |>
     dplyr::filter(.data$allocation == "portfolio_weight") |>
-    pull("ald_sector") |>
+    dplyr::pull("ald_sector") |>
     unique()
 
   unique_bonds_sectors <- portfolio |>
     dplyr::filter(.data$asset_class == "Corporate Bonds") |>
-    pull("ald_sector") |>
+    dplyr::pull("ald_sector") |>
     unique()
 
   indices <- list(
     `Listed Equity` = indices_equity_results_portfolio,
     `Corporate Bonds` = indices_bonds_results_portfolio
   ) |>
-    bind_rows(.id = "asset_class") |>
+    dplyr::bind_rows(.id = "asset_class") |>
     dplyr::filter(.data$asset_class %in% unique_asset_classes) |>
     dplyr::filter(
       (
@@ -60,7 +60,7 @@ prep_techmix_sector <- function(
     `Listed Equity` = peers_equity_results_portfolio,
     `Corporate Bonds` = peers_bonds_results_portfolio
   ) |>
-    bind_rows(.id = "asset_class") |>
+    dplyr::bind_rows(.id = "asset_class") |>
     dplyr::filter(.data$asset_class %in% unique_asset_classes) |>
     dplyr::filter(
       (
@@ -73,7 +73,7 @@ prep_techmix_sector <- function(
     ) |>
     dplyr::filter(.data$investor_name == .env$peer_group)
 
-  techexposure_data <- bind_rows(portfolio, peers, indices) |>
+  techexposure_data <- dplyr::bind_rows(portfolio, peers, indices) |>
     dplyr::filter(.data$allocation == "portfolio_weight") |>
     dplyr::filter(.data$scenario_geography == "Global") |>
     dplyr::filter(
@@ -125,7 +125,7 @@ prep_techmix_sector <- function(
         green_sum_scenario = sum(.data$scenario_plan)
       ) |>
       dplyr::ungroup() |>
-      select(
+      dplyr::select(
         "asset_class",
         "investor_name",
         "portfolio_name",
@@ -168,7 +168,7 @@ prep_techmix_sector <- function(
         )
       ) |>
       dplyr::mutate(
-        equity_market =  case_when(
+        equity_market = dplyr::case_when(
           .data$equity_market == "GlobalMarket" ~ "Global Market",
           .data$equity_market == "DevelopedMarket" ~ "Developed Market",
           .data$equity_market == "EmergingMarket" ~ "Emerging Market",
@@ -187,7 +187,7 @@ prep_techmix_sector <- function(
           TRUE ~ .data$val_type
         )
       ) |>
-      arrange(
+      dplyr::arrange(
         .data$asset_class,
         factor(
           .data$equity_market,
@@ -197,7 +197,7 @@ prep_techmix_sector <- function(
             "Emerging Market"
           )
         ),
-        desc(.data$this_portfolio),
+        dplyr::desc(.data$this_portfolio),
         factor(
           .data$val_type,
           levels = c(

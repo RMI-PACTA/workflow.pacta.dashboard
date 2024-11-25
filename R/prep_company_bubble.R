@@ -28,12 +28,12 @@ prep_company_bubble <- function(
     ) |>
     dplyr::mutate(
       plan_buildout = (
-        last(.data$plan_tech_prod, order_by = .data$year) -
-          first(.data$plan_tech_prod, order_by = .data$year)
+        dplyr::last(.data$plan_tech_prod, order_by = .data$year) -
+          dplyr::first(.data$plan_tech_prod, order_by = .data$year)
       ),
       scen_buildout = (
-        last(.data$scen_tech_prod, order_by = .data$year) -
-          first(.data$scen_tech_prod, order_by = .data$year)
+        dplyr::last(.data$scen_tech_prod, order_by = .data$year) -
+          dplyr::first(.data$scen_tech_prod, order_by = .data$year)
       ),
       .by = c(
         "company_name",
@@ -45,7 +45,7 @@ prep_company_bubble <- function(
     ) |>
     dplyr::filter(.data$year == .env$start_year) |>
     dplyr::mutate(green = .data$technology %in% .env$green_techs) |>
-    reframe(
+    dplyr::reframe(
       plan_tech_share = sum(.data$plan_tech_share, na.rm = TRUE),
       plan_buildout = sum(.data$plan_buildout, na.rm = TRUE),
       scen_buildout = sum(.data$scen_buildout, na.rm = TRUE),
@@ -63,7 +63,7 @@ prep_company_bubble <- function(
     ) |>
     dplyr::mutate(y = .data$plan_buildout / .data$scen_buildout) |>
     dplyr::filter(.data$green) |>
-    select(
+    dplyr::select(
       -"plan_buildout",
       -"scen_buildout",
       -"green"
@@ -91,12 +91,12 @@ prep_company_bubble <- function(
     ) |>
     dplyr::mutate(
       plan_buildout = (
-        last(.data$plan_tech_prod, order_by = .data$year) -
-          first(.data$plan_tech_prod, order_by = .data$year)
+        dplyr::last(.data$plan_tech_prod, order_by = .data$year) -
+          dplyr::first(.data$plan_tech_prod, order_by = .data$year)
       ),
       scen_buildout = (
-        last(.data$scen_tech_prod, order_by = .data$year) -
-          first(.data$scen_tech_prod, order_by = .data$year)
+        dplyr::last(.data$scen_tech_prod, order_by = .data$year) -
+          dplyr::first(.data$scen_tech_prod, order_by = .data$year)
       ),
       .by = c(
         "company_name",
@@ -108,7 +108,7 @@ prep_company_bubble <- function(
     ) |>
     dplyr::filter(.data$year == .env$start_year) |>
     dplyr::mutate(green = .data$technology %in% .env$green_techs) |>
-    reframe(
+    dplyr::reframe(
       plan_tech_share = sum(.data$plan_tech_share, na.rm = TRUE),
       plan_buildout = sum(.data$plan_buildout, na.rm = TRUE),
       scen_buildout = sum(.data$scen_buildout, na.rm = TRUE),
@@ -126,7 +126,7 @@ prep_company_bubble <- function(
     ) |>
     dplyr::mutate(y = .data$plan_buildout / .data$scen_buildout) |>
     dplyr::filter(.data$green) |>
-    select(
+    dplyr::select(
       -"plan_buildout",
       -"scen_buildout",
       -"green"
@@ -135,5 +135,5 @@ prep_company_bubble <- function(
     dplyr::mutate(y = pmax(.data$y, 0, na.rm = TRUE)) |>
     dplyr::mutate(asset_class = "Corporate Bonds")
 
-  bind_rows(equity_data, bonds_data)
+  dplyr::bind_rows(equity_data, bonds_data)
 }
