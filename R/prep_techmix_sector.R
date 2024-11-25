@@ -76,7 +76,12 @@ prep_techmix_sector <- function(
   techexposure_data <- bind_rows(portfolio, peers, indices) %>%
     dplyr::filter(.data$allocation == "portfolio_weight") %>%
     dplyr::filter(.data$scenario_geography == "Global") %>%
-    dplyr::filter(.data$year %in% c(.env$start_year, .env$start_year + .env$year_span))
+    dplyr::filter(
+      .data$year %in% c(
+        .env$start_year,
+        .env$start_year + .env$year_span
+      )
+    )
 
   if (nrow(techexposure_data) > 0) {
     techexposure_data <-
@@ -137,7 +142,7 @@ prep_techmix_sector <- function(
         "green_sum_prod",
         "green_sum_scenario"
       ) %>%
-      pivot_longer(
+      tidyr::pivot_longer(
         cols = c(
           "production_plan",
           "scenario_plan"

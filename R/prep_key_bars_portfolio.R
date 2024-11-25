@@ -29,7 +29,7 @@ prep_key_bars_portfolio <- function(
       "allocation",
       "year"
     ) %>%
-    pivot_longer(
+    tidyr::pivot_longer(
       c(
         "plan_tech_share",
         "scen_tech_share"
@@ -93,7 +93,7 @@ prep_key_bars_portfolio <- function(
       "allocation",
       "year"
     ) %>%
-    pivot_longer(
+    tidyr::pivot_longer(
       c(
         "plan_tech_share",
         "scen_tech_share"

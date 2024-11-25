@@ -28,7 +28,6 @@ prepare_pacta_dashboard_data <- function(
   library(pacta.portfolio.report)
   library(pacta.portfolio.utils)
   library(readr)
-  library(tidyr)
 
   # input and output directories
 
