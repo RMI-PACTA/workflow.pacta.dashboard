@@ -157,7 +157,7 @@ prep_techmix_sector <- function(
           .data$green_sum_scenario
         )
       ) |>
-      select(-c("green_sum_prod", "green_sum_scenario")) |>
+      dplyr::select(-c("green_sum_prod", "green_sum_scenario")) |>
       dplyr::ungroup() |>
       dplyr::mutate(
         this_portfolio = .data$portfolio_name == .env$portfolio_name,
@@ -180,7 +180,7 @@ prep_techmix_sector <- function(
         .data$val_type != "scenario_plan_benchmark"
       ) |>
       dplyr::mutate(
-        val_type =  case_when(
+        val_type =  dplyr::case_when(
           .data$val_type == "production_plan_portfolio" ~ "Portfolio",
           .data$val_type == "scenario_plan_portfolio" ~ "Scenario",
           .data$val_type == "production_plan_benchmark" ~ "Benchmark",
@@ -209,7 +209,7 @@ prep_techmix_sector <- function(
         .data$portfolio_name,
         factor(.data$technology, levels = .env$all_tech_levels)
       ) |>
-      select(
+      dplyr::select(
         "asset_class",
         "equity_market",
         "portfolio_name",

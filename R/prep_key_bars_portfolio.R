@@ -44,7 +44,7 @@ prep_key_bars_portfolio <- function(
       )
     ) |>
     dplyr::rename(plan_tech_share = "value") |>
-    select(
+    dplyr::select(
       "id",
       "ald_sector",
       "technology",
@@ -108,7 +108,7 @@ prep_key_bars_portfolio <- function(
       )
     ) |>
     dplyr::rename(plan_tech_share = "value") |>
-    select(
+    dplyr::select(
       "id",
       "ald_sector",
       "technology",
