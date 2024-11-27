@@ -448,8 +448,6 @@ audit_file <- readRDS(file.path(input_dir, "audit_file.rds"))
 emissions <- readRDS(file.path(input_dir, "emissions.rds"))
 equity_results_portfolio <- readRDS(file.path(input_dir, "Equity_results_portfolio.rds"))
 bonds_results_portfolio <- readRDS(file.path(input_dir, "Bonds_results_portfolio.rds"))
-equity_results_map <- readRDS(file.path(input_dir, "Equity_results_map.rds"))
-bonds_results_map <- readRDS(file.path(input_dir, "Bonds_results_map.rds"))
 equity_results_company <- readRDS(file.path(input_dir, "Equity_results_company.rds"))
 bonds_results_company <- readRDS(file.path(input_dir, "Bonds_results_company.rds"))
 
@@ -518,20 +516,6 @@ equity_results_portfolio <-
 
 bonds_results_portfolio <-
   bonds_results_portfolio %>%
-  mutate(
-    investor_name = investor_name,
-    portfolio_name = portfolio_name
-  )
-
-equity_results_map <-
-  equity_results_map %>%
-  mutate(
-    investor_name = investor_name,
-    portfolio_name = portfolio_name
-  )
-
-bonds_results_map <-
-  bonds_results_map %>%
   mutate(
     investor_name = investor_name,
     portfolio_name = portfolio_name
@@ -660,19 +644,6 @@ prep_techmix_sector(
   all_tech_levels
   ) %>%
   jsonlite::write_json(path = file.path(output_dir, "data_techmix_sector.json"))
-
-
-# data_map.json
-
-pacta.portfolio.report:::prep_exposure_map(
-  equity_results_map = equity_results_map,
-  bonds_results_map = bonds_results_map,
-  portfolio_name = portfolio_name,
-  start_year = start_year
-  ) %>%
-  pacta.portfolio.report:::translate_df_contents("data_map", dictionary) %>%
-  jsonlite::write_json(path = file.path(output_dir, "data_map.json"))
-
 
 # data_trajectory_alignment.json -----------------------------------------------
 
