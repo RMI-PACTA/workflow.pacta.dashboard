@@ -338,8 +338,7 @@ prep_key_bars_company <-
       filter(!is.null(.data$port_weight)) %>%
       filter(!is.null(.data$plan_tech_share))
     
-    bind_rows(equity_data_company, bonds_data_company) %>%
-      mutate(scenario = sub("_", " ", .data$scenario))
+    bind_rows(equity_data_company, bonds_data_company)
   }
 
 
@@ -392,8 +391,7 @@ prep_key_bars_portfolio <-
       mutate_at("id", as.character) %>%
       arrange(factor(.data$technology, levels = .env$all_tech_levels))
     
-    bind_rows(equity_data_portfolio, bonds_data_portfolio) %>%
-      mutate(scenario = sub("_", " ", .data$scenario))
+    bind_rows(equity_data_portfolio, bonds_data_portfolio)
   }
 
 
