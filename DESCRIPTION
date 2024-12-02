@@ -1,8 +1,13 @@
 Package: workflow.pacta.dashboard
 Title: Run PACTA dashboard JSON generation
-Version: 0.0.0.9001
+Version: 0.0.0.9002
 Authors@R:
-    c(person(given = "CJ",
+    c(person(given = "Alex",
+             family = "Axthelm",
+             role = c("aut", "cre", "ctr"),
+             email = "aaxthelm@rmi.org",
+             comment = c(ORCID = "0000-0001-8579-8565")),
+      person(given = "CJ",
              family = "Yetman",
              role = c("aut", "ctr"),
              email = "cj@cjyetman.com",
@@ -22,10 +27,13 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Imports:
     dplyr,
+    glue,
     jsonlite,
-    pacta.portfolio.report,
+    magrittr,
     pacta.portfolio.utils,
-    readr
+    readr,
+    rlang,
+    stringr,
+    tidyr
 Remotes:
-    RMI-PACTA/pacta.portfolio.report,
     RMI-PACTA/pacta.portfolio.utils
