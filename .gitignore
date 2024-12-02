@@ -1,6 +1,6 @@
 .env
 .Rproj.user
-inputs/
-outputs/
-data/
 .Rhistory
+analysis_output_dir/**/*
+benchmarks_dir/**/*
+dashboard_data_dir/**/*

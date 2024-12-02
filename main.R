@@ -397,9 +397,9 @@ prep_key_bars_portfolio <-
 
 # input and output directories -------------------------------------------------
 
-input_dir <- "./inputs"
-output_dir <- "./outputs"
-data_dir <- "./data"
+input_dir <- "/mnt/analysis_output_dir"
+output_dir <- "/mnt/dashboard_data_dir"
+data_dir <- "/mnt/benchmarks_dir"
 
 
 # portfolio/user parameters ----------------------------------------------------
