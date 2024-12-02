@@ -1,0 +1,13 @@
+**/*.Rproj
+**/*.md
+**/.git
+**/.github
+**/.gitignore
+**/Dockerfile
+analysis_output_dir
+analysis_output_dir/**/*
+benchmarks_dir
+benchmarks_dir/**/*
+dashboard_data_dir
+dashboard_data_dir/**/*
+docker-compose.yml
