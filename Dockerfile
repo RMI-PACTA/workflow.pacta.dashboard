@@ -1,4 +1,4 @@
-FROM docker.io/rocker/r-ver:4.3.1
+FROM docker.io/rocker/r-ver:4.3.1 as base
 
 RUN CRAN_LIKE_URL="https://packagemanager.posit.co/cran/__linux__/jammy/2024-04-05"; \
     echo "options(repos = c(CRAN = '$CRAN_LIKE_URL'))" \
@@ -19,8 +19,11 @@ COPY DESCRIPTION /workflow.pacta.dashboard/DESCRIPTION
 # install pak, find dependencises from DESCRIPTION, and install them.
 RUN Rscript -e "pak::local_install_deps('/workflow.pacta.dashboard')"
 
-COPY main.R /workflow.pacta.dashboard/main.R
+FROM base AS install-pacta
 
-WORKDIR /workflow.pacta.dashboard
+COPY . /workflow.pacta.dashboard/
 
-CMD ["Rscript", "--vanilla", "/workflow.pacta.dashboard/main.R"]
+RUN Rscript -e "pak::local_install(root = '/workflow.pacta.dashboard')"
+
+# set default run behavior
+ENTRYPOINT ["Rscript", "--vanilla", "/workflow.pacta.dashboard/inst/extdata/scripts/prepare_dashboard_data.R"]
