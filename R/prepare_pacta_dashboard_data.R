@@ -5,13 +5,6 @@ prepare_pacta_dashboard_data <- function(
   benchmarks_dir = Sys.getenv("BENCHMARKS_DIR")
 ) {
 
-library(dplyr)
-library(jsonlite)
-library(pacta.portfolio.report)
-library(pacta.portfolio.utils)
-library(readr)
-library(tidyr)
-
 # input and output directories -------------------------------------------------
 
 input_dir <- analysis_output_dir
