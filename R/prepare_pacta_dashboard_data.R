@@ -1,3 +1,10 @@
+prepare_pacta_dashboard_data <- function(
+  params,
+  analysis_output_dir = Sys.getenv("ANALYSIS_OUTPUT_DIR"),
+  dashboard_data_dir = Sys.getenv("DASHBOARD_DATA_DIR"),
+  benchmarks_dir = Sys.getenv("BENCHMARKS_DIR")
+) {
+
 library(dplyr)
 library(jsonlite)
 library(pacta.portfolio.report)
@@ -397,9 +404,9 @@ prep_key_bars_portfolio <-
 
 # input and output directories -------------------------------------------------
 
-input_dir <- "/mnt/analysis_output_dir"
-output_dir <- "/mnt/dashboard_data_dir"
-data_dir <- "/mnt/benchmarks_dir"
+input_dir <- analysis_output_dir
+output_dir <- dashboard_data_dir
+data_dir <- benchmarks_dir
 
 
 # portfolio/user parameters ----------------------------------------------------
@@ -731,3 +738,5 @@ prep_key_bars_portfolio(
   ) %>% 
   pacta.portfolio.report:::translate_df_contents("data_key_bars_portfolio", dictionary) %>%
   jsonlite::write_json(path = file.path(output_dir, "data_techexposure_company_portfolio.json"))
+
+}
