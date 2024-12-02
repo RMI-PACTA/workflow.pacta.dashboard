@@ -304,7 +304,8 @@ prep_exposure_stats(
   audit_file = audit_file,
   investor_name = investor_name,
   portfolio_name = portfolio_name,
-  pacta_sectors = pacta_sectors
+  pacta_sectors = pacta_sectors,
+  currency_exchange_value = currency_exchange_value
   ) %>%
   jsonlite::write_json(path = file.path(output_dir, "data_exposure_stats.json"))
 
