@@ -71,31 +71,31 @@ peers_equity_results_portfolio <- pacta.portfolio.utils::empty_portfolio_results
 # translations -----------------------------------------------------------------
 
 dataframe_translations <- readr::read_csv(
-  system.file("extdata/translation/dataframe_labels.csv", package = "pacta.portfolio.report"),
+  system.file("extdata/translation/dataframe_labels.csv", package = "workflow.pacta.dashboard"),
   col_types = readr::cols()
 )
 
 header_dictionary <- readr::read_csv(
-  system.file("extdata/translation/dataframe_headers.csv", package = "pacta.portfolio.report"),
+  system.file("extdata/translation/dataframe_headers.csv", package = "workflow.pacta.dashboard"),
   col_types = readr::cols()
 )
 
 js_translations <- jsonlite::fromJSON(
-  txt = system.file("extdata/translation/js_labels.json", package = "pacta.portfolio.report")
+  txt = system.file("extdata/translation/js_labels.json", package = "workflow.pacta.dashboard")
 )
 
 sector_order <- readr::read_csv(
-  system.file("extdata/sector_order/sector_order.csv", package = "pacta.portfolio.report"),
+  system.file("extdata/sector_order/sector_order.csv", package = "workflow.pacta.dashboard"),
   col_types = readr::cols()
 )
 
 dictionary <-
-  pacta.portfolio.report:::choose_dictionary_language(
+  choose_dictionary_language(
     data = dataframe_translations,
     language = language_select
   )
 
-header_dictionary <- pacta.portfolio.report:::replace_contents(header_dictionary, display_currency)
+header_dictionary <- replace_contents(header_dictionary, display_currency)
 
 
 # add investor_name and portfolio_name to results data frames because ----------
@@ -147,73 +147,73 @@ bonds_results_company <-
 # data_included_table.json -----------------------------------------------------
 
 audit_file %>%
-  pacta.portfolio.report:::prep_audit_table(
+  prep_audit_table(
     investor_name = investor_name,
     portfolio_name = portfolio_name,
     currency_exchange_value = currency_exchange_value
   ) %>%
-  pacta.portfolio.report:::translate_df_contents("data_included_table", dictionary, inplace = TRUE) %>%
-  pacta.portfolio.report:::translate_df_headers("data_included_table", language_select, header_dictionary) %>%
+  translate_df_contents("data_included_table", dictionary, inplace = TRUE) %>%
+  translate_df_headers("data_included_table", language_select, header_dictionary) %>%
   jsonlite::write_json(path = file.path(output_dir, "data_included_table.json"))
 
 
 # data_value_pie_bonds.json ----------------------------------------------------
 
 audit_file %>%
-  pacta.portfolio.report:::prep_exposure_pie(
+  prep_exposure_pie(
     asset_type = "Bonds",
     investor_name = investor_name,
     portfolio_name = portfolio_name,
     pacta_sectors = pacta_sectors,
     currency_exchange_value = currency_exchange_value
   ) %>%
-  pacta.portfolio.report:::translate_df_contents("data_value_pie_bonds", dictionary) %>%
+  translate_df_contents("data_value_pie_bonds", dictionary) %>%
   jsonlite::write_json(path = file.path(output_dir, "data_value_pie_bonds.json"))
 
 
 # data_emissions_equity.json ---------------------------------------------------
 
 emissions %>%
-  pacta.portfolio.report:::prep_emissions_pie(
+  prep_emissions_pie(
     asset_type = "Equity",
     investor_name = investor_name,
     portfolio_name = portfolio_name,
     pacta_sectors = pacta_sectors
   ) %>%
-  pacta.portfolio.report:::translate_df_contents("data_emissions_pie_equity", dictionary) %>%
+  translate_df_contents("data_emissions_pie_equity", dictionary) %>%
   jsonlite::write_json(path = file.path(output_dir, "data_emissions_pie_equity.json"))
 
 
 # data_emissions_bonds.json ----------------------------------------------------
 
 emissions %>%
-  pacta.portfolio.report:::prep_emissions_pie(
+  prep_emissions_pie(
     asset_type = "Bonds",
     investor_name = investor_name,
     portfolio_name = portfolio_name,
     pacta_sectors = pacta_sectors
   ) %>%
-  pacta.portfolio.report:::translate_df_contents("data_emissions_pie_bonds", dictionary) %>%
+  translate_df_contents("data_emissions_pie_bonds", dictionary) %>%
   jsonlite::write_json(path = file.path(output_dir, "data_emissions_pie_bonds.json"))
 
 
 # data_value_pie_equity.json ---------------------------------------------------
 
 audit_file %>%
-  pacta.portfolio.report:::prep_exposure_pie(
+  prep_exposure_pie(
     asset_type = "Equity",
     investor_name = investor_name,
     portfolio_name = portfolio_name,
     pacta_sectors = pacta_sectors,
     currency_exchange_value = currency_exchange_value
   ) %>%
-  pacta.portfolio.report:::translate_df_contents("data_value_pie_equity", dictionary) %>%
+  translate_df_contents("data_value_pie_equity", dictionary) %>%
   jsonlite::write_json(path = file.path(output_dir, "data_value_pie_equity.json"))
 
 
 # data_techmix.json ------------------------------------------------------------
 
-pacta.portfolio.report:::prep_techexposure(
+prep_techexposure(
   equity_results_portfolio = equity_results_portfolio,
   bonds_results_portfolio = bonds_results_portfolio,
   investor_name = investor_name,
@@ -230,7 +230,7 @@ pacta.portfolio.report:::prep_techexposure(
   equity_market_levels = equity_market_levels,
   all_tech_levels = all_tech_levels
   ) %>%
-  pacta.portfolio.report:::translate_df_contents("techexposure_data", dictionary) %>%
+  translate_df_contents("techexposure_data", dictionary) %>%
   jsonlite::write_json(path = file.path(output_dir, "data_techexposure.json"))
 
 
@@ -255,7 +255,7 @@ prep_techmix_sector(
 
 # data_trajectory_alignment.json -----------------------------------------------
 
-pacta.portfolio.report:::prep_trajectory_alignment(
+prep_trajectory_alignment(
   equity_results_portfolio = equity_results_portfolio,
   bonds_results_portfolio = bonds_results_portfolio,
   peers_equity_results_portfolio = peers_equity_results_portfolio,
@@ -271,13 +271,13 @@ pacta.portfolio.report:::prep_trajectory_alignment(
   scen_geo_levels = scen_geo_levels,
   all_tech_levels = all_tech_levels
   ) %>%
-  pacta.portfolio.report:::translate_df_contents("data_trajectory_alignment", dictionary) %>%
+  translate_df_contents("data_trajectory_alignment", dictionary) %>%
   jsonlite::write_json(path = file.path(output_dir, "data_trajectory_alignment.json"))
 
 
 # data_emissions.json ----------------------------------------------------------
 
-pacta.portfolio.report:::prep_emissions_trajectory(
+prep_emissions_trajectory(
   equity_results_portfolio = equity_results_portfolio,
   bonds_results_portfolio = bonds_results_portfolio,
   investor_name = investor_name,
@@ -288,7 +288,7 @@ pacta.portfolio.report:::prep_emissions_trajectory(
   year_span = year_span,
   start_year = start_year
   ) %>%
-  pacta.portfolio.report:::translate_df_contents("data_emissions", dictionary) %>%
+  translate_df_contents("data_emissions", dictionary) %>%
   jsonlite::write_json(path = file.path(output_dir, "data_emissions.json"))
 
 # data_exposure_stats.json
@@ -312,7 +312,7 @@ prep_company_bubble(
   start_year = start_year,
   green_techs = green_techs
   ) %>%
-  pacta.portfolio.report:::translate_df_contents("data_company_bubble", dictionary) %>% 
+  translate_df_contents("data_company_bubble", dictionary) %>% 
   jsonlite::write_json(path = file.path(output_dir, "data_company_bubble.json"))
 
 
@@ -326,7 +326,7 @@ prep_key_bars_company(
   pacta_sectors_not_analysed = pacta_sectors_not_analysed,
   all_tech_levels = all_tech_levels
   ) %>%
-  pacta.portfolio.report:::translate_df_contents("data_key_bars_company", dictionary) %>%
+  translate_df_contents("data_key_bars_company", dictionary) %>%
   jsonlite::write_json(path = file.path(output_dir, "data_techexposure_company_companies.json"))
 
 
@@ -340,7 +340,7 @@ prep_key_bars_portfolio(
   pacta_sectors_not_analysed = pacta_sectors_not_analysed,
   all_tech_levels = all_tech_levels
   ) %>% 
-  pacta.portfolio.report:::translate_df_contents("data_key_bars_portfolio", dictionary) %>%
+  translate_df_contents("data_key_bars_portfolio", dictionary) %>%
   jsonlite::write_json(path = file.path(output_dir, "data_techexposure_company_portfolio.json"))
 
 }

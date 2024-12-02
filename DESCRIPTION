@@ -27,13 +27,13 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Imports:
     dplyr,
+    glue,
     jsonlite,
     magrittr,
-    pacta.portfolio.report,
     pacta.portfolio.utils,
     readr,
     rlang,
+    stringr,
     tidyr
 Remotes:
-    RMI-PACTA/pacta.portfolio.report,
     RMI-PACTA/pacta.portfolio.utils
