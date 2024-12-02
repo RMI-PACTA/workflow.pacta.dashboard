@@ -1,4 +1,5 @@
 ^.*\.Rproj$
+^.dockerignore$
 ^.github/
 ^.lintr$
 ^Dockerfile$
