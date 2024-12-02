@@ -28,9 +28,11 @@ RoxygenNote: 7.3.2
 Imports:
     dplyr,
     jsonlite,
+    magrittr,
     pacta.portfolio.report,
     pacta.portfolio.utils,
     readr,
+    rlang,
     tidyr
 Remotes:
     RMI-PACTA/pacta.portfolio.report,
