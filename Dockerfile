@@ -1,4 +1,4 @@
-FROM docker.io/rocker/r-ver:4.3.1 as base
+FROM docker.io/rocker/r-ver:4.3.1 AS base
 
 RUN CRAN_LIKE_URL="https://packagemanager.posit.co/cran/__linux__/jammy/2024-04-05"; \
     echo "options(repos = c(CRAN = '$CRAN_LIKE_URL'))" \
