@@ -376,7 +376,7 @@ zip_outputs <- function(output_dir) {
   }
   
   utils::zip(
-    zipfile = file.path(output_dir, "data_archive.zip"),
+    zipfile = file.path(output_dir, "archive.zip"),
     files = list.files(zip_temp, full.names = TRUE),
     flags = "-r9Xjq"
   )
