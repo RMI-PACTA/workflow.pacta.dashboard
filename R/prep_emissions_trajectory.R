@@ -1,10 +1,7 @@
 prep_emissions_trajectory <-
   function(equity_results_portfolio,
            bonds_results_portfolio,
-           investor_name,
            portfolio_name,
-           select_scenario_other,
-           select_scenario,
            pacta_sectors,
            year_span,
            start_year
@@ -23,15 +20,19 @@ prep_emissions_trajectory <-
     list(`Listed Equity` = equity_results_portfolio,
            `Corporate Bonds` = bonds_results_portfolio) %>%
       bind_rows(.id = "asset_class") %>%
-      filter(.data$investor_name == .env$investor_name,
-             .data$portfolio_name == .env$portfolio_name) %>%
-      filter_scenarios_per_sector(
-        select_scenario_other,
-        select_scenario
-      ) %>%
+      filter(.data$portfolio_name == .env$portfolio_name) %>%
       filter(.data$scenario_geography == "Global") %>%
-      select("asset_class", "allocation", "equity_market", sector = "ald_sector", "year",
-             plan = "plan_sec_emissions_factor", scen = "scen_sec_emissions_factor", "scenario") %>%
+      select(
+        "asset_class",
+        "allocation",
+        "equity_market",
+        sector = "ald_sector",
+        "year",
+        plan = "plan_sec_emissions_factor",
+        scen = "scen_sec_emissions_factor",
+        "scenario",
+        "scenario_source"
+      ) %>%
       distinct() %>%
       filter(!is.nan(.data$plan)) %>%
       pivot_longer(c("plan", "scen"), names_to = "plan") %>%
