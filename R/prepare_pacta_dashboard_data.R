@@ -280,10 +280,7 @@ prep_trajectory_alignment(
 prep_emissions_trajectory(
   equity_results_portfolio = equity_results_portfolio,
   bonds_results_portfolio = bonds_results_portfolio,
-  investor_name = investor_name,
   portfolio_name = portfolio_name,
-  select_scenario_other = select_scenario_other,
-  select_scenario = select_scenario,
   pacta_sectors = pacta_sectors,
   year_span = year_span,
   start_year = start_year
