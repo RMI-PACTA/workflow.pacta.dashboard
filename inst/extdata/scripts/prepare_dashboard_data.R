@@ -18,7 +18,7 @@
 #   force_array = c("portfolio", "files")
 # )
 
-manifest_info <- workflow.pacta.dashboard:::prepare_pacta_dashboard_data(
+manifest_info <- workflow.pacta.dashboard:::build_dashboard(
   # params = params
 )
 
