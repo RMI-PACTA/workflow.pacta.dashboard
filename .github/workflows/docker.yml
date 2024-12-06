@@ -1,6 +1,11 @@
 ---
 on:
   pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
   push:
     branches: [main]
   schedule:
@@ -12,7 +17,7 @@ name: docker
 jobs:
   docker:
     name: Docker actions
-    uses: RMI-PACTA/actions/.github/workflows/docker.yml@main
+    uses: RMI-PACTA/actions/.github/workflows/docker.yml@hotfix-unquote-bool
     with:
       do-check-r-sysdeps: false
 
