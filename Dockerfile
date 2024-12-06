@@ -21,6 +21,9 @@ RUN Rscript -e "pak::local_install_deps('/workflow.pacta.dashboard')"
 
 FROM base AS install-pacta
 
+ENV DASHBOARD_FILES_DIR="/mnt/dashboard_files"
+COPY --from=ghcr.io/rmi-pacta/pacta-dashboard-svelte:pr-129 /app/build $DASHBOARD_FILES_DIR/
+
 COPY . /workflow.pacta.dashboard/
 
 RUN Rscript -e "pak::local_install(root = '/workflow.pacta.dashboard')"
