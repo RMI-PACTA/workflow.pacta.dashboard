@@ -280,10 +280,7 @@ prep_trajectory_alignment(
 prep_emissions_trajectory(
   equity_results_portfolio = equity_results_portfolio,
   bonds_results_portfolio = bonds_results_portfolio,
-  investor_name = investor_name,
   portfolio_name = portfolio_name,
-  select_scenario_other = select_scenario_other,
-  select_scenario = select_scenario,
   pacta_sectors = pacta_sectors,
   year_span = year_span,
   start_year = start_year
@@ -343,4 +340,41 @@ prep_key_bars_portfolio(
   translate_df_contents("data_key_bars_portfolio", dictionary) %>%
   jsonlite::write_json(path = file.path(output_dir, "data_techexposure_company_portfolio.json"))
 
+
+# put JSON and CSV outputs into a zip archive ----------------------------------
+zip_outputs(output_dir)
+
+}
+
+
+zip_outputs <- function(output_dir) {
+  json_filenames <- list.files(output_dir, pattern = "[.]json$")
+  
+  zip_temp <- file.path(tempdir(), "zip_temp")
+  dir.create(zip_temp, showWarnings = FALSE)
+  
+  for (json_filename in json_filenames) {
+    file.copy(
+      from = file.path(output_dir, json_filename),
+      to = file.path(zip_temp, json_filename)
+    )
+    
+    csv_filename <- sub("[.]json$", ".csv", json_filename)
+    
+    jsonlite::read_json(
+      path = file.path(output_dir, json_filename),
+      simplifyVector = TRUE
+    ) %>% 
+      readr::write_csv(
+        file = file.path(zip_temp, csv_filename),
+        na = "",
+        eol = "\n"
+      )
+  }
+  
+  utils::zip(
+    zipfile = file.path(output_dir, "archive.zip"),
+    files = list.files(zip_temp, full.names = TRUE),
+    flags = "-r9Xjq"
+  )
 }
