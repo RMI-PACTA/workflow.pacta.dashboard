@@ -23,8 +23,8 @@ services:
         target: /mnt/analysis_output_dir
         read_only: true
       - type: bind
-        source: ${dashboard_data_dir:-./dashboard_data_dir}
-        target: /mnt/dashboard_data_dir
+        source: ${dashboard_data_dir:-./dashboard_output_dir/data}
+        target: /mnt/dashboard_output_dir/data
         read_only: false
       - type: bind
         source: ${dashboard_output_dir:-./dashboard_output_dir}

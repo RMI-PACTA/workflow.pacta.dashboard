@@ -1,8 +1,9 @@
 build_dashboard <- function(
   params,
   analysis_output_dir = Sys.getenv("ANALYSIS_OUTPUT_DIR"),
-  dashboard_data_dir = Sys.getenv("DASHBOARD_DATA_DIR"),
   benchmarks_dir = Sys.getenv("BENCHMARKS_DIR"),
+  dashboard_data_dir = Sys.getenv("DASHBOARD_DATA_DIR"),
+  dashboard_files_dir = Sys.getenv("DASHBOARD_FILES_DIR"),
   dashboard_output_dir = Sys.getenv("DASHBOARD_OUTPUT_DIR")
 ) {
 
@@ -12,19 +13,9 @@ build_dashboard <- function(
     benchmarks_dir = benchmarks_dir
   )
 
-  dashboard_files <- list.files(
-    path = system.file(
-      "extdata", "dashboard_skeleton",
-      package = "workflow.pacta.dashboard"
-      ),
-    full.names = TRUE,
-    recursive = FALSE
-  )
-
-  dashboard_copy_success <- file.copy(
-    from = dashboard_files,
-    to = file.path(dashboard_output_dir),
-    recursive = TRUE
+  dashboard_copy_success <- copy_dashboard_files(
+    dashboard_files_dir = dashboard_files_dir,
+    dashboard_output_dir = dashboard_output_dir
   )
 
   dashboard_output_data_dir <- file.path(dashboard_output_dir, "data")
