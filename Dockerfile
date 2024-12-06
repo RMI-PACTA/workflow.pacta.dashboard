@@ -8,7 +8,9 @@ RUN CRAN_LIKE_URL="https://packagemanager.posit.co/cran/__linux__/jammy/2024-04-
 RUN apt-get update \
     && DEBIAN_FRONTEND="noninteractive" \
     apt-get install -y --no-install-recommends \
-    git=1:2.34.*
+      git=1:2.34.* \
+    && chmod -R a+rwX /root \
+    && rm -rf /var/lib/apt/lists/*
 
 # install pak
 RUN Rscript -e "install.packages('pak', repos = 'https://r-lib.github.io/p/pak/stable/')"
