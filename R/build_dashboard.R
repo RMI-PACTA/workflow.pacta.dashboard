@@ -3,7 +3,7 @@ build_dashboard <- function(
   analysis_output_dir = Sys.getenv("ANALYSIS_OUTPUT_DIR"),
   benchmarks_dir = Sys.getenv("BENCHMARKS_DIR"),
   dashboard_data_dir = Sys.getenv("DASHBOARD_DATA_DIR"),
-  dashboard_files_dir = Sys.getenv("DASHBOARD_FILES_DIR"),
+  dashboard_skeleton_files_dir = Sys.getenv("DASHBOARD_SKELETON_FILES_DIR"),
   dashboard_output_dir = Sys.getenv("DASHBOARD_OUTPUT_DIR")
 ) {
 
@@ -14,7 +14,7 @@ build_dashboard <- function(
   )
 
   dashboard_copy_success <- copy_dashboard_files(
-    dashboard_files_dir = dashboard_files_dir,
+    dashboard_skeleton_files_dir = dashboard_skeleton_files_dir,
     dashboard_output_dir = dashboard_output_dir
   )
 

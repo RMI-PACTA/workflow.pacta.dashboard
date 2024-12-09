@@ -1,10 +1,10 @@
 copy_dashboard_files <- function(
-  dashboard_files_dir = Sys.getenv("DASHBOARD_FILES_DIR"),
+  dashboard_skeleton_files_dir = Sys.getenv("DASHBOARD_SKELETON_FILES_DIR"),
   dashboard_output_dir = Sys.getenv("DASHBOARD_OUTPUT_DIR")
 ) {
 
   dashboard_files <- list.files(
-    dashboard_files_dir,
+    dashboard_skeleton_files_dir,
     full.names = TRUE,
     recursive = FALSE
   )
