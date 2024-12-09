@@ -74,6 +74,7 @@ jobs:
 
           docker run \
           --network none \
+          --user $(id -u):$(id -g) \
           --env LOG_LEVEL=TRACE \
           --env ANALYSIS_OUTPUT_DIR="/mnt/analysis_output_dir" \
           --env BENCHMARKS_DIR="/mnt/benchmarks_dir" \
