@@ -59,11 +59,8 @@ jobs:
           FULL_IMAGE_NAME: ${{ inputs.full-image-name }}
           WORKSPACE: ${{ github.workspace }}
           PARAMETERS: ""
-          # PARAMETERS: ${{ steps.prepare.outputs.parameters }}
           ANALYSIS_OUTPUT_DIR: "analysis_output_dir"
           BENCHMARKS_DIR: "benchmarks_dir"
-          # PACTA_DATA_DIR: pacta-data
-          # PORTFOLIO_DIR: tests/portfolios
           DASHBOARD_DATA_DIR: "dashboard_output_dir/data"
           DASHBOARD_OUTPUT_DIR: "dashboard_output_dir"
         run: |
