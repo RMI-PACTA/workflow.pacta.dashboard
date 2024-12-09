@@ -68,9 +68,9 @@ jobs:
           --env DASHBOARD_DATA_DIR="/mnt/dashboard_output_dir/data" \
           --env DASHBOARD_OUTPUT_DIR="/mnt/dashboard_output_dir" \
           --mount type=bind,readonly,source=${WORKSPACE}/${BENCHMARKS_DIR},target=/mnt/benchmarks_dir \
-          --mount type=bind,source=${ANALYSIS_OUTPUT_DIR},target=/mnt/analysis_output_dir \
-          --mount type=bind,source=${DASHBOARD_OUTPUT_DIR},target=/mnt/dashboard_output_dir \
-          --mount type=bind,source=${DASHBOARD_DATA_DIR},target=/mnt/dashboard_output_dir/data \
+          --mount type=bind,source=${WORKSPACE}/${ANALYSIS_OUTPUT_DIR},target=/mnt/analysis_output_dir \
+          --mount type=bind,source=${WORKSPACE}/${DASHBOARD_OUTPUT_DIR},target=/mnt/dashboard_output_dir \
+          --mount type=bind,source=${WORKSPACE}/${DASHBOARD_DATA_DIR},target=/mnt/dashboard_output_dir/data \
           $FULL_IMAGE_NAME \
           "$PARAMETERS"
 
