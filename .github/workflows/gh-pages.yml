@@ -90,6 +90,9 @@ jobs:
         if: github.event.action != 'closed'
         run: touch dashboard_output_dir/.nojekyll
 
+      - name: Checkout
+        uses: actions/checkout@v3
+
       - name: 🚀 Deploy main page
         if: ${{ github.event_name == 'push' }}
         uses: JamesIves/github-pages-deploy-action@v4
