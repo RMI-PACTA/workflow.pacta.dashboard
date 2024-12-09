@@ -87,6 +87,7 @@ jobs:
 
       - name: chmod & List outputs
         run: |
+          chown -R $USER dashboard_output_dir
           /usr/bin/chmod -R +rw dashboard_output_dir
           ls -lR dashboard_output_dir
 
