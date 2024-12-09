@@ -342,7 +342,8 @@ prep_key_bars_portfolio(
 
 
 # put JSON and CSV outputs into a zip archive ----------------------------------
-zip_outputs(output_dir)
+
+# zip_outputs(output_dir)
 
 }
 
