@@ -20,6 +20,9 @@ jobs:
       id-token: write
     steps:
 
+      - name: Checkout
+        uses: actions/checkout@v3
+
       # https://github.com/Azure/login?tab=readme-ov-file#login-with-openid-connect-oidc-recommended
       - name: Azure Login
         uses: azure/login@v2
@@ -89,9 +92,6 @@ jobs:
       - name: Add nojekyll file
         if: github.event.action != 'closed'
         run: touch dashboard_output_dir/.nojekyll
-
-      - name: Checkout
-        uses: actions/checkout@v3
 
       - name: 🚀 Deploy main page
         if: ${{ github.event_name == 'push' }}
