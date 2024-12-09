@@ -85,8 +85,9 @@ jobs:
           $FULL_IMAGE_NAME \
           "$PARAMETERS"
 
-      - name: List outputs
+      - name: chmod & List outputs
         run: |
+          /usr/bin/chmod -R +rw dashboard_output_dir
           ls -lR dashboard_output_dir
 
       - name: Add nojekyll file
