@@ -15,6 +15,9 @@ concurrency: preview-${{ github.ref }}
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
 
       # https://github.com/Azure/login?tab=readme-ov-file#login-with-openid-connect-oidc-recommended
