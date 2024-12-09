@@ -94,7 +94,7 @@ jobs:
         if: ${{ github.event_name == 'push' }}
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: build # The folder the action should deploy.
+          folder: dashboard_output_dir # The folder the action should deploy.
           clean: true
           force: false
           clean-exclude: |
@@ -105,7 +105,7 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
         uses: rossjrw/pr-preview-action@v1
         with:
-          source-dir: build
+          source-dir: dashboard_output_dir
           preview-branch: gh-pages
           umbrella-dir: pr-preview
           action: auto
