@@ -70,6 +70,7 @@ jobs:
           DASHBOARD_DATA_DIR: "dashboard_output_dir/data"
           DASHBOARD_OUTPUT_DIR: "dashboard_output_dir"
         run: |
+          chmod -R 777 dashboard_output_dir
 
           docker run \
           --network none \
@@ -87,8 +88,6 @@ jobs:
 
       - name: chmod & List outputs
         run: |
-          chown -R $USER dashboard_output_dir
-          /usr/bin/chmod -R +rw dashboard_output_dir
           ls -lR dashboard_output_dir
 
       - name: Add nojekyll file
