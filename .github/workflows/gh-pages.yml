@@ -33,14 +33,22 @@ jobs:
         uses: RMI-PACTA/actions/actions/azure/blob-copy@main
         with:
           source: https://pactadatadev.blob.core.windows.net/ghactions-workflow-pacta-results/main/latest/full_params_2023Q4/analysis_output_dir
-          destination: analysis_output_dir
+          destination: tmp_analysis_output_dir
 
       - name: Download Benchmarks
         id: download-benchmarks
         uses: RMI-PACTA/actions/actions/azure/blob-copy@main
         with:
           source: https://pactadatadev.blob.core.windows.net/benchmarks-webapp/2023Q4/2023Q4_20240529T002355Z
-          destination: benchmarks_dir
+          destination: tmp_benchmarks_dir
+
+      - name: move output and analysis files to correct directory
+        run: |
+          mv tmp_analysis_output_dir/main/latest/full_params_2023Q4/analysis_output_dir analysis_output_dir
+          ls analysis_output_dir
+          mv tmp_benchmarks_dir/2023Q4/2023Q4_20240529T002355Z benchmarks_dir
+          ls benchmarks_dir
+
 
       - name: Create Output Directories
         run: |
