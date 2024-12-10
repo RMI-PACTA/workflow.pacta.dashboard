@@ -343,7 +343,7 @@ prep_key_bars_portfolio(
 
 # put JSON and CSV outputs into a zip archive ----------------------------------
 
-# zip_outputs(output_dir)
+zip_outputs(output_dir)
 
 }
 
@@ -362,15 +362,19 @@ zip_outputs <- function(output_dir) {
     
     csv_filename <- sub("[.]json$", ".csv", json_filename)
     
-    jsonlite::read_json(
+    df <- jsonlite::read_json(
       path = file.path(output_dir, json_filename),
       simplifyVector = TRUE
-    ) %>% 
+    ) 
+
+    if (inherits(df, "data.frame")) {
       readr::write_csv(
+        x = df,
         file = file.path(zip_temp, csv_filename),
         na = "",
         eol = "\n"
       )
+    }
   }
   
   utils::zip(
