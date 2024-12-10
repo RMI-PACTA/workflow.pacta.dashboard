@@ -11,7 +11,8 @@ services:
       LOG_LEVEL: TRACE
       ANALYSIS_OUTPUT_DIR: "/mnt/analysis_output_dir"
       BENCHMARKS_DIR: "/mnt/benchmarks_dir"
-      DASHBOARD_DATA_DIR: "/mnt/dashboard_data_dir"
+      DASHBOARD_DATA_DIR: "/mnt/dashboard_output_dir/data"
+      DASHBOARD_OUTPUT_DIR: "/mnt/dashboard_output_dir"
     volumes:
       - type: bind
         source: ${benchmarks_dir:-./benchmarks_dir}
@@ -22,6 +23,23 @@ services:
         target: /mnt/analysis_output_dir
         read_only: true
       - type: bind
-        source: ${dashboard_data_dir:-./dashboard_data_dir}
-        target: /mnt/dashboard_data_dir
+        source: ${dashboard_data_dir:-./dashboard_output_dir/data}
+        target: /mnt/dashboard_output_dir/data
         read_only: false
+      - type: bind
+        source: ${dashboard_output_dir:-./dashboard_output_dir}
+        target: /mnt/dashboard_output_dir
+        read_only: false
+
+  server:
+    image: nginx:alpine
+    ports:
+      - 3000:80
+    volumes:
+      - type: bind
+        source: ${dashboard_output_dir:-./dashboard_output_dir}
+        target: /usr/share/nginx/html
+        read_only: false
+    depends_on:
+      workflow.pacta.dashboard:
+        condition: service_completed_successfully # build-app acts as an init container

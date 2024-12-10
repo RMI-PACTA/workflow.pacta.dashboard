@@ -6,3 +6,4 @@
 ^LICENSE\.md$
 ^\.Rproj\.user$
 ^docker-compose.yml$
+^dashboard_output_dir
