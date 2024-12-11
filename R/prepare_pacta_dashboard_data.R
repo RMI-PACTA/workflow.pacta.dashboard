@@ -5,6 +5,8 @@ prepare_pacta_dashboard_data <- function(
   benchmarks_dir = Sys.getenv("BENCHMARKS_DIR")
 ) {
 
+log_info("Preparing data for the PACTA dashboard.")
+
 # input and output directories -------------------------------------------------
 
 input_dir <- analysis_output_dir

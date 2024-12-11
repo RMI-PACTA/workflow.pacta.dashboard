@@ -29,11 +29,16 @@ Imports:
     dplyr,
     glue,
     jsonlite,
+    logger,
     magrittr,
     pacta.portfolio.utils,
+    pacta.workflow.utils,
     readr,
     rlang,
     stringr,
-    tidyr
+    tidyr,
+    workflow.pacta
 Remotes:
-    RMI-PACTA/pacta.portfolio.utils
+    RMI-PACTA/pacta.portfolio.utils,
+    RMI-PACTA/pacta.workflow.utils,
+    RMI-PACTA/workflow.pacta

@@ -1,31 +1,37 @@
-# logger::log_threshold(Sys.getenv("LOG_LEVEL", "INFO"))
+logger::log_threshold(Sys.getenv("LOG_LEVEL", "INFO"))
 
-# raw_params <- commandArgs(trailingOnly = TRUE)
-# params <- pacta.workflow.utils::parse_raw_params(
-#   json = raw_params,
-#   inheritence_search_paths = system.file(
-#     "extdata", "parameters",
-#     package = "workflow.pacta.report"
-#   ) ,
-#   schema_file = system.file(
-#     "extdata", "schema", "reportingParameters.json",
-#     package = "workflow.pacta.report"
-#   ),
-#   raw_schema_file = system.file(
-#     "extdata", "schema", "rawParameters.json",
-#     package = "workflow.pacta.report"
-#   ),
-#   force_array = c("portfolio", "files")
-# )
-
-manifest_info <- workflow.pacta.dashboard:::build_dashboard(
-  # params = params
+raw_params <- commandArgs(trailingOnly = TRUE)
+params <- pacta.workflow.utils::parse_raw_params(
+  json = raw_params,
+  inheritence_search_paths = c(
+    system.file(
+      "extdata", "parameters",
+      package = "workflow.pacta.dashboard"
+      ),
+    system.file(
+      "extdata", "parameters",
+      package = "workflow.pacta"
+      )
+  ),
+  schema_file = system.file(
+    "extdata", "schema", "reportingParameters.json",
+    package = "workflow.pacta.dashboard"
+  ),
+  raw_schema_file = system.file(
+    "extdata", "schema", "rawParameters.json",
+    package = "workflow.pacta.dashboard"
+  ),
+  force_array = c("portfolio", "files")
 )
 
-# pacta.workflow.utils::export_manifest(
-#   input_files = manifest_info[["input_files"]],
-#   output_files = manifest_info[["output_files"]],
-#   params = manifest_info[["params"]],
-#   manifest_path = file.path(Sys.getenv("REPORT_OUTPUT_DIR"), "manifest.json"),
-#   raw_params = raw_params
-# )
+manifest_info <- workflow.pacta.dashboard:::build_dashboard(
+  params = params
+)
+
+pacta.workflow.utils::export_manifest(
+  input_files = manifest_info[["input_files"]],
+  output_files = manifest_info[["output_files"]],
+  params = manifest_info[["params"]],
+  manifest_path = file.path(Sys.getenv("REPORT_OUTPUT_DIR"), "manifest.json"),
+  raw_params = raw_params
+)
