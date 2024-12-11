@@ -1,0 +1,180 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://raw.githubusercontent.com/RMI-PACTA/workflow.pacta/main/inst/extdata/schema/portfolioParameters.json",
+  "title": "portfolioParameters",
+  "description": "Full Parameters required to run workflow.pacta.",
+  "$comment": "Created by Alex Axthelm, aaxthelm@rmi.org",
+  "type": "object",
+  "properties": {
+    "portfolio": {
+      "$ref": "portfolio.json"
+    },
+    "user": {
+      "type": "object",
+      "description": "User information.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "User name."
+        },
+        "languageSelect": {
+          "type": "string",
+          "description": "Language selection.",
+          "enum": [
+            "EN",
+            "ES",
+            "FR",
+            "DE"
+          ]
+        },
+        "peerGroup": {
+          "type": "string",
+          "description": "Peer group selection.",
+          "enum": [
+            "assetmanager",
+            "bank",
+            "insurance",
+            "other",
+            "pensionfund"
+          ]
+        },
+        "currencyExchangeValue": {
+          "type": "number",
+          "description": "Currency exchange value for displayCurrency",
+          "exclusiveMinimum": 0,
+          "default": 1
+        },
+        "displayCurrency": {
+          "type": "string",
+          "description": "Currency for display. ISO 4217 currency code.",
+          "pattern": "^[A-Z]{3}$"
+        }
+      },
+      "required": [
+        "name",
+        "languageSelect",
+        "peerGroup",
+        "currencyExchangeValue",
+        "displayCurrency"
+      ],
+      "additionalProperties": true
+    }
+  },
+  "reporting": {
+    "type": "object",
+    "description": "Parameters for reporting.",
+    "properties": {
+      "projectCode": {
+        "type": "string",
+        "description": "Project code.",
+        "enum": [
+          "GENERAL"
+        ]
+      },
+      "projectReportName": {
+        "type": "string",
+        "description": "Project code.",
+        "enum": [
+          "general"
+        ]
+      },
+      "greenTechs": {
+        "type": "array",
+        "description": "Green technologies to be included in the report.",
+        "items": {
+          "type": "string",
+          "enum": [
+            "RenewablesCap",
+            "HydroCap",
+            "NuclearCap",
+            "Hybrid",
+            "Electric",
+            "FuelCell",
+            "Electric Arc Furnace"
+          ]
+        }
+      },
+      "pactaSectorsNotAnalysed": {
+        "type": "array",
+        "description": "Sectors not analysed in the report.",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Automotive",
+            "Aviation",
+            "Cement",
+            "Coal",
+            "Oil&Gas",
+            "Power",
+            "Steel"
+          ]
+        }
+      },
+      "portfolioAllocationMethod": {
+        "type": "string",
+        "description": "Portfolio allocation method.",
+        "enum": [
+          "portfolio_weight",
+          "ownership_weight"
+        ]
+      },
+      "scenarioGeography": {
+        "type": "string",
+        "description": "Scenario geography."
+      },
+      "scenarioOther": {
+        "type": "string",
+        "description": "Scenario other."
+      },
+      "selectScenario": {
+        "type": "string",
+        "description": "default scenario to display."
+      },
+      "techRoadmapSectors": {
+        "type": "array",
+        "description": "Sectors with technology roadmap to be included in the report.",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Automotive",
+            "Aviation",
+            "Cement",
+            "Coal",
+            "Oil&Gas",
+            "Power",
+            "Steel"
+          ]
+        }
+      }
+    },
+    "required": [
+      "projectCode",
+      "projectReportName",
+      "greenTechs",
+      "pactaSectorsNotAnalysed",
+      "portfolioAllocationMethod",
+      "scenarioGeography",
+      "scenarioOther",
+      "selectScenario",
+      "techRoadmapSectors"
+    ],
+    "additionalProperties": true
+  },
+  "allOf": [
+    {
+      "required": [
+        "portfolio",
+        "reporting",
+        "user"
+      ]
+    },
+    {
+      "not": {
+        "required": [
+          "inherit"
+        ]
+      }
+    }
+  ],
+  "additionalProperties": true
+}

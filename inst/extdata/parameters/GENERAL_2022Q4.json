@@ -1,0 +1,6 @@
+{
+  "inherit": [
+    "analysis_GENERAL_2022Q4",
+    "report_GENERAL_2022Q4"
+  ]
+}

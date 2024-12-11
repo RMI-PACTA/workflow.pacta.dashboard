@@ -1,0 +1,6 @@
+{
+  "inherit": [
+    "analysis_GENERAL_2023Q4",
+    "report_GENERAL_2023Q4"
+  ]
+}
