@@ -8,11 +8,13 @@ build_dashboard <- function(
 ) {
 
   prepare_pacta_dashboard_data(
+    params = params,
     analysis_output_dir = analysis_output_dir,
     dashboard_data_dir = dashboard_data_dir,
     benchmarks_dir = benchmarks_dir
   )
 
+  log_info("Copying dashboard files.")
   dashboard_copy_success <- copy_dashboard_files(
     dashboard_skeleton_files_dir = dashboard_skeleton_files_dir,
     dashboard_output_dir = dashboard_output_dir
@@ -20,6 +22,7 @@ build_dashboard <- function(
 
   dashboard_output_data_dir <- file.path(dashboard_output_dir, "data")
   if (dashboard_data_dir != dashboard_output_data_dir) {
+    log_info("Copying dashboard data to correct location.")
     if (!dir.exists(dashboard_output_data_dir)) {
       dir.create(dashboard_output_data_dir, recursive = TRUE)
     }
