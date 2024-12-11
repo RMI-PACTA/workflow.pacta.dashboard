@@ -33,4 +33,39 @@ build_dashboard <- function(
     )
   }
 
+  out <- list(
+    input_files = c(
+      list.files(
+        dashboard_data_dir,
+        full.names = TRUE,
+        recursive = TRUE
+      ),
+      list.files(
+        dashboard_skeleton_files_dir,
+        full.names = TRUE,
+        recursive = TRUE
+      ),
+      list.files(
+        analysis_output_dir,
+        full.names = TRUE,
+        recursive = TRUE
+      ),
+      list.files(
+        benchmarks_dir,
+        full.names = TRUE,
+        recursive = TRUE
+      )
+    ),
+    output_files = c(
+      list.files(
+        dashboard_output_dir,
+        full.names = TRUE,
+        recursive = TRUE
+      )
+    ),
+    params = params
+  )
+
+  return(out)
+
 }

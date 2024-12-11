@@ -10,7 +10,7 @@ log_info("Preparing data for the PACTA dashboard.")
 # portfolio/user parameters ----------------------------------------------------
 log_debug("Reading portfolio/user parameters.")
 
-investor_name <- params[["user"]][["investor_name"]]
+investor_name <- params[["user"]][["name"]]
 portfolio_name <- params[["portfolio"]][["name"]]
 peer_group <- params[["user"]][["peerGroup"]]
 language_select <- params[["user"]][["languageSelect"]]
@@ -18,7 +18,7 @@ language_select <- params[["user"]][["languageSelect"]]
 currency_exchange_value <- params[["user"]][["currencyExchangeValue"]]
 display_currency <- params[["user"]][["displayCurrency"]]
 
-select_scenario_other <- params[["reporting"]][["selectOther"]]
+select_scenario_other <- params[["reporting"]][["scenarioOther"]]
 select_scenario <- params[["reporting"]][["selectScenario"]]
 
 green_techs <- params[["reporting"]][["greenTechs"]]
