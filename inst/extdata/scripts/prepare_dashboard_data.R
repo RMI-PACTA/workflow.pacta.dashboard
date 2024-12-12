@@ -24,7 +24,7 @@ params <- pacta.workflow.utils::parse_raw_params(
   force_array = c("portfolio", "files")
 )
 
-manifest_info <- workflow.pacta.dashboard:::build_dashboard(
+manifest_info <- workflow.pacta.dashboard:::run_dashboard_workflow(
   params = params
 )
 
