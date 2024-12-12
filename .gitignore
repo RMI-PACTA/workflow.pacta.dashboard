@@ -5,3 +5,4 @@ analysis_output_dir/**/*
 benchmarks_dir/**/*
 dashboard_output_dir/**/*
 !dashboard_output_dir/data/.gitkeep
+pacta-data/**/*

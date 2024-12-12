@@ -1,0 +1,77 @@
+{
+  "holdingsDate": "2022Q4",
+  "pactaDataURL": "https://pactadatadev.file.core.windows.net/workflow-data-preparation-outputs/2022Q4_20240426T113151Z",
+  "resultsURL": "https://pactadatadev.blob.core.windows.net/ghactions-workflow-pacta-results/73/merge/latest/default_2022Q4/output_dir",
+  "benchmarksURL": "https://pactadatadev.file.core.windows.net/workflow-prepare-pacta-indices-outputs/2022Q4_20240529T002407Z",
+  "parameters": {
+    "portfolio": {
+      "holdingsDate": "2023-12-31",
+      "files": [
+        "default_portfolio.csv"
+      ],
+      "name": "Default Portfolio"
+    },
+    "analysis": {
+      "equityMarketList": [
+        "GlobalMarket",
+        "DevelopedMarket",
+        "EmergingMarket"
+      ],
+      "scenarioGeographiesList": [
+        "Global",
+        "GlobalAggregate",
+        "NonOECD",
+        "OECD"
+      ],
+      "scenarioSourcesList": [
+        "GECO2022",
+        "ISF2021",
+        "WEO2022"
+      ],
+      "sectorList": [
+        "Power",
+        "Automotive",
+        "Coal",
+        "Steel",
+        "Aviation",
+        "Cement"
+      ],
+      "startYear": 2023,
+      "timeHorizon": 5
+    },
+    "user": {
+      "name": "Default Investor",
+      "languageSelect": "EN",
+      "peerGroup": "bank",
+      "currencyExchangeValue": 1,
+      "displayCurrency": "USD"
+    },
+    "reporting": {
+      "projectCode": "GENERAL",
+      "projectReportName": "general",
+      "greenTechs": [
+        "RenewablesCap",
+        "HydroCap",
+        "NuclearCap",
+        "Hybrid",
+        "Electric",
+        "FuelCell",
+        "Electric Arc Furnace"
+      ],
+      "pactaSectorsNotAnalysed": [
+        "Steel",
+        "Aviation",
+        "Cement"
+      ],
+      "portfolioAllocationMethod": "portfolio_weight",
+      "scenarioGeography": "Global",
+      "scenarioOther": "GECO2022_1.5C",
+      "selectScenario": "WEO2022_NZE_2050",
+      "techRoadmapSectors": [
+        "Power",
+        "Automotive",
+        "Coal"
+      ]
+    }
+  }
+}
