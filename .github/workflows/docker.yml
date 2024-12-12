@@ -21,6 +21,23 @@ jobs:
     with:
       do-check-r-sysdeps: false
 
+  test:
+    name: Test
+    uses: ./.github/workflows/test.yml
+    needs: [docker]
+    secrets: inherit
+    strategy:
+      fail-fast: false
+      matrix:
+        config-name:
+          - default_2022Q4
+          - default_2023Q4
+          - full_params_2022Q4
+          - full_params_2023Q4
+    with:
+      full-image-name: ${{ needs.docker.outputs.full-image-name }}
+      config-name: ${{ matrix.config-name }}
+
   # gh-pages:
   #   name: gh-pages
   #   uses: ./.github/workflows/gh-pages.yml
