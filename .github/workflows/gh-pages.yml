@@ -23,7 +23,7 @@ jobs:
 
       - uses: actions/download-artifact@v4
         with:
-          pattern: dashboard-build-
+          pattern: dashboard-build-*
           merge-multiple: true
           path: extracted_builds
 
