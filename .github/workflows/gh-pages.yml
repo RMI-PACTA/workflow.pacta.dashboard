@@ -27,6 +27,14 @@ jobs:
           merge-multiple: true
           path: extracted_builds
 
+      - name: extract tarfiles
+        run: |
+          for tarfile in *.tar.gz
+          do
+            tar -xvzf "$tarfile"
+          done
+
+
       - run: ls -laR extracted_builds
 
       - name: Add nojekyll file
@@ -52,3 +60,4 @@ jobs:
           preview-branch: gh-pages
           umbrella-dir: pr-preview
           action: auto
+          dry-run: true
