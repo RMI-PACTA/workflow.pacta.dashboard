@@ -1,7 +1,7 @@
 {
   "holdingsDate": "2022Q4",
-  "pactaDataURL": "https://pactadatadev.file.core.windows.net/workflow-data-preparation-outputs/2022Q4_20240426T113151Z",
-  "benchmarksURL": "https://pactadatadev.file.core.windows.net/workflow-prepare-pacta-indices-outputs/2022Q4_20240529T002407Z",
+  "pactaDataURL": "https://pactadatadev.blob.core.windows.net/pacta-data-webapp/2022Q4/2022Q4_20240426T113151Z",
+  "benchmarksURL": "https://pactadatadev.blob.core.windows.net/benchmarks-webapp/2022Q4/2022Q4_20240529T002407Z",
   "parameters": {
     "portfolio": {
       "holdingsDate": "2023-12-31",
