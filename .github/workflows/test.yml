@@ -10,16 +10,6 @@ on:
       config-name:
         required: true
         type: string
-      results-url:
-        description: azure blob store path for results
-        required: false
-        default: "https://pactadatadev.blob.core.windows.net/ghactions-workflow-pacta-webapp-results"
-        type: string
-      reports-url:
-        description: azure blob store path for results
-        required: false
-        default: "https://pactadatadev.blob.core.windows.net/ghactions-workflow-pacta-webapp-results-reports"
-        type: string
 
 jobs:
   test:
@@ -97,7 +87,7 @@ jobs:
         uses: RMI-PACTA/actions/actions/azure/blob-copy@main
         with:
           source: ${{ steps.prepare.outputs.pacta-data-url }}
-          destination: tmp_benchmarks_dir
+          destination: tmp_pacta_data_dir
 
       - name: Download Benchmarks
         id: download-benchmarks
@@ -111,6 +101,10 @@ jobs:
         env:
           TEST_DIR: ${{ steps.prepare.outputs.test-dir }}
         run: |
+          mkdir -p pacta-data
+          mv tmp_pacta_data_dir/*/*/* pacta-data
+          mkdir -p benchmarks_dir
+          mv tmp_benchmarks_dir/*/*/* benchmarks_dir
           ls -laR "$TEST_DIR"
 
       - name: Run Docker Image
