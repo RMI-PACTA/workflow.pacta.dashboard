@@ -62,7 +62,7 @@ jobs:
           echo "dashboard-output-dir=$DASHBOARD_OUTPUT_DIR"
           echo "dashboard-output-dir=$DASHBOARD_OUTPUT_DIR" >> "$GITHUB_OUTPUT"
 
-          DASHBOARD_DATA_DIR="$TEST_DIR/$DASHBOARD_OUTPUT_DIR/data"
+          DASHBOARD_DATA_DIR="$DASHBOARD_OUTPUT_DIR/data"
           mkdir -p "$DASHBOARD_DATA_DIR"
           chmod -R 777 "$DASHBOARD_DATA_DIR"
           echo "dashboard-data-dir=$DASHBOARD_DATA_DIR"
