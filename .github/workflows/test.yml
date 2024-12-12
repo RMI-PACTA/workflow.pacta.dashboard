@@ -141,9 +141,18 @@ jobs:
 
       - name: List outputs
         env:
+          CONFIG_NAME: ${{ inputs.config-name }}
           DASHBOARD_OUTPUT_DIR: ${{ steps.prepare.outputs.dashboard-output-dir }}
         run: |
           ls -lR $DASHBOARD_OUTPUT_DIR
+          cp -r $DASHBOARD_OUTPUT_DIR $CONFIG_NAME
+
+      - name: Upload built dashboard as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.prepare-artifact.outputs.json-filename }}
+          path: ${{ inputs.config-name }}
+          if-no-files-found: error
 
       # - name: Prepare comment artifact
       #   id: prepare-artifact
