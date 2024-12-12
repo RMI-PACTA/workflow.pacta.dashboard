@@ -21,10 +21,10 @@ jobs:
     with:
       do-check-r-sysdeps: false
 
-  gh-pages:
-    name: gh-pages
-    uses: ./.github/workflows/gh-pages.yml
-    needs: [docker]
-    secrets: inherit
-    with:
-      full-image-name: ${{ needs.docker.outputs.full-image-name }}
+  # gh-pages:
+  #   name: gh-pages
+  #   uses: ./.github/workflows/gh-pages.yml
+  #   needs: [docker]
+  #   secrets: inherit
+  #   with:
+  #     full-image-name: ${{ needs.docker.outputs.full-image-name }}
