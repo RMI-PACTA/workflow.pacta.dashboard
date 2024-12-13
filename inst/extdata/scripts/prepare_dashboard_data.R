@@ -24,14 +24,7 @@ params <- pacta.workflow.utils::parse_raw_params(
   force_array = c("portfolio", "files")
 )
 
-manifest_info <- workflow.pacta.dashboard:::build_dashboard(
-  params = params
-)
-
-pacta.workflow.utils::export_manifest(
-  input_files = manifest_info[["input_files"]],
-  output_files = manifest_info[["output_files"]],
-  params = manifest_info[["params"]],
-  manifest_path = file.path(Sys.getenv("REPORT_OUTPUT_DIR"), "manifest.json"),
+manifest_info <- workflow.pacta.dashboard:::run_dashboard_workflow(
+  params = params,
   raw_params = raw_params
 )

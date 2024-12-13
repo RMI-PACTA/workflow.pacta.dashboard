@@ -1,0 +1,153 @@
+---
+name: Test docker image
+
+on:
+  workflow_call:
+    inputs:
+      full-image-name:
+        required: true
+        type: string
+      config-name:
+        required: true
+        type: string
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+
+      - name: Checkout workflow
+        uses: actions/checkout@v4
+
+      - name: Prepare environment
+        id: prepare
+        env:
+          CONFIG_NAME: ${{ inputs.config-name }}
+          GITHUB_REF_NAME: ${{ github.ref_name}}
+          GITHUB_RUN_ATTEMPT: ${{ github.run_attempt }}
+          GITHUB_RUN_NUMBER: ${{ github.run_number }}
+          WORKSPACE: ${{ github.workspace }}
+        run: |
+          config_file="tests/config/$CONFIG_NAME.json"
+          echo "config_file: $config_file"
+
+          HOLDINGS_DATE="$(jq -rc '.holdingsDate' $config_file)"
+          echo "holdings-date=$HOLDINGS_DATE"
+          echo "holdings-date=$HOLDINGS_DATE" >> "$GITHUB_OUTPUT"
+
+          PACTA_DATA_URL="$(jq -rc '.pactaDataURL' $config_file)"
+          echo "pacta-data-url=$PACTA_DATA_URL"
+          echo "pacta-data-url=$PACTA_DATA_URL" >> "$GITHUB_OUTPUT"
+
+          BENCHMARKS_URL="$(jq -rc '.benchmarksURL' $config_file)"
+          echo "benchmarks-url=$BENCHMARKS_URL"
+          echo "benchmarks-url=$BENCHMARKS_URL" >> "$GITHUB_OUTPUT"
+
+          # includes handling for null/missing keys
+          PARAMETERS="$(jq -rc '.parameters | select( . != null )' $config_file)"
+          echo "parameters=$PARAMETERS"
+          echo "parameters=$PARAMETERS" >> "$GITHUB_OUTPUT"
+
+          TEST_DIR="$WORKSPACE/$GITHUB_REF_NAME/$GITHUB_RUN_NUMBER/$GITHUB_RUN_ATTEMPT/$CONFIG_NAME"
+          mkdir -p $TEST_DIR
+          echo "test-dir=$TEST_DIR"
+          echo "test-dir=$TEST_DIR" >> "$GITHUB_OUTPUT"
+
+          DASHBOARD_OUTPUT_DIR="$TEST_DIR/dashboard_output_dir"
+          mkdir -p "$DASHBOARD_OUTPUT_DIR"
+          chmod -R 777 "$DASHBOARD_OUTPUT_DIR"
+          echo "dashboard-output-dir=$DASHBOARD_OUTPUT_DIR"
+          echo "dashboard-output-dir=$DASHBOARD_OUTPUT_DIR" >> "$GITHUB_OUTPUT"
+
+          DASHBOARD_DATA_DIR="$DASHBOARD_OUTPUT_DIR/data"
+          mkdir -p "$DASHBOARD_DATA_DIR"
+          chmod -R 777 "$DASHBOARD_DATA_DIR"
+          echo "dashboard-data-dir=$DASHBOARD_DATA_DIR"
+          echo "dashboard-data-dir=$DASHBOARD_DATA_DIR" >> "$GITHUB_OUTPUT"
+
+          ANALYSIS_OUTPUT_DIR="$TEST_DIR/analysis_output_dir"
+          mkdir -p "$ANALYSIS_OUTPUT_DIR"
+          chmod -R 777 "$ANALYSIS_OUTPUT_DIR"
+          echo "analysis-output-dir=$ANALYSIS_OUTPUT_DIR"
+          echo "analysis-output-dir=$ANALYSIS_OUTPUT_DIR" >> "$GITHUB_OUTPUT"
+
+      # https://github.com/Azure/login?tab=readme-ov-file#login-with-openid-connect-oidc-recommended
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Download pacta-data
+        id: download-pacta-data
+        uses: RMI-PACTA/actions/actions/azure/blob-copy@main
+        with:
+          source: ${{ steps.prepare.outputs.pacta-data-url }}
+          destination: tmp_pacta_data_dir
+
+      - name: Download Benchmarks
+        id: download-benchmarks
+        uses: RMI-PACTA/actions/actions/azure/blob-copy@main
+        with:
+          source: ${{ steps.prepare.outputs.benchmarks-url }}
+          destination: tmp_benchmarks_dir
+
+      - name: Show TEST_DIR
+        id: ls-test-dir
+        env:
+          TEST_DIR: ${{ steps.prepare.outputs.test-dir }}
+        run: |
+          mkdir -p pacta-data
+          mv tmp_pacta_data_dir/*/*/* pacta-data
+          mkdir -p benchmarks_dir
+          mv tmp_benchmarks_dir/*/*/* benchmarks_dir
+          ls -laR "$TEST_DIR"
+
+      - name: Run Docker Image
+        env:
+          FULL_IMAGE_NAME: ${{ inputs.full-image-name }}
+          WORKSPACE: ${{ github.workspace }}
+          PARAMETERS: ${{ steps.prepare.outputs.parameters }}
+          ANALYSIS_OUTPUT_DIR: ${{ steps.prepare.outputs.analysis-output-dir }}
+          BENCHMARKS_DIR: benchmarks_dir
+          PACTA_DATA_DIR: pacta-data
+          PORTFOLIO_DIR: tests/portfolios
+          DASHBOARD_DATA_DIR: ${{ steps.prepare.outputs.dashboard-data-dir }}
+          DASHBOARD_OUTPUT_DIR: ${{ steps.prepare.outputs.dashboard-output-dir }}
+        run: |
+
+          docker run \
+          --network none \
+          --env LOG_LEVEL=TRACE \
+          --env ANALYSIS_OUTPUT_DIR="/mnt/analysis_output_dir" \
+          --env OUTPUT_DIR="/mnt/analysis_output_dir" \
+          --env BENCHMARKS_DIR="/mnt/benchmarks_dir" \
+          --env PACTA_DATA_DIR="/mnt/pacta-data" \
+          --env PORTFOLIO_DIR="/mnt/portfolios" \
+          --env DASHBOARD_OUTPUT_DIR="/mnt/dashboard_output_dir" \
+          --env DASHBOARD_DATA_DIR="/mnt/dashboard_output_dir/data" \
+          --mount type=bind,readonly,source=${WORKSPACE}/${BENCHMARKS_DIR},target=/mnt/benchmarks_dir \
+          --mount type=bind,readonly,source=${WORKSPACE}/${PACTA_DATA_DIR},target=/mnt/pacta-data \
+          --mount type=bind,readonly,source=${WORKSPACE}/${PORTFOLIO_DIR},target=/mnt/portfolios \
+          --mount type=bind,source=${ANALYSIS_OUTPUT_DIR},target=/mnt/analysis_output_dir \
+          --mount type=bind,source=${DASHBOARD_OUTPUT_DIR},target=/mnt/dashboard_output_dir \
+          --mount type=bind,source=${DASHBOARD_DATA_DIR},target=/mnt/dashboard_output_dir/data \
+          $FULL_IMAGE_NAME \
+          "$PARAMETERS"
+
+      - name: List outputs
+        env:
+          DASHBOARD_OUTPUT_DIR: ${{ steps.prepare.outputs.dashboard-output-dir }}
+        run: |
+          ls -lR $DASHBOARD_OUTPUT_DIR
+
+      - name: Upload built dashboard as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dashboard-build-${{ inputs.config-name }}
+          path: ${{ steps.prepare.outputs.dashboard-output-dir }}
+          if-no-files-found: error

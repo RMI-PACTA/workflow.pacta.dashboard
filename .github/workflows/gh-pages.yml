@@ -1,3 +1,4 @@
+---
 name: Deploy to GitHub Pages
 
 on:
@@ -21,68 +22,35 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      # https://github.com/Azure/login?tab=readme-ov-file#login-with-openid-connect-oidc-recommended
-      - name: Azure Login
-        uses: azure/login@v2
+      - uses: actions/download-artifact@v4
         with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          pattern: dashboard-build-*
+          merge-multiple: false
+          path: extracted_builds
 
-      - name: Download Analysis Outputs
-        id: download-analysis-outputs
-        uses: RMI-PACTA/actions/actions/azure/blob-copy@main
-        with:
-          source: https://pactadatadev.blob.core.windows.net/ghactions-workflow-pacta-results/main/latest/full_params_2023Q4/analysis_output_dir
-          destination: tmp_analysis_output_dir
-
-      - name: Download Benchmarks
-        id: download-benchmarks
-        uses: RMI-PACTA/actions/actions/azure/blob-copy@main
-        with:
-          source: https://pactadatadev.blob.core.windows.net/benchmarks-webapp/2023Q4/2023Q4_20240529T002355Z
-          destination: tmp_benchmarks_dir
-
-      - name: move output and analysis files to correct directory
-        run: |
-          mv tmp_analysis_output_dir/main/latest/full_params_2023Q4/analysis_output_dir analysis_output_dir
-          ls analysis_output_dir
-          mv tmp_benchmarks_dir/2023Q4/2023Q4_20240529T002355Z benchmarks_dir
-          ls benchmarks_dir
-
-      - name: Create Output Directories
-        run: |
-          mkdir -p dashboard_output_dir/data
-
-      - name: Run Docker Image
-        env:
-          FULL_IMAGE_NAME: ${{ inputs.full-image-name }}
-          WORKSPACE: ${{ github.workspace }}
-          PARAMETERS: ""
-          ANALYSIS_OUTPUT_DIR: "analysis_output_dir"
-          BENCHMARKS_DIR: "benchmarks_dir"
-          DASHBOARD_DATA_DIR: "dashboard_output_dir/data"
-          DASHBOARD_OUTPUT_DIR: "dashboard_output_dir"
+      - name: Generate PR landing page
+        working-directory: extracted_builds
+        shell: bash
         run: |
 
-          docker run \
-          --network none \
-          --user $(id -u):$(id -g) \
-          --env LOG_LEVEL=TRACE \
-          --env ANALYSIS_OUTPUT_DIR="/mnt/analysis_output_dir" \
-          --env BENCHMARKS_DIR="/mnt/benchmarks_dir" \
-          --env DASHBOARD_DATA_DIR="/mnt/dashboard_output_dir/data" \
-          --env DASHBOARD_OUTPUT_DIR="/mnt/dashboard_output_dir" \
-          --mount type=bind,readonly,source=${WORKSPACE}/${BENCHMARKS_DIR},target=/mnt/benchmarks_dir \
-          --mount type=bind,source=${WORKSPACE}/${ANALYSIS_OUTPUT_DIR},target=/mnt/analysis_output_dir \
-          --mount type=bind,source=${WORKSPACE}/${DASHBOARD_OUTPUT_DIR},target=/mnt/dashboard_output_dir \
-          --mount type=bind,source=${WORKSPACE}/${DASHBOARD_DATA_DIR},target=/mnt/dashboard_output_dir/data \
-          $FULL_IMAGE_NAME \
-          "$PARAMETERS"
+          echo "<!DOCTYPE html><html><body>" > index.html
+          for target_page in $(find */index.html)
+          do
+            echo "$target_page"
+            link_text="$( \
+              echo "$target_page" | \
+              sed 's/^dashboard-build-//' | \
+              sed 's/\/index\.html//' \
+            )"
+            echo "$link_text"
+            echo "<a href=\"$target_page\">$link_text</a><br>" >> index.html
+          done
+          echo "</body></html>" >> index.html
+          cat index.html
 
-      - name: chmod & List outputs
+      - name: Show files
         run: |
-          ls -lR dashboard_output_dir
+          ls -laR extracted_builds
 
       - name: Add nojekyll file
         if: github.event.action != 'closed'
@@ -103,7 +71,7 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
         uses: rossjrw/pr-preview-action@v1
         with:
-          source-dir: dashboard_output_dir
+          source-dir: extracted_builds
           preview-branch: gh-pages
           umbrella-dir: pr-preview
           action: auto
