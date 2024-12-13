@@ -4,16 +4,25 @@ services:
     build: .
     # stdin_open: true
     # tty: true
-    # entrypoint: ["bash"]
     # entrypoint: ["R", "--args"]
-    # command: '{\"portfolio\": {\"files\": [\"default_portfolio.csv\"], \"holdingsDate\": \"2023-12-31\", \"name\": \"FooPortfolio\"}, \"inherit\": \"GENERAL_2023Q4\"}'
+    command: '{\"portfolio\": {\"files\": [\"default_portfolio.csv\"], \"holdingsDate\": \"2023-12-31\", \"name\": \"FooPortfolio\"}, \"inherit\": \"GENERAL_2023Q4\"}'
     environment:
       LOG_LEVEL: TRACE
       ANALYSIS_OUTPUT_DIR: "/mnt/analysis_output_dir"
       BENCHMARKS_DIR: "/mnt/benchmarks_dir"
       DASHBOARD_DATA_DIR: "/mnt/dashboard_output_dir/data"
       DASHBOARD_OUTPUT_DIR: "/mnt/dashboard_output_dir"
+      PACTA_DATA_DIR: "/mnt/pacta-data"
+      PORTFOLIO_DIR: "/mnt/portfolios"
     volumes:
+      - type: bind
+        source: ${data_dir:-./pacta-data/}
+        target: /mnt/pacta-data
+        read_only: true
+      - type: bind
+        source: ${input_dir:-./tests/portfolios/}
+        target: /mnt/portfolios
+        read_only: true
       - type: bind
         source: ${benchmarks_dir:-./benchmarks_dir}
         target: /mnt/benchmarks_dir/
@@ -21,7 +30,7 @@ services:
       - type: bind
         source: ${analysis_output_dir:-./analysis_output_dir}
         target: /mnt/analysis_output_dir
-        read_only: true
+        read_only: false
       - type: bind
         source: ${dashboard_data_dir:-./dashboard_output_dir/data}
         target: /mnt/dashboard_output_dir/data
