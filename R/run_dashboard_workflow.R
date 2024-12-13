@@ -1,6 +1,6 @@
 #' Run Dashboard workflow
 #'
-#' Reun steps required to prepare a PACTA analysis and dashboard
+#' Run steps required to prepare a PACTA analysis and dashboard
 #'
 #' @param params (`list`) A list of parameters to be used in the analysis and
 #' dashboard process. See JSON Schema for details.

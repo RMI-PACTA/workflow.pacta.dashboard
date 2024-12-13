@@ -43,5 +43,5 @@ saved.}
 for side effect of rendering files.
 }
 \description{
-Reun steps required to prepare a PACTA analysis and dashboard
+Run steps required to prepare a PACTA analysis and dashboard
 }
