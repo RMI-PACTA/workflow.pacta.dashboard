@@ -32,8 +32,8 @@ jobs:
         shell: bash
         run: |
 
-          echo "<\!DOCTYPE html><html><body>" > index.html
-          for target_page in $(find -f */index.html)
+          echo "<!DOCTYPE html><html><body>" > index.html
+          for target_page in $(find */index.html)
           do
             echo "$target_page"
             link_text="$( \
