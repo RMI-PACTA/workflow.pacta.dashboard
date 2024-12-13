@@ -145,19 +145,19 @@ jobs:
         run: |
           ls -lR $DASHBOARD_OUTPUT_DIR
 
-      - name: prepare artifact
-        env:
-          CONFIG_NAME: ${{ inputs.config-name }}
-          DASHBOARD_OUTPUT_DIR: ${{ steps.prepare.outputs.dashboard-output-dir }}
-        run: |
-          tar -cv -f "$CONFIG_NAME.tar.gz" -C "$DASHBOARD_OUTPUT_DIR" .
+      # - name: prepare artifact
+      #   env:
+      #     CONFIG_NAME: ${{ inputs.config-name }}
+      #     DASHBOARD_OUTPUT_DIR: ${{ steps.prepare.outputs.dashboard-output-dir }}
+      #   run: |
+      #     tar -cv -f "$CONFIG_NAME.tar.gz" -C "$DASHBOARD_OUTPUT_DIR" .
         
 
       - name: Upload built dashboard as artifact
         uses: actions/upload-artifact@v4
         with:
           name: dashboard-build-${{ inputs.config-name }}
-          path: ${{ inputs.config-name }}.tar.gz
+          path: ${{ steps.prepare.outputs.dashboard-output-dir }}
           if-no-files-found: error
 
       # - name: Prepare comment artifact
