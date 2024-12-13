@@ -1,3 +1,4 @@
+---
 name: Deploy to GitHub Pages
 
 on:
@@ -74,4 +75,3 @@ jobs:
           preview-branch: gh-pages
           umbrella-dir: pr-preview
           action: auto
-          dry-run: true
