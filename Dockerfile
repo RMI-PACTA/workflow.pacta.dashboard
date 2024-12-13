@@ -7,7 +7,7 @@ RUN apt-get update \
       git=1:2.34.* \
       libcurl4-openssl-dev=7.81.* \
       libgit2-dev=1.1.* \
-      libicu-dev=71.1.* \
+      libicu-dev=70.* \
       libnode-dev=12.22.* \
       libssl-dev=3.0.* \
     && chmod -R a+rwX /root \
