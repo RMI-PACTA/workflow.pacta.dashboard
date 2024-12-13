@@ -145,61 +145,9 @@ jobs:
         run: |
           ls -lR $DASHBOARD_OUTPUT_DIR
 
-      # - name: prepare artifact
-      #   env:
-      #     CONFIG_NAME: ${{ inputs.config-name }}
-      #     DASHBOARD_OUTPUT_DIR: ${{ steps.prepare.outputs.dashboard-output-dir }}
-      #   run: |
-      #     tar -cv -f "$CONFIG_NAME.tar.gz" -C "$DASHBOARD_OUTPUT_DIR" .
-        
-
       - name: Upload built dashboard as artifact
         uses: actions/upload-artifact@v4
         with:
           name: dashboard-build-${{ inputs.config-name }}
           path: ${{ steps.prepare.outputs.dashboard-output-dir }}
           if-no-files-found: error
-
-      # - name: Prepare comment artifact
-      #   id: prepare-artifact
-      #   env:
-      #     commit_time: ${{ github.event.pull_request.updated_at }}
-      #     config_name: ${{ inputs.config-name }}
-      #     full_image_name: ${{ inputs.full-image-name }}
-      #     git_sha: ${{ github.event.pull_request.head.sha }}
-      #     report_url: ${{ steps.export-outputs.outputs.report-url }}
-      #     summary_url: ${{ steps.export-outputs.outputs.summary-url }}
-      #   run: |
-      #     mkdir -p /tmp/comment-json
-      #     json_filename="$( \
-      #       echo "report-comment-json-merge-$full_image_name-$config_name" | \
-      #       tr '/:._' '-' \
-      #       ).json"
-      #     echo "json-filename=$json_filename" >> "$GITHUB_OUTPUT"
-      #     json_file="/tmp/comment-json/$json_filename"
-      #     jq \
-      #       -n \
-      #       --arg commit_time "$commit_time" \
-      #       --arg config_name "$config_name" \
-      #       --arg git_sha "$git_sha" \
-      #       --arg report_url "$report_url" \
-      #       --arg summary_url "$summary_url" \
-      #       --arg full_image_name "$full_image_name" \
-      #       '{
-      #         "commit_time": $commit_time,
-      #         "git_sha": $git_sha,
-      #         "config": $config_name,
-      #         "report": ("[Report](" + $report_url + ")"),
-      #         "summary": (if (("" + $summary_url) == "") then null else "[Summary](" + $summary_url + ")" end),
-      #         "image": ("`" + $full_image_name + "`")
-      #       }' \
-      #     >> $json_file
-      #     cat "$json_file"
-
-      # - name: Upload comment JSON
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: ${{ steps.prepare-artifact.outputs.json-filename }}
-      #     path: /tmp/comment-json/*
-      #     if-no-files-found: error
-      #     retention-days: 1
