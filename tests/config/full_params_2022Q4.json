@@ -4,7 +4,7 @@
   "benchmarksURL": "https://pactadatadev.blob.core.windows.net/benchmarks-webapp/2022Q4/2022Q4_20240529T002407Z",
   "parameters": {
     "portfolio": {
-      "holdingsDate": "2023-12-31",
+      "holdingsDate": "2022-12-31",
       "files": [
         "default_portfolio.csv"
       ],
@@ -35,7 +35,7 @@
         "Aviation",
         "Cement"
       ],
-      "startYear": 2023,
+      "startYear": 2022,
       "timeHorizon": 5
     },
     "user": {
