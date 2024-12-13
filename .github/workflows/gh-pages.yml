@@ -27,19 +27,29 @@ jobs:
           merge-multiple: false
           path: extracted_builds
 
+      - name: Generate PR landing page
+        working-directory: extracted_builds
+        shell: bash
+        run: |
+
+          echo "<\!DOCTYPE html><html><body>" > index.html
+          for target_page in $(find -f */index.html)
+          do
+            echo "$target_page"
+            link_text="$( \
+              echo "$target_page" | \
+              sed 's/^dashboard-build-//' | \
+              sed 's/\/index\.html//' \
+            )"
+            echo "$link_text"
+            echo "<a href=\"$target_page\">$link_text</a><br>" >> index.html
+          done
+          echo "</body></html>" >> index.html
+          cat index.html
+
       - name: Show files
         run: |
           ls -laR extracted_builds
-
-      # - name: extract tarfiles
-      #   run: |
-      #     for tarfile in *.tar.gz
-      #     do
-      #       tar -xvzf "$tarfile"
-      #     done
-
-
-      - run: ls -laR extracted_builds
 
       - name: Add nojekyll file
         if: github.event.action != 'closed'
