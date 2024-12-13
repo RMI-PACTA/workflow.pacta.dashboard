@@ -27,12 +27,16 @@ jobs:
           merge-multiple: true
           path: extracted_builds
 
-      - name: extract tarfiles
+      - name: Show files
         run: |
-          for tarfile in *.tar.gz
-          do
-            tar -xvzf "$tarfile"
-          done
+          ls -laR extracted_builds
+
+      # - name: extract tarfiles
+      #   run: |
+      #     for tarfile in *.tar.gz
+      #     do
+      #       tar -xvzf "$tarfile"
+      #     done
 
 
       - run: ls -laR extracted_builds
