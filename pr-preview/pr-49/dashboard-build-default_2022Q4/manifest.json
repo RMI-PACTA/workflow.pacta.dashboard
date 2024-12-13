@@ -6,8 +6,8 @@
       "file_path": "/mnt/dashboard_output_dir/data/archive.zip",
       "file_size_human": "345.3 kB",
       "file_size": 345342,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
-      "file_md5": "c21b0984c2f7156213aa86d9f83e53d8"
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
+      "file_md5": "1017c1cd427aac4d1e5aeda1cd027494"
     },
     {
       "file_name": "data_company_bubble.json",
@@ -15,7 +15,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_company_bubble.json",
       "file_size_human": "72.3 kB",
       "file_size": 72310,
-      "file_last_modified": "2024-12-13T11:29:59+00:00",
+      "file_last_modified": "2024-12-13T11:46:00+00:00",
       "file_md5": "33fe27e00617ac49dcb8237046461dcd"
     },
     {
@@ -24,7 +24,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_emissions_pie_bonds.json",
       "file_size_human": "836 B",
       "file_size": 836,
-      "file_last_modified": "2024-12-13T11:29:57+00:00",
+      "file_last_modified": "2024-12-13T11:45:58+00:00",
       "file_md5": "3e02b79b9e9f9a01a6bf62a87a37dbb5"
     },
     {
@@ -33,7 +33,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_emissions_pie_equity.json",
       "file_size_human": "723 B",
       "file_size": 723,
-      "file_last_modified": "2024-12-13T11:29:57+00:00",
+      "file_last_modified": "2024-12-13T11:45:58+00:00",
       "file_md5": "2eb65987d4f816d5d62de4dda80d1a60"
     },
     {
@@ -42,7 +42,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_emissions.json",
       "file_size_human": "1.4 MB",
       "file_size": 1365527,
-      "file_last_modified": "2024-12-13T11:29:58+00:00",
+      "file_last_modified": "2024-12-13T11:45:59+00:00",
       "file_md5": "05a3ec82dcc9a7c2211adb72e2392f76"
     },
     {
@@ -51,7 +51,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_exposure_stats.json",
       "file_size_human": "1.6 kB",
       "file_size": 1631,
-      "file_last_modified": "2024-12-13T11:29:58+00:00",
+      "file_last_modified": "2024-12-13T11:45:59+00:00",
       "file_md5": "648ad40d2b54009e1155d1c86c9b2780"
     },
     {
@@ -60,7 +60,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_included_table.json",
       "file_size_human": "787 B",
       "file_size": 787,
-      "file_last_modified": "2024-12-13T11:29:57+00:00",
+      "file_last_modified": "2024-12-13T11:45:58+00:00",
       "file_md5": "9b056bf4ef6376a5485d527efb111e00"
     },
     {
@@ -69,7 +69,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_techexposure_company_companies.json",
       "file_size_human": "68.4 kB",
       "file_size": 68393,
-      "file_last_modified": "2024-12-13T11:29:59+00:00",
+      "file_last_modified": "2024-12-13T11:46:00+00:00",
       "file_md5": "ce3ff757a4d12413c0d7a275cca63ff4"
     },
     {
@@ -78,7 +78,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_techexposure_company_portfolio.json",
       "file_size_human": "142.4 kB",
       "file_size": 142362,
-      "file_last_modified": "2024-12-13T11:29:59+00:00",
+      "file_last_modified": "2024-12-13T11:46:00+00:00",
       "file_md5": "d289c4347964d1cd9dfd322ffd854c58"
     },
     {
@@ -87,7 +87,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_techexposure.json",
       "file_size_human": "72.3 kB",
       "file_size": 72345,
-      "file_last_modified": "2024-12-13T11:29:57+00:00",
+      "file_last_modified": "2024-12-13T11:45:59+00:00",
       "file_md5": "ae6b44ba784d65a3a9ed4ec5f1f33803"
     },
     {
@@ -96,7 +96,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_techmix_sector.json",
       "file_size_human": "1 MB",
       "file_size": 1032854,
-      "file_last_modified": "2024-12-13T11:29:58+00:00",
+      "file_last_modified": "2024-12-13T11:45:59+00:00",
       "file_md5": "02c5390be10adea82b1760f6b8349779"
     },
     {
@@ -105,7 +105,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_trajectory_alignment.json",
       "file_size_human": "8.4 MB",
       "file_size": 8363984,
-      "file_last_modified": "2024-12-13T11:29:58+00:00",
+      "file_last_modified": "2024-12-13T11:45:59+00:00",
       "file_md5": "41e8b7e65cb0065fbc465c15544a6079"
     },
     {
@@ -114,7 +114,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_value_pie_bonds.json",
       "file_size_human": "625 B",
       "file_size": 625,
-      "file_last_modified": "2024-12-13T11:29:57+00:00",
+      "file_last_modified": "2024-12-13T11:45:58+00:00",
       "file_md5": "ac8ebd2b28881da56a314982bea1dead"
     },
     {
@@ -123,7 +123,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_value_pie_equity.json",
       "file_size_human": "625 B",
       "file_size": 625,
-      "file_last_modified": "2024-12-13T11:29:57+00:00",
+      "file_last_modified": "2024-12-13T11:45:58+00:00",
       "file_md5": "a9ddb7a1c71ca9accf2e2ee0927e431f"
     },
     {
@@ -402,7 +402,7 @@
       "file_path": "/mnt/analysis_output_dir/audit_file.csv",
       "file_size_human": "11.3 kB",
       "file_size": 11338,
-      "file_last_modified": "2024-12-13T11:28:47+00:00",
+      "file_last_modified": "2024-12-13T11:44:47+00:00",
       "file_md5": "4ba1c30176273825ddb0f49634d57a1e"
     },
     {
@@ -411,7 +411,7 @@
       "file_path": "/mnt/analysis_output_dir/audit_file.rds",
       "file_size_human": "3.5 kB",
       "file_size": 3517,
-      "file_last_modified": "2024-12-13T11:28:47+00:00",
+      "file_last_modified": "2024-12-13T11:44:47+00:00",
       "file_md5": "599b9878d87ecca8a29527d0c9918d7a"
     },
     {
@@ -420,7 +420,7 @@
       "file_path": "/mnt/analysis_output_dir/Bonds_results_company.rds",
       "file_size_human": "124.7 kB",
       "file_size": 124658,
-      "file_last_modified": "2024-12-13T11:29:54+00:00",
+      "file_last_modified": "2024-12-13T11:45:55+00:00",
       "file_md5": "788f913719b8f0f204601013fac66663"
     },
     {
@@ -429,7 +429,7 @@
       "file_path": "/mnt/analysis_output_dir/Bonds_results_map.rds",
       "file_size_human": "13.5 kB",
       "file_size": 13467,
-      "file_last_modified": "2024-12-13T11:29:54+00:00",
+      "file_last_modified": "2024-12-13T11:45:55+00:00",
       "file_md5": "780793bf19ab51310247f4d75ac1b9da"
     },
     {
@@ -438,7 +438,7 @@
       "file_path": "/mnt/analysis_output_dir/Bonds_results_portfolio.rds",
       "file_size_human": "37.7 kB",
       "file_size": 37724,
-      "file_last_modified": "2024-12-13T11:29:54+00:00",
+      "file_last_modified": "2024-12-13T11:45:55+00:00",
       "file_md5": "0e10ad32f52ac2600ef2c9248c930a92"
     },
     {
@@ -447,7 +447,7 @@
       "file_path": "/mnt/analysis_output_dir/coveragegraph.json",
       "file_size_human": "39 B",
       "file_size": 39,
-      "file_last_modified": "2024-12-13T11:28:47+00:00",
+      "file_last_modified": "2024-12-13T11:44:47+00:00",
       "file_md5": "2d61642335337a3758ccbaa5cd71ad91"
     },
     {
@@ -456,7 +456,7 @@
       "file_path": "/mnt/analysis_output_dir/coveragegraphlegend.json",
       "file_size_human": "90 B",
       "file_size": 90,
-      "file_last_modified": "2024-12-13T11:28:47+00:00",
+      "file_last_modified": "2024-12-13T11:44:47+00:00",
       "file_md5": "221e0e839ef0dba901bcaf1cbfe3e098"
     },
     {
@@ -465,7 +465,7 @@
       "file_path": "/mnt/analysis_output_dir/coveragetextvar.json",
       "file_size_human": "78 B",
       "file_size": 78,
-      "file_last_modified": "2024-12-13T11:28:47+00:00",
+      "file_last_modified": "2024-12-13T11:44:47+00:00",
       "file_md5": "fd6e2b589e3bbc14201d1984c31a792a"
     },
     {
@@ -474,7 +474,7 @@
       "file_path": "/mnt/analysis_output_dir/emissions.rds",
       "file_size_human": "458 B",
       "file_size": 458,
-      "file_last_modified": "2024-12-13T11:28:47+00:00",
+      "file_last_modified": "2024-12-13T11:44:47+00:00",
       "file_md5": "37959f824b3203ec13ada1418242609e"
     },
     {
@@ -483,7 +483,7 @@
       "file_path": "/mnt/analysis_output_dir/Equity_results_company.rds",
       "file_size_human": "342.2 kB",
       "file_size": 342196,
-      "file_last_modified": "2024-12-13T11:29:36+00:00",
+      "file_last_modified": "2024-12-13T11:45:36+00:00",
       "file_md5": "d3f4906fbb67ee5d5549bb74896bac8e"
     },
     {
@@ -492,7 +492,7 @@
       "file_path": "/mnt/analysis_output_dir/Equity_results_map.rds",
       "file_size_human": "17.2 kB",
       "file_size": 17248,
-      "file_last_modified": "2024-12-13T11:29:36+00:00",
+      "file_last_modified": "2024-12-13T11:45:36+00:00",
       "file_md5": "673e4861ac282cbb468f6381e46b3e82"
     },
     {
@@ -501,7 +501,7 @@
       "file_path": "/mnt/analysis_output_dir/Equity_results_portfolio.rds",
       "file_size_human": "189 kB",
       "file_size": 189027,
-      "file_last_modified": "2024-12-13T11:29:36+00:00",
+      "file_last_modified": "2024-12-13T11:45:36+00:00",
       "file_md5": "00b66b0df6dba80ed7d1f9ba2f508444"
     },
     {
@@ -510,7 +510,7 @@
       "file_path": "/mnt/analysis_output_dir/invalidsecurities.csv",
       "file_size_human": "81 B",
       "file_size": 81,
-      "file_last_modified": "2024-12-13T11:28:47+00:00",
+      "file_last_modified": "2024-12-13T11:44:47+00:00",
       "file_md5": "ff5119a0c32628496e9872aa58d3d891"
     },
     {
@@ -519,7 +519,7 @@
       "file_path": "/mnt/analysis_output_dir/invalidsecurities.json",
       "file_size_human": "105 B",
       "file_size": 105,
-      "file_last_modified": "2024-12-13T11:28:47+00:00",
+      "file_last_modified": "2024-12-13T11:44:47+00:00",
       "file_md5": "7cfbaa441827f33ee81b6465913af6aa"
     },
     {
@@ -528,8 +528,8 @@
       "file_path": "/mnt/analysis_output_dir/manifest.json",
       "file_size_human": "42.8 kB",
       "file_size": 42804,
-      "file_last_modified": "2024-12-13T11:29:57+00:00",
-      "file_md5": "b88780b05133c03324a069bb0a4685f9"
+      "file_last_modified": "2024-12-13T11:45:58+00:00",
+      "file_md5": "a892da92e4039a6fc609bc8321e0dff7"
     },
     {
       "file_name": "overview_portfolio.rds",
@@ -537,7 +537,7 @@
       "file_path": "/mnt/analysis_output_dir/overview_portfolio.rds",
       "file_size_human": "496 B",
       "file_size": 496,
-      "file_last_modified": "2024-12-13T11:28:47+00:00",
+      "file_last_modified": "2024-12-13T11:44:47+00:00",
       "file_md5": "9422530b3f9c73db0b8594884fa45244"
     },
     {
@@ -546,7 +546,7 @@
       "file_path": "/mnt/analysis_output_dir/total_portfolio.rds",
       "file_size_human": "6.7 kB",
       "file_size": 6714,
-      "file_last_modified": "2024-12-13T11:28:47+00:00",
+      "file_last_modified": "2024-12-13T11:44:47+00:00",
       "file_md5": "50c7a5e6418dbc6612c397199c50cca2"
     },
     {
@@ -555,7 +555,7 @@
       "file_path": "/mnt/benchmarks_dir/Indices_bonds_audit.rds",
       "file_size_human": "222.5 kB",
       "file_size": 222470,
-      "file_last_modified": "2024-12-13T11:25:52+00:00",
+      "file_last_modified": "2024-12-13T11:41:54+00:00",
       "file_md5": "c9bb56666962ceeb458e8f017c43a38f"
     },
     {
@@ -564,7 +564,7 @@
       "file_path": "/mnt/benchmarks_dir/Indices_bonds_emissions.rds",
       "file_size_human": "846 B",
       "file_size": 846,
-      "file_last_modified": "2024-12-13T11:25:52+00:00",
+      "file_last_modified": "2024-12-13T11:41:54+00:00",
       "file_md5": "e7db4c37f9b286d8979e3edeb4e08e88"
     },
     {
@@ -573,7 +573,7 @@
       "file_path": "/mnt/benchmarks_dir/Indices_bonds_results_portfolio.rds",
       "file_size_human": "43.6 kB",
       "file_size": 43610,
-      "file_last_modified": "2024-12-13T11:25:52+00:00",
+      "file_last_modified": "2024-12-13T11:41:54+00:00",
       "file_md5": "0ea7c77ba0784b641ea3faf92b105a9d"
     },
     {
@@ -582,7 +582,7 @@
       "file_path": "/mnt/benchmarks_dir/Indices_equity_audit.rds",
       "file_size_human": "122.2 kB",
       "file_size": 122243,
-      "file_last_modified": "2024-12-13T11:25:52+00:00",
+      "file_last_modified": "2024-12-13T11:41:55+00:00",
       "file_md5": "f8741ec0641cdec9a37bf76ff660ba2a"
     },
     {
@@ -591,7 +591,7 @@
       "file_path": "/mnt/benchmarks_dir/Indices_equity_emissions.rds",
       "file_size_human": "1.6 kB",
       "file_size": 1617,
-      "file_last_modified": "2024-12-13T11:25:53+00:00",
+      "file_last_modified": "2024-12-13T11:41:55+00:00",
       "file_md5": "d4fcd3149dfcb410419249fe425cd13e"
     },
     {
@@ -600,7 +600,7 @@
       "file_path": "/mnt/benchmarks_dir/Indices_equity_results_portfolio.rds",
       "file_size_human": "698 kB",
       "file_size": 697971,
-      "file_last_modified": "2024-12-13T11:25:53+00:00",
+      "file_last_modified": "2024-12-13T11:41:55+00:00",
       "file_md5": "368e718eefcf8e400ebb4acb7415258e"
     }
   ],
@@ -611,7 +611,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/env.js",
       "file_size_human": "19 B",
       "file_size": 19,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
       "file_md5": "1a8e6f7f094e397490430113ade7500b"
     },
     {
@@ -620,7 +620,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/assets/_layout.Vga65ueh.css",
       "file_size_human": "95.5 kB",
       "file_size": 95486,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
       "file_md5": "f946656fb535036b351e393936622542"
     },
     {
@@ -629,7 +629,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/assets/_layout.y3CLZBjS.css",
       "file_size_human": "45.4 kB",
       "file_size": 45352,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
       "file_md5": "f23e4a586abd570f0551d4e40dde09d2"
     },
     {
@@ -638,7 +638,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/assets/_page.CJwvSlMY.css",
       "file_size_human": "5.6 kB",
       "file_size": 5612,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
       "file_md5": "3ddee8fba2c65716228ebbeed87f37c4"
     },
     {
@@ -647,7 +647,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/assets/0.DVzMohNk.css",
       "file_size_human": "141.6 kB",
       "file_size": 141613,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
       "file_md5": "9c7bfe4b2ef163bb4c60ac46f5a401ce"
     },
     {
@@ -656,7 +656,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/assets/2.CJwvSlMY.css",
       "file_size_human": "5.6 kB",
       "file_size": 5612,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
       "file_md5": "3ddee8fba2c65716228ebbeed87f37c4"
     },
     {
@@ -665,7 +665,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/assets/fa-brands-400.BU4mH_I_.woff2",
       "file_size_human": "118.7 kB",
       "file_size": 118724,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
       "file_md5": "0a879b097767ec1e91b4378e6e9368cf"
     },
     {
@@ -674,7 +674,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/assets/fa-brands-400.CArp7j8S.ttf",
       "file_size_human": "210.7 kB",
       "file_size": 210736,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
       "file_md5": "77304e852cc00ca18ddeb4f20ae153f0"
     },
     {
@@ -683,7 +683,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/assets/fa-regular-400.Cy4iLbxs.woff2",
       "file_size_human": "25.5 kB",
       "file_size": 25484,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
       "file_md5": "28deedcffdb1ecdc7c2c2e209e2e36d2"
     },
     {
@@ -692,7 +692,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/assets/fa-regular-400.D4OwLFL7.ttf",
       "file_size_human": "68.1 kB",
       "file_size": 68064,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
       "file_md5": "a23ed8fb8560e1bcf3936ff4b2d791cf"
     },
     {
@@ -701,7 +701,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/assets/fa-solid-900.BAw_JAW6.ttf",
       "file_size_human": "426.1 kB",
       "file_size": 426112,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
       "file_md5": "04a3a55b95709ec271b08720597f2108"
     },
     {
@@ -710,7 +710,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/assets/fa-solid-900.CcrrL0x0.woff2",
       "file_size_human": "158.2 kB",
       "file_size": 158224,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
       "file_md5": "8569e341029ad642d6f62398649236b4"
     },
     {
@@ -719,7 +719,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/assets/fa-v4compatibility.B9t6EWrS.woff2",
       "file_size_human": "4.8 kB",
       "file_size": 4788,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
       "file_md5": "d6a1b588b609d3cc1929776092451409"
     },
     {
@@ -728,7 +728,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/assets/fa-v4compatibility.ch80hpM0.ttf",
       "file_size_human": "10.8 kB",
       "file_size": 10836,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
       "file_md5": "961d7485e94b727abe09d23e09fb3754"
     },
     {
@@ -737,7 +737,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/assets/ProgressBar.Cirlo5Z8.css",
       "file_size_human": "283 B",
       "file_size": 283,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
       "file_md5": "b48bc7afa9cc7b244fcbdfa9b791e943"
     },
     {
@@ -746,7 +746,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/chunks/entry.J6VTJtvM.js",
       "file_size_human": "27 kB",
       "file_size": 27045,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
       "file_md5": "229142aa5df077e1d3a9044fc090aeab"
     },
     {
@@ -755,7 +755,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/chunks/index.BuXUJeS7.js",
       "file_size_human": "4.8 kB",
       "file_size": 4829,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
       "file_md5": "d7ed5444aae1049a2db431c1ed4086e8"
     },
     {
@@ -764,7 +764,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/chunks/index.VWMLtH-B.js",
       "file_size_human": "509 B",
       "file_size": 509,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
       "file_md5": "118689766ff31f029b7b11a9e9df5a0d"
     },
     {
@@ -773,7 +773,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/chunks/ProgressBar.svelte_svelte_type_style_lang.DeLMOYHc.js",
       "file_size_human": "912 B",
       "file_size": 912,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
       "file_md5": "6fd8bb33a2cea3d83286cd8e128bd59b"
     },
     {
@@ -782,7 +782,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/chunks/scheduler.DNdLcuuD.js",
       "file_size_human": "8.7 kB",
       "file_size": 8708,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
       "file_md5": "90ae9192dec02882910a4977359835a8"
     },
     {
@@ -791,7 +791,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/entry/app.BJanxSSh.js",
       "file_size_human": "6.2 kB",
       "file_size": 6224,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
       "file_md5": "692e5f918cfad45dbab804d9a4b5653e"
     },
     {
@@ -800,7 +800,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/entry/start.mMd14GJl.js",
       "file_size_human": "68 B",
       "file_size": 68,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
       "file_md5": "cbebd2e29c7abf5a1ec752f35be9e688"
     },
     {
@@ -809,7 +809,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/nodes/0.By2a-bOZ.js",
       "file_size_human": "81.1 kB",
       "file_size": 81127,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
       "file_md5": "4dbf1c5fe6b0c53e18cb3f4f29de6820"
     },
     {
@@ -818,7 +818,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/nodes/1.CBiNEuNF.js",
       "file_size_human": "1 kB",
       "file_size": 1017,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
       "file_md5": "2ce460344ca0ede2d8dd4e9473b0a60f"
     },
     {
@@ -827,7 +827,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/nodes/2.BLq2Hvx2.js",
       "file_size_human": "274.6 kB",
       "file_size": 274587,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
       "file_md5": "66903c2e9a8ef8e64da70744defb792b"
     },
     {
@@ -836,7 +836,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/version.json",
       "file_size_human": "27 B",
       "file_size": 27,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
       "file_md5": "f8e6def764ddc8eb99ced93e1329d1bc"
     },
     {
@@ -845,8 +845,8 @@
       "file_path": "/mnt/dashboard_output_dir/data/archive.zip",
       "file_size_human": "345.3 kB",
       "file_size": 345342,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
-      "file_md5": "c21b0984c2f7156213aa86d9f83e53d8"
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
+      "file_md5": "1017c1cd427aac4d1e5aeda1cd027494"
     },
     {
       "file_name": "data_company_bubble.json",
@@ -854,7 +854,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_company_bubble.json",
       "file_size_human": "72.3 kB",
       "file_size": 72310,
-      "file_last_modified": "2024-12-13T11:29:59+00:00",
+      "file_last_modified": "2024-12-13T11:46:00+00:00",
       "file_md5": "33fe27e00617ac49dcb8237046461dcd"
     },
     {
@@ -863,7 +863,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_emissions_pie_bonds.json",
       "file_size_human": "836 B",
       "file_size": 836,
-      "file_last_modified": "2024-12-13T11:29:57+00:00",
+      "file_last_modified": "2024-12-13T11:45:58+00:00",
       "file_md5": "3e02b79b9e9f9a01a6bf62a87a37dbb5"
     },
     {
@@ -872,7 +872,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_emissions_pie_equity.json",
       "file_size_human": "723 B",
       "file_size": 723,
-      "file_last_modified": "2024-12-13T11:29:57+00:00",
+      "file_last_modified": "2024-12-13T11:45:58+00:00",
       "file_md5": "2eb65987d4f816d5d62de4dda80d1a60"
     },
     {
@@ -881,7 +881,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_emissions.json",
       "file_size_human": "1.4 MB",
       "file_size": 1365527,
-      "file_last_modified": "2024-12-13T11:29:58+00:00",
+      "file_last_modified": "2024-12-13T11:45:59+00:00",
       "file_md5": "05a3ec82dcc9a7c2211adb72e2392f76"
     },
     {
@@ -890,7 +890,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_exposure_stats.json",
       "file_size_human": "1.6 kB",
       "file_size": 1631,
-      "file_last_modified": "2024-12-13T11:29:58+00:00",
+      "file_last_modified": "2024-12-13T11:45:59+00:00",
       "file_md5": "648ad40d2b54009e1155d1c86c9b2780"
     },
     {
@@ -899,7 +899,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_included_table.json",
       "file_size_human": "787 B",
       "file_size": 787,
-      "file_last_modified": "2024-12-13T11:29:57+00:00",
+      "file_last_modified": "2024-12-13T11:45:58+00:00",
       "file_md5": "9b056bf4ef6376a5485d527efb111e00"
     },
     {
@@ -908,7 +908,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_techexposure_company_companies.json",
       "file_size_human": "68.4 kB",
       "file_size": 68393,
-      "file_last_modified": "2024-12-13T11:29:59+00:00",
+      "file_last_modified": "2024-12-13T11:46:00+00:00",
       "file_md5": "ce3ff757a4d12413c0d7a275cca63ff4"
     },
     {
@@ -917,7 +917,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_techexposure_company_portfolio.json",
       "file_size_human": "142.4 kB",
       "file_size": 142362,
-      "file_last_modified": "2024-12-13T11:29:59+00:00",
+      "file_last_modified": "2024-12-13T11:46:00+00:00",
       "file_md5": "d289c4347964d1cd9dfd322ffd854c58"
     },
     {
@@ -926,7 +926,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_techexposure.json",
       "file_size_human": "72.3 kB",
       "file_size": 72345,
-      "file_last_modified": "2024-12-13T11:29:57+00:00",
+      "file_last_modified": "2024-12-13T11:45:59+00:00",
       "file_md5": "ae6b44ba784d65a3a9ed4ec5f1f33803"
     },
     {
@@ -935,7 +935,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_techmix_sector.json",
       "file_size_human": "1 MB",
       "file_size": 1032854,
-      "file_last_modified": "2024-12-13T11:29:58+00:00",
+      "file_last_modified": "2024-12-13T11:45:59+00:00",
       "file_md5": "02c5390be10adea82b1760f6b8349779"
     },
     {
@@ -944,7 +944,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_trajectory_alignment.json",
       "file_size_human": "8.4 MB",
       "file_size": 8363984,
-      "file_last_modified": "2024-12-13T11:29:58+00:00",
+      "file_last_modified": "2024-12-13T11:45:59+00:00",
       "file_md5": "41e8b7e65cb0065fbc465c15544a6079"
     },
     {
@@ -953,7 +953,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_value_pie_bonds.json",
       "file_size_human": "625 B",
       "file_size": 625,
-      "file_last_modified": "2024-12-13T11:29:57+00:00",
+      "file_last_modified": "2024-12-13T11:45:58+00:00",
       "file_md5": "ac8ebd2b28881da56a314982bea1dead"
     },
     {
@@ -962,7 +962,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_value_pie_equity.json",
       "file_size_human": "625 B",
       "file_size": 625,
-      "file_last_modified": "2024-12-13T11:29:57+00:00",
+      "file_last_modified": "2024-12-13T11:45:58+00:00",
       "file_md5": "a9ddb7a1c71ca9accf2e2ee0927e431f"
     },
     {
@@ -971,7 +971,7 @@
       "file_path": "/mnt/dashboard_output_dir/favicon-32x32.png",
       "file_size_human": "1.4 kB",
       "file_size": 1384,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
       "file_md5": "a4660b4d2ddeba9d03de0afd9b6ba2fe"
     },
     {
@@ -980,7 +980,7 @@
       "file_path": "/mnt/dashboard_output_dir/index.html",
       "file_size_human": "10.1 kB",
       "file_size": 10068,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
       "file_md5": "815754286dd67f49bece83c25977a00e"
     },
     {
@@ -989,7 +989,7 @@
       "file_path": "/mnt/dashboard_output_dir/logo.png",
       "file_size_human": "15.4 kB",
       "file_size": 15384,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
       "file_md5": "98ca4fb66d22c476da3786e98d9a86c4"
     },
     {
@@ -998,7 +998,7 @@
       "file_path": "/mnt/dashboard_output_dir/pacta_value_chain.svg",
       "file_size_human": "50.7 kB",
       "file_size": 50704,
-      "file_last_modified": "2024-12-13T11:30:00+00:00",
+      "file_last_modified": "2024-12-13T11:46:01+00:00",
       "file_md5": "0d29531f63537712c9274a40446ecfbc"
     }
   ],
@@ -1388,7 +1388,7 @@
           "library": "/usr/local/lib/R/site-library",
           "library_index": 1,
           "repository": null,
-          "built": "R 4.3.1; ; 2024-12-13 11:23:36 UTC; unix",
+          "built": "R 4.3.1; ; 2024-12-13 11:39:26 UTC; unix",
           "pkg_source": "Local",
           "remotepkgref": "local::/workflow.pacta.dashboard",
           "remoteref": null,
@@ -1930,7 +1930,7 @@
       }
     }
   },
-  "manifest_creation_datetime": "2024-12-13 11:30 UTC",
+  "manifest_creation_datetime": "2024-12-13 11:46 UTC",
   "params": {
     "reporting": {
       "scenarioGeography": "Global",
