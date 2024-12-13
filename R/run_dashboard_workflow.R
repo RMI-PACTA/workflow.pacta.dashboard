@@ -6,16 +6,13 @@
 #' dashboard process. See JSON Schema for details.
 #' @param raw_params (`character`) Raw JSON string of parameters.
 #' @param run_analysis (`logical`) Run the analysis process.
+#' @param run_dashboard (`logical`) Run the dashboard creation process.
 #' @param analysis_output_dir Directory containing the PACTA analysis results.
-#' @param benchmarks_dir Directory containing the benchmark analysis results.
+#' @param benchmarks_dir filepath: Directory containing the benchmark analysis
+#' results.
 #' @param pacta_data_dir filepath: Directory with "pacta-data"
 #' @param portfolio_dir filepath: Directory with portfolio files
-#' @param real_estate_dir Directory containing real estate data.
 #' @param dashboard_output_dir Directory where the dashboard will be
-#' @param score_card_dir Directory containing score card data.
-#' @param summary_output_dir Directory where the executive summary will be
-#' @param survey_dir Directory containing survey data.
-#' saved.
 #' saved.
 #' @return (invisible) `TRUE` if the workflow was successful. Primarily called
 #' for side effect of rendering files.
