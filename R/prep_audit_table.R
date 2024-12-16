@@ -43,7 +43,7 @@ prep_audit_table <- function(
         )
       )
     ) %>%
-    mutate(value_usd = if_else(.data$value_usd < 0, 0, .data$value_usd)) %>%
+    mutate(value_usd = pmax(.data$value_usd, 0)) %>%
     mutate(value_usd = .data$value_usd / .env$currency_exchange_value)
 
   included_table_totals <-
