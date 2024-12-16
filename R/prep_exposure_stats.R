@@ -8,16 +8,17 @@ prep_exposure_stats <- function(
   pacta_asset_classes <- c("Bonds", "Equity")
 
   audit_table <- prep_audit_table(
-      audit_file,
-      investor_name = investor_name,
-      portfolio_name = portfolio_name,
-      currency_exchange_value = currency_exchange_value
-    )
+    audit_file,
+    investor_name = investor_name,
+    portfolio_name = portfolio_name,
+    currency_exchange_value = currency_exchange_value
+  )
 
   exposure_stats <- audit_file %>%
     filter(
       .data$investor_name == .env$investor_name &
-      .data$portfolio_name == .env$portfolio_name) %>%
+        .data$portfolio_name == .env$portfolio_name
+    ) %>%
     filter(.data$asset_type %in% pacta_asset_classes) %>%
     filter(.data$valid_input == TRUE) %>%
     mutate(across(c("bics_sector", "financial_sector"), as.character)) %>%
@@ -45,10 +46,10 @@ prep_exposure_stats <- function(
     asset_type = asset_classes_in_portfolio,
     sector = pacta_sectors,
     val_sector = 0
-    ) %>% inner_join(
-      distinct(select(exposure_stats, c("asset_type", "percentage_value_invested"))),
-      by = join_by("asset_type")
-    )
+  ) %>% inner_join(
+    distinct(select(exposure_stats, c("asset_type", "percentage_value_invested"))),
+    by = join_by("asset_type")
+  )
 
   exposure_stats_all <- all_stats_with_zero_sector_exposure %>%
     left_join(exposure_stats, by = join_by("asset_type", "sector", "percentage_value_invested")) %>%
