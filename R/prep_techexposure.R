@@ -3,8 +3,8 @@ prep_techexposure <- function(
   bonds_results_portfolio,
   investor_name,
   portfolio_name,
-  indices_equity_results_portfolio,
-  indices_bonds_results_portfolio,
+  indices_eq_results_portfolio,
+  indices_cb_results_portfolio,
   peers_equity_results_portfolio,
   peers_bonds_results_portfolio,
   peer_group,
@@ -46,8 +46,8 @@ prep_techexposure <- function(
 
   indices <-
     list(
-      `Listed Equity` = indices_equity_results_portfolio,
-      `Corporate Bonds` = indices_bonds_results_portfolio
+      `Listed Equity` = indices_eq_results_portfolio,
+      `Corporate Bonds` = indices_cb_results_portfolio
     ) %>%
     bind_rows(.id = "asset_class") %>%
     filter(.data$asset_class %in% .env$asset_classes) %>%

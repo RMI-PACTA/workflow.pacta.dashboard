@@ -107,10 +107,10 @@ prepare_pacta_dashboard_data <- function(
   # data from PACTA inputs used to generate the results
   log_debug("Loading benchmark results.")
 
-  indices_bonds_results_portfolio <- readRDS(
+  indices_cb_results_portfolio <- readRDS(
     file.path(benchmarks_dir, "Indices_bonds_results_portfolio.rds")
   )
-  indices_equity_results_portfolio <- readRDS(
+  indices_eq_results_portfolio <- readRDS(
     file.path(benchmarks_dir, "Indices_equity_results_portfolio.rds")
   )
 
@@ -303,8 +303,8 @@ prepare_pacta_dashboard_data <- function(
     bonds_results_portfolio = bonds_results_portfolio,
     investor_name = investor_name,
     portfolio_name = portfolio_name,
-    indices_equity_results_portfolio = indices_equity_results_portfolio,
-    indices_bonds_results_portfolio = indices_bonds_results_portfolio,
+    indices_eq_results_portfolio = indices_eq_results_portfolio,
+    indices_cb_results_portfolio = indices_cb_results_portfolio,
     peers_equity_results_portfolio = peers_equity_results_portfolio,
     peers_bonds_results_portfolio = peers_bonds_results_portfolio,
     peer_group = peer_group,
@@ -327,8 +327,8 @@ prepare_pacta_dashboard_data <- function(
   prep_techmix_sector(
     equity_results_portfolio,
     bonds_results_portfolio,
-    indices_equity_results_portfolio,
-    indices_bonds_results_portfolio,
+    indices_eq_results_portfolio,
+    indices_cb_results_portfolio,
     peers_equity_results_portfolio,
     peers_bonds_results_portfolio,
     investor_name,
@@ -351,8 +351,8 @@ prepare_pacta_dashboard_data <- function(
     bonds_results_portfolio = bonds_results_portfolio,
     peers_equity_results_portfolio = peers_equity_results_portfolio,
     peers_bonds_results_portfolio = peers_bonds_results_portfolio,
-    indices_equity_results_portfolio = indices_equity_results_portfolio,
-    indices_bonds_results_portfolio = indices_bonds_results_portfolio,
+    indices_eq_results_portfolio = indices_eq_results_portfolio,
+    indices_cb_results_portfolio = indices_cb_results_portfolio,
     investor_name = investor_name,
     portfolio_name = portfolio_name,
     tech_roadmap_sectors = tech_roadmap_sectors,
