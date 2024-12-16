@@ -116,34 +116,39 @@ prep_audit_table <- function(
 }
 
 
-equal_adjacent_fields_totals <-
-  function(table, fields_totals, idx) {
-    are_equal <- TRUE
-    for (field in fields_totals) {
-      are_equal <- are_equal &&
-        (pull(slice(table, idx - 1), field) == pull(slice(table, idx), field))
-    }
-    are_equal
+equal_adjacent_fields_totals <- function(
+  table,
+  fields_totals,
+  idx
+) {
+  are_equal <- TRUE
+  for (field in fields_totals) {
+    are_equal <- are_equal &&
+      (pull(slice(table, idx - 1), field) == pull(slice(table, idx), field))
   }
+  are_equal
+}
 
 
-remove_duplicate_entries_totals <-
-  function(table, fields_totals) {
-    for (asset in unique(table$asset_type_analysis)) {
-      idx_asset <-
-        table %>%
-        mutate(is_chosen_asset = .data$asset_type_analysis == .env$asset) %>%
-        pull(.data$is_chosen_asset) %>%
-        which()
+remove_duplicate_entries_totals <- function(
+  table,
+  fields_totals
+) {
+  for (asset in unique(table$asset_type_analysis)) {
+    idx_asset <-
+      table %>%
+      mutate(is_chosen_asset = .data$asset_type_analysis == .env$asset) %>%
+      pull(.data$is_chosen_asset) %>%
+      which()
 
-      if (length(idx_asset) >= 2) {
-        for (i in length(idx_asset):2) {
-          idx <- idx_asset[i]
-          if (equal_adjacent_fields_totals(table, fields_totals, idx)) {
-            table[idx, fields_totals] <- NA
-          }
+    if (length(idx_asset) >= 2) {
+      for (i in length(idx_asset):2) {
+        idx <- idx_asset[i]
+        if (equal_adjacent_fields_totals(table, fields_totals, idx)) {
+          table[idx, fields_totals] <- NA
         }
       }
     }
-    table
   }
+  table
+}
