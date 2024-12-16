@@ -4,12 +4,6 @@ prep_audit_table <- function(
   portfolio_name,
   currency_exchange_value
 ) {
-  sort_order <- c(
-    "Bonds",
-    "Equity",
-    "Other",
-    "Unclassified"
-  )
 
   audit_table_init <-
     audit_file %>%
@@ -41,7 +35,12 @@ prep_audit_table <- function(
     mutate(
       asset_type_analysis = factor(
         .data$asset_type_analysis,
-        levels = .env$sort_order
+        levels = c(
+          "Bonds",
+          "Equity",
+          "Other",
+          "Unclassified"
+        )
       )
     ) %>%
     mutate(value_usd = if_else(.data$value_usd < 0, 0, .data$value_usd)) %>%

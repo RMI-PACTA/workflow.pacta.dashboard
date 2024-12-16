@@ -19,6 +19,7 @@ build_dashboard <- function(
     dashboard_skeleton_files_dir = dashboard_skeleton_files_dir,
     dashboard_output_dir = dashboard_output_dir
   )
+  stopifnot(dashboard_copy_success)
 
   dashboard_output_data_dir <- file.path(dashboard_output_dir, "data")
   if (dashboard_data_dir != dashboard_output_data_dir) {
@@ -31,6 +32,7 @@ build_dashboard <- function(
       to = dashboard_output_data_dir,
       recursive = TRUE
     )
+    stopifnot(data_copy_success)
   }
 
   out <- list(
