@@ -25,14 +25,14 @@ green_techs <- params[["reporting"]][["greenTechs"]]
 tech_roadmap_sectors <- params[["reporting"]][["techRoadmapSectors"]]
 pacta_sectors_not_analysed <- params[["reporting"]][["pactaSectorsNotAnalysed"]]
 
-power_tech_levels = c("RenewablesCap", "HydroCap", "NuclearCap", "GasCap", "OilCap", "CoalCap")
-oil_gas_levels = c("Oil", "Gas")
-coal_levels = c("Coal")
-auto_levels = c("Electric", "Electric_HDV", "FuelCell", "FuelCell_HDV", "Hybrid", "Hybrid_HDV", "ICE", "ICE_HDV")
-cement_levels = c("Integrated facility", "Grinding")
-steel_levels = c("Electric Arc Furnace", "Open Hearth Furnace", "Basic Oxygen Furnace")
-aviation_levels = c("Freight", "Passenger", "Mix", "Other")
-all_tech_levels = c(power_tech_levels, auto_levels, oil_gas_levels, coal_levels, cement_levels, steel_levels, aviation_levels)
+power_tech_levels <- c("RenewablesCap", "HydroCap", "NuclearCap", "GasCap", "OilCap", "CoalCap")
+oil_gas_levels <- c("Oil", "Gas")
+coal_levels <- c("Coal")
+auto_levels <- c("Electric", "Electric_HDV", "FuelCell", "FuelCell_HDV", "Hybrid", "Hybrid_HDV", "ICE", "ICE_HDV")
+cement_levels <- c("Integrated facility", "Grinding")
+steel_levels <- c("Electric Arc Furnace", "Open Hearth Furnace", "Basic Oxygen Furnace")
+aviation_levels <- c("Freight", "Passenger", "Mix", "Other")
+all_tech_levels <- c(power_tech_levels, auto_levels, oil_gas_levels, coal_levels, cement_levels, steel_levels, aviation_levels)
 
 
 # config parameters from manifest ----------------------------------------------
