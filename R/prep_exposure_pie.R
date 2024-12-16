@@ -12,7 +12,7 @@ prep_exposure_pie <- function(
         .data$portfolio_name == .env$portfolio_name
     ) %>%
     filter(.data$asset_type %in% c("Bonds", "Equity")) %>%
-    filter(.data$valid_input == TRUE) %>%
+    filter(.data$valid_input) %>%
     mutate(across(c("bics_sector", "financial_sector"), as.character)) %>%
     mutate(
       sector = if_else(

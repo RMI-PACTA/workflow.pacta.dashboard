@@ -173,7 +173,7 @@ prep_techmix_sector <- function(
       mutate(
         this_portfolio = .data$portfolio_name == .env$portfolio_name,
         val_type = if_else(
-          .data$this_portfolio == TRUE,
+          .data$this_portfolio,
           paste0(.data$val_type, "_portfolio"),
           paste0(.data$val_type, "_benchmark")
         )

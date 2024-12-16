@@ -6,7 +6,6 @@ linters: all_linters(
     namespace_linter = NULL,
     nonportable_path_linter = NULL,
     object_usage_linter = NULL,
-    redundant_equals_linter = NULL,
     unnecessary_concatenation_linter = NULL
   )
 exclusions: list(
