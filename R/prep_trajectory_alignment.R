@@ -222,7 +222,7 @@ prep_trajectory_alignment <- function(
     mutate(
       allocation = case_when(
         .data$allocation == "portfolio_weight" ~ "Portfolio Weight",
-        .data$allocation == "ownership_weight" ~ "Ownership Weight",
+        .data$allocation == "ownership_weight" ~ "Ownership Weight"
       )
     ) %>%
     filter(.data$year <= .env$start_year + .env$year_span) %>%

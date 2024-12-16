@@ -5,7 +5,6 @@ linters: all_linters(
     if_not_else_linter = NULL,
     ifelse_censor_linter = NULL,
     implicit_integer_linter = NULL,
-    missing_argument_linter = NULL,
     namespace_linter = NULL,
     nonportable_path_linter = NULL,
     object_usage_linter = NULL,
