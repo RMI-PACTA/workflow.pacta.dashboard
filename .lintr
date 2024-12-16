@@ -7,7 +7,8 @@ linters: all_linters(
     nonportable_path_linter = NULL,
     object_usage_linter = NULL,
     redundant_equals_linter = NULL,
-    undesirable_function_linter = NULL,
-    undesirable_operator_linter = NULL,
     unnecessary_concatenation_linter = NULL
+  )
+exclusions: list(
+    "inst/extdata/translation/"
   )
