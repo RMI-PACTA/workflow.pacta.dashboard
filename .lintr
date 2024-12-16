@@ -2,7 +2,6 @@ linters: all_linters(
     conjunct_test_linter = NULL,
     extraction_operator_linter = NULL,
     fixed_regex_linter = NULL,
-    if_not_else_linter = NULL,
     implicit_integer_linter = NULL,
     namespace_linter = NULL,
     nonportable_path_linter = NULL,

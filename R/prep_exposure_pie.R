@@ -15,11 +15,11 @@ prep_exposure_pie <- function(
     filter(.data$valid_input == TRUE) %>%
     mutate(across(c("bics_sector", "financial_sector"), as.character)) %>%
     mutate(
-      sector =
-        if_else(!.data$financial_sector %in% .env$pacta_sectors,
-          "Other",
-          .data$financial_sector
-        )
+      sector = if_else(
+        .data$financial_sector %in% .env$pacta_sectors,
+        .data$financial_sector,
+        "Other"
+      )
     ) %>%
     group_by(.data$asset_type, .data$sector) %>%
     summarise(
