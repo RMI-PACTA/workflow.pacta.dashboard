@@ -1,3 +1,16 @@
-linters: linters_with_defaults(
-    object_usage_linter = NULL
+linters: all_linters(
+    conjunct_test_linter = NULL,
+    extraction_operator_linter = NULL,
+    fixed_regex_linter = NULL,
+    if_not_else_linter = NULL,
+    ifelse_censor_linter = NULL,
+    implicit_integer_linter = NULL,
+    missing_argument_linter = NULL,
+    namespace_linter = NULL,
+    nonportable_path_linter = NULL,
+    object_usage_linter = NULL,
+    redundant_equals_linter = NULL,
+    undesirable_function_linter = NULL,
+    undesirable_operator_linter = NULL,
+    unnecessary_concatenation_linter = NULL
   )
