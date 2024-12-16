@@ -6,14 +6,14 @@ prep_exposure_stats <- function(
   currency_exchange_value
 ) {
   pacta_asset_classes <- c("Bonds", "Equity")
-  
+
   audit_table <- prep_audit_table(
       audit_file,
       investor_name = investor_name,
       portfolio_name = portfolio_name,
       currency_exchange_value = currency_exchange_value
     )
-  
+
   exposure_stats <- audit_file %>%
     filter(
       .data$investor_name == .env$investor_name &
@@ -38,9 +38,9 @@ prep_exposure_stats <- function(
     ) %>%
     inner_join(audit_table, by = join_by("asset_type" == "asset_type_analysis")) %>%
     select("asset_type", "percentage_value_invested", "sector", "perc_asset_val_sector")
-  
+
   asset_classes_in_portfolio <- intersect(pacta_asset_classes, unique(exposure_stats$asset_type))
-  
+
   all_stats_with_zero_sector_exposure <- expand.grid(
     asset_type = asset_classes_in_portfolio,
     sector = pacta_sectors,
@@ -49,13 +49,13 @@ prep_exposure_stats <- function(
       distinct(select(exposure_stats, c("asset_type", "percentage_value_invested"))),
       by = join_by("asset_type")
     )
-  
+
   exposure_stats_all <- all_stats_with_zero_sector_exposure %>%
     left_join(exposure_stats, by = join_by("asset_type", "sector", "percentage_value_invested")) %>%
     mutate(
       perc_asset_val_sector = if_else(
         is.na(.data$perc_asset_val_sector),
-        .data$val_sector, 
+        .data$val_sector,
         .data$perc_asset_val_sector
       )
     ) %>%
@@ -66,6 +66,6 @@ prep_exposure_stats <- function(
       )
     ) %>%
     select("asset_type", "percentage_value_invested", "sector", "perc_asset_val_sector")
-  
+
   exposure_stats_all
 }

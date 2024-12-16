@@ -323,7 +323,7 @@ prep_company_bubble(
   start_year = start_year,
   green_techs = green_techs
   ) %>%
-  translate_df_contents("data_company_bubble", dictionary) %>% 
+  translate_df_contents("data_company_bubble", dictionary) %>%
   jsonlite::write_json(path = file.path(dashboard_data_dir, "data_company_bubble.json"))
 
 
@@ -352,7 +352,7 @@ prep_key_bars_portfolio(
   start_year = start_year,
   pacta_sectors_not_analysed = pacta_sectors_not_analysed,
   all_tech_levels = all_tech_levels
-  ) %>% 
+  ) %>%
   translate_df_contents("data_key_bars_portfolio", dictionary) %>%
   jsonlite::write_json(path = file.path(dashboard_data_dir, "data_techexposure_company_portfolio.json"))
 
@@ -367,23 +367,23 @@ zip_outputs(dashboard_data_dir)
 zip_outputs <- function(dashboard_data_dir) {
   log_debug("Preparing outputs zip archive.")
   json_filenames <- list.files(dashboard_data_dir, pattern = "[.]json$")
-  
+
   zip_temp <- file.path(tempdir(), "zip_temp")
   dir.create(zip_temp, showWarnings = FALSE)
-  
+
   for (json_filename in json_filenames) {
     log_trace(paste("Adding", json_filename, "to zip archive."))
     file.copy(
       from = file.path(dashboard_data_dir, json_filename),
       to = file.path(zip_temp, json_filename)
     )
-    
+
     csv_filename <- sub("[.]json$", ".csv", json_filename)
-    
+
     df <- jsonlite::read_json(
       path = file.path(dashboard_data_dir, json_filename),
       simplifyVector = TRUE
-    ) 
+    )
 
     if (inherits(df, "data.frame")) {
       log_trace(paste("Adding", csv_filename, "to zip archive."))
@@ -395,7 +395,7 @@ zip_outputs <- function(dashboard_data_dir) {
       )
     }
   }
-  
+
   log_debug("Creating zip archive.")
   utils::zip(
     zipfile = file.path(dashboard_data_dir, "archive.zip"),

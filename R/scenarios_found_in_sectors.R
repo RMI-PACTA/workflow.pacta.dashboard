@@ -8,4 +8,3 @@ scenarios_found_in_sectors <- function(
     (data$scenario_source == get_scenario_source(select_scenario_param))
   out
 }
-

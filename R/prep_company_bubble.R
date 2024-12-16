@@ -8,7 +8,7 @@ prep_company_bubble <- function(
   start_year,
   green_techs
 ) {
-    
+
     equity_data <-
       equity_results_company %>%
       filter(.data$portfolio_name == .env$portfolio_name) %>%
@@ -38,7 +38,7 @@ prep_company_bubble <- function(
       filter(!is.na(.data$plan_tech_share)) %>%
       mutate(y = pmax(.data$y, 0, na.rm = TRUE)) %>%
       mutate(asset_class = "Listed Equity")
-    
+
     bonds_data <-
       bonds_results_company %>%
       filter(.data$portfolio_name == .env$portfolio_name) %>%
@@ -68,7 +68,6 @@ prep_company_bubble <- function(
       filter(!is.na(.data$plan_tech_share)) %>%
       mutate(y = pmax(.data$y, 0, na.rm = TRUE)) %>%
       mutate(asset_class = "Corporate Bonds")
-    
+
     bind_rows(equity_data, bonds_data)
   }
-

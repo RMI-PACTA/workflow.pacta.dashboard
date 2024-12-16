@@ -128,4 +128,3 @@ if (nrow(techexposure_data) > 0) {
 
 techexposure_data
   }
-

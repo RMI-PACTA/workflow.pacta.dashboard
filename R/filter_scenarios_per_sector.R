@@ -12,4 +12,3 @@ filter_scenarios_per_sector <- function(
           scenarios_found_in_sectors(.data, select_scenario, rest_of_sectors)
       )
   }
-

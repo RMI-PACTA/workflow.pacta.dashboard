@@ -1,5 +1,5 @@
 # prep_key_bars_company --------------------------------------------------------
-# based on pacta.portfolio.report:::prep_key_bars_company, but does not filter 
+# based on pacta.portfolio.report:::prep_key_bars_company, but does not filter
 # to allocation == "portfolio_weight"  nor by scenario and scenario source
 
 prep_key_bars_company <- function(
@@ -10,7 +10,7 @@ prep_key_bars_company <- function(
   pacta_sectors_not_analysed,
   all_tech_levels
 ) {
-    
+
     equity_data_company <-
       equity_results_company %>%
       filter(.data$portfolio_name == .env$portfolio_name) %>%
@@ -30,7 +30,7 @@ prep_key_bars_company <- function(
       slice(1:15)  %>%
       filter(!is.null(.data$port_weight)) %>%
       filter(!is.null(.data$plan_tech_share))
-    
+
     bonds_data_company <-
       bonds_results_company %>%
       filter(.data$portfolio_name == .env$portfolio_name) %>%
@@ -58,7 +58,6 @@ prep_key_bars_company <- function(
       arrange(dplyr::desc(.data$port_weight), .by_group = TRUE) %>%
       filter(!is.null(.data$port_weight)) %>%
       filter(!is.null(.data$plan_tech_share))
-    
+
     bind_rows(equity_data_company, bonds_data_company)
   }
-

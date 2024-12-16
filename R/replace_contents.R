@@ -4,5 +4,3 @@ replace_contents <- function(
 ) {
   mutate(data, across(.cols = everything(), .fns = ~ gsub("_CUR_", display_currency, .x)))
 }
-
-

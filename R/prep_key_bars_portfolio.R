@@ -1,5 +1,5 @@
 # prep_key_bars_portfolio ------------------------------------------------------
-# based on pacta.portfolio.report:::prep_key_bars_portfolio, but does not filter 
+# based on pacta.portfolio.report:::prep_key_bars_portfolio, but does not filter
 # to allocation == "portfolio_weight" nor by scenario and scenario source
 
 prep_key_bars_portfolio <- function(
@@ -28,7 +28,7 @@ prep_key_bars_portfolio <- function(
       filter(!.data$ald_sector %in% .env$pacta_sectors_not_analysed | !grepl("Aligned", .data$id)) %>%
       mutate(asset_class = "Listed Equity") %>%
       mutate_at("id", as.character) # convert the col type to character to prevent errors in case empty df is bound by rows
-    
+
     bonds_data_portfolio <-
       bonds_results_portfolio %>%
       filter(.data$portfolio_name == .env$portfolio_name) %>%
@@ -47,7 +47,6 @@ prep_key_bars_portfolio <- function(
       mutate(asset_class = "Corporate Bonds") %>%
       mutate_at("id", as.character) %>%
       arrange(factor(.data$technology, levels = .env$all_tech_levels))
-    
+
     bind_rows(equity_data_portfolio, bonds_data_portfolio)
   }
-
