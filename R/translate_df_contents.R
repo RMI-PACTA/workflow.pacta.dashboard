@@ -1,5 +1,9 @@
-translate_df_contents <-
-  function(data, id_data, dictionary, inplace = FALSE) {
+translate_df_contents <- function(
+  data,
+  id_data,
+  dictionary,
+  inplace = FALSE
+) {
     if (!(id_data %in% dictionary$id_data)) {
       rlang::abort(
         class = "dataset not in dictionary",

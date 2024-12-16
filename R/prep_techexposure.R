@@ -1,21 +1,20 @@
-prep_techexposure <-
-  function(
-    equity_results_portfolio,
-    bonds_results_portfolio,
-    investor_name,
-    portfolio_name,
-    indices_equity_results_portfolio,
-    indices_bonds_results_portfolio,
-    peers_equity_results_portfolio,
-    peers_bonds_results_portfolio,
-    peer_group,
-    select_scenario_other,
-    select_scenario,
-    start_year,
-    green_techs,
-    equity_market_levels,
-    all_tech_levels
-    ) {
+prep_techexposure <- function(
+  equity_results_portfolio,
+  bonds_results_portfolio,
+  investor_name,
+  portfolio_name,
+  indices_equity_results_portfolio,
+  indices_bonds_results_portfolio,
+  peers_equity_results_portfolio,
+  peers_bonds_results_portfolio,
+  peer_group,
+  select_scenario_other,
+  select_scenario,
+  start_year,
+  green_techs,
+  equity_market_levels,
+  all_tech_levels
+) {
     portfolio <-
       list(`Listed Equity` = equity_results_portfolio,
            `Corporate Bonds` = bonds_results_portfolio) %>%

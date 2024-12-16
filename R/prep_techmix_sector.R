@@ -1,18 +1,18 @@
-prep_techmix_sector <-
-  function(equity_results_portfolio,
-           bonds_results_portfolio,
-           indices_equity_results_portfolio,
-           indices_bonds_results_portfolio,
-           peers_equity_results_portfolio,
-           peers_bonds_results_portfolio,
-           investor_name,
-           portfolio_name,
-           start_year,
-           year_span,
-           peer_group,
-           green_techs,
-           all_tech_levels
-           ) {
+prep_techmix_sector <- function(
+  equity_results_portfolio,
+  bonds_results_portfolio,
+  indices_equity_results_portfolio,
+  indices_bonds_results_portfolio,
+  peers_equity_results_portfolio,
+  peers_bonds_results_portfolio,
+  investor_name,
+  portfolio_name,
+  start_year,
+  year_span,
+  peer_group,
+  green_techs,
+  all_tech_levels
+) {
 
   portfolio <-
       list(`Listed Equity` = equity_results_portfolio,

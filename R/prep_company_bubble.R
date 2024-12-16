@@ -1,12 +1,13 @@
 # prep_company_bubble ----------------------------------------------------------
 # based on pacta.portfolio.report:::prep_company_bubble, but does not filter to
 # allocation == "portfolio_weight" nor by scenario and scenario source
-prep_company_bubble <-
-  function(equity_results_company,
-           bonds_results_company,
-           portfolio_name,
-           start_year,
-           green_techs) {
+prep_company_bubble <- function(
+  equity_results_company,
+  bonds_results_company,
+  portfolio_name,
+  start_year,
+  green_techs
+) {
     
     equity_data <-
       equity_results_company %>%

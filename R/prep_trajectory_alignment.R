@@ -1,18 +1,19 @@
-prep_trajectory_alignment <-
-  function(equity_results_portfolio,
-           bonds_results_portfolio,
-           peers_equity_results_portfolio,
-           peers_bonds_results_portfolio,
-           indices_equity_results_portfolio,
-           indices_bonds_results_portfolio,
-           investor_name,
-           portfolio_name,
-           tech_roadmap_sectors,
-           peer_group,
-           start_year,
-           year_span,
-           scen_geo_levels,
-           all_tech_levels) {
+prep_trajectory_alignment <- function(
+  equity_results_portfolio,
+  bonds_results_portfolio,
+  peers_equity_results_portfolio,
+  peers_bonds_results_portfolio,
+  indices_equity_results_portfolio,
+  indices_bonds_results_portfolio,
+  investor_name,
+  portfolio_name,
+  tech_roadmap_sectors,
+  peer_group,
+  start_year,
+  year_span,
+  scen_geo_levels,
+  all_tech_levels
+) {
 
     portfolio <-
       list(`Listed Equity` = equity_results_portfolio,

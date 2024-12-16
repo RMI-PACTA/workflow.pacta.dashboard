@@ -1,5 +1,9 @@
-prep_audit_table <-
-  function(audit_file, investor_name, portfolio_name, currency_exchange_value) {
+prep_audit_table <- function(
+  audit_file,
+  investor_name,
+  portfolio_name,
+  currency_exchange_value
+) {
     sort_order <- c(
       "Bonds",
       "Equity",

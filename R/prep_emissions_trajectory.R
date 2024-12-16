@@ -1,11 +1,11 @@
-prep_emissions_trajectory <-
-  function(equity_results_portfolio,
-           bonds_results_portfolio,
-           portfolio_name,
-           pacta_sectors,
-           year_span,
-           start_year
-         ) {
+prep_emissions_trajectory <- function(
+  equity_results_portfolio,
+  bonds_results_portfolio,
+  portfolio_name,
+  pacta_sectors,
+  year_span,
+  start_year
+) {
     emissions_units <-
       c(
         Automotive = "tons of CO\U00002082 per km per cars produced",

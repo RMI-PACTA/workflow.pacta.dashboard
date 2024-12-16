@@ -2,13 +2,14 @@
 # based on pacta.portfolio.report:::prep_key_bars_company, but does not filter 
 # to allocation == "portfolio_weight"  nor by scenario and scenario source
 
-prep_key_bars_company <-
-  function(equity_results_company,
-           bonds_results_company,
-           portfolio_name,
-           start_year,
-           pacta_sectors_not_analysed,
-           all_tech_levels) {
+prep_key_bars_company <- function(
+  equity_results_company,
+  bonds_results_company,
+  portfolio_name,
+  start_year,
+  pacta_sectors_not_analysed,
+  all_tech_levels
+) {
     
     equity_data_company <-
       equity_results_company %>%

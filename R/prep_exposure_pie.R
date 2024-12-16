@@ -1,10 +1,11 @@
-prep_exposure_pie <-
-  function(data,
-           asset_type,
-           investor_name,
-           portfolio_name,
-           pacta_sectors,
-           currency_exchange_value) {
+prep_exposure_pie <- function(
+  data,
+  asset_type,
+  investor_name,
+  portfolio_name,
+  pacta_sectors,
+  currency_exchange_value
+) {
     data %>%
       filter(.data$investor_name == .env$investor_name &
         .data$portfolio_name == .env$portfolio_name) %>%

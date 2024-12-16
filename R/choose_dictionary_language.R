@@ -1,5 +1,7 @@
-choose_dictionary_language <-
-  function(data, language) {
+choose_dictionary_language <- function(
+  data,
+  language
+) {
     language <- tolower(language)
 
     data %>%

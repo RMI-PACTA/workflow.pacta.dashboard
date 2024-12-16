@@ -1,4 +1,10 @@
-prep_exposure_stats <- function(audit_file, investor_name, portfolio_name, pacta_sectors, currency_exchange_value) {
+prep_exposure_stats <- function(
+  audit_file,
+  investor_name,
+  portfolio_name,
+  pacta_sectors,
+  currency_exchange_value
+) {
   pacta_asset_classes <- c("Bonds", "Equity")
   
   audit_table <- prep_audit_table(

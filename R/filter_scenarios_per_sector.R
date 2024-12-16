@@ -1,5 +1,8 @@
-filter_scenarios_per_sector <-
-  function(data, select_scenario_other, select_scenario) {
+filter_scenarios_per_sector <- function(
+  data,
+  select_scenario_other,
+  select_scenario
+) {
     special_sectors <- c("Aviation")
     rest_of_sectors <- setdiff(unique(data$ald_sector), special_sectors)
 

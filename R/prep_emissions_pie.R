@@ -1,5 +1,10 @@
-prep_emissions_pie <-
-  function(data, asset_type, investor_name, portfolio_name, pacta_sectors) {
+prep_emissions_pie <- function(
+  data,
+  asset_type,
+  investor_name,
+  portfolio_name,
+  pacta_sectors
+) {
     data %>%
       ungroup() %>%
       filter(.data$investor_name == .env$investor_name &

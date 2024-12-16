@@ -2,13 +2,14 @@
 # based on pacta.portfolio.report:::prep_key_bars_portfolio, but does not filter 
 # to allocation == "portfolio_weight" nor by scenario and scenario source
 
-prep_key_bars_portfolio <-
-  function(equity_results_portfolio,
-           bonds_results_portfolio,
-           portfolio_name,
-           start_year,
-           pacta_sectors_not_analysed,
-           all_tech_levels) {
+prep_key_bars_portfolio <- function(
+  equity_results_portfolio,
+  bonds_results_portfolio,
+  portfolio_name,
+  start_year,
+  pacta_sectors_not_analysed,
+  all_tech_levels
+) {
     equity_data_portfolio <-
       equity_results_portfolio %>%
       filter(.data$portfolio_name == .env$portfolio_name) %>%

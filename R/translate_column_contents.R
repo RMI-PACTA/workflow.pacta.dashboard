@@ -1,5 +1,9 @@
-translate_column_contents <-
-  function(data, dictionary, column, inplace = FALSE) {
+translate_column_contents <- function(
+  data,
+  dictionary,
+  column,
+  inplace = FALSE
+) {
     dictionary_column <-
       dictionary %>%
       filter(.data$id_column == .env$column) %>%

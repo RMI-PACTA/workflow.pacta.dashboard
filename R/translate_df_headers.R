@@ -1,5 +1,9 @@
-translate_df_headers <-
-  function(data, id_data, language_select, dictionary) {
+translate_df_headers <- function(
+  data,
+  id_data,
+  language_select,
+  dictionary
+) {
     language <- tolower(language_select)
 
     if (!(id_data %in% dictionary$id_data)) {
