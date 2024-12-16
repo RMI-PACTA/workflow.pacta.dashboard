@@ -52,8 +52,13 @@ prep_techmix_sector <- function(
     bind_rows(.id = "asset_class") %>%
     filter(.data$asset_class %in% .env$asset_classes) %>%
     filter(
-      .data$asset_class == "Listed Equity" & .data$ald_sector %in% .env$equity_sectors |
-        .data$asset_class == "Corporate Bonds" & .data$ald_sector %in% .env$bonds_sectors
+      (
+        .data$asset_class == "Listed Equity" &
+          .data$ald_sector %in% .env$equity_sectors
+      ) | (
+        .data$asset_class == "Corporate Bonds" &
+          .data$ald_sector %in% .env$bonds_sectors
+      )
     )
 
   peers <-
@@ -64,8 +69,13 @@ prep_techmix_sector <- function(
     bind_rows(.id = "asset_class") %>%
     filter(.data$asset_class %in% .env$asset_classes) %>%
     filter(
-      .data$asset_class == "Listed Equity" & .data$ald_sector %in% .env$equity_sectors |
-        .data$asset_class == "Corporate Bonds" & .data$ald_sector %in% .env$bonds_sectors
+      (
+        .data$asset_class == "Listed Equity" &
+          .data$ald_sector %in% .env$equity_sectors
+      ) | (
+        .data$asset_class == "Corporate Bonds" &
+          .data$ald_sector %in% .env$bonds_sectors
+      )
     ) %>%
     filter(.data$investor_name == .env$peer_group)
 
@@ -152,7 +162,11 @@ prep_techmix_sector <- function(
         ),
         names_to = "val_type", values_to = "value") %>%
       mutate(
-        green_sum = if_else(.data$val_type == "production_plan", .data$green_sum_prod, .data$green_sum_scenario)
+        green_sum = if_else(
+          .data$val_type == "production_plan",
+          .data$green_sum_prod,
+          .data$green_sum_scenario
+        )
       ) %>%
       select(-c("green_sum_prod", "green_sum_scenario")) %>%
       ungroup() %>%
@@ -186,9 +200,15 @@ prep_techmix_sector <- function(
       ) %>%
       arrange(
         .data$asset_class,
-        factor(.data$equity_market, levels = c("Global Market", "Developed Market", "Emerging Market")),
+        factor(
+          .data$equity_market,
+          levels = c("Global Market", "Developed Market", "Emerging Market")
+        ),
         desc(.data$this_portfolio),
-        factor(.data$val_type, levels = c("Portfolio", "Scenario", "Benchmark")),
+        factor(
+          .data$val_type,
+          levels = c("Portfolio", "Scenario", "Benchmark")
+        ),
         .data$portfolio_name,
         factor(.data$technology, levels = .env$all_tech_levels)
       ) %>%

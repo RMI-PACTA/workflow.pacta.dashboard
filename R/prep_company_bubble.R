@@ -17,9 +17,31 @@ prep_company_bubble <- function(
     filter(.data$scenario_geography == "Global") %>%
     filter(.data$year %in% c(.env$start_year, .env$start_year + 5)) %>%
     mutate(
-      plan_buildout = last(.data$plan_tech_prod, order_by = .data$year) - first(.data$plan_tech_prod, order_by = .data$year),
-      scen_buildout = last(.data$scen_tech_prod, order_by = .data$year) - first(.data$scen_tech_prod, order_by = .data$year),
-      .by = c("company_name", "technology", "scenario_source", "scenario", "allocation")
+      plan_buildout = (
+        last(
+          .data$plan_tech_prod,
+          order_by = .data$year
+        ) - first(
+          .data$plan_tech_prod,
+          order_by = .data$year
+        )
+      ),
+      scen_buildout = (
+        last(
+          .data$scen_tech_prod,
+          order_by = .data$year
+        ) - first(
+          .data$scen_tech_prod,
+          order_by = .data$year
+        )
+      ),
+      .by = c(
+        "company_name",
+        "technology",
+        "scenario_source",
+        "scenario",
+        "allocation"
+      )
     ) %>%
     filter(.data$year == .env$start_year) %>%
     mutate(green = .data$technology %in% .env$green_techs) %>%
@@ -54,9 +76,29 @@ prep_company_bubble <- function(
     filter(.data$scenario_geography == "Global") %>%
     filter(.data$year %in% c(.env$start_year, .env$start_year + 5)) %>%
     mutate(
-      plan_buildout = last(.data$plan_tech_prod, order_by = .data$year) - first(.data$plan_tech_prod, order_by = .data$year),
-      scen_buildout = last(.data$scen_tech_prod, order_by = .data$year) - first(.data$scen_tech_prod, order_by = .data$year),
-      .by = c("company_name", "technology", "scenario_source", "scenario", "allocation")
+      plan_buildout = last(
+        .data$plan_tech_prod,
+        order_by = .data$year
+      ) - first(
+        .data$plan_tech_prod,
+        order_by = .data$year
+      ),
+      scen_buildout = (
+        last(
+          .data$scen_tech_prod,
+          order_by = .data$year
+        ) - first(
+          .data$scen_tech_prod,
+          order_by = .data$year
+        )
+      ),
+      .by = c(
+        "company_name",
+        "technology",
+        "scenario_source",
+        "scenario",
+        "allocation"
+      )
     ) %>%
     filter(.data$year == .env$start_year) %>%
     mutate(green = .data$technology %in% .env$green_techs) %>%

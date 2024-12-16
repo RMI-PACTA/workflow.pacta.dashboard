@@ -7,7 +7,9 @@ translate_df_contents <- function(
   if (!(id_data %in% dictionary$id_data)) {
     rlang::abort(
       class = "dataset not in dictionary",
-      glue::glue("the dataset {id_data} is not defined in translation dictionary.")
+      glue::glue(
+        "the dataset {id_data} is not defined in translation dictionary."
+      )
     )
   }
 

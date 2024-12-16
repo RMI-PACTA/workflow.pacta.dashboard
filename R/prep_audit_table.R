@@ -64,7 +64,9 @@ prep_audit_table <- function(
     audit_table_init %>%
     mutate(
       investment_means = case_when(
-        (.data$asset_type == "Funds") & (.data$direct_holding) ~ "Unidentified Funds",
+        (
+          (.data$asset_type == "Funds") & (.data$direct_holding)
+        ) ~ "Unidentified Funds",
         .data$direct_holding ~ "Direct",
         !.data$direct_holding ~ "Via a Fund"
       )
@@ -101,7 +103,10 @@ prep_audit_table <- function(
     summarise(
       asset_type_analysis = "Total",
       total_value_invested = sum(.data$total_value_invested, na.rm = TRUE),
-      percentage_value_invested = sum(.data$percentage_value_invested, na.rm = TRUE),
+      percentage_value_invested = sum(
+        .data$percentage_value_invested,
+        na.rm = TRUE
+      ),
       included = NA,
       value_invested = sum(.data$value_invested, na.rm = TRUE),
       investment_means = NA

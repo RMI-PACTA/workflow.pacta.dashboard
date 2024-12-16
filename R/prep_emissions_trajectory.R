@@ -52,6 +52,16 @@ prep_emissions_trajectory <- function(
       )
     ) %>%
     filter(.data$year <= .env$start_year + .env$year_span) %>%
-    arrange(.data$asset_class, factor(.data$equity_market, levels = c("Global Market", "Developed Market", "Emerging Market"))) %>%
+    arrange(
+      .data$asset_class,
+      factor(
+        .data$equity_market,
+        levels = c(
+          "Global Market",
+          "Developed Market",
+          "Emerging Market"
+        )
+      )
+    ) %>%
     ungroup()
 }

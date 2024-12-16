@@ -88,16 +88,31 @@ prep_trajectory_alignment <- function(
     filter(.data$scenario_geography != "GlobalAggregate") %>%
     filter(.data$asset_class %in% .env$asset_classes) %>%
     filter(
-      .data$asset_class == "Listed Equity" & .data$equity_market %in% .env$equity_markets |
-        .data$asset_class == "Corporate Bonds" & .data$equity_market %in% .env$bonds_markets
+      (
+        .data$asset_class == "Listed Equity" &
+          .data$equity_market %in% .env$equity_markets
+      ) | (
+        .data$asset_class == "Corporate Bonds" &
+          .data$equity_market %in% .env$bonds_markets
+      )
     ) %>%
     filter(
-      .data$asset_class == "Listed Equity" & .data$technology %in% .env$equity_techs |
-        .data$asset_class == "Corporate Bonds" & .data$technology %in% .env$bonds_techs
+      (
+        .data$asset_class == "Listed Equity" &
+          .data$technology %in% .env$equity_techs
+      ) | (
+        .data$asset_class == "Corporate Bonds" &
+          .data$technology %in% .env$bonds_techs
+      )
     ) %>%
     filter(
-      .data$asset_class == "Listed Equity" & .data$scenario_geography %in% .env$equity_scenario_geography |
-        .data$asset_class == "Corporate Bonds" & .data$scenario_geography %in% .env$bonds_scenario_geography
+      (
+        .data$asset_class == "Listed Equity" &
+          .data$scenario_geography %in% .env$equity_scenario_geography
+      ) | (
+        .data$asset_class == "Corporate Bonds" &
+          .data$scenario_geography %in% .env$bonds_scenario_geography
+      )
     ) %>%
     filter(.data$investor_name == .env$peer_group)
 
@@ -111,16 +126,31 @@ prep_trajectory_alignment <- function(
     filter(.data$scenario_geography != "GlobalAggregate") %>%
     filter(.data$asset_class %in% .env$asset_classes) %>%
     filter(
-      .data$asset_class == "Listed Equity" & .data$equity_market %in% .env$equity_markets |
-        .data$asset_class == "Corporate Bonds" & .data$equity_market %in% .env$bonds_markets
+      (
+        .data$asset_class == "Listed Equity" &
+          .data$equity_market %in% .env$equity_markets
+      ) | (
+        .data$asset_class == "Corporate Bonds" &
+          .data$equity_market %in% .env$bonds_markets
+      )
     ) %>%
     filter(
-      .data$asset_class == "Listed Equity" & .data$technology %in% .env$equity_techs |
-        .data$asset_class == "Corporate Bonds" & .data$technology %in% .env$bonds_techs
+      (
+        .data$asset_class == "Listed Equity" &
+          .data$technology %in% .env$equity_techs
+      ) | (
+        .data$asset_class == "Corporate Bonds" &
+          .data$technology %in% .env$bonds_techs
+      )
     ) %>%
     filter(
-      .data$asset_class == "Listed Equity" & .data$scenario_geography %in% .env$equity_scenario_geography |
-        .data$asset_class == "Corporate Bonds" & .data$scenario_geography %in% .env$bonds_scenario_geography
+      (
+        .data$asset_class == "Listed Equity" &
+          .data$scenario_geography %in% .env$equity_scenario_geography
+      ) | (
+        .data$asset_class == "Corporate Bonds" &
+          .data$scenario_geography %in% .env$bonds_scenario_geography
+      )
     )
 
   benchmark_data <- bind_rows(peers, indices)
@@ -162,14 +192,23 @@ prep_trajectory_alignment <- function(
       production = "plan_alloc_wt_tech_prod",
       "scen_alloc_wt_tech_prod"
     ) %>%
-    pivot_wider(names_from = "scenario", values_from = "scen_alloc_wt_tech_prod") %>%
+    pivot_wider(
+      names_from = "scenario",
+      values_from = "scen_alloc_wt_tech_prod"
+    ) %>%
     pivot_longer(
       cols = -cols_with_supporting_info,
       names_to = "scenario",
       values_to = "value",
       values_drop_na = TRUE
     ) %>%
-    mutate(value = if_else(.data$year > min(.data$year + 5) & .data$value == 0, NA_real_, .data$value)) %>%
+    mutate(
+      value = if_else(
+        .data$year > min(.data$year + 5) & .data$value == 0,
+        NA_real_,
+        .data$value
+      )
+    ) %>%
     filter(!is.na(.data$value)) %>%
     filter(.data$scenario == "production" | !.data$benchmark) %>%
     mutate(
@@ -189,8 +228,14 @@ prep_trajectory_alignment <- function(
     filter(.data$year <= .env$start_year + .env$year_span) %>%
     arrange(
       .data$asset_class,
-      factor(.data$equity_market, levels = c("Global Market", "Developed Market", "Emerging Market")),
-      factor(.data$scenario_source, levels = c("WEO2021", "GECO2021", "ETP2020", "IPR2021", "ISF2021")),
+      factor(
+        .data$equity_market,
+        levels = c("Global Market", "Developed Market", "Emerging Market")
+      ),
+      factor(
+        .data$scenario_source,
+        levels = c("WEO2021", "GECO2021", "ETP2020", "IPR2021", "ISF2021")
+      ),
       factor(.data$scenario_geography, levels = .env$scen_geo_levels),
       factor(.data$technology, levels = .env$all_tech_levels)
     )

@@ -30,7 +30,13 @@ prep_key_bars_portfolio <- function(
       "year"
     ) %>%
     pivot_longer(c("plan_tech_share", "scen_tech_share"), names_to = "plan") %>%
-    mutate(id = if_else(.data$plan == "plan_tech_share", "Portfolio", "Aligned* Portfolio")) %>%
+    mutate(
+      id = if_else(
+        .data$plan == "plan_tech_share",
+        "Portfolio",
+        "Aligned* Portfolio"
+      )
+    ) %>%
     rename(plan_tech_share = "value") %>%
     select(
       "id",
@@ -43,9 +49,12 @@ prep_key_bars_portfolio <- function(
       "allocation",
       "year"
     ) %>%
-    filter(!.data$ald_sector %in% .env$pacta_sectors_not_analysed | !grepl("Aligned", .data$id)) %>%
+    filter(
+      !(.data$ald_sector %in% .env$pacta_sectors_not_analysed) |
+        !grepl("Aligned", .data$id)
+    ) %>%
     mutate(asset_class = "Listed Equity") %>%
-    mutate_at("id", as.character) # convert the col type to character to prevent errors in case empty df is bound by rows
+    mutate_at("id", as.character) # convert the col type to character to prevent errors in case empty df is bound by rows # nolint
 
   bonds_data_portfolio <-
     bonds_results_portfolio %>%
@@ -67,7 +76,13 @@ prep_key_bars_portfolio <- function(
       "year"
     ) %>%
     pivot_longer(c("plan_tech_share", "scen_tech_share"), names_to = "plan") %>%
-    mutate(id = if_else(.data$plan == "plan_tech_share", "Portfolio", "Aligned* Portfolio")) %>%
+    mutate(
+      id = if_else(
+        .data$plan == "plan_tech_share",
+        "Portfolio",
+        "Aligned* Portfolio"
+      )
+    ) %>%
     rename(plan_tech_share = "value") %>%
     select(
       "id",

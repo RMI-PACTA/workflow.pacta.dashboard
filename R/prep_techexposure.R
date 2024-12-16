@@ -52,8 +52,13 @@ prep_techexposure <- function(
     bind_rows(.id = "asset_class") %>%
     filter(.data$asset_class %in% .env$asset_classes) %>%
     filter(
-      .data$asset_class == "Listed Equity" & .data$ald_sector %in% .env$equity_sectors |
-        .data$asset_class == "Corporate Bonds" & .data$ald_sector %in% .env$bonds_sectors
+      (
+        .data$asset_class == "Listed Equity" &
+          .data$ald_sector %in% .env$equity_sectors
+      ) | (
+        .data$asset_class == "Corporate Bonds" &
+          .data$ald_sector %in% .env$bonds_sectors
+      )
     )
 
   peers <-
@@ -64,8 +69,13 @@ prep_techexposure <- function(
     bind_rows(.id = "asset_class") %>%
     filter(.data$asset_class %in% .env$asset_classes) %>%
     filter(
-      .data$asset_class == "Listed Equity" & .data$ald_sector %in% .env$equity_sectors |
-        .data$asset_class == "Corporate Bonds" & .data$ald_sector %in% .env$bonds_sectors
+      (
+        .data$asset_class == "Listed Equity" &
+          .data$ald_sector %in% .env$equity_sectors
+      ) | (
+        .data$asset_class == "Corporate Bonds" &
+          .data$ald_sector %in% .env$bonds_sectors
+      )
     ) %>%
     filter(.data$investor_name == .env$peer_group)
 
@@ -79,9 +89,15 @@ prep_techexposure <- function(
     filter(.data$year == .env$start_year) %>%
     filter(.data$equity_market == "GlobalMarket") %>%
     mutate(green = .data$technology %in% .env$green_techs) %>%
-    group_by(.data$asset_class, .data$equity_market, .data$portfolio_name, .data$ald_sector) %>%
+    group_by(
+      .data$asset_class,
+      .data$equity_market,
+      .data$portfolio_name,
+      .data$ald_sector
+    ) %>%
     arrange(
-      .data$asset_class,  .data$portfolio_name,
+      .data$asset_class,
+      .data$portfolio_name,
       factor(.data$technology, levels = all_tech_levels),
       desc(.data$green)
     ) %>%
@@ -92,7 +108,13 @@ prep_techexposure <- function(
     mutate(cumsum = cumsum(.data$plan_carsten)) %>%
     mutate(cumsum = lag(.data$cumsum, default = 0)) %>%
     ungroup() %>%
-    group_by(.data$asset_class, .data$equity_market, .data$portfolio_name, .data$ald_sector, .data$green) %>%
+    group_by(
+      .data$asset_class,
+      .data$equity_market,
+      .data$portfolio_name,
+      .data$ald_sector,
+      .data$green
+    ) %>%
     mutate(green_sum = sum(.data$plan_carsten)) %>%
     mutate(green_prcnt = sum(.data$plan_carsten) / .data$sector_sum) %>%
     ungroup() %>%
