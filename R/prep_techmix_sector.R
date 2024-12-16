@@ -85,7 +85,7 @@ if (nrow(techexposure_data) > 0) {
         pivot_longer(
           cols = -c("asset_class", "investor_name", "portfolio_name", "scenario_source",
                     "scenario", "allocation", "equity_market", "year", "ald_sector",
-                    "technology", "green","green_sum_prod", "green_sum_scenario"),
+                    "technology", "green", "green_sum_prod", "green_sum_scenario"),
           names_to = "val_type", values_to = "value") %>%
         mutate(
           green_sum = if_else(.data$val_type == "production_plan", .data$green_sum_prod, .data$green_sum_scenario)
