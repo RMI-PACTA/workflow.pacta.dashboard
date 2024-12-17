@@ -35,7 +35,6 @@ Imports:
     pacta.workflow.utils,
     readr,
     rlang,
-    stringr,
     tidyr,
     workflow.pacta
 Remotes:
