@@ -51,7 +51,11 @@ prep_key_bars_portfolio <- function(
     ) %>%
     filter(
       !(.data$ald_sector %in% .env$pacta_sectors_not_analysed) |
-        !grepl("Aligned", .data$id)
+        !grepl(
+          pattern = "Aligned",
+          x = .data$id,
+          fixed = TRUE
+        )
     ) %>%
     mutate(asset_class = "Listed Equity") %>%
     mutate_at("id", as.character) # convert the col type to character to prevent errors in case empty df is bound by rows # nolint

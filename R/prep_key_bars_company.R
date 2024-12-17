@@ -66,7 +66,11 @@ prep_key_bars_company <- function(
     filter(row_number() == 1) %>%
     filter(
       !(.data$ald_sector %in% .env$pacta_sectors_not_analysed) |
-        !grepl("Aligned", .data$id)
+        !grepl(
+          pattern = "Aligned",
+          x = .data$id,
+          fixed = TRUE
+        )
     ) %>%
     arrange(desc(.data$port_weight)) %>%
     mutate(asset_class = "Corporate Bonds") %>%
