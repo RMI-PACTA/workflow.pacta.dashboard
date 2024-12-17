@@ -37,7 +37,7 @@ prepare_pacta_dashboard_data <- function(
     "Oil",
     "Gas"
   )
-  coal_levels <- c("Coal")
+  coal_levels <- "Coal"
   auto_levels <- c(
     "Electric",
     "Electric_HDV",
