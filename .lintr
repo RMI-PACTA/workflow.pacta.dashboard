@@ -8,5 +8,6 @@ linters: all_linters(
     unnecessary_concatenation_linter = NULL
   )
 exclusions: list(
-    "inst/extdata/translation/"
+    "inst/extdata/translation/",
+    "tests/testthat.R"
   )

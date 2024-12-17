@@ -42,32 +42,3 @@ test_that("get_scenario extracts scneario name from string with 2 underscores", 
     expected = "NZE_2050"
   )
 })
-
-# test_that("get_scenario throws error if no scenario_name (nothing after underscore)", {
-#   scenario_string <- "SOURCE_"
-#   expect_error(
-#     get_scenario(scenario_string),
-#     regexp = "No scenario found in string"
-#   )
-# })
-#
-# test_that("get_scenario throws error if no source (nothing before underscore)", {
-#   scenario_string <- "_SCENARIO"
-#   expect_error(
-#     get_scenario(scenario_string),
-#     regexp = "No source found in string"
-#   )
-# })
-#
-# test_that("get_scenario throws warning if multiple consecutive underscores", {
-#   scenario_string <- "SOURCE__SCENARIO"
-#   expect_warning(
-#     {results <- get_scenario(scenario_string)},
-#     regexp = "Multiple consecutive underscores in scenario string."
-#   )
-#   expect_identical(
-#     object = results,
-#     expected = "_SCENARIO"
-#   )
-# })
-#

@@ -42,31 +42,3 @@ test_that("get_scenario_source extracts source name from string with 2 underscor
     expected = "WEO2022"
   )
 })
-
-# test_that("get_scenario_source throws error if no source (nothing before underscore)", {
-#   scenario_string <- "_SCENARIO"
-#   expect_error(
-#     get_scenario_source(scenario_string),
-#     regexp = "No source found in string"
-#   )
-# })
-#
-# test_that("get_scenario_source throws error if no scenario_name (nothing after underscore)", {
-#   scenario_string <- "SOURCE_"
-#   expect_error(
-#     get_scenario_source(scenario_string),
-#     regexp = "No scenario found in string"
-#   )
-# })
-#
-# test_that("get_scenario_source throws warning if multiple consecutive underscores", {
-#   scenario_string <- "SOURCE__SCENARIO"
-#   expect_warning(
-#     {results <- get_scenario_source(scenario_string)},
-#     regexp = "Multiple consecutive underscores in scenario string."
-#   )
-#   expect_identical(
-#     object = results,
-#     expected = "SOURCE"
-#   )
-# })
