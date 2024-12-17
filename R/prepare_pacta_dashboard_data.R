@@ -8,7 +8,7 @@ prepare_pacta_dashboard_data <- function(
   log_info("Preparing data for the PACTA dashboard.")
 
   # portfolio/user parameters
-  log_debug("Reading portfolio/user parameters.")
+  log_debug("Reading parameters.")
 
   investor_name <- params[["user"]][["name"]]
   portfolio_name <- params[["portfolio"]][["name"]]
@@ -124,7 +124,7 @@ prepare_pacta_dashboard_data <- function(
 
   dataframe_translations <- readr::read_csv(
     system.file(
-      "extdata/translation/dataframe_labels.csv",
+      "extdata", "translation", "dataframe_labels.csv",
       package = "workflow.pacta.dashboard"
     ),
     col_types = readr::cols()
@@ -132,7 +132,7 @@ prepare_pacta_dashboard_data <- function(
 
   header_dictionary <- readr::read_csv(
     system.file(
-      "extdata/translation/dataframe_headers.csv",
+      "extdata", "translation", "dataframe_headers.csv",
       package = "workflow.pacta.dashboard"
     ),
     col_types = readr::cols()
@@ -140,14 +140,14 @@ prepare_pacta_dashboard_data <- function(
 
   js_translations <- jsonlite::fromJSON(
     txt = system.file(
-      "extdata/translation/js_labels.json",
+      "extdata", "translation", "js_labels.json",
       package = "workflow.pacta.dashboard"
     )
   )
 
   sector_order <- readr::read_csv(
     system.file(
-      "extdata/sector_order/sector_order.csv",
+      "extdata", "sector_order", "sector_order.csv",
       package = "workflow.pacta.dashboard"
     ),
     col_types = readr::cols()
