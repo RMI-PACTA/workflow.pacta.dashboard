@@ -6,7 +6,12 @@ replace_contents <- function(
     data,
     across(
       .cols = everything(),
-      .fns = ~ gsub("_CUR_", display_currency, .x)
+      .fns = ~ gsub(
+        pattern = "_CUR_",
+        replacement = display_currency,
+        x = .x,
+        fixed = TRUE
+      )
     )
   )
 }
