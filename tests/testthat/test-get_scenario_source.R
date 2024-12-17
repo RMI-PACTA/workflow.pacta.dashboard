@@ -25,7 +25,7 @@ test_that("get_scenario_source respects mixed case of original string", {
   )
 })
 
-test_that("get_scenario_source extracts source name from string with 1 underscore", {
+test_that("get_scenario_source extracts source name with 1 underscore", {
   scenario_string <- "GECO2022_1.5C"
   results <- get_scenario_source(scenario_string)
   expect_identical(
@@ -34,7 +34,7 @@ test_that("get_scenario_source extracts source name from string with 1 underscor
   )
 })
 
-test_that("get_scenario_source extracts source name from string with 2 underscores", {
+test_that("get_scenario_source extracts source name with 2 underscores", {
   scenario_string <- "WEO2022_NZE_2050"
   results <- get_scenario_source(scenario_string)
   expect_identical(
