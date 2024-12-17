@@ -8,8 +8,8 @@ prep_emissions_pie <- function(
   data %>%
     ungroup() %>%
     filter(
-      .data$investor_name == .env$investor_name &
-        .data$portfolio_name == .env$portfolio_name
+      .data$investor_name == .env$investor_name,
+      .data$portfolio_name == .env$portfolio_name
     ) %>%
     filter(.data$asset_type %in% c("Bonds", "Equity")) %>%
     select("asset_type", "sector", "weighted_sector_emissions") %>%

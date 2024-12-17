@@ -1,5 +1,4 @@
 linters: all_linters(
-    conjunct_test_linter = NULL,
     extraction_operator_linter = NULL,
     namespace_linter = NULL,
     object_usage_linter = NULL
