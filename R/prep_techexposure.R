@@ -104,9 +104,9 @@ prep_techexposure <- function(
     mutate(sector_sum = sum(.data$plan_carsten)) %>%
     mutate(sector_prcnt = .data$plan_carsten / sum(.data$plan_carsten)) %>%
     mutate(sector_cumprcnt = cumsum(.data$sector_prcnt)) %>%
-    mutate(sector_cumprcnt = lag(.data$sector_cumprcnt, default = 0)) %>%
+    mutate(sector_cumprcnt = lag(.data$sector_cumprcnt, default = 0L)) %>%
     mutate(cumsum = cumsum(.data$plan_carsten)) %>%
-    mutate(cumsum = lag(.data$cumsum, default = 0)) %>%
+    mutate(cumsum = lag(.data$cumsum, default = 0L)) %>%
     ungroup() %>%
     group_by(
       .data$asset_class,

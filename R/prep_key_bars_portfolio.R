@@ -14,10 +14,10 @@ prep_key_bars_portfolio <- function(
     equity_results_portfolio %>%
     filter(.data$portfolio_name == .env$portfolio_name) %>%
     filter(.data$equity_market %in% c("Global", "GlobalMarket")) %>%
-    filter(.data$year %in% c(.env$start_year + 5)) %>%
+    filter(.data$year %in% c(.env$start_year + 5L)) %>%
     filter(.data$ald_sector %in% c("Power", "Automotive")) %>%
     filter(.data$scenario_geography == "Global") %>%
-    mutate(port_weight = 1) %>%
+    mutate(port_weight = 1L) %>%
     select(
       "ald_sector",
       "technology",
@@ -64,10 +64,10 @@ prep_key_bars_portfolio <- function(
     bonds_results_portfolio %>%
     filter(.data$portfolio_name == .env$portfolio_name) %>%
     filter(.data$equity_market %in% c("Global", "GlobalMarket")) %>%
-    filter(.data$year %in% c(.env$start_year + 5)) %>%
+    filter(.data$year %in% c(.env$start_year + 5L)) %>%
     filter(.data$ald_sector %in% c("Power", "Automotive")) %>%
     filter(.data$scenario_geography == "Global") %>%
-    mutate(port_weight = 1) %>%
+    mutate(port_weight = 1L) %>%
     select(
       "ald_sector",
       "technology",

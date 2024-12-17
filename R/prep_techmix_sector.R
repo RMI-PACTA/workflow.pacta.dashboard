@@ -85,7 +85,7 @@ prep_techmix_sector <- function(
     filter(.data$scenario_geography == "Global") %>%
     filter(.data$year %in% c(.env$start_year, .env$start_year + .env$year_span))
 
-  if (nrow(techexposure_data) > 0) {
+  if (nrow(techexposure_data) > 0L) {
     techexposure_data <-
       techexposure_data %>%
       mutate(green = .data$technology %in% .env$green_techs) %>%
@@ -103,14 +103,14 @@ prep_techmix_sector <- function(
       ) %>%
       mutate(
         production_plan = if_else(
-          .data$plan_alloc_wt_tech_prod > 0,
+          .data$plan_alloc_wt_tech_prod > 0L,
           .data$plan_alloc_wt_tech_prod / .data$plan_alloc_wt_sec_prod,
-          0
+          0L
         ),
         scenario_plan = if_else(
-          .data$scen_alloc_wt_tech_prod > 0,
+          .data$scen_alloc_wt_tech_prod > 0L,
           .data$scen_alloc_wt_tech_prod / .data$scen_alloc_wt_sec_prod,
-          0
+          0L
         )
       ) %>%
       group_by(

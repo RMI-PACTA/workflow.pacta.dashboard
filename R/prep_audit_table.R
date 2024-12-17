@@ -43,7 +43,7 @@ prep_audit_table <- function(
         )
       )
     ) %>%
-    mutate(value_usd = pmax(.data$value_usd, 0)) %>%
+    mutate(value_usd = pmax(.data$value_usd, 0L)) %>%
     mutate(value_usd = .data$value_usd / .env$currency_exchange_value)
 
   included_table_totals <-
@@ -123,7 +123,7 @@ equal_adjacent_fields_totals <- function(
   are_equal <- TRUE
   for (field in fields_totals) {
     are_equal <- are_equal &&
-      (pull(slice(table, idx - 1), field) == pull(slice(table, idx), field))
+      (pull(slice(table, idx - 1L), field) == pull(slice(table, idx), field))
   }
   are_equal
 }
@@ -140,8 +140,8 @@ remove_dupe_entries_totals <- function(
       pull(.data$is_chosen_asset) %>%
       which()
 
-    if (length(idx_asset) >= 2) {
-      for (i in length(idx_asset):2) {
+    if (length(idx_asset) >= 2L) {
+      for (i in length(idx_asset):2L) {
         idx <- idx_asset[i]
         if (equal_adjacent_fields_totals(table, fields_totals, idx)) {
           table[idx, fields_totals] <- NA

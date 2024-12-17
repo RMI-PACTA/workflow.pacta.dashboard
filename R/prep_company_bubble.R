@@ -15,7 +15,7 @@ prep_company_bubble <- function(
     filter(.data$ald_sector %in% c("Power", "Automotive")) %>%
     filter(.data$equity_market == "GlobalMarket") %>%
     filter(.data$scenario_geography == "Global") %>%
-    filter(.data$year %in% c(.env$start_year, .env$start_year + 5)) %>%
+    filter(.data$year %in% c(.env$start_year, .env$start_year + 5L)) %>%
     mutate(
       plan_buildout = (
         last(
@@ -65,7 +65,7 @@ prep_company_bubble <- function(
     filter(.data$green) %>%
     select(-"plan_buildout", -"scen_buildout", -"green") %>%
     filter(!is.na(.data$plan_tech_share)) %>%
-    mutate(y = pmax(.data$y, 0, na.rm = TRUE)) %>%
+    mutate(y = pmax(.data$y, 0L, na.rm = TRUE)) %>%
     mutate(asset_class = "Listed Equity")
 
   bonds_data <-
@@ -74,7 +74,7 @@ prep_company_bubble <- function(
     filter(.data$ald_sector %in% c("Power", "Automotive")) %>%
     filter(.data$equity_market == "GlobalMarket") %>%
     filter(.data$scenario_geography == "Global") %>%
-    filter(.data$year %in% c(.env$start_year, .env$start_year + 5)) %>%
+    filter(.data$year %in% c(.env$start_year, .env$start_year + 5L)) %>%
     mutate(
       plan_buildout = last(
         .data$plan_tech_prod,
@@ -122,7 +122,7 @@ prep_company_bubble <- function(
     filter(.data$green) %>%
     select(-"plan_buildout", -"scen_buildout", -"green") %>%
     filter(!is.na(.data$plan_tech_share)) %>%
-    mutate(y = pmax(.data$y, 0, na.rm = TRUE)) %>%
+    mutate(y = pmax(.data$y, 0L, na.rm = TRUE)) %>%
     mutate(asset_class = "Corporate Bonds")
 
   bind_rows(equity_data, bonds_data)

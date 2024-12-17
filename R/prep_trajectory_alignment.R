@@ -34,7 +34,7 @@ prep_trajectory_alignment <- function(
       .data$technology,
       .data$scenario
     ) %>%
-    filter(n() > 1) %>%
+    filter(n() > 1L) %>%
     ungroup()
 
   asset_classes <-
@@ -204,7 +204,7 @@ prep_trajectory_alignment <- function(
     ) %>%
     mutate(
       value = if_else(
-        .data$year > min(.data$year + 5) & .data$value == 0,
+        .data$year > min(.data$year + 5L) & .data$value == 0L,
         NA_real_,
         .data$value
       )

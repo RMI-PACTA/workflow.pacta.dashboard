@@ -26,8 +26,8 @@ split_scenario_parameter <- function(
       fixed = TRUE
     )
   )
-  scenario_source <- split_parameter[1]
-  scenario_name <- paste(split_parameter[-1], collapse = "_")
+  scenario_source <- split_parameter[1L]
+  scenario_name <- paste(split_parameter[-1L], collapse = "_")
   return(
     list(
       scenario_source = scenario_source,

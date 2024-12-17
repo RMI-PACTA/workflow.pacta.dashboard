@@ -56,7 +56,7 @@ prep_exposure_stats <- function(
   all_stats_zero_sector_exposure <- expand.grid(
     asset_type = asset_classes_in_portfolio,
     sector = pacta_sectors,
-    val_sector = 0
+    val_sector = 0L
   ) %>% inner_join(
     distinct(
       select(
