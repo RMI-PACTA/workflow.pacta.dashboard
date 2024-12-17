@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(pacta.json.export)
+library(workflow.pacta.dashboard)
 
-test_check("pacta.json.export")
+test_check("workflow.pacta.dashboard")

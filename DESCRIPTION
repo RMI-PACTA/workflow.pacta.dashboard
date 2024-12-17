@@ -42,3 +42,6 @@ Remotes:
     RMI-PACTA/pacta.portfolio.utils,
     RMI-PACTA/pacta.workflow.utils,
     RMI-PACTA/workflow.pacta
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
