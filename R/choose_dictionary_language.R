@@ -6,9 +6,9 @@ choose_dictionary_language <- function(
 
   data %>%
     transmute(
-      .data$id_data,
-      .data$id_column,
-      translate_key = .data$key,
+      .data[["id_data"]],
+      .data[["id_column"]],
+      translate_key = .data[["key"]],
       translate_value = .data[[language]]
     )
 }

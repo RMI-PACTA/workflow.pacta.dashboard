@@ -12,11 +12,11 @@ prep_key_bars_portfolio <- function(
 ) {
   equity_data_portfolio <-
     equity_results_portfolio %>%
-    filter(.data$portfolio_name == .env$portfolio_name) %>%
-    filter(.data$equity_market %in% c("Global", "GlobalMarket")) %>%
-    filter(.data$year %in% c(.env$start_year + 5L)) %>%
-    filter(.data$ald_sector %in% c("Power", "Automotive")) %>%
-    filter(.data$scenario_geography == "Global") %>%
+    filter(.data[["portfolio_name"]] == .env[["portfolio_name"]]) %>%
+    filter(.data[["equity_market"]] %in% c("Global", "GlobalMarket")) %>%
+    filter(.data[["year"]] %in% c(.env[["start_year"]] + 5L)) %>%
+    filter(.data[["ald_sector"]] %in% c("Power", "Automotive")) %>%
+    filter(.data[["scenario_geography"]] == "Global") %>%
     mutate(port_weight = 1L) %>%
     select(
       "ald_sector",
@@ -32,7 +32,7 @@ prep_key_bars_portfolio <- function(
     pivot_longer(c("plan_tech_share", "scen_tech_share"), names_to = "plan") %>%
     mutate(
       id = if_else(
-        .data$plan == "plan_tech_share",
+        .data[["plan"]] == "plan_tech_share",
         "Portfolio",
         "Aligned* Portfolio"
       )
@@ -50,10 +50,10 @@ prep_key_bars_portfolio <- function(
       "year"
     ) %>%
     filter(
-      !(.data$ald_sector %in% .env$pacta_sectors_not_analysed) |
+      !(.data[["ald_sector"]] %in% .env[["pacta_sectors_not_analysed"]]) |
         !grepl(
           pattern = "Aligned",
-          x = .data$id,
+          x = .data[["id"]],
           fixed = TRUE
         )
     ) %>%
@@ -62,11 +62,11 @@ prep_key_bars_portfolio <- function(
 
   bonds_data_portfolio <-
     bonds_results_portfolio %>%
-    filter(.data$portfolio_name == .env$portfolio_name) %>%
-    filter(.data$equity_market %in% c("Global", "GlobalMarket")) %>%
-    filter(.data$year %in% c(.env$start_year + 5L)) %>%
-    filter(.data$ald_sector %in% c("Power", "Automotive")) %>%
-    filter(.data$scenario_geography == "Global") %>%
+    filter(.data[["portfolio_name"]] == .env[["portfolio_name"]]) %>%
+    filter(.data[["equity_market"]] %in% c("Global", "GlobalMarket")) %>%
+    filter(.data[["year"]] %in% c(.env[["start_year"]] + 5L)) %>%
+    filter(.data[["ald_sector"]] %in% c("Power", "Automotive")) %>%
+    filter(.data[["scenario_geography"]] == "Global") %>%
     mutate(port_weight = 1L) %>%
     select(
       "ald_sector",
@@ -82,7 +82,7 @@ prep_key_bars_portfolio <- function(
     pivot_longer(c("plan_tech_share", "scen_tech_share"), names_to = "plan") %>%
     mutate(
       id = if_else(
-        .data$plan == "plan_tech_share",
+        .data[["plan"]] == "plan_tech_share",
         "Portfolio",
         "Aligned* Portfolio"
       )
@@ -101,7 +101,7 @@ prep_key_bars_portfolio <- function(
     ) %>%
     mutate(asset_class = "Corporate Bonds") %>%
     mutate_at("id", as.character) %>%
-    arrange(factor(.data$technology, levels = .env$all_tech_levels))
+    arrange(factor(.data[["technology"]], levels = .env[["all_tech_levels"]]))
 
   bind_rows(equity_data_portfolio, bonds_data_portfolio)
 }

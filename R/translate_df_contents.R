@@ -4,7 +4,7 @@ translate_df_contents <- function(
   dictionary,
   inplace = FALSE
 ) {
-  if (!(id_data %in% dictionary$id_data)) {
+  if (!(id_data %in% dictionary[["id_data"]])) {
     rlang::abort(
       class = "dataset not in dictionary",
       glue::glue(
@@ -15,14 +15,14 @@ translate_df_contents <- function(
 
   dictionary_subset <-
     dictionary %>%
-    filter(.data$id_data == .env$id_data) %>%
+    filter(.data[["id_data"]] == .env[["id_data"]]) %>%
     transmute(
-      .data$id_column,
-      .data$translate_key,
-      .data$translate_value
+      .data[["id_column"]],
+      .data[["translate_key"]],
+      .data[["translate_value"]]
     )
 
-  for (column in unique(dictionary_subset$id_column)) {
+  for (column in unique(dictionary_subset[["id_column"]])) {
     data <-
       translate_column_contents(
         data = data,

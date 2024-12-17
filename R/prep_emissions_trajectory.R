@@ -22,8 +22,8 @@ prep_emissions_trajectory <- function(
     `Corporate Bonds` = bonds_results_portfolio
   ) %>%
     bind_rows(.id = "asset_class") %>%
-    filter(.data$portfolio_name == .env$portfolio_name) %>%
-    filter(.data$scenario_geography == "Global") %>%
+    filter(.data[["portfolio_name"]] == .env[["portfolio_name"]]) %>%
+    filter(.data[["scenario_geography"]] == "Global") %>%
     select(
       "asset_class",
       "allocation",
@@ -36,26 +36,26 @@ prep_emissions_trajectory <- function(
       "scenario_source"
     ) %>%
     distinct() %>%
-    filter(!is.nan(.data$plan)) %>%
+    filter(!is.nan(.data[["plan"]])) %>%
     pivot_longer(c("plan", "scen"), names_to = "plan") %>%
     unite("name", "sector", "plan", remove = FALSE) %>%
-    mutate(disabled = !.data$sector %in% .env$pacta_sectors) %>%
-    mutate(unit = .env$emissions_units[.data$sector]) %>%
-    group_by(.data$asset_class) %>%
-    filter(!all(.data$disabled)) %>%
+    mutate(disabled = !.data[["sector"]] %in% .env[["pacta_sectors"]]) %>%
+    mutate(unit = .env[["emissions_units"]][.data[["sector"]]]) %>%
+    group_by(.data[["asset_class"]]) %>%
+    filter(!all(.data[["disabled"]])) %>%
     mutate(
       equity_market =  case_when(
-        .data$equity_market == "GlobalMarket" ~ "Global Market",
-        .data$equity_market == "DevelopedMarket" ~ "Developed Market",
-        .data$equity_market == "EmergingMarket" ~ "Emerging Market",
-        TRUE ~ .data$equity_market
+        .data[["equity_market"]] == "GlobalMarket" ~ "Global Market",
+        .data[["equity_market"]] == "DevelopedMarket" ~ "Developed Market",
+        .data[["equity_market"]] == "EmergingMarket" ~ "Emerging Market",
+        TRUE ~ .data[["equity_market"]]
       )
     ) %>%
-    filter(.data$year <= .env$start_year + .env$year_span) %>%
+    filter(.data[["year"]] <= .env[["start_year"]] + .env[["year_span"]]) %>%
     arrange(
-      .data$asset_class,
+      .data[["asset_class"]],
       factor(
-        .data$equity_market,
+        .data[["equity_market"]],
         levels = c(
           "Global Market",
           "Developed Market",

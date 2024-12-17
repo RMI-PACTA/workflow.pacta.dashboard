@@ -78,11 +78,11 @@ prepare_pacta_dashboard_data <- function(
     path = file.path(analysis_output_dir, "manifest.json")
   )
 
-  start_year <- manifest$params$analysis$startYear
-  year_span <- manifest$params$analysis$timeHorizon
-  pacta_sectors <- unlist(manifest$params$analysis$sectorList)
-  equity_market_levels <- unlist(manifest$params$analysis$equityMarketList)
-  scen_geo_levels <- unlist(manifest$params$analysis$scenarioGeographiesList)
+  start_year <- manifest[["params"]][["analysis"]][["startYear"]]
+  year_span <- manifest[["params"]][["analysis"]][["timeHorizon"]]
+  pacta_sectors <- unlist(manifest[["params"]][["analysis"]][["sectorList"]])
+  equity_market_levels <- unlist(manifest[["params"]][["analysis"]][["equityMarketList"]]) #nolint
+  scen_geo_levels <- unlist(manifest[["params"]][["analysis"]][["scenarioGeographiesList"]]) #nolint
 
 
   # load results from input directory

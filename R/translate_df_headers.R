@@ -6,7 +6,7 @@ translate_df_headers <- function(
 ) {
   language <- tolower(language_select)
 
-  if (!(id_data %in% dictionary$id_data)) {
+  if (!(id_data %in% dictionary[["id_data"]])) {
     rlang::abort(
       class = "dataset not in dictionary",
       glue::glue(
@@ -19,8 +19,8 @@ translate_df_headers <- function(
 
   dictionary_subset <-
     dictionary %>%
-    filter(.data$id_data == .env$id_data) %>%
-    transmute(.data$id_column, .data[[!!language]])
+    filter(.data[["id_data"]] == .env[["id_data"]]) %>%
+    transmute(.data[["id_column"]], .data[[!!language]])
 
   translated_headers <-
     dictionary_subset %>%
