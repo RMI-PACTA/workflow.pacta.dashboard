@@ -20,7 +20,7 @@ prep_techexposure <- function(
       `Listed Equity` = equity_results_portfolio,
       `Corporate Bonds` = bonds_results_portfolio
     ) |>
-    bind_rows(.id = "asset_class") |>
+    dplyr::bind_rows(.id = "asset_class") |>
     dplyr::filter(
       .data[["investor_name"]] == .env[["investor_name"]],
       .data[["portfolio_name"]] == .env[["portfolio_name"]]
@@ -49,7 +49,7 @@ prep_techexposure <- function(
       `Listed Equity` = indices_eq_results_portfolio,
       `Corporate Bonds` = indices_cb_results_portfolio
     ) |>
-    bind_rows(.id = "asset_class") |>
+    dplyr::bind_rows(.id = "asset_class") |>
     dplyr::filter(.data[["asset_class"]] %in% .env[["asset_classes"]]) |>
     dplyr::filter(
       (
@@ -66,7 +66,7 @@ prep_techexposure <- function(
       `Listed Equity` = peers_equity_results_portfolio,
       `Corporate Bonds` = peers_bonds_results_portfolio
     ) |>
-    bind_rows(.id = "asset_class") |>
+    dplyr::bind_rows(.id = "asset_class") |>
     dplyr::filter(.data[["asset_class"]] %in% .env[["asset_classes"]]) |>
     dplyr::filter(
       (
@@ -79,7 +79,7 @@ prep_techexposure <- function(
     ) |>
     dplyr::filter(.data[["investor_name"]] == .env[["peer_group"]])
 
-  bind_rows(portfolio, peers, indices) |>
+  dplyr::bind_rows(portfolio, peers, indices) |>
     dplyr::filter(.data[["allocation"]] == "portfolio_weight") |>
     filter_scenarios_per_sector(
       select_scenario_other,

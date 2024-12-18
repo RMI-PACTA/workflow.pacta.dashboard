@@ -103,5 +103,5 @@ prep_key_bars_portfolio <- function(
     dplyr::mutate_at("id", as.character) |>
     arrange(factor(.data[["technology"]], levels = .env[["all_tech_levels"]]))
 
-  bind_rows(equity_data_portfolio, bonds_data_portfolio)
+  dplyr::bind_rows(equity_data_portfolio, bonds_data_portfolio)
 }

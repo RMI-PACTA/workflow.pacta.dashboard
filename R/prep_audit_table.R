@@ -113,7 +113,7 @@ prep_audit_table <- function(
       investment_means = NA
     )
 
-  bind_rows(included_table_per_asset, sum_table)
+  dplyr::bind_rows(included_table_per_asset, sum_table)
 }
 
 

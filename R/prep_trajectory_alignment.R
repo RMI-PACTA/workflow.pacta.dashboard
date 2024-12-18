@@ -20,7 +20,7 @@ prep_trajectory_alignment <- function(
       `Listed Equity` = equity_results_portfolio,
       `Corporate Bonds` = bonds_results_portfolio
     ) |>
-    bind_rows(.id = "asset_class") |>
+    dplyr::bind_rows(.id = "asset_class") |>
     dplyr::filter(
       .data[["investor_name"]] == .env[["investor_name"]],
       .data[["portfolio_name"]] == .env[["portfolio_name"]]
@@ -83,7 +83,7 @@ prep_trajectory_alignment <- function(
       `Listed Equity` = peers_equity_results_portfolio,
       `Corporate Bonds` = peers_bonds_results_portfolio
     ) |>
-    bind_rows(.id = "asset_class") |>
+    dplyr::bind_rows(.id = "asset_class") |>
     dplyr::filter(.data[["ald_sector"]] %in% .env[["tech_roadmap_sectors"]]) |>
     dplyr::filter(.data[["scenario_geography"]] != "GlobalAggregate") |>
     dplyr::filter(.data[["asset_class"]] %in% .env[["asset_classes"]]) |>
@@ -121,7 +121,7 @@ prep_trajectory_alignment <- function(
       `Listed Equity` = indices_eq_results_portfolio,
       `Corporate Bonds` = indices_cb_results_portfolio
     ) |>
-    bind_rows(.id = "asset_class") |>
+    dplyr::bind_rows(.id = "asset_class") |>
     dplyr::filter(.data[["ald_sector"]] %in% .env[["tech_roadmap_sectors"]]) |>
     dplyr::filter(.data[["scenario_geography"]] != "GlobalAggregate") |>
     dplyr::filter(.data[["asset_class"]] %in% .env[["asset_classes"]]) |>
@@ -153,7 +153,7 @@ prep_trajectory_alignment <- function(
       )
     )
 
-  benchmark_data <- bind_rows(peers, indices)
+  benchmark_data <- dplyr::bind_rows(peers, indices)
 
   cols_with_supporting_info <- c(
     "benchmark",
@@ -173,7 +173,7 @@ prep_trajectory_alignment <- function(
     portfolio = portfolio,
     benchmark = benchmark_data
   ) |>
-    bind_rows(.id = "benchmark") |>
+    dplyr::bind_rows(.id = "benchmark") |>
     dplyr::mutate(benchmark = .data[["benchmark"]] == "benchmark") |>
     dplyr::mutate(
       unit = case_when(

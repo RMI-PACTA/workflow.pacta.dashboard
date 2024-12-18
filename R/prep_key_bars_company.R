@@ -89,5 +89,5 @@ prep_key_bars_company <- function(
     dplyr::filter(!is.null(.data[["port_weight"]])) |>
     dplyr::filter(!is.null(.data[["plan_tech_share"]]))
 
-  bind_rows(equity_data_company, bonds_data_company)
+  dplyr::bind_rows(equity_data_company, bonds_data_company)
 }

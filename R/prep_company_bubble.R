@@ -135,5 +135,5 @@ prep_company_bubble <- function(
     dplyr::mutate(y = pmax(.data[["y"]], 0L, na.rm = TRUE)) |>
     dplyr::mutate(asset_class = "Corporate Bonds")
 
-  bind_rows(equity_data, bonds_data)
+  dplyr::bind_rows(equity_data, bonds_data)
 }

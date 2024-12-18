@@ -21,7 +21,7 @@ prep_emissions_trajectory <- function(
     `Listed Equity` = equity_results_portfolio,
     `Corporate Bonds` = bonds_results_portfolio
   ) |>
-    bind_rows(.id = "asset_class") |>
+    dplyr::bind_rows(.id = "asset_class") |>
     dplyr::filter(.data[["portfolio_name"]] == .env[["portfolio_name"]]) |>
     dplyr::filter(.data[["scenario_geography"]] == "Global") |>
     select(
