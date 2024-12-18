@@ -10,8 +10,7 @@ prep_key_bars_portfolio <- function(
   pacta_sectors_not_analysed,
   all_tech_levels
 ) {
-  equity_data_portfolio <-
-    equity_results_portfolio |>
+  equity_data_portfolio <- equity_results_portfolio |>
     dplyr::filter(.data[["portfolio_name"]] == .env[["portfolio_name"]]) |>
     dplyr::filter(.data[["equity_market"]] %in% c("Global", "GlobalMarket")) |>
     dplyr::filter(.data[["year"]] %in% c(.env[["start_year"]] + 5L)) |>
@@ -63,8 +62,7 @@ prep_key_bars_portfolio <- function(
     dplyr::mutate(asset_class = "Listed Equity") |>
     dplyr::mutate_at("id", as.character) # convert the col type to character to prevent errors in case empty df is bound by rows # nolint
 
-  bonds_data_portfolio <-
-    bonds_results_portfolio |>
+  bonds_data_portfolio <- bonds_results_portfolio |>
     dplyr::filter(.data[["portfolio_name"]] == .env[["portfolio_name"]]) |>
     dplyr::filter(.data[["equity_market"]] %in% c("Global", "GlobalMarket")) |>
     dplyr::filter(.data[["year"]] %in% c(.env[["start_year"]] + 5L)) |>

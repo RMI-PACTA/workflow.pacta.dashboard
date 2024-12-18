@@ -9,8 +9,7 @@ prep_company_bubble <- function(
   green_techs
 ) {
 
-  equity_data <-
-    equity_results_company |>
+  equity_data <- equity_results_company |>
     dplyr::filter(.data[["portfolio_name"]] == .env[["portfolio_name"]]) |>
     dplyr::filter(.data[["ald_sector"]] %in% c("Power", "Automotive")) |>
     dplyr::filter(.data[["equity_market"]] == "GlobalMarket") |>
@@ -73,8 +72,7 @@ prep_company_bubble <- function(
     dplyr::mutate(y = pmax(.data[["y"]], 0L, na.rm = TRUE)) |>
     dplyr::mutate(asset_class = "Listed Equity")
 
-  bonds_data <-
-    bonds_results_company |>
+  bonds_data <- bonds_results_company |>
     dplyr::filter(.data[["portfolio_name"]] == .env[["portfolio_name"]]) |>
     dplyr::filter(.data[["ald_sector"]] %in% c("Power", "Automotive")) |>
     dplyr::filter(.data[["equity_market"]] == "GlobalMarket") |>

@@ -17,13 +17,11 @@ translate_df_headers <- function(
 
   column_tibble <- dplyr::tibble(column_name = names(data))
 
-  dictionary_subset <-
-    dictionary |>
+  dictionary_subset <- dictionary |>
     dplyr::filter(.data[["id_data"]] == .env[["id_data"]]) |>
     dplyr::transmute(.data[["id_column"]], .data[[!!language]])
 
-  translated_headers <-
-    dictionary_subset |>
+  translated_headers <- dictionary_subset |>
     dplyr::left_join(column_tibble, by = c(id_column = "column_name"))
 
   names(data) <- translated_headers[[language]]

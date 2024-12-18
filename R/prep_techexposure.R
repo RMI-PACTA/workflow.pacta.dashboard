@@ -15,8 +15,7 @@ prep_techexposure <- function(
   equity_market_levels,
   all_tech_levels
 ) {
-  portfolio <-
-    list(
+  portfolio <- list(
       `Listed Equity` = equity_results_portfolio,
       `Corporate Bonds` = bonds_results_portfolio
     ) |>
@@ -27,25 +26,21 @@ prep_techexposure <- function(
     ) |>
     dplyr::filter(!is.na(.data[["ald_sector"]]))
 
-  asset_classes <-
-    portfolio |>
+  asset_classes <- portfolio |>
     dplyr::pull("asset_class") |>
     unique()
 
-  equity_sectors <-
-    portfolio |>
+  equity_sectors <- portfolio |>
     dplyr::filter(.data[["asset_class"]] == "Listed Equity") |>
     dplyr::pull("ald_sector") |>
     unique()
 
-  bonds_sectors <-
-    portfolio |>
+  bonds_sectors <- portfolio |>
     dplyr::filter(.data[["asset_class"]] == "Corporate Bonds") |>
     dplyr::pull("ald_sector") |>
     unique()
 
-  indices <-
-    list(
+  indices <- list(
       `Listed Equity` = indices_eq_results_portfolio,
       `Corporate Bonds` = indices_cb_results_portfolio
     ) |>
@@ -61,8 +56,7 @@ prep_techexposure <- function(
       )
     )
 
-  peers <-
-    list(
+  peers <- list(
       `Listed Equity` = peers_equity_results_portfolio,
       `Corporate Bonds` = peers_bonds_results_portfolio
     ) |>

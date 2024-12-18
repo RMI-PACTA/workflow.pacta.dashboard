@@ -4,8 +4,7 @@ translate_column_contents <- function(
   column,
   inplace = FALSE
 ) {
-  dictionary_column <-
-    dictionary |>
+  dictionary_column <- dictionary |>
     dplyr::filter(.data[["id_column"]] == .env[["column"]]) |>
     dplyr::select(-"id_column")
 

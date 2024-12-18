@@ -11,8 +11,7 @@ prep_key_bars_company <- function(
   all_tech_levels
 ) {
 
-  equity_data_company <-
-    equity_results_company |>
+  equity_data_company <- equity_results_company |>
     dplyr::filter(.data[["portfolio_name"]] == .env[["portfolio_name"]]) |>
     dplyr::filter(.data[["year"]] %in% c(.env[["start_year"]] + 5L)) |>
     dplyr::filter(.data[["equity_market"]] %in% c("Global", "GlobalMarket")) |>
@@ -40,8 +39,7 @@ prep_key_bars_company <- function(
     dplyr::filter(!is.null(.data[["port_weight"]])) |>
     dplyr::filter(!is.null(.data[["plan_tech_share"]]))
 
-  bonds_data_company <-
-    bonds_results_company |>
+  bonds_data_company <- bonds_results_company |>
     dplyr::filter(.data[["portfolio_name"]] == .env[["portfolio_name"]]) |>
     dplyr::filter(.data[["year"]] %in% c(.env[["start_year"]] + 5L)) |>
     dplyr::filter(.data[["equity_market"]] %in% c("Global", "GlobalMarket")) |>

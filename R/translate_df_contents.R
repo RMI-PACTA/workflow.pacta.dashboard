@@ -13,8 +13,7 @@ translate_df_contents <- function(
     )
   }
 
-  dictionary_subset <-
-    dictionary |>
+  dictionary_subset <- dictionary |>
     dplyr::filter(.data[["id_data"]] == .env[["id_data"]]) |>
     dplyr::transmute(
       .data[["id_column"]],
@@ -23,8 +22,7 @@ translate_df_contents <- function(
     )
 
   for (column in unique(dictionary_subset[["id_column"]])) {
-    data <-
-      translate_column_contents(
+    data <- translate_column_contents(
         data = data,
         dictionary = dictionary_subset,
         column = column,

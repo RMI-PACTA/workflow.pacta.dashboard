@@ -5,8 +5,7 @@ prep_audit_table <- function(
   currency_exchange_value
 ) {
 
-  audit_table_init <-
-    audit_file |>
+  audit_table_init <- audit_file |>
     dplyr::filter(
       .data[["investor_name"]] == .env[["investor_name"]],
       .data[["portfolio_name"]] == .env[["portfolio_name"]]
@@ -56,8 +55,7 @@ prep_audit_table <- function(
       value_usd = .data[["value_usd"]] / .env[["currency_exchange_value"]]
     )
 
-  included_table_totals <-
-    audit_table_init |>
+  included_table_totals <- audit_table_init |>
     dplyr::group_by(.data[["asset_type_analysis"]], .data[["included"]]) |>
     dplyr::summarise(
       total_value_invested = sum(.data[["value_usd"]], na.rm = TRUE),
@@ -69,8 +67,7 @@ prep_audit_table <- function(
       )
     )
 
-  included_table_value_breakdown <-
-    audit_table_init |>
+  included_table_value_breakdown <- audit_table_init |>
     dplyr::mutate(
       investment_means = dplyr::case_when(
         (
@@ -89,16 +86,14 @@ prep_audit_table <- function(
       .groups = "drop"
     )
 
-  fields_totals <-
-    c(
-      "asset_type_analysis",
-      "included",
-      "total_value_invested",
-      "percentage_value_invested"
-    )
+  fields_totals <- c(
+    "asset_type_analysis",
+    "included",
+    "total_value_invested",
+    "percentage_value_invested"
+  )
 
-  included_table_per_asset <-
-    included_table_totals |>
+  included_table_per_asset <- included_table_totals |>
     dplyr::left_join(
       included_table_value_breakdown,
       by = dplyr::join_by("asset_type_analysis")
@@ -113,8 +108,7 @@ prep_audit_table <- function(
       "investment_means"
     )
 
-  sum_table <-
-    included_table_per_asset |>
+  sum_table <- included_table_per_asset |>
     dplyr::summarise(
       asset_type_analysis = "Total",
       total_value_invested = sum(.data[["total_value_invested"]], na.rm = TRUE),
@@ -153,8 +147,7 @@ remove_dupe_entries_totals <- function(
   fields_totals
 ) {
   for (asset in unique(table[["asset_type_analysis"]])) {
-    idx_asset <-
-      table |>
+    idx_asset <- table |>
       dplyr::mutate(
         is_chosen_asset = .data[["asset_type_analysis"]] == .env[["asset"]]
       ) |>

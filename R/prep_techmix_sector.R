@@ -14,11 +14,10 @@ prep_techmix_sector <- function(
   all_tech_levels
 ) {
 
-  portfolio <-
-    list(
-      `Listed Equity` = equity_results_portfolio,
-      `Corporate Bonds` = bonds_results_portfolio
-    ) |>
+  portfolio <- list(
+    `Listed Equity` = equity_results_portfolio,
+    `Corporate Bonds` = bonds_results_portfolio
+  ) |>
     dplyr::bind_rows(.id = "asset_class") |>
     dplyr::filter(
       .data[["investor_name"]] == .env[["investor_name"]],
@@ -26,26 +25,22 @@ prep_techmix_sector <- function(
     ) |>
     dplyr::filter(!is.na(.data[["ald_sector"]]))
 
-  asset_classes <-
-    portfolio |>
+  asset_classes <- portfolio |>
     dplyr::pull("asset_class") |>
     unique()
 
-  equity_sectors <-
-    portfolio |>
+  equity_sectors <- portfolio |>
     dplyr::filter(.data[["asset_class"]] == "Listed Equity") |>
     dplyr::filter(.data[["allocation"]] == "portfolio_weight") |>
     dplyr::pull("ald_sector") |>
     unique()
 
-  bonds_sectors <-
-    portfolio |>
+  bonds_sectors <- portfolio |>
     dplyr::filter(.data[["asset_class"]] == "Corporate Bonds") |>
     dplyr::pull("ald_sector") |>
     unique()
 
-  indices <-
-    list(
+  indices <- list(
       `Listed Equity` = indices_eq_results_portfolio,
       `Corporate Bonds` = indices_cb_results_portfolio
     ) |>
@@ -61,8 +56,7 @@ prep_techmix_sector <- function(
       )
     )
 
-  peers <-
-    list(
+  peers <- list(
       `Listed Equity` = peers_equity_results_portfolio,
       `Corporate Bonds` = peers_bonds_results_portfolio
     ) |>
@@ -79,8 +73,7 @@ prep_techmix_sector <- function(
     ) |>
     dplyr::filter(.data[["investor_name"]] == .env[["peer_group"]])
 
-  techexposure_data <-
-    dplyr::bind_rows(portfolio, peers, indices) |>
+  techexposure_data <- dplyr::bind_rows(portfolio, peers, indices) |>
     dplyr::filter(.data[["allocation"]] == "portfolio_weight") |>
     dplyr::filter(.data[["scenario_geography"]] == "Global") |>
     dplyr::filter(
@@ -91,8 +84,7 @@ prep_techmix_sector <- function(
     )
 
   if (nrow(techexposure_data) > 0L) {
-    techexposure_data <-
-      techexposure_data |>
+    techexposure_data <- techexposure_data |>
       dplyr::mutate(green = .data[["technology"]] %in% .env[["green_techs"]]) |>
       dplyr::group_by(
         .data[["asset_class"]],

@@ -6,16 +6,15 @@ prep_emissions_trajectory <- function(
   year_span,
   start_year
 ) {
-  emissions_units <-
-    c(
-      Automotive = "tons of CO\U00002082 per km per cars produced",
-      Aviation = "tons of CO\U00002082 per passenger km per active planes",
-      Cement = "tons of CO\U00002082 per tons of cement",
-      Coal = "tons of CO\U00002082 per tons of coal",
-      `Oil&Gas` = "tons of CO\U00002082 per GJ",
-      Power = "tons of CO\U00002082 per MWh",
-      Steel = "tons of CO\U00002082 per tons of steel"
-    )
+  emissions_units <- c(
+    Automotive = "tons of CO\U00002082 per km per cars produced",
+    Aviation = "tons of CO\U00002082 per passenger km per active planes",
+    Cement = "tons of CO\U00002082 per tons of cement",
+    Coal = "tons of CO\U00002082 per tons of coal",
+    `Oil&Gas` = "tons of CO\U00002082 per GJ",
+    Power = "tons of CO\U00002082 per MWh",
+    Steel = "tons of CO\U00002082 per tons of steel"
+  )
 
   list(
     `Listed Equity` = equity_results_portfolio,

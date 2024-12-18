@@ -15,11 +15,10 @@ prep_trajectory_alignment <- function(
   all_tech_levels
 ) {
 
-  portfolio <-
-    list(
-      `Listed Equity` = equity_results_portfolio,
-      `Corporate Bonds` = bonds_results_portfolio
-    ) |>
+  portfolio <- list(
+    `Listed Equity` = equity_results_portfolio,
+    `Corporate Bonds` = bonds_results_portfolio
+  ) |>
     dplyr::bind_rows(.id = "asset_class") |>
     dplyr::filter(
       .data[["investor_name"]] == .env[["investor_name"]],
@@ -37,52 +36,44 @@ prep_trajectory_alignment <- function(
     dplyr::filter(dplyr::n() > 1L) |>
     dplyr::ungroup()
 
-  asset_classes <-
-    portfolio |>
+  asset_classes <- portfolio |>
     dplyr::pull("asset_class") |>
     unique()
 
-  equity_markets <-
-    portfolio |>
+  equity_markets <- portfolio |>
     dplyr::filter(.data[["asset_class"]] == "Listed Equity") |>
     dplyr::pull("equity_market") |>
     unique()
 
-  bonds_markets <-
-    portfolio |>
+  bonds_markets <- portfolio |>
     dplyr::filter(.data[["asset_class"]] == "Corporate Bonds") |>
     dplyr::pull("equity_market") |>
     unique()
 
-  equity_techs <-
-    portfolio |>
+  equity_techs <- portfolio |>
     dplyr::filter(.data[["asset_class"]] == "Listed Equity") |>
     dplyr::pull("technology") |>
     unique()
 
-  equity_scenario_geography <-
-    portfolio |>
+  equity_scenario_geography <- portfolio |>
     dplyr::filter(.data[["asset_class"]] == "Listed Equity") |>
     dplyr::pull("scenario_geography") |>
     unique()
 
-  bonds_scenario_geography <-
-    portfolio |>
+  bonds_scenario_geography <- portfolio |>
     dplyr::filter(.data[["asset_class"]] == "Corporate Bonds") |>
     dplyr::pull("scenario_geography") |>
     unique()
 
-  bonds_techs <-
-    portfolio |>
+  bonds_techs <- portfolio |>
     dplyr::filter(.data[["asset_class"]] == "Corporate Bonds") |>
     dplyr::pull("technology") |>
     unique()
 
-  peers <-
-    list(
-      `Listed Equity` = peers_equity_results_portfolio,
-      `Corporate Bonds` = peers_bonds_results_portfolio
-    ) |>
+  peers <- list(
+    `Listed Equity` = peers_equity_results_portfolio,
+    `Corporate Bonds` = peers_bonds_results_portfolio
+  ) |>
     dplyr::bind_rows(.id = "asset_class") |>
     dplyr::filter(.data[["ald_sector"]] %in% .env[["tech_roadmap_sectors"]]) |>
     dplyr::filter(.data[["scenario_geography"]] != "GlobalAggregate") |>
@@ -116,11 +107,10 @@ prep_trajectory_alignment <- function(
     ) |>
     dplyr::filter(.data[["investor_name"]] == .env[["peer_group"]])
 
-  indices <-
-    list(
-      `Listed Equity` = indices_eq_results_portfolio,
-      `Corporate Bonds` = indices_cb_results_portfolio
-    ) |>
+  indices <- list(
+    `Listed Equity` = indices_eq_results_portfolio,
+    `Corporate Bonds` = indices_cb_results_portfolio
+  ) |>
     dplyr::bind_rows(.id = "asset_class") |>
     dplyr::filter(.data[["ald_sector"]] %in% .env[["tech_roadmap_sectors"]]) |>
     dplyr::filter(.data[["scenario_geography"]] != "GlobalAggregate") |>

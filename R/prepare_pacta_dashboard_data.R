@@ -153,8 +153,7 @@ prepare_pacta_dashboard_data <- function(
     col_types = readr::cols()
   )
 
-  dictionary <-
-    choose_dictionary_language(
+  dictionary <- choose_dictionary_language(
       data = dataframe_translations,
       language = language_select
     )
@@ -166,43 +165,37 @@ prepare_pacta_dashboard_data <- function(
   # pacta.portfolio.report functions expect that
   log_debug("Adding investor_name and portfolio_name to results data frames.")
 
-  audit_file <-
-    audit_file |>
+  audit_file <- audit_file |>
     dplyr::mutate(
       investor_name = investor_name,
       portfolio_name = portfolio_name
     )
 
-  emissions <-
-    emissions |>
+  emissions <- emissions |>
     dplyr::mutate(
       investor_name = investor_name,
       portfolio_name = portfolio_name
     )
 
-  equity_results_portfolio <-
-    equity_results_portfolio |>
+  equity_results_portfolio <- equity_results_portfolio |>
     dplyr::mutate(
       investor_name = investor_name,
       portfolio_name = portfolio_name
     )
 
-  bonds_results_portfolio <-
-    bonds_results_portfolio |>
+  bonds_results_portfolio <- bonds_results_portfolio |>
     dplyr::mutate(
       investor_name = investor_name,
       portfolio_name = portfolio_name
     )
 
-  equity_results_company <-
-    equity_results_company |>
+  equity_results_company <- equity_results_company |>
     dplyr::mutate(
       investor_name = investor_name,
       portfolio_name = portfolio_name
     )
 
-  bonds_results_company <-
-    bonds_results_company |>
+  bonds_results_company <- bonds_results_company |>
     dplyr::mutate(
       investor_name = investor_name,
       portfolio_name = portfolio_name
