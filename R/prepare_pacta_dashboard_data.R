@@ -154,9 +154,9 @@ prepare_pacta_dashboard_data <- function(
   )
 
   dictionary <- choose_dictionary_language(
-      data = dataframe_translations,
-      language = language_select
-    )
+    data = dataframe_translations,
+    language = language_select
+  )
 
   header_dictionary <- replace_contents(header_dictionary, display_currency)
 

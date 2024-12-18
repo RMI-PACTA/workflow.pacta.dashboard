@@ -23,11 +23,11 @@ translate_df_contents <- function(
 
   for (column in unique(dictionary_subset[["id_column"]])) {
     data <- translate_column_contents(
-        data = data,
-        dictionary = dictionary_subset,
-        column = column,
-        inplace = inplace
-      )
+      data = data,
+      dictionary = dictionary_subset,
+      column = column,
+      inplace = inplace
+    )
   }
 
   data

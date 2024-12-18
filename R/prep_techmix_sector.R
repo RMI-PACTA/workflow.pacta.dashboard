@@ -41,9 +41,9 @@ prep_techmix_sector <- function(
     unique()
 
   indices <- list(
-      `Listed Equity` = indices_eq_results_portfolio,
-      `Corporate Bonds` = indices_cb_results_portfolio
-    ) |>
+    `Listed Equity` = indices_eq_results_portfolio,
+    `Corporate Bonds` = indices_cb_results_portfolio
+  ) |>
     dplyr::bind_rows(.id = "asset_class") |>
     dplyr::filter(.data[["asset_class"]] %in% .env[["asset_classes"]]) |>
     dplyr::filter(
@@ -57,9 +57,9 @@ prep_techmix_sector <- function(
     )
 
   peers <- list(
-      `Listed Equity` = peers_equity_results_portfolio,
-      `Corporate Bonds` = peers_bonds_results_portfolio
-    ) |>
+    `Listed Equity` = peers_equity_results_portfolio,
+    `Corporate Bonds` = peers_bonds_results_portfolio
+  ) |>
     dplyr::bind_rows(.id = "asset_class") |>
     dplyr::filter(.data[["asset_class"]] %in% .env[["asset_classes"]]) |>
     dplyr::filter(
