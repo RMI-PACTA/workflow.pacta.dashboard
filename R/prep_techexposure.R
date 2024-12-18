@@ -106,9 +106,9 @@ prep_techexposure <- function(
       sector_prcnt = .data[["plan_carsten"]] / sum(.data[["plan_carsten"]])
     ) |>
     dplyr::mutate(sector_cumprcnt = cumsum(.data[["sector_prcnt"]])) |>
-    dplyr::mutate(sector_cumprcnt = lag(.data[["sector_cumprcnt"]], default = 0L)) |>
+    dplyr::mutate(sector_cumprcnt = dplyr::lag(.data[["sector_cumprcnt"]], default = 0L)) |>
     dplyr::mutate(cumsum = cumsum(.data[["plan_carsten"]])) |>
-    dplyr::mutate(cumsum = lag(.data[["cumsum"]], default = 0L)) |>
+    dplyr::mutate(cumsum = dplyr::lag(.data[["cumsum"]], default = 0L)) |>
     dplyr::ungroup() |>
     dplyr::group_by(
       .data[["asset_class"]],
