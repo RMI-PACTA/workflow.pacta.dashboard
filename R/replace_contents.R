@@ -4,7 +4,7 @@ replace_contents <- function(
 ) {
   dplyr::mutate(
     data,
-    across(
+    dplyr::across(
       .cols = everything(),
       .fns = ~ gsub(
         pattern = "_CUR_",

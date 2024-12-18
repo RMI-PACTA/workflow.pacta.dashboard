@@ -13,7 +13,7 @@ prep_exposure_pie <- function(
     ) |>
     dplyr::filter(.data[["asset_type"]] %in% c("Bonds", "Equity")) |>
     dplyr::filter(.data[["valid_input"]]) |>
-    dplyr::mutate(across(c("bics_sector", "financial_sector"), as.character)) |>
+    dplyr::mutate(dplyr::across(c("bics_sector", "financial_sector"), as.character)) |>
     dplyr::mutate(
       sector = dplyr::if_else(
         .data[["financial_sector"]] %in% .env[["pacta_sectors"]],
