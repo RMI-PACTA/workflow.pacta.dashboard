@@ -44,7 +44,7 @@ prep_exposure_stats <- function(
       perc_asset_val_sector = (
         .data[["value"]] / sum(.data[["value"]], na.rm = TRUE)
       ),
-      .by = join_by("asset_type" == "asset_type")
+      .by = "asset_type"
     ) %>%
     inner_join(
       audit_table,
