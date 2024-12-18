@@ -36,7 +36,7 @@ prep_key_bars_company <- function(
     dplyr::mutate_at("id", as.character) |> # convert the col type to character to prevent errors in case empty df is binded by rows #nolint
     dplyr::group_by(.data[["ald_sector"]], .data[["technology"]]) |> # select at most 15 companies with the highest weigths per sector+technology #nolint
     dplyr::arrange(dplyr::desc(.data[["port_weight"]]), .by_group = TRUE) |>
-    slice(1L:15L)  |>
+    dplyr::slice(1L:15L)  |>
     dplyr::filter(!is.null(.data[["port_weight"]])) |>
     dplyr::filter(!is.null(.data[["plan_tech_share"]]))
 
@@ -77,7 +77,7 @@ prep_key_bars_company <- function(
     dplyr::mutate_at("id", as.character) |> # convert the col type to character to prevent errors in case empty df is bound by rows #nolint
     dplyr::group_by(.data[["ald_sector"]], .data[["technology"]]) |> # select at most 15 companies with the highest weigths per sector+technology #nolint
     dplyr::arrange(.data[["port_weight"]], .by_group = TRUE) |>
-    slice(1L:15L) |>
+    dplyr::slice(1L:15L) |>
     dplyr::group_by(.data[["ald_sector"]]) |>
     dplyr::arrange(
       factor(

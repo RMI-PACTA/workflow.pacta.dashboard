@@ -125,7 +125,7 @@ equal_adjacent_fields_totals <- function(
   are_equal <- TRUE
   for (field in fields_totals) {
     are_equal <- are_equal &&
-      (dplyr::pull(slice(table, idx - 1L), field) == dplyr::pull(slice(table, idx), field))
+      (dplyr::pull(dplyr::slice(table, idx - 1L), field) == dplyr::pull(dplyr::slice(table, idx), field))
   }
   are_equal
 }

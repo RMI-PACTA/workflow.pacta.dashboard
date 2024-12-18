@@ -2,7 +2,6 @@
 "_PACKAGE"
 
 ## usethis namespace: start
-#' @importFrom dplyr slice
 #' @importFrom logger log_debug
 #' @importFrom logger log_error
 #' @importFrom logger log_info
