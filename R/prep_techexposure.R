@@ -88,7 +88,7 @@ prep_techexposure <- function(
     dplyr::filter(.data[["scenario_geography"]] == "Global") |>
     dplyr::filter(.data[["year"]] == .env[["start_year"]]) |>
     dplyr::filter(.data[["equity_market"]] == "GlobalMarket") |>
-    mutate(green = .data[["technology"]] %in% .env[["green_techs"]]) |>
+    dplyr::mutate(green = .data[["technology"]] %in% .env[["green_techs"]]) |>
     group_by(
       .data[["asset_class"]],
       .data[["equity_market"]],
@@ -101,14 +101,14 @@ prep_techexposure <- function(
       factor(.data[["technology"]], levels = all_tech_levels),
       desc(.data[["green"]])
     ) |>
-    mutate(sector_sum = sum(.data[["plan_carsten"]])) |>
-    mutate(
+    dplyr::mutate(sector_sum = sum(.data[["plan_carsten"]])) |>
+    dplyr::mutate(
       sector_prcnt = .data[["plan_carsten"]] / sum(.data[["plan_carsten"]])
     ) |>
-    mutate(sector_cumprcnt = cumsum(.data[["sector_prcnt"]])) |>
-    mutate(sector_cumprcnt = lag(.data[["sector_cumprcnt"]], default = 0L)) |>
-    mutate(cumsum = cumsum(.data[["plan_carsten"]])) |>
-    mutate(cumsum = lag(.data[["cumsum"]], default = 0L)) |>
+    dplyr::mutate(sector_cumprcnt = cumsum(.data[["sector_prcnt"]])) |>
+    dplyr::mutate(sector_cumprcnt = lag(.data[["sector_cumprcnt"]], default = 0L)) |>
+    dplyr::mutate(cumsum = cumsum(.data[["plan_carsten"]])) |>
+    dplyr::mutate(cumsum = lag(.data[["cumsum"]], default = 0L)) |>
     ungroup() |>
     group_by(
       .data[["asset_class"]],
@@ -117,15 +117,15 @@ prep_techexposure <- function(
       .data[["ald_sector"]],
       .data[["green"]]
     ) |>
-    mutate(green_sum = sum(.data[["plan_carsten"]])) |>
-    mutate(
+    dplyr::mutate(green_sum = sum(.data[["plan_carsten"]])) |>
+    dplyr::mutate(
       green_prcnt = sum(.data[["plan_carsten"]]) / .data[["sector_sum"]]
     ) |>
     ungroup() |>
-    mutate(
+    dplyr::mutate(
       this_portfolio = .data[["portfolio_name"]] == .env[["portfolio_name"]]
     ) |>
-    mutate(
+    dplyr::mutate(
       equity_market =  case_when(
         .data[["equity_market"]] == "GlobalMarket" ~ "Global Market",
         .data[["equity_market"]] == "DevelopedMarket" ~ "Developed Market",

@@ -11,20 +11,20 @@ prep_audit_table <- function(
       .data[["investor_name"]] == .env[["investor_name"]],
       .data[["portfolio_name"]] == .env[["portfolio_name"]]
     ) |>
-    mutate(
+    dplyr::mutate(
       asset_type = if_else(
         .data[["valid_input"]], .data[["asset_type"]], "Unknown"
       )
     ) |>
-    mutate(
+    dplyr::mutate(
       is_included = if_else(
         .data[["asset_type"]] %in% c("Others", "Funds"),
         FALSE,
         .data[["valid_input"]]
       )
     ) |>
-    mutate(included = if_else(.data[["is_included"]], "Yes", "No")) |>
-    mutate(
+    dplyr::mutate(included = if_else(.data[["is_included"]], "Yes", "No")) |>
+    dplyr::mutate(
       asset_type_analysis = case_when(
         .data[["asset_type"]] %in% c("Bonds", "Equity") ~ .data[["asset_type"]],
         .data[["asset_type"]] == "Others" ~ "Other",
@@ -34,7 +34,7 @@ prep_audit_table <- function(
         TRUE ~ "Unclassified"
       )
     ) |>
-    mutate(
+    dplyr::mutate(
       asset_type_analysis = factor(
         .data[["asset_type_analysis"]],
         levels = c(
@@ -45,8 +45,8 @@ prep_audit_table <- function(
         )
       )
     ) |>
-    mutate(value_usd = pmax(.data[["value_usd"]], 0L)) |>
-    mutate(value_usd = .data[["value_usd"]] / .env[["currency_exchange_value"]])
+    dplyr::mutate(value_usd = pmax(.data[["value_usd"]], 0L)) |>
+    dplyr::mutate(value_usd = .data[["value_usd"]] / .env[["currency_exchange_value"]])
 
   included_table_totals <-
     audit_table_init |>
@@ -55,7 +55,7 @@ prep_audit_table <- function(
       total_value_invested = sum(.data[["value_usd"]], na.rm = TRUE),
       .groups = "drop"
     ) |>
-    mutate(
+    dplyr::mutate(
       percentage_value_invested = (
         .data[["total_value_invested"]] / sum(.data[["total_value_invested"]])
       )
@@ -63,7 +63,7 @@ prep_audit_table <- function(
 
   included_table_value_breakdown <-
     audit_table_init |>
-    mutate(
+    dplyr::mutate(
       investment_means = case_when(
         (
           (.data[["asset_type"]] == "Funds") & (.data[["direct_holding"]])
@@ -138,7 +138,7 @@ remove_dupe_entries_totals <- function(
   for (asset in unique(table[["asset_type_analysis"]])) {
     idx_asset <-
       table |>
-      mutate(
+      dplyr::mutate(
         is_chosen_asset = .data[["asset_type_analysis"]] == .env[["asset"]]
       ) |>
       pull(.data[["is_chosen_asset"]]) |>

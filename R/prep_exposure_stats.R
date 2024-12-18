@@ -21,8 +21,8 @@ prep_exposure_stats <- function(
     ) |>
     dplyr::filter(.data[["asset_type"]] %in% pacta_asset_classes) |>
     dplyr::filter(.data[["valid_input"]]) |>
-    mutate(across(c("bics_sector", "financial_sector"), as.character)) |>
-    mutate(
+    dplyr::mutate(across(c("bics_sector", "financial_sector"), as.character)) |>
+    dplyr::mutate(
       sector = if_else(
         .data[["financial_sector"]] %in% .env[["pacta_sectors"]],
         .data[["financial_sector"]],
@@ -40,7 +40,7 @@ prep_exposure_stats <- function(
       ),
       .by = c("asset_type", "sector")
     ) |>
-    mutate(
+    dplyr::mutate(
       perc_asset_val_sector = (
         .data[["value"]] / sum(.data[["value"]], na.rm = TRUE)
       ),
@@ -81,14 +81,14 @@ prep_exposure_stats <- function(
       exposure_stats,
       by = join_by("asset_type", "sector", "percentage_value_invested")
     ) |>
-    mutate(
+    dplyr::mutate(
       perc_asset_val_sector = if_else(
         is.na(.data[["perc_asset_val_sector"]]),
         .data[["val_sector"]],
         .data[["perc_asset_val_sector"]]
       )
     ) |>
-    mutate(
+    dplyr::mutate(
       asset_type = case_when(
         .data[["asset_type"]] == "Bonds" ~ "Corporate Bonds",
         .data[["asset_type"]] == "Equity" ~ "Listed Equity"

@@ -2,7 +2,7 @@ replace_contents <- function(
   data,
   display_currency
 ) {
-  mutate(
+  dplyr::mutate(
     data,
     across(
       .cols = everything(),

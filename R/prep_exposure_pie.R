@@ -13,8 +13,8 @@ prep_exposure_pie <- function(
     ) |>
     dplyr::filter(.data[["asset_type"]] %in% c("Bonds", "Equity")) |>
     dplyr::filter(.data[["valid_input"]]) |>
-    mutate(across(c("bics_sector", "financial_sector"), as.character)) |>
-    mutate(
+    dplyr::mutate(across(c("bics_sector", "financial_sector"), as.character)) |>
+    dplyr::mutate(
       sector = if_else(
         .data[["financial_sector"]] %in% .env[["pacta_sectors"]],
         .data[["financial_sector"]],
@@ -33,7 +33,7 @@ prep_exposure_pie <- function(
       ),
       .groups = "drop"
     ) |>
-    mutate(exploded = .data[["sector"]] %in% .env[["pacta_sectors"]]) |>
+    dplyr::mutate(exploded = .data[["sector"]] %in% .env[["pacta_sectors"]]) |>
     arrange(
       .data[["asset_type"]],
       desc(.data[["exploded"]]),

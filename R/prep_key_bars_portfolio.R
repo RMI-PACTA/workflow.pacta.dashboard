@@ -17,7 +17,7 @@ prep_key_bars_portfolio <- function(
     dplyr::filter(.data[["year"]] %in% c(.env[["start_year"]] + 5L)) |>
     dplyr::filter(.data[["ald_sector"]] %in% c("Power", "Automotive")) |>
     dplyr::filter(.data[["scenario_geography"]] == "Global") |>
-    mutate(port_weight = 1L) |>
+    dplyr::mutate(port_weight = 1L) |>
     select(
       "ald_sector",
       "technology",
@@ -30,7 +30,7 @@ prep_key_bars_portfolio <- function(
       "year"
     ) |>
     tidyr::pivot_longer(c("plan_tech_share", "scen_tech_share"), names_to = "plan") |>
-    mutate(
+    dplyr::mutate(
       id = if_else(
         .data[["plan"]] == "plan_tech_share",
         "Portfolio",
@@ -57,8 +57,8 @@ prep_key_bars_portfolio <- function(
           fixed = TRUE
         )
     ) |>
-    mutate(asset_class = "Listed Equity") |>
-    mutate_at("id", as.character) # convert the col type to character to prevent errors in case empty df is bound by rows # nolint
+    dplyr::mutate(asset_class = "Listed Equity") |>
+    dplyr::mutate_at("id", as.character) # convert the col type to character to prevent errors in case empty df is bound by rows # nolint
 
   bonds_data_portfolio <-
     bonds_results_portfolio |>
@@ -67,7 +67,7 @@ prep_key_bars_portfolio <- function(
     dplyr::filter(.data[["year"]] %in% c(.env[["start_year"]] + 5L)) |>
     dplyr::filter(.data[["ald_sector"]] %in% c("Power", "Automotive")) |>
     dplyr::filter(.data[["scenario_geography"]] == "Global") |>
-    mutate(port_weight = 1L) |>
+    dplyr::mutate(port_weight = 1L) |>
     select(
       "ald_sector",
       "technology",
@@ -80,7 +80,7 @@ prep_key_bars_portfolio <- function(
       "year"
     ) |>
     tidyr::pivot_longer(c("plan_tech_share", "scen_tech_share"), names_to = "plan") |>
-    mutate(
+    dplyr::mutate(
       id = if_else(
         .data[["plan"]] == "plan_tech_share",
         "Portfolio",
@@ -99,8 +99,8 @@ prep_key_bars_portfolio <- function(
       "allocation",
       "year"
     ) |>
-    mutate(asset_class = "Corporate Bonds") |>
-    mutate_at("id", as.character) |>
+    dplyr::mutate(asset_class = "Corporate Bonds") |>
+    dplyr::mutate_at("id", as.character) |>
     arrange(factor(.data[["technology"]], levels = .env[["all_tech_levels"]]))
 
   bind_rows(equity_data_portfolio, bonds_data_portfolio)

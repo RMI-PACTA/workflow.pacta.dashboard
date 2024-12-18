@@ -39,11 +39,11 @@ prep_emissions_trajectory <- function(
     dplyr::filter(!is.nan(.data[["plan"]])) |>
     tidyr::pivot_longer(c("plan", "scen"), names_to = "plan") |>
     tidyr::unite("name", "sector", "plan", remove = FALSE) |>
-    mutate(disabled = !.data[["sector"]] %in% .env[["pacta_sectors"]]) |>
-    mutate(unit = .env[["emissions_units"]][.data[["sector"]]]) |>
+    dplyr::mutate(disabled = !.data[["sector"]] %in% .env[["pacta_sectors"]]) |>
+    dplyr::mutate(unit = .env[["emissions_units"]][.data[["sector"]]]) |>
     group_by(.data[["asset_class"]]) |>
     dplyr::filter(!all(.data[["disabled"]])) |>
-    mutate(
+    dplyr::mutate(
       equity_market =  case_when(
         .data[["equity_market"]] == "GlobalMarket" ~ "Global Market",
         .data[["equity_market"]] == "DevelopedMarket" ~ "Developed Market",

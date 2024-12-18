@@ -174,8 +174,8 @@ prep_trajectory_alignment <- function(
     benchmark = benchmark_data
   ) |>
     bind_rows(.id = "benchmark") |>
-    mutate(benchmark = .data[["benchmark"]] == "benchmark") |>
-    mutate(
+    dplyr::mutate(benchmark = .data[["benchmark"]] == "benchmark") |>
+    dplyr::mutate(
       unit = case_when(
         .data[["ald_sector"]] == "Power" ~ "MW",
         .data[["ald_sector"]] == "Oil&Gas" ~ "GJ/a",
@@ -202,7 +202,7 @@ prep_trajectory_alignment <- function(
       values_to = "value",
       values_drop_na = TRUE
     ) |>
-    mutate(
+    dplyr::mutate(
       value = if_else(
         .data[["year"]] > min(.data[["year"]] + 5L) & .data[["value"]] == 0L,
         NA_real_,
@@ -211,7 +211,7 @@ prep_trajectory_alignment <- function(
     ) |>
     dplyr::filter(!is.na(.data[["value"]])) |>
     dplyr::filter(.data[["scenario"]] == "production" | !.data[["benchmark"]]) |>
-    mutate(
+    dplyr::mutate(
       equity_market =  case_when(
         .data[["equity_market"]] == "GlobalMarket" ~ "Global Market",
         .data[["equity_market"]] == "DevelopedMarket" ~ "Developed Market",
@@ -219,7 +219,7 @@ prep_trajectory_alignment <- function(
         TRUE ~ .data[["equity_market"]]
       )
     ) |>
-    mutate(
+    dplyr::mutate(
       allocation = case_when(
         .data[["allocation"]] == "portfolio_weight" ~ "Portfolio Weight",
         .data[["allocation"]] == "ownership_weight" ~ "Ownership Weight"

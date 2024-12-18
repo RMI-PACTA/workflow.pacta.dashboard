@@ -20,7 +20,7 @@ translate_column_contents <- function(
       dictionary_column,
       by = rlang::set_names("translate_key", column)
     ) |>
-    mutate(
+    dplyr::mutate(
       !!new_column := if_else(
         is.na(.data[["translate_value"]]),
         .data[[!!column]],

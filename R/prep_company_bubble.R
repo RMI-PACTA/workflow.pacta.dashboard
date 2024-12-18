@@ -21,7 +21,7 @@ prep_company_bubble <- function(
         .env[["start_year"]] + 5L
       )
     ) |>
-    mutate(
+    dplyr::mutate(
       plan_buildout = (
         last(
           .data[["plan_tech_prod"]],
@@ -49,7 +49,7 @@ prep_company_bubble <- function(
       )
     ) |>
     dplyr::filter(.data[["year"]] == .env[["start_year"]]) |>
-    mutate(green = .data[["technology"]] %in% .env[["green_techs"]]) |>
+    dplyr::mutate(green = .data[["technology"]] %in% .env[["green_techs"]]) |>
     reframe(
       plan_tech_share = sum(.data[["plan_tech_share"]], na.rm = TRUE),
       plan_buildout = sum(.data[["plan_buildout"]], na.rm = TRUE),
@@ -66,12 +66,12 @@ prep_company_bubble <- function(
         "year"
       )
     ) |>
-    mutate(y = .data[["plan_buildout"]] / .data[["scen_buildout"]]) |>
+    dplyr::mutate(y = .data[["plan_buildout"]] / .data[["scen_buildout"]]) |>
     dplyr::filter(.data[["green"]]) |>
     select(-"plan_buildout", -"scen_buildout", -"green") |>
     dplyr::filter(!is.na(.data[["plan_tech_share"]])) |>
-    mutate(y = pmax(.data[["y"]], 0L, na.rm = TRUE)) |>
-    mutate(asset_class = "Listed Equity")
+    dplyr::mutate(y = pmax(.data[["y"]], 0L, na.rm = TRUE)) |>
+    dplyr::mutate(asset_class = "Listed Equity")
 
   bonds_data <-
     bonds_results_company |>
@@ -85,7 +85,7 @@ prep_company_bubble <- function(
         .env[["start_year"]] + 5L
       )
     ) |>
-    mutate(
+    dplyr::mutate(
       plan_buildout = last(
         .data[["plan_tech_prod"]],
         order_by = .data[["year"]]
@@ -111,7 +111,7 @@ prep_company_bubble <- function(
       )
     ) |>
     dplyr::filter(.data[["year"]] == .env[["start_year"]]) |>
-    mutate(green = .data[["technology"]] %in% .env[["green_techs"]]) |>
+    dplyr::mutate(green = .data[["technology"]] %in% .env[["green_techs"]]) |>
     reframe(
       plan_tech_share = sum(.data[["plan_tech_share"]], na.rm = TRUE),
       plan_buildout = sum(.data[["plan_buildout"]], na.rm = TRUE),
@@ -128,12 +128,12 @@ prep_company_bubble <- function(
         "year"
       )
     ) |>
-    mutate(y = .data[["plan_buildout"]] / .data[["scen_buildout"]]) |>
+    dplyr::mutate(y = .data[["plan_buildout"]] / .data[["scen_buildout"]]) |>
     dplyr::filter(.data[["green"]]) |>
     select(-"plan_buildout", -"scen_buildout", -"green") |>
     dplyr::filter(!is.na(.data[["plan_tech_share"]])) |>
-    mutate(y = pmax(.data[["y"]], 0L, na.rm = TRUE)) |>
-    mutate(asset_class = "Corporate Bonds")
+    dplyr::mutate(y = pmax(.data[["y"]], 0L, na.rm = TRUE)) |>
+    dplyr::mutate(asset_class = "Corporate Bonds")
 
   bind_rows(equity_data, bonds_data)
 }

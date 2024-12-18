@@ -32,8 +32,8 @@ prep_key_bars_company <- function(
       "year"
     ) |>
     arrange(desc(.data[["port_weight"]])) |>
-    mutate(asset_class = "Listed Equity") |>
-    mutate_at("id", as.character) |> # convert the col type to character to prevent errors in case empty df is binded by rows #nolint
+    dplyr::mutate(asset_class = "Listed Equity") |>
+    dplyr::mutate_at("id", as.character) |> # convert the col type to character to prevent errors in case empty df is binded by rows #nolint
     group_by(.data[["ald_sector"]], .data[["technology"]]) |> # select at most 15 companies with the highest weigths per sector+technology #nolint
     arrange(dplyr::desc(.data[["port_weight"]]), .by_group = TRUE) |>
     slice(1L:15L)  |>
@@ -61,7 +61,7 @@ prep_key_bars_company <- function(
       "year"
     ) |>
     group_by(.data[["id"]], .data[["ald_sector"]], .data[["technology"]]) |>
-    mutate(port_weight = sum(.data[["port_weight"]], na.rm = TRUE)) |>
+    dplyr::mutate(port_weight = sum(.data[["port_weight"]], na.rm = TRUE)) |>
     group_by(.data[["id"]], .data[["technology"]]) |>
     dplyr::filter(row_number() == 1L) |>
     dplyr::filter(
@@ -73,8 +73,8 @@ prep_key_bars_company <- function(
         )
     ) |>
     arrange(desc(.data[["port_weight"]])) |>
-    mutate(asset_class = "Corporate Bonds") |>
-    mutate_at("id", as.character) |> # convert the col type to character to prevent errors in case empty df is bound by rows #nolint
+    dplyr::mutate(asset_class = "Corporate Bonds") |>
+    dplyr::mutate_at("id", as.character) |> # convert the col type to character to prevent errors in case empty df is bound by rows #nolint
     group_by(.data[["ald_sector"]], .data[["technology"]]) |> # select at most 15 companies with the highest weigths per sector+technology #nolint
     arrange(.data[["port_weight"]], .by_group = TRUE) |>
     slice(1L:15L) |>
