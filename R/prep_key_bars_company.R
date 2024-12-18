@@ -19,7 +19,7 @@ prep_key_bars_company <- function(
     dplyr::filter(.data[["scenario_geography"]] == "Global") |>
     dplyr::filter(.data[["ald_sector"]] %in% c("Power", "Automotive")) |>
     select(-"id") |>
-    rename(id = "company_name") |>
+    dplyr::rename(id = "company_name") |>
     select(
       "id",
       "ald_sector",
@@ -48,7 +48,7 @@ prep_key_bars_company <- function(
     dplyr::filter(.data[["scenario_geography"]] == "Global") |>
     dplyr::filter(.data[["ald_sector"]] %in% c("Power", "Automotive")) |>
     select(-"id") |>
-    rename(id = "company_name") |>
+    dplyr::rename(id = "company_name") |>
     select(
       "id",
       "ald_sector",

@@ -37,7 +37,7 @@ prep_key_bars_portfolio <- function(
         "Aligned* Portfolio"
       )
     ) |>
-    rename(plan_tech_share = "value") |>
+    dplyr::rename(plan_tech_share = "value") |>
     select(
       "id",
       "ald_sector",
@@ -87,7 +87,7 @@ prep_key_bars_portfolio <- function(
         "Aligned* Portfolio"
       )
     ) |>
-    rename(plan_tech_share = "value") |>
+    dplyr::rename(plan_tech_share = "value") |>
     select(
       "id",
       "ald_sector",

@@ -19,7 +19,7 @@ prep_emissions_pie <- function(
       desc(.data[["exploded"]]),
       .data[["sector"]]
     ) |>
-    rename(
+    dplyr::rename(
       key = .data[["sector"]],
       value = .data[["weighted_sector_emissions"]]
     ) |>

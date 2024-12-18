@@ -39,7 +39,7 @@ prep_exposure_pie <- function(
       desc(.data[["exploded"]]),
       .data[["sector"]]
     ) |>
-    rename(key = .data[["sector"]]) |>
+    dplyr::rename(key = .data[["sector"]]) |>
     dplyr::filter(!is.na(.data[["key"]])) |>
     dplyr::ungroup() |>
     dplyr::filter(.data[["asset_type"]] == .env[["asset_type"]]) |>
