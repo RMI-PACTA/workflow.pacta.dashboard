@@ -26,7 +26,6 @@
 #' @importFrom dplyr slice
 #' @importFrom dplyr tibble
 #' @importFrom dplyr transmute
-#' @importFrom dplyr ungroup
 #' @importFrom logger log_debug
 #' @importFrom logger log_error
 #' @importFrom logger log_info

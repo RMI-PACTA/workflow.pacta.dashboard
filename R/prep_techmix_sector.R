@@ -137,7 +137,7 @@ prep_techmix_sector <- function(
         green_sum_prod = sum(.data[["production_plan"]]),
         green_sum_scenario = sum(.data[["scenario_plan"]])
       ) |>
-      ungroup() |>
+      dplyr::ungroup() |>
       select(
         "asset_class",
         "investor_name",
@@ -180,7 +180,7 @@ prep_techmix_sector <- function(
         )
       ) |>
       select(-c("green_sum_prod", "green_sum_scenario")) |>
-      ungroup() |>
+      dplyr::ungroup() |>
       dplyr::mutate(
         this_portfolio = .data[["portfolio_name"]] == .env[["portfolio_name"]],
         val_type = if_else(

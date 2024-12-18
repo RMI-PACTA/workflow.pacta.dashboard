@@ -35,7 +35,7 @@ prep_trajectory_alignment <- function(
       .data[["scenario"]]
     ) |>
     dplyr::filter(n() > 1L) |>
-    ungroup()
+    dplyr::ungroup()
 
   asset_classes <-
     portfolio |>

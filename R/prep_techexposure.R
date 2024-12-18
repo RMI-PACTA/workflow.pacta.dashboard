@@ -109,7 +109,7 @@ prep_techexposure <- function(
     dplyr::mutate(sector_cumprcnt = lag(.data[["sector_cumprcnt"]], default = 0L)) |>
     dplyr::mutate(cumsum = cumsum(.data[["plan_carsten"]])) |>
     dplyr::mutate(cumsum = lag(.data[["cumsum"]], default = 0L)) |>
-    ungroup() |>
+    dplyr::ungroup() |>
     dplyr::group_by(
       .data[["asset_class"]],
       .data[["equity_market"]],
@@ -121,7 +121,7 @@ prep_techexposure <- function(
     dplyr::mutate(
       green_prcnt = sum(.data[["plan_carsten"]]) / .data[["sector_sum"]]
     ) |>
-    ungroup() |>
+    dplyr::ungroup() |>
     dplyr::mutate(
       this_portfolio = .data[["portfolio_name"]] == .env[["portfolio_name"]]
     ) |>

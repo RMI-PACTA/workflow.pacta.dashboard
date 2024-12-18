@@ -6,7 +6,7 @@ prep_emissions_pie <- function(
   pacta_sectors
 ) {
   data |>
-    ungroup() |>
+    dplyr::ungroup() |>
     dplyr::filter(
       .data[["investor_name"]] == .env[["investor_name"]],
       .data[["portfolio_name"]] == .env[["portfolio_name"]]

@@ -63,5 +63,5 @@ prep_emissions_trajectory <- function(
         )
       )
     ) |>
-    ungroup()
+    dplyr::ungroup()
 }
