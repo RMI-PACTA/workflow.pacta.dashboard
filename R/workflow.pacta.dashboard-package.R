@@ -3,7 +3,6 @@
 
 ## usethis namespace: start
 #' @importFrom dplyr lag
-#' @importFrom dplyr last
 #' @importFrom dplyr n
 #' @importFrom dplyr select
 #' @importFrom dplyr slice

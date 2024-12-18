@@ -3,7 +3,6 @@
 export(prepare_schema_files)
 export(run_dashboard_workflow)
 importFrom(dplyr,lag)
-importFrom(dplyr,last)
 importFrom(dplyr,n)
 importFrom(dplyr,select)
 importFrom(dplyr,slice)
