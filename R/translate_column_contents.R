@@ -7,7 +7,7 @@ translate_column_contents <- function(
   dictionary_column <-
     dictionary |>
     dplyr::filter(.data[["id_column"]] == .env[["column"]]) |>
-    select(-"id_column")
+    dplyr::select(-"id_column")
 
   if (inplace) {
     new_column <- column
@@ -27,5 +27,5 @@ translate_column_contents <- function(
         .data[["translate_value"]]
       )
     ) |>
-    select(-"translate_value")
+    dplyr::select(-"translate_value")
 }

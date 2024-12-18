@@ -24,7 +24,7 @@ prep_emissions_trajectory <- function(
     dplyr::bind_rows(.id = "asset_class") |>
     dplyr::filter(.data[["portfolio_name"]] == .env[["portfolio_name"]]) |>
     dplyr::filter(.data[["scenario_geography"]] == "Global") |>
-    select(
+    dplyr::select(
       "asset_class",
       "allocation",
       "equity_market",

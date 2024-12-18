@@ -68,7 +68,7 @@ prep_company_bubble <- function(
     ) |>
     dplyr::mutate(y = .data[["plan_buildout"]] / .data[["scen_buildout"]]) |>
     dplyr::filter(.data[["green"]]) |>
-    select(-"plan_buildout", -"scen_buildout", -"green") |>
+    dplyr::select(-"plan_buildout", -"scen_buildout", -"green") |>
     dplyr::filter(!is.na(.data[["plan_tech_share"]])) |>
     dplyr::mutate(y = pmax(.data[["y"]], 0L, na.rm = TRUE)) |>
     dplyr::mutate(asset_class = "Listed Equity")
@@ -130,7 +130,7 @@ prep_company_bubble <- function(
     ) |>
     dplyr::mutate(y = .data[["plan_buildout"]] / .data[["scen_buildout"]]) |>
     dplyr::filter(.data[["green"]]) |>
-    select(-"plan_buildout", -"scen_buildout", -"green") |>
+    dplyr::select(-"plan_buildout", -"scen_buildout", -"green") |>
     dplyr::filter(!is.na(.data[["plan_tech_share"]])) |>
     dplyr::mutate(y = pmax(.data[["y"]], 0L, na.rm = TRUE)) |>
     dplyr::mutate(asset_class = "Corporate Bonds")

@@ -141,7 +141,7 @@ prep_techexposure <- function(
       factor(.data[["technology"]], levels = all_tech_levels),
       dplyr::desc(.data[["green"]])
     ) |>
-    select(
+    dplyr::select(
       "asset_class",
       "equity_market",
       "portfolio_name",

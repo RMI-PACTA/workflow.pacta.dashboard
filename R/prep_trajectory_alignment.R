@@ -186,7 +186,7 @@ prep_trajectory_alignment <- function(
         .data[["ald_sector"]] == "Steel" ~ "t/a"
       )
     ) |>
-    select(
+    dplyr::select(
       dplyr::all_of(cols_with_supporting_info),
       "scenario",
       production = "plan_alloc_wt_tech_prod",

@@ -18,7 +18,7 @@ prep_key_bars_portfolio <- function(
     dplyr::filter(.data[["ald_sector"]] %in% c("Power", "Automotive")) |>
     dplyr::filter(.data[["scenario_geography"]] == "Global") |>
     dplyr::mutate(port_weight = 1L) |>
-    select(
+    dplyr::select(
       "ald_sector",
       "technology",
       "plan_tech_share",
@@ -38,7 +38,7 @@ prep_key_bars_portfolio <- function(
       )
     ) |>
     dplyr::rename(plan_tech_share = "value") |>
-    select(
+    dplyr::select(
       "id",
       "ald_sector",
       "technology",
@@ -68,7 +68,7 @@ prep_key_bars_portfolio <- function(
     dplyr::filter(.data[["ald_sector"]] %in% c("Power", "Automotive")) |>
     dplyr::filter(.data[["scenario_geography"]] == "Global") |>
     dplyr::mutate(port_weight = 1L) |>
-    select(
+    dplyr::select(
       "ald_sector",
       "technology",
       "plan_tech_share",
@@ -88,7 +88,7 @@ prep_key_bars_portfolio <- function(
       )
     ) |>
     dplyr::rename(plan_tech_share = "value") |>
-    select(
+    dplyr::select(
       "id",
       "ald_sector",
       "technology",

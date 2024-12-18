@@ -43,5 +43,5 @@ prep_exposure_pie <- function(
     dplyr::filter(!is.na(.data[["key"]])) |>
     dplyr::ungroup() |>
     dplyr::filter(.data[["asset_type"]] == .env[["asset_type"]]) |>
-    select(-"asset_type")
+    dplyr::select(-"asset_type")
 }

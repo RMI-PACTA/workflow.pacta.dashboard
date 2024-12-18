@@ -50,7 +50,7 @@ prep_exposure_stats <- function(
       audit_table,
       by = dplyr::join_by("asset_type" == "asset_type_analysis")
     ) |>
-    select(
+    dplyr::select(
       "asset_type",
       "percentage_value_invested",
       "sector",
@@ -68,7 +68,7 @@ prep_exposure_stats <- function(
     val_sector = 0L
   ) |> dplyr::inner_join(
     dplyr::distinct(
-      select(
+      dplyr::select(
         exposure_stats,
         c("asset_type", "percentage_value_invested")
       )
@@ -94,7 +94,7 @@ prep_exposure_stats <- function(
         .data[["asset_type"]] == "Equity" ~ "Listed Equity"
       )
     ) |>
-    select(
+    dplyr::select(
       "asset_type",
       "percentage_value_invested",
       "sector",

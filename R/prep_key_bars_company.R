@@ -18,9 +18,9 @@ prep_key_bars_company <- function(
     dplyr::filter(.data[["equity_market"]] %in% c("Global", "GlobalMarket")) |>
     dplyr::filter(.data[["scenario_geography"]] == "Global") |>
     dplyr::filter(.data[["ald_sector"]] %in% c("Power", "Automotive")) |>
-    select(-"id") |>
+    dplyr::select(-"id") |>
     dplyr::rename(id = "company_name") |>
-    select(
+    dplyr::select(
       "id",
       "ald_sector",
       "technology",
@@ -47,9 +47,9 @@ prep_key_bars_company <- function(
     dplyr::filter(.data[["equity_market"]] %in% c("Global", "GlobalMarket")) |>
     dplyr::filter(.data[["scenario_geography"]] == "Global") |>
     dplyr::filter(.data[["ald_sector"]] %in% c("Power", "Automotive")) |>
-    select(-"id") |>
+    dplyr::select(-"id") |>
     dplyr::rename(id = "company_name") |>
-    select(
+    dplyr::select(
       "id",
       "ald_sector",
       "technology",
