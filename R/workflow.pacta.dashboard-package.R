@@ -2,7 +2,6 @@
 "_PACKAGE"
 
 ## usethis namespace: start
-#' @importFrom dplyr first
 #' @importFrom dplyr lag
 #' @importFrom dplyr last
 #' @importFrom dplyr n

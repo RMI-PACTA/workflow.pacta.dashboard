@@ -26,7 +26,7 @@ prep_company_bubble <- function(
         last(
           .data[["plan_tech_prod"]],
           order_by = .data[["year"]]
-        ) - first(
+        ) - dplyr::first(
           .data[["plan_tech_prod"]],
           order_by = .data[["year"]]
         )
@@ -35,7 +35,7 @@ prep_company_bubble <- function(
         last(
           .data[["scen_tech_prod"]],
           order_by = .data[["year"]]
-        ) - first(
+        ) - dplyr::first(
           .data[["scen_tech_prod"]],
           order_by = .data[["year"]]
         )
@@ -89,7 +89,7 @@ prep_company_bubble <- function(
       plan_buildout = last(
         .data[["plan_tech_prod"]],
         order_by = .data[["year"]]
-      ) - first(
+      ) - dplyr::first(
         .data[["plan_tech_prod"]],
         order_by = .data[["year"]]
       ),
@@ -97,7 +97,7 @@ prep_company_bubble <- function(
         last(
           .data[["scen_tech_prod"]],
           order_by = .data[["year"]]
-        ) - first(
+        ) - dplyr::first(
           .data[["scen_tech_prod"]],
           order_by = .data[["year"]]
         )
