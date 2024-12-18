@@ -3,7 +3,6 @@
 export(prepare_schema_files)
 export(run_dashboard_workflow)
 importFrom(dplyr,across)
-importFrom(dplyr,all_of)
 importFrom(dplyr,arrange)
 importFrom(dplyr,bind_rows)
 importFrom(dplyr,case_when)

@@ -187,7 +187,7 @@ prep_trajectory_alignment <- function(
       )
     ) |>
     select(
-      all_of(cols_with_supporting_info),
+      dplyr::all_of(cols_with_supporting_info),
       "scenario",
       production = "plan_alloc_wt_tech_prod",
       "scen_alloc_wt_tech_prod"

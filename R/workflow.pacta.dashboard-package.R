@@ -3,7 +3,6 @@
 
 ## usethis namespace: start
 #' @importFrom dplyr across
-#' @importFrom dplyr all_of
 #' @importFrom dplyr arrange
 #' @importFrom dplyr bind_rows
 #' @importFrom dplyr case_when
