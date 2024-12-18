@@ -81,7 +81,7 @@ prep_techexposure <- function(
 
   bind_rows(portfolio, peers, indices) |>
     dplyr::filter(.data[["allocation"]] == "portfolio_weight") |>
-    dplyr::filter_scenarios_per_sector(
+    filter_scenarios_per_sector(
       select_scenario_other,
       select_scenario
     ) |>
