@@ -22,7 +22,7 @@ prep_exposure_pie <- function(
       )
     ) |>
     group_by(.data[["asset_type"]], .data[["sector"]]) |>
-    summarise(
+    dplyr::summarise(
       value = (
         sum(
           .data[["value_usd"]],

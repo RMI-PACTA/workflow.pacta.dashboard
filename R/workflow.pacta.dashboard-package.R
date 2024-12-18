@@ -25,7 +25,6 @@
 #' @importFrom dplyr row_number
 #' @importFrom dplyr select
 #' @importFrom dplyr slice
-#' @importFrom dplyr summarise
 #' @importFrom dplyr tibble
 #' @importFrom dplyr transmute
 #' @importFrom dplyr ungroup

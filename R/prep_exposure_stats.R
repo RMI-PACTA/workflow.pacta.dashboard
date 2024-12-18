@@ -29,7 +29,7 @@ prep_exposure_stats <- function(
         "Other"
       )
     ) |>
-    summarise(
+    dplyr::summarise(
       value = (
         sum(
           .data[["value_usd"]],

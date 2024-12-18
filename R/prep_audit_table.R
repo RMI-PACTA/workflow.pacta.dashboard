@@ -51,7 +51,7 @@ prep_audit_table <- function(
   included_table_totals <-
     audit_table_init |>
     group_by(.data[["asset_type_analysis"]], .data[["included"]]) |>
-    summarise(
+    dplyr::summarise(
       total_value_invested = sum(.data[["value_usd"]], na.rm = TRUE),
       .groups = "drop"
     ) |>
@@ -73,7 +73,7 @@ prep_audit_table <- function(
       )
     ) |>
     group_by(.data[["asset_type_analysis"]], .data[["investment_means"]]) |>
-    summarise(
+    dplyr::summarise(
       value_invested = sum(.data[["value_usd"]], na.rm = TRUE),
       .groups = "drop"
     )
@@ -101,7 +101,7 @@ prep_audit_table <- function(
 
   sum_table <-
     included_table_per_asset |>
-    summarise(
+    dplyr::summarise(
       asset_type_analysis = "Total",
       total_value_invested = sum(.data[["total_value_invested"]], na.rm = TRUE),
       percentage_value_invested = sum(
