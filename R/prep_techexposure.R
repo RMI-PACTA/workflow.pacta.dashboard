@@ -89,7 +89,7 @@ prep_techexposure <- function(
     dplyr::filter(.data[["year"]] == .env[["start_year"]]) |>
     dplyr::filter(.data[["equity_market"]] == "GlobalMarket") |>
     dplyr::mutate(green = .data[["technology"]] %in% .env[["green_techs"]]) |>
-    group_by(
+    dplyr::group_by(
       .data[["asset_class"]],
       .data[["equity_market"]],
       .data[["portfolio_name"]],
@@ -110,7 +110,7 @@ prep_techexposure <- function(
     dplyr::mutate(cumsum = cumsum(.data[["plan_carsten"]])) |>
     dplyr::mutate(cumsum = lag(.data[["cumsum"]], default = 0L)) |>
     ungroup() |>
-    group_by(
+    dplyr::group_by(
       .data[["asset_class"]],
       .data[["equity_market"]],
       .data[["portfolio_name"]],

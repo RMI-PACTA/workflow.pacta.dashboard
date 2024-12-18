@@ -94,7 +94,7 @@ prep_techmix_sector <- function(
     techexposure_data <-
       techexposure_data |>
       dplyr::mutate(green = .data[["technology"]] %in% .env[["green_techs"]]) |>
-      group_by(
+      dplyr::group_by(
         .data[["asset_class"]],
         .data[["equity_market"]],
         .data[["portfolio_name"]],
@@ -124,7 +124,7 @@ prep_techmix_sector <- function(
           0L
         )
       ) |>
-      group_by(
+      dplyr::group_by(
         .data[["asset_class"]],
         .data[["equity_market"]],
         .data[["portfolio_name"]],

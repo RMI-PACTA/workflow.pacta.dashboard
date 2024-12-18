@@ -50,7 +50,7 @@ prep_audit_table <- function(
 
   included_table_totals <-
     audit_table_init |>
-    group_by(.data[["asset_type_analysis"]], .data[["included"]]) |>
+    dplyr::group_by(.data[["asset_type_analysis"]], .data[["included"]]) |>
     dplyr::summarise(
       total_value_invested = sum(.data[["value_usd"]], na.rm = TRUE),
       .groups = "drop"
@@ -72,7 +72,7 @@ prep_audit_table <- function(
         !.data[["direct_holding"]] ~ "Via a Fund"
       )
     ) |>
-    group_by(.data[["asset_type_analysis"]], .data[["investment_means"]]) |>
+    dplyr::group_by(.data[["asset_type_analysis"]], .data[["investment_means"]]) |>
     dplyr::summarise(
       value_invested = sum(.data[["value_usd"]], na.rm = TRUE),
       .groups = "drop"

@@ -34,7 +34,7 @@ prep_key_bars_company <- function(
     arrange(desc(.data[["port_weight"]])) |>
     dplyr::mutate(asset_class = "Listed Equity") |>
     dplyr::mutate_at("id", as.character) |> # convert the col type to character to prevent errors in case empty df is binded by rows #nolint
-    group_by(.data[["ald_sector"]], .data[["technology"]]) |> # select at most 15 companies with the highest weigths per sector+technology #nolint
+    dplyr::group_by(.data[["ald_sector"]], .data[["technology"]]) |> # select at most 15 companies with the highest weigths per sector+technology #nolint
     arrange(dplyr::desc(.data[["port_weight"]]), .by_group = TRUE) |>
     slice(1L:15L)  |>
     dplyr::filter(!is.null(.data[["port_weight"]])) |>
@@ -60,9 +60,9 @@ prep_key_bars_company <- function(
       "scenario",
       "year"
     ) |>
-    group_by(.data[["id"]], .data[["ald_sector"]], .data[["technology"]]) |>
+    dplyr::group_by(.data[["id"]], .data[["ald_sector"]], .data[["technology"]]) |>
     dplyr::mutate(port_weight = sum(.data[["port_weight"]], na.rm = TRUE)) |>
-    group_by(.data[["id"]], .data[["technology"]]) |>
+    dplyr::group_by(.data[["id"]], .data[["technology"]]) |>
     dplyr::filter(row_number() == 1L) |>
     dplyr::filter(
       !(.data[["ald_sector"]] %in% .env[["pacta_sectors_not_analysed"]]) |
@@ -75,10 +75,10 @@ prep_key_bars_company <- function(
     arrange(desc(.data[["port_weight"]])) |>
     dplyr::mutate(asset_class = "Corporate Bonds") |>
     dplyr::mutate_at("id", as.character) |> # convert the col type to character to prevent errors in case empty df is bound by rows #nolint
-    group_by(.data[["ald_sector"]], .data[["technology"]]) |> # select at most 15 companies with the highest weigths per sector+technology #nolint
+    dplyr::group_by(.data[["ald_sector"]], .data[["technology"]]) |> # select at most 15 companies with the highest weigths per sector+technology #nolint
     arrange(.data[["port_weight"]], .by_group = TRUE) |>
     slice(1L:15L) |>
-    group_by(.data[["ald_sector"]]) |>
+    dplyr::group_by(.data[["ald_sector"]]) |>
     arrange(
       factor(
         .data[["technology"]],

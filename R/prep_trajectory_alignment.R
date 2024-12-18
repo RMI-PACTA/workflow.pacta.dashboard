@@ -27,7 +27,7 @@ prep_trajectory_alignment <- function(
     ) |>
     dplyr::filter(.data[["ald_sector"]] %in% .env[["tech_roadmap_sectors"]]) |>
     dplyr::filter(.data[["scenario_geography"]] != "GlobalAggregate") |>
-    group_by(
+    dplyr::group_by(
       .data[["asset_class"]],
       .data[["allocation"]],
       .data[["equity_market"]],

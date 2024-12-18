@@ -41,7 +41,7 @@ prep_emissions_trajectory <- function(
     tidyr::unite("name", "sector", "plan", remove = FALSE) |>
     dplyr::mutate(disabled = !.data[["sector"]] %in% .env[["pacta_sectors"]]) |>
     dplyr::mutate(unit = .env[["emissions_units"]][.data[["sector"]]]) |>
-    group_by(.data[["asset_class"]]) |>
+    dplyr::group_by(.data[["asset_class"]]) |>
     dplyr::filter(!all(.data[["disabled"]])) |>
     dplyr::mutate(
       equity_market =  case_when(

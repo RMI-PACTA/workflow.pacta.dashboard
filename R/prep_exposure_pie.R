@@ -21,7 +21,7 @@ prep_exposure_pie <- function(
         "Other"
       )
     ) |>
-    group_by(.data[["asset_type"]], .data[["sector"]]) |>
+    dplyr::group_by(.data[["asset_type"]], .data[["sector"]]) |>
     dplyr::summarise(
       value = (
         sum(
