@@ -34,7 +34,7 @@ prep_trajectory_alignment <- function(
       .data[["technology"]],
       .data[["scenario"]]
     ) |>
-    dplyr::filter(n() > 1L) |>
+    dplyr::filter(dplyr::n() > 1L) |>
     dplyr::ungroup()
 
   asset_classes <-
