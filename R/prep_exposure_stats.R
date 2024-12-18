@@ -48,7 +48,7 @@ prep_exposure_stats <- function(
     ) |>
     dplyr::inner_join(
       audit_table,
-      by = join_by("asset_type" == "asset_type_analysis")
+      by = dplyr::join_by("asset_type" == "asset_type_analysis")
     ) |>
     select(
       "asset_type",
@@ -73,13 +73,13 @@ prep_exposure_stats <- function(
         c("asset_type", "percentage_value_invested")
       )
     ),
-    by = join_by("asset_type")
+    by = dplyr::join_by("asset_type")
   )
 
   exposure_stats_all <- all_stats_zero_sector_exposure |>
     dplyr::left_join(
       exposure_stats,
-      by = join_by("asset_type", "sector", "percentage_value_invested")
+      by = dplyr::join_by("asset_type", "sector", "percentage_value_invested")
     ) |>
     dplyr::mutate(
       perc_asset_val_sector = dplyr::if_else(
