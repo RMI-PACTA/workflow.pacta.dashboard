@@ -50,7 +50,7 @@ prep_company_bubble <- function(
     ) |>
     dplyr::filter(.data[["year"]] == .env[["start_year"]]) |>
     dplyr::mutate(green = .data[["technology"]] %in% .env[["green_techs"]]) |>
-    reframe(
+    dplyr::reframe(
       plan_tech_share = sum(.data[["plan_tech_share"]], na.rm = TRUE),
       plan_buildout = sum(.data[["plan_buildout"]], na.rm = TRUE),
       scen_buildout = sum(.data[["scen_buildout"]], na.rm = TRUE),
@@ -112,7 +112,7 @@ prep_company_bubble <- function(
     ) |>
     dplyr::filter(.data[["year"]] == .env[["start_year"]]) |>
     dplyr::mutate(green = .data[["technology"]] %in% .env[["green_techs"]]) |>
-    reframe(
+    dplyr::reframe(
       plan_tech_share = sum(.data[["plan_tech_share"]], na.rm = TRUE),
       plan_buildout = sum(.data[["plan_buildout"]], na.rm = TRUE),
       scen_buildout = sum(.data[["scen_buildout"]], na.rm = TRUE),
