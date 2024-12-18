@@ -63,7 +63,7 @@ prep_key_bars_company <- function(
     dplyr::group_by(.data[["id"]], .data[["ald_sector"]], .data[["technology"]]) |>
     dplyr::mutate(port_weight = sum(.data[["port_weight"]], na.rm = TRUE)) |>
     dplyr::group_by(.data[["id"]], .data[["technology"]]) |>
-    dplyr::filter(row_number() == 1L) |>
+    dplyr::filter(dplyr::row_number() == 1L) |>
     dplyr::filter(
       !(.data[["ald_sector"]] %in% .env[["pacta_sectors_not_analysed"]]) |
         !grepl(
