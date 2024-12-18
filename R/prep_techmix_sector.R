@@ -190,7 +190,7 @@ prep_techmix_sector <- function(
         )
       ) |>
       dplyr::mutate(
-        equity_market =  case_when(
+        equity_market =  dplyr::case_when(
           .data[["equity_market"]] == "GlobalMarket" ~ "Global Market",
           .data[["equity_market"]] == "DevelopedMarket" ~ "Developed Market",
           .data[["equity_market"]] == "EmergingMarket" ~ "Emerging Market",
@@ -202,7 +202,7 @@ prep_techmix_sector <- function(
         .data[["val_type"]] != "scenario_plan_benchmark"
       ) |>
       dplyr::mutate(
-        val_type =  case_when(
+        val_type =  dplyr::case_when(
           .data[["val_type"]] == "production_plan_portfolio" ~ "Portfolio",
           .data[["val_type"]] == "scenario_plan_portfolio" ~ "Scenario",
           .data[["val_type"]] == "production_plan_benchmark" ~ "Benchmark",

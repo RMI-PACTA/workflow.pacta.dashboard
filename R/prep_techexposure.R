@@ -126,7 +126,7 @@ prep_techexposure <- function(
       this_portfolio = .data[["portfolio_name"]] == .env[["portfolio_name"]]
     ) |>
     dplyr::mutate(
-      equity_market =  case_when(
+      equity_market =  dplyr::case_when(
         .data[["equity_market"]] == "GlobalMarket" ~ "Global Market",
         .data[["equity_market"]] == "DevelopedMarket" ~ "Developed Market",
         .data[["equity_market"]] == "EmergingMarket" ~ "Emerging Market",

@@ -89,7 +89,7 @@ prep_exposure_stats <- function(
       )
     ) |>
     dplyr::mutate(
-      asset_type = case_when(
+      asset_type = dplyr::case_when(
         .data[["asset_type"]] == "Bonds" ~ "Corporate Bonds",
         .data[["asset_type"]] == "Equity" ~ "Listed Equity"
       )

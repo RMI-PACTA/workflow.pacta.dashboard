@@ -44,7 +44,7 @@ prep_emissions_trajectory <- function(
     dplyr::group_by(.data[["asset_class"]]) |>
     dplyr::filter(!all(.data[["disabled"]])) |>
     dplyr::mutate(
-      equity_market =  case_when(
+      equity_market =  dplyr::case_when(
         .data[["equity_market"]] == "GlobalMarket" ~ "Global Market",
         .data[["equity_market"]] == "DevelopedMarket" ~ "Developed Market",
         .data[["equity_market"]] == "EmergingMarket" ~ "Emerging Market",

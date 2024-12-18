@@ -25,7 +25,7 @@ prep_audit_table <- function(
     ) |>
     dplyr::mutate(included = if_else(.data[["is_included"]], "Yes", "No")) |>
     dplyr::mutate(
-      asset_type_analysis = case_when(
+      asset_type_analysis = dplyr::case_when(
         .data[["asset_type"]] %in% c("Bonds", "Equity") ~ .data[["asset_type"]],
         .data[["asset_type"]] == "Others" ~ "Other",
         (
@@ -64,7 +64,7 @@ prep_audit_table <- function(
   included_table_value_breakdown <-
     audit_table_init |>
     dplyr::mutate(
-      investment_means = case_when(
+      investment_means = dplyr::case_when(
         (
           (.data[["asset_type"]] == "Funds") & (.data[["direct_holding"]])
         ) ~ "Unidentified Funds",

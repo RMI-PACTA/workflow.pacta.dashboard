@@ -176,7 +176,7 @@ prep_trajectory_alignment <- function(
     dplyr::bind_rows(.id = "benchmark") |>
     dplyr::mutate(benchmark = .data[["benchmark"]] == "benchmark") |>
     dplyr::mutate(
-      unit = case_when(
+      unit = dplyr::case_when(
         .data[["ald_sector"]] == "Power" ~ "MW",
         .data[["ald_sector"]] == "Oil&Gas" ~ "GJ/a",
         .data[["ald_sector"]] == "Coal" ~ "t/a",
@@ -212,7 +212,7 @@ prep_trajectory_alignment <- function(
     dplyr::filter(!is.na(.data[["value"]])) |>
     dplyr::filter(.data[["scenario"]] == "production" | !.data[["benchmark"]]) |>
     dplyr::mutate(
-      equity_market =  case_when(
+      equity_market =  dplyr::case_when(
         .data[["equity_market"]] == "GlobalMarket" ~ "Global Market",
         .data[["equity_market"]] == "DevelopedMarket" ~ "Developed Market",
         .data[["equity_market"]] == "EmergingMarket" ~ "Emerging Market",
@@ -220,7 +220,7 @@ prep_trajectory_alignment <- function(
       )
     ) |>
     dplyr::mutate(
-      allocation = case_when(
+      allocation = dplyr::case_when(
         .data[["allocation"]] == "portfolio_weight" ~ "Portfolio Weight",
         .data[["allocation"]] == "ownership_weight" ~ "Ownership Weight"
       )

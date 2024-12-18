@@ -4,7 +4,6 @@
 ## usethis namespace: start
 #' @importFrom dplyr across
 #' @importFrom dplyr arrange
-#' @importFrom dplyr case_when
 #' @importFrom dplyr desc
 #' @importFrom dplyr distinct
 #' @importFrom dplyr everything
