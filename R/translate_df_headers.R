@@ -15,7 +15,7 @@ translate_df_headers <- function(
     )
   }
 
-  column_tibble <- tibble(column_name = names(data))
+  column_tibble <- dplyr::tibble(column_name = names(data))
 
   dictionary_subset <-
     dictionary |>
