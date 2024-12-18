@@ -13,11 +13,11 @@ prep_key_bars_company <- function(
 
   equity_data_company <-
     equity_results_company |>
-    filter(.data[["portfolio_name"]] == .env[["portfolio_name"]]) |>
-    filter(.data[["year"]] %in% c(.env[["start_year"]] + 5L)) |>
-    filter(.data[["equity_market"]] %in% c("Global", "GlobalMarket")) |>
-    filter(.data[["scenario_geography"]] == "Global") |>
-    filter(.data[["ald_sector"]] %in% c("Power", "Automotive")) |>
+    dplyr::filter(.data[["portfolio_name"]] == .env[["portfolio_name"]]) |>
+    dplyr::filter(.data[["year"]] %in% c(.env[["start_year"]] + 5L)) |>
+    dplyr::filter(.data[["equity_market"]] %in% c("Global", "GlobalMarket")) |>
+    dplyr::filter(.data[["scenario_geography"]] == "Global") |>
+    dplyr::filter(.data[["ald_sector"]] %in% c("Power", "Automotive")) |>
     select(-"id") |>
     rename(id = "company_name") |>
     select(
@@ -37,16 +37,16 @@ prep_key_bars_company <- function(
     group_by(.data[["ald_sector"]], .data[["technology"]]) |> # select at most 15 companies with the highest weigths per sector+technology #nolint
     arrange(dplyr::desc(.data[["port_weight"]]), .by_group = TRUE) |>
     slice(1L:15L)  |>
-    filter(!is.null(.data[["port_weight"]])) |>
-    filter(!is.null(.data[["plan_tech_share"]]))
+    dplyr::filter(!is.null(.data[["port_weight"]])) |>
+    dplyr::filter(!is.null(.data[["plan_tech_share"]]))
 
   bonds_data_company <-
     bonds_results_company |>
-    filter(.data[["portfolio_name"]] == .env[["portfolio_name"]]) |>
-    filter(.data[["year"]] %in% c(.env[["start_year"]] + 5L)) |>
-    filter(.data[["equity_market"]] %in% c("Global", "GlobalMarket")) |>
-    filter(.data[["scenario_geography"]] == "Global") |>
-    filter(.data[["ald_sector"]] %in% c("Power", "Automotive")) |>
+    dplyr::filter(.data[["portfolio_name"]] == .env[["portfolio_name"]]) |>
+    dplyr::filter(.data[["year"]] %in% c(.env[["start_year"]] + 5L)) |>
+    dplyr::filter(.data[["equity_market"]] %in% c("Global", "GlobalMarket")) |>
+    dplyr::filter(.data[["scenario_geography"]] == "Global") |>
+    dplyr::filter(.data[["ald_sector"]] %in% c("Power", "Automotive")) |>
     select(-"id") |>
     rename(id = "company_name") |>
     select(
@@ -63,8 +63,8 @@ prep_key_bars_company <- function(
     group_by(.data[["id"]], .data[["ald_sector"]], .data[["technology"]]) |>
     mutate(port_weight = sum(.data[["port_weight"]], na.rm = TRUE)) |>
     group_by(.data[["id"]], .data[["technology"]]) |>
-    filter(row_number() == 1L) |>
-    filter(
+    dplyr::filter(row_number() == 1L) |>
+    dplyr::filter(
       !(.data[["ald_sector"]] %in% .env[["pacta_sectors_not_analysed"]]) |
         !grepl(
           pattern = "Aligned",
@@ -86,8 +86,8 @@ prep_key_bars_company <- function(
       )
     ) |>
     arrange(dplyr::desc(.data[["port_weight"]]), .by_group = TRUE) |>
-    filter(!is.null(.data[["port_weight"]])) |>
-    filter(!is.null(.data[["plan_tech_share"]]))
+    dplyr::filter(!is.null(.data[["port_weight"]])) |>
+    dplyr::filter(!is.null(.data[["plan_tech_share"]]))
 
   bind_rows(equity_data_company, bonds_data_company)
 }

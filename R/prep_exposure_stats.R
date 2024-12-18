@@ -15,12 +15,12 @@ prep_exposure_stats <- function(
   )
 
   exposure_stats <- audit_file |>
-    filter(
+    dplyr::filter(
       .data[["investor_name"]] == .env[["investor_name"]],
       .data[["portfolio_name"]] == .env[["portfolio_name"]]
     ) |>
-    filter(.data[["asset_type"]] %in% pacta_asset_classes) |>
-    filter(.data[["valid_input"]]) |>
+    dplyr::filter(.data[["asset_type"]] %in% pacta_asset_classes) |>
+    dplyr::filter(.data[["valid_input"]]) |>
     mutate(across(c("bics_sector", "financial_sector"), as.character)) |>
     mutate(
       sector = if_else(

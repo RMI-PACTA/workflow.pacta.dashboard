@@ -7,11 +7,11 @@ prep_emissions_pie <- function(
 ) {
   data |>
     ungroup() |>
-    filter(
+    dplyr::filter(
       .data[["investor_name"]] == .env[["investor_name"]],
       .data[["portfolio_name"]] == .env[["portfolio_name"]]
     ) |>
-    filter(.data[["asset_type"]] %in% c("Bonds", "Equity")) |>
+    dplyr::filter(.data[["asset_type"]] %in% c("Bonds", "Equity")) |>
     select("asset_type", "sector", "weighted_sector_emissions") |>
     mutate(exploded = .data[["sector"]] %in% .env[["pacta_sectors"]]) |>
     arrange(
@@ -23,7 +23,7 @@ prep_emissions_pie <- function(
       key = .data[["sector"]],
       value = .data[["weighted_sector_emissions"]]
     ) |>
-    filter(!is.na(.data[["key"]])) |>
-    filter(.data[["asset_type"]] == .env[["asset_type"]]) |>
+    dplyr::filter(!is.na(.data[["key"]])) |>
+    dplyr::filter(.data[["asset_type"]] == .env[["asset_type"]]) |>
     select(-"asset_type")
 }

@@ -7,7 +7,7 @@ prep_audit_table <- function(
 
   audit_table_init <-
     audit_file |>
-    filter(
+    dplyr::filter(
       .data[["investor_name"]] == .env[["investor_name"]],
       .data[["portfolio_name"]] == .env[["portfolio_name"]]
     ) |>

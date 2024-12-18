@@ -22,8 +22,8 @@ prep_emissions_trajectory <- function(
     `Corporate Bonds` = bonds_results_portfolio
   ) |>
     bind_rows(.id = "asset_class") |>
-    filter(.data[["portfolio_name"]] == .env[["portfolio_name"]]) |>
-    filter(.data[["scenario_geography"]] == "Global") |>
+    dplyr::filter(.data[["portfolio_name"]] == .env[["portfolio_name"]]) |>
+    dplyr::filter(.data[["scenario_geography"]] == "Global") |>
     select(
       "asset_class",
       "allocation",
@@ -36,13 +36,13 @@ prep_emissions_trajectory <- function(
       "scenario_source"
     ) |>
     distinct() |>
-    filter(!is.nan(.data[["plan"]])) |>
+    dplyr::filter(!is.nan(.data[["plan"]])) |>
     pivot_longer(c("plan", "scen"), names_to = "plan") |>
     unite("name", "sector", "plan", remove = FALSE) |>
     mutate(disabled = !.data[["sector"]] %in% .env[["pacta_sectors"]]) |>
     mutate(unit = .env[["emissions_units"]][.data[["sector"]]]) |>
     group_by(.data[["asset_class"]]) |>
-    filter(!all(.data[["disabled"]])) |>
+    dplyr::filter(!all(.data[["disabled"]])) |>
     mutate(
       equity_market =  case_when(
         .data[["equity_market"]] == "GlobalMarket" ~ "Global Market",
@@ -51,7 +51,7 @@ prep_emissions_trajectory <- function(
         TRUE ~ .data[["equity_market"]]
       )
     ) |>
-    filter(.data[["year"]] <= .env[["start_year"]] + .env[["year_span"]]) |>
+    dplyr::filter(.data[["year"]] <= .env[["start_year"]] + .env[["year_span"]]) |>
     arrange(
       .data[["asset_class"]],
       factor(

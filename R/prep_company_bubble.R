@@ -11,11 +11,11 @@ prep_company_bubble <- function(
 
   equity_data <-
     equity_results_company |>
-    filter(.data[["portfolio_name"]] == .env[["portfolio_name"]]) |>
-    filter(.data[["ald_sector"]] %in% c("Power", "Automotive")) |>
-    filter(.data[["equity_market"]] == "GlobalMarket") |>
-    filter(.data[["scenario_geography"]] == "Global") |>
-    filter(
+    dplyr::filter(.data[["portfolio_name"]] == .env[["portfolio_name"]]) |>
+    dplyr::filter(.data[["ald_sector"]] %in% c("Power", "Automotive")) |>
+    dplyr::filter(.data[["equity_market"]] == "GlobalMarket") |>
+    dplyr::filter(.data[["scenario_geography"]] == "Global") |>
+    dplyr::filter(
       .data[["year"]] %in% c(
         .env[["start_year"]],
         .env[["start_year"]] + 5L
@@ -48,7 +48,7 @@ prep_company_bubble <- function(
         "allocation"
       )
     ) |>
-    filter(.data[["year"]] == .env[["start_year"]]) |>
+    dplyr::filter(.data[["year"]] == .env[["start_year"]]) |>
     mutate(green = .data[["technology"]] %in% .env[["green_techs"]]) |>
     reframe(
       plan_tech_share = sum(.data[["plan_tech_share"]], na.rm = TRUE),
@@ -67,19 +67,19 @@ prep_company_bubble <- function(
       )
     ) |>
     mutate(y = .data[["plan_buildout"]] / .data[["scen_buildout"]]) |>
-    filter(.data[["green"]]) |>
+    dplyr::filter(.data[["green"]]) |>
     select(-"plan_buildout", -"scen_buildout", -"green") |>
-    filter(!is.na(.data[["plan_tech_share"]])) |>
+    dplyr::filter(!is.na(.data[["plan_tech_share"]])) |>
     mutate(y = pmax(.data[["y"]], 0L, na.rm = TRUE)) |>
     mutate(asset_class = "Listed Equity")
 
   bonds_data <-
     bonds_results_company |>
-    filter(.data[["portfolio_name"]] == .env[["portfolio_name"]]) |>
-    filter(.data[["ald_sector"]] %in% c("Power", "Automotive")) |>
-    filter(.data[["equity_market"]] == "GlobalMarket") |>
-    filter(.data[["scenario_geography"]] == "Global") |>
-    filter(
+    dplyr::filter(.data[["portfolio_name"]] == .env[["portfolio_name"]]) |>
+    dplyr::filter(.data[["ald_sector"]] %in% c("Power", "Automotive")) |>
+    dplyr::filter(.data[["equity_market"]] == "GlobalMarket") |>
+    dplyr::filter(.data[["scenario_geography"]] == "Global") |>
+    dplyr::filter(
       .data[["year"]] %in% c(
         .env[["start_year"]],
         .env[["start_year"]] + 5L
@@ -110,7 +110,7 @@ prep_company_bubble <- function(
         "allocation"
       )
     ) |>
-    filter(.data[["year"]] == .env[["start_year"]]) |>
+    dplyr::filter(.data[["year"]] == .env[["start_year"]]) |>
     mutate(green = .data[["technology"]] %in% .env[["green_techs"]]) |>
     reframe(
       plan_tech_share = sum(.data[["plan_tech_share"]], na.rm = TRUE),
@@ -129,9 +129,9 @@ prep_company_bubble <- function(
       )
     ) |>
     mutate(y = .data[["plan_buildout"]] / .data[["scen_buildout"]]) |>
-    filter(.data[["green"]]) |>
+    dplyr::filter(.data[["green"]]) |>
     select(-"plan_buildout", -"scen_buildout", -"green") |>
-    filter(!is.na(.data[["plan_tech_share"]])) |>
+    dplyr::filter(!is.na(.data[["plan_tech_share"]])) |>
     mutate(y = pmax(.data[["y"]], 0L, na.rm = TRUE)) |>
     mutate(asset_class = "Corporate Bonds")
 

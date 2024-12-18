@@ -21,11 +21,11 @@ prep_techexposure <- function(
       `Corporate Bonds` = bonds_results_portfolio
     ) |>
     bind_rows(.id = "asset_class") |>
-    filter(
+    dplyr::filter(
       .data[["investor_name"]] == .env[["investor_name"]],
       .data[["portfolio_name"]] == .env[["portfolio_name"]]
     ) |>
-    filter(!is.na(.data[["ald_sector"]]))
+    dplyr::filter(!is.na(.data[["ald_sector"]]))
 
   asset_classes <-
     portfolio |>
@@ -34,13 +34,13 @@ prep_techexposure <- function(
 
   equity_sectors <-
     portfolio |>
-    filter(.data[["asset_class"]] == "Listed Equity") |>
+    dplyr::filter(.data[["asset_class"]] == "Listed Equity") |>
     pull("ald_sector") |>
     unique()
 
   bonds_sectors <-
     portfolio |>
-    filter(.data[["asset_class"]] == "Corporate Bonds") |>
+    dplyr::filter(.data[["asset_class"]] == "Corporate Bonds") |>
     pull("ald_sector") |>
     unique()
 
@@ -50,8 +50,8 @@ prep_techexposure <- function(
       `Corporate Bonds` = indices_cb_results_portfolio
     ) |>
     bind_rows(.id = "asset_class") |>
-    filter(.data[["asset_class"]] %in% .env[["asset_classes"]]) |>
-    filter(
+    dplyr::filter(.data[["asset_class"]] %in% .env[["asset_classes"]]) |>
+    dplyr::filter(
       (
         .data[["asset_class"]] == "Listed Equity" &
           .data[["ald_sector"]] %in% .env[["equity_sectors"]]
@@ -67,8 +67,8 @@ prep_techexposure <- function(
       `Corporate Bonds` = peers_bonds_results_portfolio
     ) |>
     bind_rows(.id = "asset_class") |>
-    filter(.data[["asset_class"]] %in% .env[["asset_classes"]]) |>
-    filter(
+    dplyr::filter(.data[["asset_class"]] %in% .env[["asset_classes"]]) |>
+    dplyr::filter(
       (
         .data[["asset_class"]] == "Listed Equity" &
           .data[["ald_sector"]] %in% .env[["equity_sectors"]]
@@ -77,17 +77,17 @@ prep_techexposure <- function(
           .data[["ald_sector"]] %in% .env[["bonds_sectors"]]
       )
     ) |>
-    filter(.data[["investor_name"]] == .env[["peer_group"]])
+    dplyr::filter(.data[["investor_name"]] == .env[["peer_group"]])
 
   bind_rows(portfolio, peers, indices) |>
-    filter(.data[["allocation"]] == "portfolio_weight") |>
-    filter_scenarios_per_sector(
+    dplyr::filter(.data[["allocation"]] == "portfolio_weight") |>
+    dplyr::filter_scenarios_per_sector(
       select_scenario_other,
       select_scenario
     ) |>
-    filter(.data[["scenario_geography"]] == "Global") |>
-    filter(.data[["year"]] == .env[["start_year"]]) |>
-    filter(.data[["equity_market"]] == "GlobalMarket") |>
+    dplyr::filter(.data[["scenario_geography"]] == "Global") |>
+    dplyr::filter(.data[["year"]] == .env[["start_year"]]) |>
+    dplyr::filter(.data[["equity_market"]] == "GlobalMarket") |>
     mutate(green = .data[["technology"]] %in% .env[["green_techs"]]) |>
     group_by(
       .data[["asset_class"]],

@@ -21,12 +21,12 @@ prep_trajectory_alignment <- function(
       `Corporate Bonds` = bonds_results_portfolio
     ) |>
     bind_rows(.id = "asset_class") |>
-    filter(
+    dplyr::filter(
       .data[["investor_name"]] == .env[["investor_name"]],
       .data[["portfolio_name"]] == .env[["portfolio_name"]]
     ) |>
-    filter(.data[["ald_sector"]] %in% .env[["tech_roadmap_sectors"]]) |>
-    filter(.data[["scenario_geography"]] != "GlobalAggregate") |>
+    dplyr::filter(.data[["ald_sector"]] %in% .env[["tech_roadmap_sectors"]]) |>
+    dplyr::filter(.data[["scenario_geography"]] != "GlobalAggregate") |>
     group_by(
       .data[["asset_class"]],
       .data[["allocation"]],
@@ -34,7 +34,7 @@ prep_trajectory_alignment <- function(
       .data[["technology"]],
       .data[["scenario"]]
     ) |>
-    filter(n() > 1L) |>
+    dplyr::filter(n() > 1L) |>
     ungroup()
 
   asset_classes <-
@@ -44,37 +44,37 @@ prep_trajectory_alignment <- function(
 
   equity_markets <-
     portfolio |>
-    filter(.data[["asset_class"]] == "Listed Equity") |>
+    dplyr::filter(.data[["asset_class"]] == "Listed Equity") |>
     pull("equity_market") |>
     unique()
 
   bonds_markets <-
     portfolio |>
-    filter(.data[["asset_class"]] == "Corporate Bonds") |>
+    dplyr::filter(.data[["asset_class"]] == "Corporate Bonds") |>
     pull("equity_market") |>
     unique()
 
   equity_techs <-
     portfolio |>
-    filter(.data[["asset_class"]] == "Listed Equity") |>
+    dplyr::filter(.data[["asset_class"]] == "Listed Equity") |>
     pull("technology") |>
     unique()
 
   equity_scenario_geography <-
     portfolio |>
-    filter(.data[["asset_class"]] == "Listed Equity") |>
+    dplyr::filter(.data[["asset_class"]] == "Listed Equity") |>
     pull("scenario_geography") |>
     unique()
 
   bonds_scenario_geography <-
     portfolio |>
-    filter(.data[["asset_class"]] == "Corporate Bonds") |>
+    dplyr::filter(.data[["asset_class"]] == "Corporate Bonds") |>
     pull("scenario_geography") |>
     unique()
 
   bonds_techs <-
     portfolio |>
-    filter(.data[["asset_class"]] == "Corporate Bonds") |>
+    dplyr::filter(.data[["asset_class"]] == "Corporate Bonds") |>
     pull("technology") |>
     unique()
 
@@ -84,10 +84,10 @@ prep_trajectory_alignment <- function(
       `Corporate Bonds` = peers_bonds_results_portfolio
     ) |>
     bind_rows(.id = "asset_class") |>
-    filter(.data[["ald_sector"]] %in% .env[["tech_roadmap_sectors"]]) |>
-    filter(.data[["scenario_geography"]] != "GlobalAggregate") |>
-    filter(.data[["asset_class"]] %in% .env[["asset_classes"]]) |>
-    filter(
+    dplyr::filter(.data[["ald_sector"]] %in% .env[["tech_roadmap_sectors"]]) |>
+    dplyr::filter(.data[["scenario_geography"]] != "GlobalAggregate") |>
+    dplyr::filter(.data[["asset_class"]] %in% .env[["asset_classes"]]) |>
+    dplyr::filter(
       (
         .data[["asset_class"]] == "Listed Equity" &
           .data[["equity_market"]] %in% .env[["equity_markets"]]
@@ -96,7 +96,7 @@ prep_trajectory_alignment <- function(
           .data[["equity_market"]] %in% .env[["bonds_markets"]]
       )
     ) |>
-    filter(
+    dplyr::filter(
       (
         .data[["asset_class"]] == "Listed Equity" &
           .data[["technology"]] %in% .env[["equity_techs"]]
@@ -105,7 +105,7 @@ prep_trajectory_alignment <- function(
           .data[["technology"]] %in% .env[["bonds_techs"]]
       )
     ) |>
-    filter(
+    dplyr::filter(
       (
         .data[["asset_class"]] == "Listed Equity" &
           .data[["scenario_geography"]] %in% .env[["equity_scenario_geography"]]
@@ -114,7 +114,7 @@ prep_trajectory_alignment <- function(
           .data[["scenario_geography"]] %in% .env[["bonds_scenario_geography"]]
       )
     ) |>
-    filter(.data[["investor_name"]] == .env[["peer_group"]])
+    dplyr::filter(.data[["investor_name"]] == .env[["peer_group"]])
 
   indices <-
     list(
@@ -122,10 +122,10 @@ prep_trajectory_alignment <- function(
       `Corporate Bonds` = indices_cb_results_portfolio
     ) |>
     bind_rows(.id = "asset_class") |>
-    filter(.data[["ald_sector"]] %in% .env[["tech_roadmap_sectors"]]) |>
-    filter(.data[["scenario_geography"]] != "GlobalAggregate") |>
-    filter(.data[["asset_class"]] %in% .env[["asset_classes"]]) |>
-    filter(
+    dplyr::filter(.data[["ald_sector"]] %in% .env[["tech_roadmap_sectors"]]) |>
+    dplyr::filter(.data[["scenario_geography"]] != "GlobalAggregate") |>
+    dplyr::filter(.data[["asset_class"]] %in% .env[["asset_classes"]]) |>
+    dplyr::filter(
       (
         .data[["asset_class"]] == "Listed Equity" &
           .data[["equity_market"]] %in% .env[["equity_markets"]]
@@ -134,7 +134,7 @@ prep_trajectory_alignment <- function(
           .data[["equity_market"]] %in% .env[["bonds_markets"]]
       )
     ) |>
-    filter(
+    dplyr::filter(
       (
         .data[["asset_class"]] == "Listed Equity" &
           .data[["technology"]] %in% .env[["equity_techs"]]
@@ -143,7 +143,7 @@ prep_trajectory_alignment <- function(
           .data[["technology"]] %in% .env[["bonds_techs"]]
       )
     ) |>
-    filter(
+    dplyr::filter(
       (
         .data[["asset_class"]] == "Listed Equity" &
           .data[["scenario_geography"]] %in% .env[["equity_scenario_geography"]]
@@ -209,8 +209,8 @@ prep_trajectory_alignment <- function(
         .data[["value"]]
       )
     ) |>
-    filter(!is.na(.data[["value"]])) |>
-    filter(.data[["scenario"]] == "production" | !.data[["benchmark"]]) |>
+    dplyr::filter(!is.na(.data[["value"]])) |>
+    dplyr::filter(.data[["scenario"]] == "production" | !.data[["benchmark"]]) |>
     mutate(
       equity_market =  case_when(
         .data[["equity_market"]] == "GlobalMarket" ~ "Global Market",
@@ -225,7 +225,7 @@ prep_trajectory_alignment <- function(
         .data[["allocation"]] == "ownership_weight" ~ "Ownership Weight"
       )
     ) |>
-    filter(.data[["year"]] <= .env[["start_year"]] + .env[["year_span"]]) |>
+    dplyr::filter(.data[["year"]] <= .env[["start_year"]] + .env[["year_span"]]) |>
     arrange(
       .data[["asset_class"]],
       factor(

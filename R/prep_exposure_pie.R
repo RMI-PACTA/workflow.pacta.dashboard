@@ -7,12 +7,12 @@ prep_exposure_pie <- function(
   currency_exchange_value
 ) {
   data |>
-    filter(
+    dplyr::filter(
       .data[["investor_name"]] == .env[["investor_name"]],
       .data[["portfolio_name"]] == .env[["portfolio_name"]]
     ) |>
-    filter(.data[["asset_type"]] %in% c("Bonds", "Equity")) |>
-    filter(.data[["valid_input"]]) |>
+    dplyr::filter(.data[["asset_type"]] %in% c("Bonds", "Equity")) |>
+    dplyr::filter(.data[["valid_input"]]) |>
     mutate(across(c("bics_sector", "financial_sector"), as.character)) |>
     mutate(
       sector = if_else(
@@ -40,8 +40,8 @@ prep_exposure_pie <- function(
       .data[["sector"]]
     ) |>
     rename(key = .data[["sector"]]) |>
-    filter(!is.na(.data[["key"]])) |>
+    dplyr::filter(!is.na(.data[["key"]])) |>
     ungroup() |>
-    filter(.data[["asset_type"]] == .env[["asset_type"]]) |>
+    dplyr::filter(.data[["asset_type"]] == .env[["asset_type"]]) |>
     select(-"asset_type")
 }
