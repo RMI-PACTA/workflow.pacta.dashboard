@@ -46,7 +46,7 @@ prep_exposure_stats <- function(
       ),
       .by = "asset_type"
     ) |>
-    inner_join(
+    dplyr::inner_join(
       audit_table,
       by = join_by("asset_type" == "asset_type_analysis")
     ) |>
@@ -66,7 +66,7 @@ prep_exposure_stats <- function(
     asset_type = asset_classes_in_portfolio,
     sector = pacta_sectors,
     val_sector = 0L
-  ) |> inner_join(
+  ) |> dplyr::inner_join(
     distinct(
       select(
         exposure_stats,
