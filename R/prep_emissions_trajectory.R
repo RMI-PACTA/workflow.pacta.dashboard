@@ -37,7 +37,7 @@ prep_emissions_trajectory <- function(
     ) |>
     distinct() |>
     dplyr::filter(!is.nan(.data[["plan"]])) |>
-    pivot_longer(c("plan", "scen"), names_to = "plan") |>
+    tidyr::pivot_longer(c("plan", "scen"), names_to = "plan") |>
     tidyr::unite("name", "sector", "plan", remove = FALSE) |>
     mutate(disabled = !.data[["sector"]] %in% .env[["pacta_sectors"]]) |>
     mutate(unit = .env[["emissions_units"]][.data[["sector"]]]) |>

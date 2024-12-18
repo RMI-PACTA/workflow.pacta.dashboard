@@ -29,7 +29,7 @@ prep_key_bars_portfolio <- function(
       "allocation",
       "year"
     ) |>
-    pivot_longer(c("plan_tech_share", "scen_tech_share"), names_to = "plan") |>
+    tidyr::pivot_longer(c("plan_tech_share", "scen_tech_share"), names_to = "plan") |>
     mutate(
       id = if_else(
         .data[["plan"]] == "plan_tech_share",
@@ -79,7 +79,7 @@ prep_key_bars_portfolio <- function(
       "allocation",
       "year"
     ) |>
-    pivot_longer(c("plan_tech_share", "scen_tech_share"), names_to = "plan") |>
+    tidyr::pivot_longer(c("plan_tech_share", "scen_tech_share"), names_to = "plan") |>
     mutate(
       id = if_else(
         .data[["plan"]] == "plan_tech_share",

@@ -196,7 +196,7 @@ prep_trajectory_alignment <- function(
       names_from = "scenario",
       values_from = "scen_alloc_wt_tech_prod"
     ) |>
-    pivot_longer(
+    tidyr::pivot_longer(
       cols = -cols_with_supporting_info,
       names_to = "scenario",
       values_to = "value",

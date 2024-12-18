@@ -39,7 +39,6 @@
 #' @importFrom rlang :=
 #' @importFrom rlang .data
 #' @importFrom rlang .env
-#' @importFrom tidyr tidyr::pivot_longer
 #' @importFrom tidyr pivot_wider
 ## usethis namespace: end
 NULL

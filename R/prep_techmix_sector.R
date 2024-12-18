@@ -155,7 +155,7 @@ prep_techmix_sector <- function(
         "green_sum_prod",
         "green_sum_scenario"
       ) |>
-      pivot_longer(
+      tidyr::pivot_longer(
         cols = -c( #nolint
           "asset_class",
           "investor_name",
