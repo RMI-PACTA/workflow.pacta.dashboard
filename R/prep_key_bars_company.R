@@ -60,7 +60,9 @@ prep_key_bars_company <- function(
       "scenario",
       "year"
     ) |>
-    dplyr::group_by(.data[["id"]], .data[["ald_sector"]], .data[["technology"]]) |>
+    dplyr::group_by(
+      .data[["id"]], .data[["ald_sector"]], .data[["technology"]]
+    ) |>
     dplyr::mutate(port_weight = sum(.data[["port_weight"]], na.rm = TRUE)) |>
     dplyr::group_by(.data[["id"]], .data[["technology"]]) |>
     dplyr::filter(dplyr::row_number() == 1L) |>

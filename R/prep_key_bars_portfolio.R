@@ -29,7 +29,10 @@ prep_key_bars_portfolio <- function(
       "allocation",
       "year"
     ) |>
-    tidyr::pivot_longer(c("plan_tech_share", "scen_tech_share"), names_to = "plan") |>
+    tidyr::pivot_longer(
+      c("plan_tech_share", "scen_tech_share"),
+      names_to = "plan"
+    ) |>
     dplyr::mutate(
       id = dplyr::if_else(
         .data[["plan"]] == "plan_tech_share",
@@ -79,7 +82,10 @@ prep_key_bars_portfolio <- function(
       "allocation",
       "year"
     ) |>
-    tidyr::pivot_longer(c("plan_tech_share", "scen_tech_share"), names_to = "plan") |>
+    tidyr::pivot_longer(
+      c("plan_tech_share", "scen_tech_share"),
+      names_to = "plan"
+    ) |>
     dplyr::mutate(
       id = dplyr::if_else(
         .data[["plan"]] == "plan_tech_share",
@@ -101,7 +107,12 @@ prep_key_bars_portfolio <- function(
     ) |>
     dplyr::mutate(asset_class = "Corporate Bonds") |>
     dplyr::mutate_at("id", as.character) |>
-    dplyr::arrange(factor(.data[["technology"]], levels = .env[["all_tech_levels"]]))
+    dplyr::arrange(
+      factor(
+        .data[["technology"]],
+        levels = .env[["all_tech_levels"]]
+      )
+    )
 
   dplyr::bind_rows(equity_data_portfolio, bonds_data_portfolio)
 }

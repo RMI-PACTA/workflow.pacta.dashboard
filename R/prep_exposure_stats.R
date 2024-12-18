@@ -21,7 +21,9 @@ prep_exposure_stats <- function(
     ) |>
     dplyr::filter(.data[["asset_type"]] %in% pacta_asset_classes) |>
     dplyr::filter(.data[["valid_input"]]) |>
-    dplyr::mutate(dplyr::across(c("bics_sector", "financial_sector"), as.character)) |>
+    dplyr::mutate(
+      dplyr::across(c("bics_sector", "financial_sector"), as.character)
+    ) |>
     dplyr::mutate(
       sector = dplyr::if_else(
         .data[["financial_sector"]] %in% .env[["pacta_sectors"]],

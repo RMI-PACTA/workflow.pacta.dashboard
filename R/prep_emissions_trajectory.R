@@ -51,7 +51,9 @@ prep_emissions_trajectory <- function(
         TRUE ~ .data[["equity_market"]]
       )
     ) |>
-    dplyr::filter(.data[["year"]] <= .env[["start_year"]] + .env[["year_span"]]) |>
+    dplyr::filter(
+      .data[["year"]] <= .env[["start_year"]] + .env[["year_span"]]
+    ) |>
     dplyr::arrange(
       .data[["asset_class"]],
       factor(

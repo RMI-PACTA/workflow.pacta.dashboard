@@ -210,7 +210,9 @@ prep_trajectory_alignment <- function(
       )
     ) |>
     dplyr::filter(!is.na(.data[["value"]])) |>
-    dplyr::filter(.data[["scenario"]] == "production" | !.data[["benchmark"]]) |>
+    dplyr::filter(
+      .data[["scenario"]] == "production" | !.data[["benchmark"]]
+    ) |>
     dplyr::mutate(
       equity_market =  dplyr::case_when(
         .data[["equity_market"]] == "GlobalMarket" ~ "Global Market",
@@ -225,7 +227,9 @@ prep_trajectory_alignment <- function(
         .data[["allocation"]] == "ownership_weight" ~ "Ownership Weight"
       )
     ) |>
-    dplyr::filter(.data[["year"]] <= .env[["start_year"]] + .env[["year_span"]]) |>
+    dplyr::filter(
+      .data[["year"]] <= .env[["start_year"]] + .env[["year_span"]]
+    ) |>
     dplyr::arrange(
       .data[["asset_class"]],
       factor(

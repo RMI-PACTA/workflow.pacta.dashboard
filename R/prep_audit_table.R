@@ -23,7 +23,13 @@ prep_audit_table <- function(
         .data[["valid_input"]]
       )
     ) |>
-    dplyr::mutate(included = dplyr::if_else(.data[["is_included"]], "Yes", "No")) |>
+    dplyr::mutate(
+      included = dplyr::if_else(
+        .data[["is_included"]],
+        "Yes",
+        "No"
+      )
+    ) |>
     dplyr::mutate(
       asset_type_analysis = dplyr::case_when(
         .data[["asset_type"]] %in% c("Bonds", "Equity") ~ .data[["asset_type"]],
@@ -46,7 +52,9 @@ prep_audit_table <- function(
       )
     ) |>
     dplyr::mutate(value_usd = pmax(.data[["value_usd"]], 0L)) |>
-    dplyr::mutate(value_usd = .data[["value_usd"]] / .env[["currency_exchange_value"]])
+    dplyr::mutate(
+      value_usd = .data[["value_usd"]] / .env[["currency_exchange_value"]]
+    )
 
   included_table_totals <-
     audit_table_init |>
@@ -72,7 +80,10 @@ prep_audit_table <- function(
         !.data[["direct_holding"]] ~ "Via a Fund"
       )
     ) |>
-    dplyr::group_by(.data[["asset_type_analysis"]], .data[["investment_means"]]) |>
+    dplyr::group_by(
+      .data[["asset_type_analysis"]],
+      .data[["investment_means"]]
+    ) |>
     dplyr::summarise(
       value_invested = sum(.data[["value_usd"]], na.rm = TRUE),
       .groups = "drop"
@@ -88,7 +99,10 @@ prep_audit_table <- function(
 
   included_table_per_asset <-
     included_table_totals |>
-    dplyr::left_join(included_table_value_breakdown, by = "asset_type_analysis") |>
+    dplyr::left_join(
+      included_table_value_breakdown,
+      by = dplyr::join_by("asset_type_analysis")
+    ) |>
     remove_dupe_entries_totals(fields_totals) |>
     dplyr::select(
       "asset_type_analysis",
@@ -125,7 +139,10 @@ equal_adjacent_fields_totals <- function(
   are_equal <- TRUE
   for (field in fields_totals) {
     are_equal <- are_equal &&
-      (dplyr::pull(dplyr::slice(table, idx - 1L), field) == dplyr::pull(dplyr::slice(table, idx), field))
+      (
+        dplyr::pull(dplyr::slice(table, idx - 1L), field) ==
+          dplyr::pull(dplyr::slice(table, idx), field)
+      )
   }
   are_equal
 }
