@@ -125,7 +125,7 @@ equal_adjacent_fields_totals <- function(
   are_equal <- TRUE
   for (field in fields_totals) {
     are_equal <- are_equal &&
-      (pull(slice(table, idx - 1L), field) == pull(slice(table, idx), field))
+      (dplyr::pull(slice(table, idx - 1L), field) == dplyr::pull(slice(table, idx), field))
   }
   are_equal
 }
@@ -141,7 +141,7 @@ remove_dupe_entries_totals <- function(
       dplyr::mutate(
         is_chosen_asset = .data[["asset_type_analysis"]] == .env[["asset"]]
       ) |>
-      pull(.data[["is_chosen_asset"]]) |>
+      dplyr::pull(.data[["is_chosen_asset"]]) |>
       which()
 
     if (length(idx_asset) >= 2L) {

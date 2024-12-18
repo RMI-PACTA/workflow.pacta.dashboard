@@ -11,7 +11,6 @@
 #' @importFrom dplyr lag
 #' @importFrom dplyr last
 #' @importFrom dplyr n
-#' @importFrom dplyr pull
 #' @importFrom dplyr rename
 #' @importFrom dplyr select
 #' @importFrom dplyr slice

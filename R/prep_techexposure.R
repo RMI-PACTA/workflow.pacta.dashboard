@@ -29,19 +29,19 @@ prep_techexposure <- function(
 
   asset_classes <-
     portfolio |>
-    pull("asset_class") |>
+    dplyr::pull("asset_class") |>
     unique()
 
   equity_sectors <-
     portfolio |>
     dplyr::filter(.data[["asset_class"]] == "Listed Equity") |>
-    pull("ald_sector") |>
+    dplyr::pull("ald_sector") |>
     unique()
 
   bonds_sectors <-
     portfolio |>
     dplyr::filter(.data[["asset_class"]] == "Corporate Bonds") |>
-    pull("ald_sector") |>
+    dplyr::pull("ald_sector") |>
     unique()
 
   indices <-

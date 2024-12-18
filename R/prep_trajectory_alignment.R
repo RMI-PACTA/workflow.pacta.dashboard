@@ -39,43 +39,43 @@ prep_trajectory_alignment <- function(
 
   asset_classes <-
     portfolio |>
-    pull("asset_class") |>
+    dplyr::pull("asset_class") |>
     unique()
 
   equity_markets <-
     portfolio |>
     dplyr::filter(.data[["asset_class"]] == "Listed Equity") |>
-    pull("equity_market") |>
+    dplyr::pull("equity_market") |>
     unique()
 
   bonds_markets <-
     portfolio |>
     dplyr::filter(.data[["asset_class"]] == "Corporate Bonds") |>
-    pull("equity_market") |>
+    dplyr::pull("equity_market") |>
     unique()
 
   equity_techs <-
     portfolio |>
     dplyr::filter(.data[["asset_class"]] == "Listed Equity") |>
-    pull("technology") |>
+    dplyr::pull("technology") |>
     unique()
 
   equity_scenario_geography <-
     portfolio |>
     dplyr::filter(.data[["asset_class"]] == "Listed Equity") |>
-    pull("scenario_geography") |>
+    dplyr::pull("scenario_geography") |>
     unique()
 
   bonds_scenario_geography <-
     portfolio |>
     dplyr::filter(.data[["asset_class"]] == "Corporate Bonds") |>
-    pull("scenario_geography") |>
+    dplyr::pull("scenario_geography") |>
     unique()
 
   bonds_techs <-
     portfolio |>
     dplyr::filter(.data[["asset_class"]] == "Corporate Bonds") |>
-    pull("technology") |>
+    dplyr::pull("technology") |>
     unique()
 
   peers <-
