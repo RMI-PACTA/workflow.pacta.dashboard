@@ -24,7 +24,7 @@ translate_df_headers <- function(
 
   translated_headers <-
     dictionary_subset |>
-    left_join(column_tibble, by = c(id_column = "column_name"))
+    dplyr::left_join(column_tibble, by = c(id_column = "column_name"))
 
   names(data) <- translated_headers[[language]]
 

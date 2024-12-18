@@ -88,7 +88,7 @@ prep_audit_table <- function(
 
   included_table_per_asset <-
     included_table_totals |>
-    left_join(included_table_value_breakdown, by = "asset_type_analysis") |>
+    dplyr::left_join(included_table_value_breakdown, by = "asset_type_analysis") |>
     remove_dupe_entries_totals(fields_totals) |>
     select(
       "asset_type_analysis",

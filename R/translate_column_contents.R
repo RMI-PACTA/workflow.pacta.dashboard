@@ -16,7 +16,7 @@ translate_column_contents <- function(
   }
 
   data |>
-    left_join(
+    dplyr::left_join(
       dictionary_column,
       by = rlang::set_names("translate_key", column)
     ) |>

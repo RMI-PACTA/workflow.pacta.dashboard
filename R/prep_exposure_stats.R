@@ -77,7 +77,7 @@ prep_exposure_stats <- function(
   )
 
   exposure_stats_all <- all_stats_zero_sector_exposure |>
-    left_join(
+    dplyr::left_join(
       exposure_stats,
       by = join_by("asset_type", "sector", "percentage_value_invested")
     ) |>
