@@ -5,7 +5,7 @@ replace_contents <- function(
   dplyr::mutate(
     data,
     dplyr::across(
-      .cols = everything(),
+      .cols = dplyr::everything(),
       .fns = ~ gsub(
         pattern = "_CUR_",
         replacement = display_currency,
