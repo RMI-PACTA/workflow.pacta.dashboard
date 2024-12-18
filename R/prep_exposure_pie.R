@@ -34,7 +34,7 @@ prep_exposure_pie <- function(
       .groups = "drop"
     ) |>
     dplyr::mutate(exploded = .data[["sector"]] %in% .env[["pacta_sectors"]]) |>
-    arrange(
+    dplyr::arrange(
       .data[["asset_type"]],
       desc(.data[["exploded"]]),
       .data[["sector"]]

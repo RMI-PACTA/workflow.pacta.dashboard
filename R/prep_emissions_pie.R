@@ -14,7 +14,7 @@ prep_emissions_pie <- function(
     dplyr::filter(.data[["asset_type"]] %in% c("Bonds", "Equity")) |>
     select("asset_type", "sector", "weighted_sector_emissions") |>
     dplyr::mutate(exploded = .data[["sector"]] %in% .env[["pacta_sectors"]]) |>
-    arrange(
+    dplyr::arrange(
       .data[["asset_type"]],
       desc(.data[["exploded"]]),
       .data[["sector"]]

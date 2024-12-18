@@ -95,7 +95,7 @@ prep_techexposure <- function(
       .data[["portfolio_name"]],
       .data[["ald_sector"]]
     ) |>
-    arrange(
+    dplyr::arrange(
       .data[["asset_class"]],
       .data[["portfolio_name"]],
       factor(.data[["technology"]], levels = all_tech_levels),
@@ -133,7 +133,7 @@ prep_techexposure <- function(
         TRUE ~ .data[["equity_market"]]
       )
     ) |>
-    arrange(
+    dplyr::arrange(
       .data[["asset_class"]],
       factor(.data[["equity_market"]], levels = equity_market_levels),
       desc(.data[["this_portfolio"]]),

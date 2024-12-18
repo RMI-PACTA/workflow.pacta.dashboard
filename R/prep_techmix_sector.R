@@ -209,7 +209,7 @@ prep_techmix_sector <- function(
           TRUE ~ .data[["val_type"]]
         )
       ) |>
-      arrange(
+      dplyr::arrange(
         .data[["asset_class"]],
         factor(
           .data[["equity_market"]],

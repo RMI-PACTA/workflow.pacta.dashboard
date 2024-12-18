@@ -101,7 +101,7 @@ prep_key_bars_portfolio <- function(
     ) |>
     dplyr::mutate(asset_class = "Corporate Bonds") |>
     dplyr::mutate_at("id", as.character) |>
-    arrange(factor(.data[["technology"]], levels = .env[["all_tech_levels"]]))
+    dplyr::arrange(factor(.data[["technology"]], levels = .env[["all_tech_levels"]]))
 
   dplyr::bind_rows(equity_data_portfolio, bonds_data_portfolio)
 }
