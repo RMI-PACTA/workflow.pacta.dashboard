@@ -35,7 +35,7 @@ prep_emissions_trajectory <- function(
       "scenario",
       "scenario_source"
     ) |>
-    distinct() |>
+    dplyr::distinct() |>
     dplyr::filter(!is.nan(.data[["plan"]])) |>
     tidyr::pivot_longer(c("plan", "scen"), names_to = "plan") |>
     tidyr::unite("name", "sector", "plan", remove = FALSE) |>

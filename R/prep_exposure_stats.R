@@ -67,7 +67,7 @@ prep_exposure_stats <- function(
     sector = pacta_sectors,
     val_sector = 0L
   ) |> dplyr::inner_join(
-    distinct(
+    dplyr::distinct(
       select(
         exposure_stats,
         c("asset_type", "percentage_value_invested")
