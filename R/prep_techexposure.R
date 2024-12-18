@@ -99,7 +99,7 @@ prep_techexposure <- function(
       .data[["asset_class"]],
       .data[["portfolio_name"]],
       factor(.data[["technology"]], levels = all_tech_levels),
-      desc(.data[["green"]])
+      dplyr::desc(.data[["green"]])
     ) |>
     dplyr::mutate(sector_sum = sum(.data[["plan_carsten"]])) |>
     dplyr::mutate(
@@ -136,10 +136,10 @@ prep_techexposure <- function(
     dplyr::arrange(
       .data[["asset_class"]],
       factor(.data[["equity_market"]], levels = equity_market_levels),
-      desc(.data[["this_portfolio"]]),
+      dplyr::desc(.data[["this_portfolio"]]),
       .data[["portfolio_name"]],
       factor(.data[["technology"]], levels = all_tech_levels),
-      desc(.data[["green"]])
+      dplyr::desc(.data[["green"]])
     ) |>
     select(
       "asset_class",

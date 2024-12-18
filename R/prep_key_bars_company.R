@@ -31,7 +31,7 @@ prep_key_bars_company <- function(
       "scenario",
       "year"
     ) |>
-    dplyr::arrange(desc(.data[["port_weight"]])) |>
+    dplyr::arrange(dplyr::desc(.data[["port_weight"]])) |>
     dplyr::mutate(asset_class = "Listed Equity") |>
     dplyr::mutate_at("id", as.character) |> # convert the col type to character to prevent errors in case empty df is binded by rows #nolint
     dplyr::group_by(.data[["ald_sector"]], .data[["technology"]]) |> # select at most 15 companies with the highest weigths per sector+technology #nolint
@@ -72,7 +72,7 @@ prep_key_bars_company <- function(
           fixed = TRUE
         )
     ) |>
-    dplyr::arrange(desc(.data[["port_weight"]])) |>
+    dplyr::arrange(dplyr::desc(.data[["port_weight"]])) |>
     dplyr::mutate(asset_class = "Corporate Bonds") |>
     dplyr::mutate_at("id", as.character) |> # convert the col type to character to prevent errors in case empty df is bound by rows #nolint
     dplyr::group_by(.data[["ald_sector"]], .data[["technology"]]) |> # select at most 15 companies with the highest weigths per sector+technology #nolint

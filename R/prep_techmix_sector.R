@@ -215,7 +215,7 @@ prep_techmix_sector <- function(
           .data[["equity_market"]],
           levels = c("Global Market", "Developed Market", "Emerging Market")
         ),
-        desc(.data[["this_portfolio"]]),
+        dplyr::desc(.data[["this_portfolio"]]),
         factor(
           .data[["val_type"]],
           levels = c("Portfolio", "Scenario", "Benchmark")

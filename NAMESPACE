@@ -2,7 +2,6 @@
 
 export(prepare_schema_files)
 export(run_dashboard_workflow)
-importFrom(dplyr,desc)
 importFrom(dplyr,distinct)
 importFrom(dplyr,everything)
 importFrom(dplyr,first)

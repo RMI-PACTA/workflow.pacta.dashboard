@@ -36,7 +36,7 @@ prep_exposure_pie <- function(
     dplyr::mutate(exploded = .data[["sector"]] %in% .env[["pacta_sectors"]]) |>
     dplyr::arrange(
       .data[["asset_type"]],
-      desc(.data[["exploded"]]),
+      dplyr::desc(.data[["exploded"]]),
       .data[["sector"]]
     ) |>
     dplyr::rename(key = .data[["sector"]]) |>

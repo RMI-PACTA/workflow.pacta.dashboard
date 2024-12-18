@@ -2,7 +2,6 @@
 "_PACKAGE"
 
 ## usethis namespace: start
-#' @importFrom dplyr desc
 #' @importFrom dplyr distinct
 #' @importFrom dplyr everything
 #' @importFrom dplyr first
