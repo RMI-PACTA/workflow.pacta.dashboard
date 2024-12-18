@@ -192,7 +192,7 @@ prep_trajectory_alignment <- function(
       production = "plan_alloc_wt_tech_prod",
       "scen_alloc_wt_tech_prod"
     ) |>
-    pivot_wider(
+    tidyr::pivot_wider(
       names_from = "scenario",
       values_from = "scen_alloc_wt_tech_prod"
     ) |>
