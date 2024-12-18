@@ -8,7 +8,6 @@
 #' @importFrom dplyr distinct
 #' @importFrom dplyr everything
 #' @importFrom dplyr first
-#' @importFrom dplyr if_else
 #' @importFrom dplyr inner_join
 #' @importFrom dplyr join_by
 #' @importFrom dplyr lag

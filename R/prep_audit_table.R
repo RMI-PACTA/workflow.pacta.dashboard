@@ -12,18 +12,18 @@ prep_audit_table <- function(
       .data[["portfolio_name"]] == .env[["portfolio_name"]]
     ) |>
     dplyr::mutate(
-      asset_type = if_else(
+      asset_type = dplyr::if_else(
         .data[["valid_input"]], .data[["asset_type"]], "Unknown"
       )
     ) |>
     dplyr::mutate(
-      is_included = if_else(
+      is_included = dplyr::if_else(
         .data[["asset_type"]] %in% c("Others", "Funds"),
         FALSE,
         .data[["valid_input"]]
       )
     ) |>
-    dplyr::mutate(included = if_else(.data[["is_included"]], "Yes", "No")) |>
+    dplyr::mutate(included = dplyr::if_else(.data[["is_included"]], "Yes", "No")) |>
     dplyr::mutate(
       asset_type_analysis = dplyr::case_when(
         .data[["asset_type"]] %in% c("Bonds", "Equity") ~ .data[["asset_type"]],

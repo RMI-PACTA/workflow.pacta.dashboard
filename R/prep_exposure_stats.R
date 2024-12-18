@@ -23,7 +23,7 @@ prep_exposure_stats <- function(
     dplyr::filter(.data[["valid_input"]]) |>
     dplyr::mutate(across(c("bics_sector", "financial_sector"), as.character)) |>
     dplyr::mutate(
-      sector = if_else(
+      sector = dplyr::if_else(
         .data[["financial_sector"]] %in% .env[["pacta_sectors"]],
         .data[["financial_sector"]],
         "Other"
@@ -82,7 +82,7 @@ prep_exposure_stats <- function(
       by = join_by("asset_type", "sector", "percentage_value_invested")
     ) |>
     dplyr::mutate(
-      perc_asset_val_sector = if_else(
+      perc_asset_val_sector = dplyr::if_else(
         is.na(.data[["perc_asset_val_sector"]]),
         .data[["val_sector"]],
         .data[["perc_asset_val_sector"]]

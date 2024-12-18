@@ -203,7 +203,7 @@ prep_trajectory_alignment <- function(
       values_drop_na = TRUE
     ) |>
     dplyr::mutate(
-      value = if_else(
+      value = dplyr::if_else(
         .data[["year"]] > min(.data[["year"]] + 5L) & .data[["value"]] == 0L,
         NA_real_,
         .data[["value"]]

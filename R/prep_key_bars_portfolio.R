@@ -31,7 +31,7 @@ prep_key_bars_portfolio <- function(
     ) |>
     tidyr::pivot_longer(c("plan_tech_share", "scen_tech_share"), names_to = "plan") |>
     dplyr::mutate(
-      id = if_else(
+      id = dplyr::if_else(
         .data[["plan"]] == "plan_tech_share",
         "Portfolio",
         "Aligned* Portfolio"
@@ -81,7 +81,7 @@ prep_key_bars_portfolio <- function(
     ) |>
     tidyr::pivot_longer(c("plan_tech_share", "scen_tech_share"), names_to = "plan") |>
     dplyr::mutate(
-      id = if_else(
+      id = dplyr::if_else(
         .data[["plan"]] == "plan_tech_share",
         "Portfolio",
         "Aligned* Portfolio"
