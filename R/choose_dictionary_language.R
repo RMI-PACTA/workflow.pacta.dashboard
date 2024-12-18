@@ -5,7 +5,7 @@ choose_dictionary_language <- function(
   language <- tolower(language)
 
   data |>
-    transmute(
+    dplyr::transmute(
       .data[["id_data"]],
       .data[["id_column"]],
       translate_key = .data[["key"]],

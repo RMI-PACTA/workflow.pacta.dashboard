@@ -16,7 +16,7 @@ translate_df_contents <- function(
   dictionary_subset <-
     dictionary |>
     dplyr::filter(.data[["id_data"]] == .env[["id_data"]]) |>
-    transmute(
+    dplyr::transmute(
       .data[["id_column"]],
       .data[["translate_key"]],
       .data[["translate_value"]]

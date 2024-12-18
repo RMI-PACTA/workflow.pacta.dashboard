@@ -20,7 +20,7 @@ translate_df_headers <- function(
   dictionary_subset <-
     dictionary |>
     dplyr::filter(.data[["id_data"]] == .env[["id_data"]]) |>
-    transmute(.data[["id_column"]], .data[[!!language]])
+    dplyr::transmute(.data[["id_column"]], .data[[!!language]])
 
   translated_headers <-
     dictionary_subset |>

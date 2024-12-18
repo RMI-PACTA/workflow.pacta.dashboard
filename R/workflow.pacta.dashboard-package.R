@@ -18,7 +18,6 @@
 #' @importFrom dplyr select
 #' @importFrom dplyr slice
 #' @importFrom dplyr tibble
-#' @importFrom dplyr transmute
 #' @importFrom logger log_debug
 #' @importFrom logger log_error
 #' @importFrom logger log_info
