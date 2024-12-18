@@ -30,7 +30,6 @@ Imports:
     glue,
     jsonlite,
     logger,
-    magrittr,
     pacta.portfolio.utils,
     pacta.workflow.utils,
     readr,

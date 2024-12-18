@@ -14,8 +14,8 @@ translate_df_contents <- function(
   }
 
   dictionary_subset <-
-    dictionary %>%
-    filter(.data[["id_data"]] == .env[["id_data"]]) %>%
+    dictionary |>
+    filter(.data[["id_data"]] == .env[["id_data"]]) |>
     transmute(
       .data[["id_column"]],
       .data[["translate_key"]],

@@ -6,24 +6,24 @@ prep_audit_table <- function(
 ) {
 
   audit_table_init <-
-    audit_file %>%
+    audit_file |>
     filter(
       .data[["investor_name"]] == .env[["investor_name"]],
       .data[["portfolio_name"]] == .env[["portfolio_name"]]
-    ) %>%
+    ) |>
     mutate(
       asset_type = if_else(
         .data[["valid_input"]], .data[["asset_type"]], "Unknown"
       )
-    ) %>%
+    ) |>
     mutate(
       is_included = if_else(
         .data[["asset_type"]] %in% c("Others", "Funds"),
         FALSE,
         .data[["valid_input"]]
       )
-    ) %>%
-    mutate(included = if_else(.data[["is_included"]], "Yes", "No")) %>%
+    ) |>
+    mutate(included = if_else(.data[["is_included"]], "Yes", "No")) |>
     mutate(
       asset_type_analysis = case_when(
         .data[["asset_type"]] %in% c("Bonds", "Equity") ~ .data[["asset_type"]],
@@ -33,7 +33,7 @@ prep_audit_table <- function(
         ) ~ "Other",
         TRUE ~ "Unclassified"
       )
-    ) %>%
+    ) |>
     mutate(
       asset_type_analysis = factor(
         .data[["asset_type_analysis"]],
@@ -44,17 +44,17 @@ prep_audit_table <- function(
           "Unclassified"
         )
       )
-    ) %>%
-    mutate(value_usd = pmax(.data[["value_usd"]], 0L)) %>%
+    ) |>
+    mutate(value_usd = pmax(.data[["value_usd"]], 0L)) |>
     mutate(value_usd = .data[["value_usd"]] / .env[["currency_exchange_value"]])
 
   included_table_totals <-
-    audit_table_init %>%
-    group_by(.data[["asset_type_analysis"]], .data[["included"]]) %>%
+    audit_table_init |>
+    group_by(.data[["asset_type_analysis"]], .data[["included"]]) |>
     summarise(
       total_value_invested = sum(.data[["value_usd"]], na.rm = TRUE),
       .groups = "drop"
-    ) %>%
+    ) |>
     mutate(
       percentage_value_invested = (
         .data[["total_value_invested"]] / sum(.data[["total_value_invested"]])
@@ -62,7 +62,7 @@ prep_audit_table <- function(
     )
 
   included_table_value_breakdown <-
-    audit_table_init %>%
+    audit_table_init |>
     mutate(
       investment_means = case_when(
         (
@@ -71,8 +71,8 @@ prep_audit_table <- function(
         .data[["direct_holding"]] ~ "Direct",
         !.data[["direct_holding"]] ~ "Via a Fund"
       )
-    ) %>%
-    group_by(.data[["asset_type_analysis"]], .data[["investment_means"]]) %>%
+    ) |>
+    group_by(.data[["asset_type_analysis"]], .data[["investment_means"]]) |>
     summarise(
       value_invested = sum(.data[["value_usd"]], na.rm = TRUE),
       .groups = "drop"
@@ -87,9 +87,9 @@ prep_audit_table <- function(
     )
 
   included_table_per_asset <-
-    included_table_totals %>%
-    left_join(included_table_value_breakdown, by = "asset_type_analysis") %>%
-    remove_dupe_entries_totals(fields_totals) %>%
+    included_table_totals |>
+    left_join(included_table_value_breakdown, by = "asset_type_analysis") |>
+    remove_dupe_entries_totals(fields_totals) |>
     select(
       "asset_type_analysis",
       "total_value_invested",
@@ -100,7 +100,7 @@ prep_audit_table <- function(
     )
 
   sum_table <-
-    included_table_per_asset %>%
+    included_table_per_asset |>
     summarise(
       asset_type_analysis = "Total",
       total_value_invested = sum(.data[["total_value_invested"]], na.rm = TRUE),
@@ -137,11 +137,11 @@ remove_dupe_entries_totals <- function(
 ) {
   for (asset in unique(table[["asset_type_analysis"]])) {
     idx_asset <-
-      table %>%
+      table |>
       mutate(
         is_chosen_asset = .data[["asset_type_analysis"]] == .env[["asset"]]
-      ) %>%
-      pull(.data[["is_chosen_asset"]]) %>%
+      ) |>
+      pull(.data[["is_chosen_asset"]]) |>
       which()
 
     if (length(idx_asset) >= 2L) {

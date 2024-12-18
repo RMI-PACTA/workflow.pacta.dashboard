@@ -18,12 +18,12 @@ translate_df_headers <- function(
   column_tibble <- tibble(column_name = names(data))
 
   dictionary_subset <-
-    dictionary %>%
-    filter(.data[["id_data"]] == .env[["id_data"]]) %>%
+    dictionary |>
+    filter(.data[["id_data"]] == .env[["id_data"]]) |>
     transmute(.data[["id_column"]], .data[[!!language]])
 
   translated_headers <-
-    dictionary_subset %>%
+    dictionary_subset |>
     left_join(column_tibble, by = c(id_column = "column_name"))
 
   names(data) <- translated_headers[[language]]

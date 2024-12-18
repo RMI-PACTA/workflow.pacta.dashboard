@@ -4,7 +4,7 @@ choose_dictionary_language <- function(
 ) {
   language <- tolower(language)
 
-  data %>%
+  data |>
     transmute(
       .data[["id_data"]],
       .data[["id_column"]],

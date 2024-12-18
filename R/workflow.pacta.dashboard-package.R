@@ -37,7 +37,6 @@
 #' @importFrom logger log_info
 #' @importFrom logger log_trace
 #' @importFrom logger log_warn
-#' @importFrom magrittr %>%
 #' @importFrom rlang :=
 #' @importFrom rlang .data
 #' @importFrom rlang .env
