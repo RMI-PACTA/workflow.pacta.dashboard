@@ -2,6 +2,7 @@
 
 export(prep_company_bubble)
 export(prep_exposure_stats)
+export(prep_key_bars_company)
 export(prep_techmix_sector)
 export(prepare_schema_files)
 export(run_dashboard_workflow)
