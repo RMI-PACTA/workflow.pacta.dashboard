@@ -2,6 +2,25 @@
 # based on pacta.portfolio.report:::prep_key_bars_portfolio, but does not filter 
 # to allocation == "portfolio_weight" nor by scenario and scenario source
 
+#' Prepare data for portfolio-level technology exposoure plot
+#'
+#' Prepare JSON data for the portfolio-level technology exposoure plot.
+#' Note: This is based on pacta.portfolio.report:::prep_key_bars_portfolio, but
+#' does not filter to allocation == "portfolio_weight"  nor by scenario and
+#' scenario source.
+#'
+#' @param equity_results_portfolio (data.frame) Portfolio-level results from
+#' `workflow.pacta` for listed equity
+#' @param bonds_results_portfolio (data.frame) Portfolio-level results from
+#' `workflow.pacta` for corporate bonds
+#' @param portfolio_name (character scalar) Portfolio name
+#' @param start_year (integer scalar) Start year for analysis
+#' @param pacta_sectors_not_analysed (character vector) PACTA sectors not to be
+#' analysed
+#' @param all_tech_levels (character vector) List of all technology levels
+#' @return (data.frame) suitible for serialization to JSON (using
+#' `jsonlite::toJSON`/`jsonlite::write_json`)
+#' @export
 prep_key_bars_portfolio <-
   function(equity_results_portfolio,
            bonds_results_portfolio,

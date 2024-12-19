@@ -1,6 +1,20 @@
-# prep_company_bubble ----------------------------------------------------------
-# based on pacta.portfolio.report:::prep_company_bubble, but does not filter to
-# allocation == "portfolio_weight" nor by scenario and scenario source
+#' Prepare data for company bubble plot
+#'
+#' Prepare JSON data for the company bubble plot.
+#' Note: this is based on pacta.portfolio.report:::prep_company_bubble, but
+#' does not filter to allocation == "portfolio_weight" nor by scenario and
+#' scenario source.
+#'
+#' @param equity_results_company (data.frame) Company-level results from
+#' `workflow.pacta` for listed equity
+#' @param bonds_results_company (data.frame) Company-level results from
+#' `workflow.pacta` for corporate bonds
+#' @param portfolio_name (character scalar) Portfolio name
+#' @param start_year (integer scalar) Start year for analysis
+#' @param green_techs (character vector) List of green technologies
+#' @return (data.frame) suitible for serialization to JSON (using
+#' `jsonlite::toJSON`/`jsonlite::write_json`)
+#' @export
 prep_company_bubble <-
   function(equity_results_company,
            bonds_results_company,

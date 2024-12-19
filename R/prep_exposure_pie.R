@@ -1,3 +1,17 @@
+#' Prepare data for exposure pie chart
+#'
+#' Prepare JSON data for the exposure pie chart.
+#'
+#' @param data (data.frame) Audit file contents
+#' @param asset_type (character scalar) Asset type (`Equity` or `Bonds`)
+#' @param investor_name (character scalar) Investor name
+#' @param portfolio_name (character scalar) Portfolio name
+#' @param pacta_sectors (character vector) PACTA sectors
+#' @param currency_exchange_value (numeric scalar) Currency exchange value to
+#' convert to USD
+#' @return (data.frame) suitible for serialization to JSON (using
+#' `jsonlite::toJSON`/`jsonlite::write_json`)
+#' @export
 prep_exposure_pie <-
   function(data,
            asset_type,
