@@ -2,7 +2,7 @@
 #'
 #' Prepare JSON data for the exposure pie chart.
 #'
-#' @param  (data.frame) Audit file contents
+#' @param data (data.frame) Audit file contents
 #' @param asset_type (character scalar) Asset type (`Equity` or `Bonds`)
 #' @param investor_name (character scalar) Investor name
 #' @param portfolio_name (character scalar) Portfolio name

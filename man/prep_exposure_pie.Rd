@@ -14,6 +14,8 @@ prep_exposure_pie(
 )
 }
 \arguments{
+\item{data}{(data.frame) Audit file contents}
+
 \item{asset_type}{(character scalar) Asset type (\code{Equity} or \code{Bonds})}
 
 \item{investor_name}{(character scalar) Investor name}
@@ -24,8 +26,6 @@ prep_exposure_pie(
 
 \item{currency_exchange_value}{(numeric scalar) Currency exchange value to
 convert to USD}
-
-\item{(data.frame)}{Audit file contents}
 }
 \value{
 (data.frame) suitible for serialization to JSON (using
