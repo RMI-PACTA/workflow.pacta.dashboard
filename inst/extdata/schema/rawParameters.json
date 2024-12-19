@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://raw.githubusercontent.com/RMI-PACTA/workflow.pacta/main/inst/extdata/schema/rawParameters.json",
+  "title": "rawPortfolioParameters",
+  "description": "Valid input parameters for the PACTA workflow. Less than full parameters, since PACTA handles inheritence.",
+  "$comment": "Created by Alex Axthelm, aaxthelm@rmi.org",
+  "type": "object",
+  "properties": {
+    "portfolio": {
+      "$ref": "portfolio.json"
+    },
+    "inherit": {
+      "type": "string",
+      "description": "Path to a file with inheritance information."
+    }
+  },
+  "anyOf": [
+    {
+      "required": [
+        "inherit"
+      ]
+    },
+    {
+      "$ref": "reportingParameters.json"
+    }
+  ],
+  "required": [
+    "portfolio"
+  ],
+  "additionalProperties": true
+}

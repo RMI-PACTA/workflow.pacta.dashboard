@@ -1,0 +1,7 @@
+{
+  "reporting": {
+    "projectCode": "GENERAL",
+    "projectReportName": "general"
+  },
+  "inherit": "report_default"
+}

@@ -1,6 +1,6 @@
 Package: workflow.pacta.dashboard
 Title: Run PACTA dashboard JSON generation
-Version: 0.0.0.9007
+Version: 0.0.0.9009
 Authors@R:
     c(person(given = "Alex",
              family = "Axthelm",
@@ -29,11 +29,16 @@ Imports:
     dplyr,
     glue,
     jsonlite,
+    logger,
     magrittr,
     pacta.portfolio.utils,
+    pacta.workflow.utils,
     readr,
     rlang,
     stringr,
-    tidyr
+    tidyr,
+    workflow.pacta
 Remotes:
-    RMI-PACTA/pacta.portfolio.utils
+    RMI-PACTA/pacta.portfolio.utils,
+    RMI-PACTA/pacta.workflow.utils,
+    RMI-PACTA/workflow.pacta

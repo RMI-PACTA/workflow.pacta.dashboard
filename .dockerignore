@@ -11,3 +11,5 @@ benchmarks_dir/**/*
 dashboard_data_dir
 dashboard_data_dir/**/*
 docker-compose.yml
+pacta-data/**/*
+^tests/**/*
