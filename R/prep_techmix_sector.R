@@ -6,9 +6,9 @@
 #' `workflow.pacta` for listed equity
 #' @param bonds_results_portfolio (data.frame) Portfolio-level results from
 #' `workflow.pacta` for corporate bonds
-#' @param indices_equity_results_portfolio (data.frame) Benchmark results from
+#' @param indices_eq_results_portfolio (data.frame) Benchmark results from
 #' `workflow.pacta` for listed equity
-#' @param indices_bonds_results_portfolio (data.frame) Benchmark results from
+#' @param indices_cb_results_portfolio (data.frame) Benchmark results from
 #' `workflow.pacta` for corporate bonds
 #' @param peers_equity_results_portfolio (data.frame) Peer group results from
 #' `workflow.pacta` for listed equity

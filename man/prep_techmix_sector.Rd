@@ -27,6 +27,12 @@ prep_techmix_sector(
 \item{bonds_results_portfolio}{(data.frame) Portfolio-level results from
 \code{workflow.pacta} for corporate bonds}
 
+\item{indices_eq_results_portfolio}{(data.frame) Benchmark results from
+\code{workflow.pacta} for listed equity}
+
+\item{indices_cb_results_portfolio}{(data.frame) Benchmark results from
+\code{workflow.pacta} for corporate bonds}
+
 \item{peers_equity_results_portfolio}{(data.frame) Peer group results from
 \code{workflow.pacta} for listed equity}
 
@@ -47,13 +53,6 @@ prep_techmix_sector(
 \item{green_techs}{(character vector) List of green technologies}
 
 \item{all_tech_levels}{(character vector) List of all technology levels}
-
-\item{indices_equity_results_portfolio}{(data.frame) Benchmark results from
-\code{workflow.pacta} for listed equity}
-
-\item{indices_bonds_results_portfolio}{(data.frame) Benchmark results from
-\code{workflow.pacta} for corporate bonds}
-
 }
 \value{
 (data.frame) suitible for serialization to JSON (using
