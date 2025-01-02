@@ -1,3 +1,16 @@
+#' Prepare exposure statistics for inclusion in the dashboard 
+#'
+#' Prepare JSON data for the exposure statistics.
+#'
+#' @param audit_file (data.frame) Audit file contents
+#' @param investor_name (character scalar) Investor name
+#' @param portfolio_name (character scalar) Portfolio name
+#' @param pacta_sectors (character vector) PACTA sectors
+#' @param currency_exchange_value (numeric scalar) Currency exchange value to
+#' convert to USD
+#' @return (data.frame) suitible for serialization to JSON (using
+#' `jsonlite::toJSON`/`jsonlite::write_json`)
+#' @export
 prep_exposure_stats <- function(
   audit_file,
   investor_name,

@@ -1,3 +1,30 @@
+#' Prepare techmix data for plot 
+#'
+#' Prepare JSON data for the technology mix plot.
+#'
+#' @param equity_results_portfolio (data.frame) Portfolio-level results from
+#' `workflow.pacta` for listed equity
+#' @param bonds_results_portfolio (data.frame) Portfolio-level results from
+#' `workflow.pacta` for corporate bonds
+#' @param indices_equity_results_portfolio (data.frame) Benchmark results from
+#' `workflow.pacta` for listed equity
+#' @param indices_bonds_results_portfolio (data.frame) Benchmark results from
+#' `workflow.pacta` for corporate bonds
+#' @param peers_equity_results_portfolio (data.frame) Peer group results from
+#' `workflow.pacta` for listed equity
+#' @param peers_bonds_results_portfolio (data.frame) Peer group results from
+#' `workflow.pacta` for corporate bonds
+#' @param investor_name (character scalar) Investor name
+#' @param portfolio_name (character scalar) Portfolio name
+#' @param start_year (integer scalar) Start year for analysis
+#' @param year_span (integer scalar) Number of years to analyze (from
+#' `_start_year`)
+#' @param peer_group (character scalar) Peer group name
+#' @param green_techs (character vector) List of green technologies
+#' @param all_tech_levels (character vector) List of all technology levels
+#' @return (data.frame) suitible for serialization to JSON (using
+#' `jsonlite::toJSON`/`jsonlite::write_json`)
+#' @export
 prep_techmix_sector <- function(
   equity_results_portfolio,
   bonds_results_portfolio,
