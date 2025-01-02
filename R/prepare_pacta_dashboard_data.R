@@ -50,11 +50,19 @@ scen_geo_levels <- unlist(manifest$params$analysis$scenarioGeographiesList)
 # load results from input directory --------------------------------------------
 log_debug("Loading results from input directory.")
 
+log_trace("Loading audit_file.rds")
 audit_file <- readRDS(file.path(analysis_output_dir, "audit_file.rds"))
+
+log_trace("Loading emissions.rds")
 emissions <- readRDS(file.path(analysis_output_dir, "emissions.rds"))
+
+log_trace("Loading Equity_results_portfolio.rds")
 equity_results_portfolio <- readRDS(file.path(analysis_output_dir, "Equity_results_portfolio.rds"))
+log_trace("Loading Bonds_results_portfolio.rds")
 bonds_results_portfolio <- readRDS(file.path(analysis_output_dir, "Bonds_results_portfolio.rds"))
+log_trace("Loading Equity_results_company.rds")
 equity_results_company <- readRDS(file.path(analysis_output_dir, "Equity_results_company.rds"))
+log_trace("Loading Bonds_results_company.rds")
 bonds_results_company <- readRDS(file.path(analysis_output_dir, "Bonds_results_company.rds"))
 
 
