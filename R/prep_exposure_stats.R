@@ -1,4 +1,4 @@
-#' Prepare exposure statistics for inclusion in the dashboard 
+#' Prepare exposure statistics for inclusion in the dashboard
 #'
 #' Prepare JSON data for the exposure statistics.
 #'

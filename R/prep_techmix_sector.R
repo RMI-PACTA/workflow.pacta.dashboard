@@ -1,4 +1,4 @@
-#' Prepare techmix data for plot 
+#' Prepare techmix data for plot
 #'
 #' Prepare JSON data for the technology mix plot.
 #'
