@@ -20,7 +20,7 @@ This R package is expected to be run from the corresponding docker image [ghcr.i
 ### Overview
 
 The application's deployment configuration (including for running locally) is by default controlled with environment variables (although this can be overridden by using non-default arguments to function calls).
-largely these config-options are centered around paths to directories which contain, or are expected to recieve data files.
+Largely these config-options are centered around paths to directories which contain, or are expected to recieve data files.
 See "Prerequisite Data" and "Application Config" (below) for more details.
 
 The behavior of the application code for a particular run of the application (rather than a deployment) is controlled via the command-line (JSON) parameters that are passed in when the application is invoked with `Rscript` or `R --args`.
