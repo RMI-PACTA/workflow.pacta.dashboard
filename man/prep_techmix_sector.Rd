@@ -53,6 +53,7 @@ prep_techmix_sector(
 
 \item{indices_bonds_results_portfolio}{(data.frame) Benchmark results from
 \code{workflow.pacta} for corporate bonds}
+
 }
 \value{
 (data.frame) suitible for serialization to JSON (using

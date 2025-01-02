@@ -22,7 +22,6 @@ prep_company_bubble <- function(
   start_year,
   green_techs
 ) {
-
   equity_data <- equity_results_company |>
     dplyr::filter(.data[["portfolio_name"]] == .env[["portfolio_name"]]) |>
     dplyr::filter(.data[["ald_sector"]] %in% c("Power", "Automotive")) |>
