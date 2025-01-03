@@ -8,7 +8,9 @@
 #' @return directory
 #'
 #' @export
-prepare_schema_files <- function(directory) {
+prepare_schema_files <- function(
+  directory
+) {
   log_debug("Preparing schema files.")
   log_debug("Schema tempdir: ", directory)
   dashboard_schema_files <- list.files(
