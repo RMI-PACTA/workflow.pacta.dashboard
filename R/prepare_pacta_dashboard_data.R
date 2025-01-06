@@ -50,13 +50,35 @@ scen_geo_levels <- unlist(manifest$params$analysis$scenarioGeographiesList)
 # load results from input directory --------------------------------------------
 log_debug("Loading results from input directory.")
 
+log_trace("Loading audit_file.rds")
 audit_file <- readRDS(file.path(analysis_output_dir, "audit_file.rds"))
-emissions <- readRDS(file.path(analysis_output_dir, "emissions.rds"))
-equity_results_portfolio <- readRDS(file.path(analysis_output_dir, "Equity_results_portfolio.rds"))
-bonds_results_portfolio <- readRDS(file.path(analysis_output_dir, "Bonds_results_portfolio.rds"))
-equity_results_company <- readRDS(file.path(analysis_output_dir, "Equity_results_company.rds"))
-bonds_results_company <- readRDS(file.path(analysis_output_dir, "Bonds_results_company.rds"))
 
+log_trace("Loading emissions.rds")
+emissions <- readRDS(file.path(analysis_output_dir, "emissions.rds"))
+
+equity_results_portfolio_path <- file.path(analysis_output_dir, "Equity_results_portfolio.rds")
+if (file.exists(equity_results_portfolio_path)) {
+  log_trace("Loading Equity_results_portfolio.rds")
+  equity_results_portfolio <- readRDS(equity_results_portfolio_path)
+  log_trace("Loading Equity_results_company.rds")
+  equity_results_company <- readRDS(file.path(analysis_output_dir, "Equity_results_company.rds"))
+} else {
+  log_warn("Equity_results_portfolio.rds not found. Creating empty data frame.")
+  equity_results_portfolio <- pacta.portfolio.utils::empty_portfolio_results()
+  equity_results_company <- pacta.portfolio.utils::empty_company_results()
+}
+
+bonds_results_portfolio_path <- file.path(analysis_output_dir, "Bonds_results_portfolio.rds")
+if (file.exists(bonds_results_portfolio_path)) {
+  log_trace("Loading Bonds_results_portfolio.rds")
+  bonds_results_portfolio <- readRDS(bonds_results_portfolio_path)
+  log_trace("Loading Bonds_results_company.rds")
+  bonds_results_company <- readRDS(file.path(analysis_output_dir, "Bonds_results_company.rds"))
+} else {
+  log_warn("Bonds_results_portfolio.rds not found. Creating empty data frame.")
+  bonds_results_portfolio <- pacta.portfolio.utils::empty_portfolio_results()
+  bonds_results_company <- pacta.portfolio.utils::empty_company_results()
+}
 
 # data from PACTA inputs used to generate the results --------------------------
 log_debug("Loading benchmark results.")
