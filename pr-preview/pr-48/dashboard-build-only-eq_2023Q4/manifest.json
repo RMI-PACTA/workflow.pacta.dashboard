@@ -6,8 +6,8 @@
       "file_path": "/mnt/dashboard_output_dir/data/archive.zip",
       "file_size_human": "79.7 kB",
       "file_size": 79676,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
-      "file_md5": "dced3c09cfece0aeb8cbde311d3b255a"
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
+      "file_md5": "656fa84b5992403b0ac580e90698d317"
     },
     {
       "file_name": "data_company_bubble.json",
@@ -15,7 +15,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_company_bubble.json",
       "file_size_human": "2.2 kB",
       "file_size": 2216,
-      "file_last_modified": "2025-01-07T19:44:57+00:00",
+      "file_last_modified": "2025-01-08T17:01:18+00:00",
       "file_md5": "c466e4adddc40b94df385c1aa9202d9a"
     },
     {
@@ -24,7 +24,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_emissions_pie_bonds.json",
       "file_size_human": "3 B",
       "file_size": 3,
-      "file_last_modified": "2025-01-07T19:44:57+00:00",
+      "file_last_modified": "2025-01-08T17:01:18+00:00",
       "file_md5": "58e0494c51d30eb3494f7c9198986bb9"
     },
     {
@@ -33,7 +33,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_emissions_pie_equity.json",
       "file_size_human": "82 B",
       "file_size": 82,
-      "file_last_modified": "2025-01-07T19:44:57+00:00",
+      "file_last_modified": "2025-01-08T17:01:18+00:00",
       "file_md5": "f51ac8b15c1f31cf9c9edb4513861f18"
     },
     {
@@ -42,7 +42,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_emissions.json",
       "file_size_human": "241.5 kB",
       "file_size": 241458,
-      "file_last_modified": "2025-01-07T19:44:57+00:00",
+      "file_last_modified": "2025-01-08T17:01:18+00:00",
       "file_md5": "9d3710e4f7803bf65cd0bc9e3ec29785"
     },
     {
@@ -51,7 +51,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_exposure_stats.json",
       "file_size_human": "740 B",
       "file_size": 740,
-      "file_last_modified": "2025-01-07T19:44:57+00:00",
+      "file_last_modified": "2025-01-08T17:01:18+00:00",
       "file_md5": "4cb417d88f3974fb83830e8e81ad3909"
     },
     {
@@ -60,7 +60,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_included_table.json",
       "file_size_human": "354 B",
       "file_size": 354,
-      "file_last_modified": "2025-01-07T19:44:57+00:00",
+      "file_last_modified": "2025-01-08T17:01:18+00:00",
       "file_md5": "788efd602f59f9918dbed17b38d4d8e5"
     },
     {
@@ -69,7 +69,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_techexposure_company_companies.json",
       "file_size_human": "14.2 kB",
       "file_size": 14216,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
+      "file_last_modified": "2025-01-08T17:01:18+00:00",
       "file_md5": "5299ca427c76fa2648f65bbc185ecf20"
     },
     {
@@ -78,7 +78,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_techexposure_company_portfolio.json",
       "file_size_human": "31.7 kB",
       "file_size": 31683,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
       "file_md5": "0b2e754ce09f4d8d604da650fdd6e493"
     },
     {
@@ -87,7 +87,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_techexposure.json",
       "file_size_human": "18.5 kB",
       "file_size": 18471,
-      "file_last_modified": "2025-01-07T19:44:57+00:00",
+      "file_last_modified": "2025-01-08T17:01:18+00:00",
       "file_md5": "dd830c11fa6afa0d9eabbe3cd959a134"
     },
     {
@@ -96,7 +96,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_techmix_sector.json",
       "file_size_human": "109.4 kB",
       "file_size": 109424,
-      "file_last_modified": "2025-01-07T19:44:57+00:00",
+      "file_last_modified": "2025-01-08T17:01:18+00:00",
       "file_md5": "bd1ecd207d66d5a05e29f9484458dfed"
     },
     {
@@ -105,7 +105,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_trajectory_alignment.json",
       "file_size_human": "2.4 MB",
       "file_size": 2389337,
-      "file_last_modified": "2025-01-07T19:44:57+00:00",
+      "file_last_modified": "2025-01-08T17:01:18+00:00",
       "file_md5": "86d76557c87b92ee0a3f18f7b39eabf0"
     },
     {
@@ -114,7 +114,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_value_pie_bonds.json",
       "file_size_human": "3 B",
       "file_size": 3,
-      "file_last_modified": "2025-01-07T19:44:57+00:00",
+      "file_last_modified": "2025-01-08T17:01:18+00:00",
       "file_md5": "58e0494c51d30eb3494f7c9198986bb9"
     },
     {
@@ -123,7 +123,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_value_pie_equity.json",
       "file_size_human": "82 B",
       "file_size": 82,
-      "file_last_modified": "2025-01-07T19:44:57+00:00",
+      "file_last_modified": "2025-01-08T17:01:18+00:00",
       "file_md5": "51fac95ab3c4f8e8aeb55034a5eeffd4"
     },
     {
@@ -132,7 +132,7 @@
       "file_path": "/mnt/dashboard_skeleton_files/_app/env.js",
       "file_size_human": "19 B",
       "file_size": 19,
-      "file_last_modified": "2025-01-06T00:03:21+00:00",
+      "file_last_modified": "2025-01-08T00:03:15+00:00",
       "file_md5": "1a8e6f7f094e397490430113ade7500b"
     },
     {
@@ -141,7 +141,7 @@
       "file_path": "/mnt/dashboard_skeleton_files/_app/immutable/assets/_layout.Vga65ueh.css",
       "file_size_human": "95.5 kB",
       "file_size": 95486,
-      "file_last_modified": "2025-01-06T00:03:21+00:00",
+      "file_last_modified": "2025-01-08T00:03:15+00:00",
       "file_md5": "f946656fb535036b351e393936622542"
     },
     {
@@ -150,7 +150,7 @@
       "file_path": "/mnt/dashboard_skeleton_files/_app/immutable/assets/_layout.y3CLZBjS.css",
       "file_size_human": "45.4 kB",
       "file_size": 45352,
-      "file_last_modified": "2025-01-06T00:03:21+00:00",
+      "file_last_modified": "2025-01-08T00:03:15+00:00",
       "file_md5": "f23e4a586abd570f0551d4e40dde09d2"
     },
     {
@@ -159,7 +159,7 @@
       "file_path": "/mnt/dashboard_skeleton_files/_app/immutable/assets/_page.CJwvSlMY.css",
       "file_size_human": "5.6 kB",
       "file_size": 5612,
-      "file_last_modified": "2025-01-06T00:03:21+00:00",
+      "file_last_modified": "2025-01-08T00:03:15+00:00",
       "file_md5": "3ddee8fba2c65716228ebbeed87f37c4"
     },
     {
@@ -168,7 +168,7 @@
       "file_path": "/mnt/dashboard_skeleton_files/_app/immutable/assets/0.DVzMohNk.css",
       "file_size_human": "141.6 kB",
       "file_size": 141613,
-      "file_last_modified": "2025-01-06T00:03:21+00:00",
+      "file_last_modified": "2025-01-08T00:03:15+00:00",
       "file_md5": "9c7bfe4b2ef163bb4c60ac46f5a401ce"
     },
     {
@@ -177,7 +177,7 @@
       "file_path": "/mnt/dashboard_skeleton_files/_app/immutable/assets/2.CJwvSlMY.css",
       "file_size_human": "5.6 kB",
       "file_size": 5612,
-      "file_last_modified": "2025-01-06T00:03:21+00:00",
+      "file_last_modified": "2025-01-08T00:03:15+00:00",
       "file_md5": "3ddee8fba2c65716228ebbeed87f37c4"
     },
     {
@@ -186,7 +186,7 @@
       "file_path": "/mnt/dashboard_skeleton_files/_app/immutable/assets/fa-brands-400.BU4mH_I_.woff2",
       "file_size_human": "118.7 kB",
       "file_size": 118724,
-      "file_last_modified": "2025-01-06T00:03:21+00:00",
+      "file_last_modified": "2025-01-08T00:03:15+00:00",
       "file_md5": "0a879b097767ec1e91b4378e6e9368cf"
     },
     {
@@ -195,7 +195,7 @@
       "file_path": "/mnt/dashboard_skeleton_files/_app/immutable/assets/fa-brands-400.CArp7j8S.ttf",
       "file_size_human": "210.7 kB",
       "file_size": 210736,
-      "file_last_modified": "2025-01-06T00:03:21+00:00",
+      "file_last_modified": "2025-01-08T00:03:15+00:00",
       "file_md5": "77304e852cc00ca18ddeb4f20ae153f0"
     },
     {
@@ -204,7 +204,7 @@
       "file_path": "/mnt/dashboard_skeleton_files/_app/immutable/assets/fa-regular-400.Cy4iLbxs.woff2",
       "file_size_human": "25.5 kB",
       "file_size": 25484,
-      "file_last_modified": "2025-01-06T00:03:21+00:00",
+      "file_last_modified": "2025-01-08T00:03:15+00:00",
       "file_md5": "28deedcffdb1ecdc7c2c2e209e2e36d2"
     },
     {
@@ -213,7 +213,7 @@
       "file_path": "/mnt/dashboard_skeleton_files/_app/immutable/assets/fa-regular-400.D4OwLFL7.ttf",
       "file_size_human": "68.1 kB",
       "file_size": 68064,
-      "file_last_modified": "2025-01-06T00:03:21+00:00",
+      "file_last_modified": "2025-01-08T00:03:15+00:00",
       "file_md5": "a23ed8fb8560e1bcf3936ff4b2d791cf"
     },
     {
@@ -222,7 +222,7 @@
       "file_path": "/mnt/dashboard_skeleton_files/_app/immutable/assets/fa-solid-900.BAw_JAW6.ttf",
       "file_size_human": "426.1 kB",
       "file_size": 426112,
-      "file_last_modified": "2025-01-06T00:03:21+00:00",
+      "file_last_modified": "2025-01-08T00:03:15+00:00",
       "file_md5": "04a3a55b95709ec271b08720597f2108"
     },
     {
@@ -231,7 +231,7 @@
       "file_path": "/mnt/dashboard_skeleton_files/_app/immutable/assets/fa-solid-900.CcrrL0x0.woff2",
       "file_size_human": "158.2 kB",
       "file_size": 158224,
-      "file_last_modified": "2025-01-06T00:03:21+00:00",
+      "file_last_modified": "2025-01-08T00:03:15+00:00",
       "file_md5": "8569e341029ad642d6f62398649236b4"
     },
     {
@@ -240,7 +240,7 @@
       "file_path": "/mnt/dashboard_skeleton_files/_app/immutable/assets/fa-v4compatibility.B9t6EWrS.woff2",
       "file_size_human": "4.8 kB",
       "file_size": 4788,
-      "file_last_modified": "2025-01-06T00:03:21+00:00",
+      "file_last_modified": "2025-01-08T00:03:15+00:00",
       "file_md5": "d6a1b588b609d3cc1929776092451409"
     },
     {
@@ -249,7 +249,7 @@
       "file_path": "/mnt/dashboard_skeleton_files/_app/immutable/assets/fa-v4compatibility.ch80hpM0.ttf",
       "file_size_human": "10.8 kB",
       "file_size": 10836,
-      "file_last_modified": "2025-01-06T00:03:21+00:00",
+      "file_last_modified": "2025-01-08T00:03:15+00:00",
       "file_md5": "961d7485e94b727abe09d23e09fb3754"
     },
     {
@@ -258,17 +258,17 @@
       "file_path": "/mnt/dashboard_skeleton_files/_app/immutable/assets/ProgressBar.Cirlo5Z8.css",
       "file_size_human": "283 B",
       "file_size": 283,
-      "file_last_modified": "2025-01-06T00:03:21+00:00",
+      "file_last_modified": "2025-01-08T00:03:15+00:00",
       "file_md5": "b48bc7afa9cc7b244fcbdfa9b791e943"
     },
     {
-      "file_name": "entry.B0mryPZI.js",
+      "file_name": "entry.DhoBxnrQ.js",
       "file_extension": "js",
-      "file_path": "/mnt/dashboard_skeleton_files/_app/immutable/chunks/entry.B0mryPZI.js",
+      "file_path": "/mnt/dashboard_skeleton_files/_app/immutable/chunks/entry.DhoBxnrQ.js",
       "file_size_human": "27 kB",
       "file_size": 27045,
-      "file_last_modified": "2025-01-06T00:03:21+00:00",
-      "file_md5": "b8a65c8269f50f73b8e43bdf9a8378ec"
+      "file_last_modified": "2025-01-08T00:03:15+00:00",
+      "file_md5": "32f265085ef2e6b62f4d8bf4b13afb1b"
     },
     {
       "file_name": "index.BuXUJeS7.js",
@@ -276,7 +276,7 @@
       "file_path": "/mnt/dashboard_skeleton_files/_app/immutable/chunks/index.BuXUJeS7.js",
       "file_size_human": "4.8 kB",
       "file_size": 4829,
-      "file_last_modified": "2025-01-06T00:03:21+00:00",
+      "file_last_modified": "2025-01-08T00:03:15+00:00",
       "file_md5": "d7ed5444aae1049a2db431c1ed4086e8"
     },
     {
@@ -285,7 +285,7 @@
       "file_path": "/mnt/dashboard_skeleton_files/_app/immutable/chunks/index.VWMLtH-B.js",
       "file_size_human": "509 B",
       "file_size": 509,
-      "file_last_modified": "2025-01-06T00:03:21+00:00",
+      "file_last_modified": "2025-01-08T00:03:15+00:00",
       "file_md5": "118689766ff31f029b7b11a9e9df5a0d"
     },
     {
@@ -294,7 +294,7 @@
       "file_path": "/mnt/dashboard_skeleton_files/_app/immutable/chunks/ProgressBar.svelte_svelte_type_style_lang.DeLMOYHc.js",
       "file_size_human": "912 B",
       "file_size": 912,
-      "file_last_modified": "2025-01-06T00:03:21+00:00",
+      "file_last_modified": "2025-01-08T00:03:15+00:00",
       "file_md5": "6fd8bb33a2cea3d83286cd8e128bd59b"
     },
     {
@@ -303,26 +303,26 @@
       "file_path": "/mnt/dashboard_skeleton_files/_app/immutable/chunks/scheduler.DNdLcuuD.js",
       "file_size_human": "8.7 kB",
       "file_size": 8708,
-      "file_last_modified": "2025-01-06T00:03:21+00:00",
+      "file_last_modified": "2025-01-08T00:03:15+00:00",
       "file_md5": "90ae9192dec02882910a4977359835a8"
     },
     {
-      "file_name": "app.DRl710Te.js",
+      "file_name": "app.BZrqz4xA.js",
       "file_extension": "js",
-      "file_path": "/mnt/dashboard_skeleton_files/_app/immutable/entry/app.DRl710Te.js",
+      "file_path": "/mnt/dashboard_skeleton_files/_app/immutable/entry/app.BZrqz4xA.js",
       "file_size_human": "6.2 kB",
       "file_size": 6224,
-      "file_last_modified": "2025-01-06T00:03:21+00:00",
-      "file_md5": "b6736dd08b002e62b758e6e3ef91525b"
+      "file_last_modified": "2025-01-08T00:03:15+00:00",
+      "file_md5": "f221d51cafb5743988bb4a29774714db"
     },
     {
-      "file_name": "start.DcSTbaOA.js",
+      "file_name": "start.GMpxzxvd.js",
       "file_extension": "js",
-      "file_path": "/mnt/dashboard_skeleton_files/_app/immutable/entry/start.DcSTbaOA.js",
+      "file_path": "/mnt/dashboard_skeleton_files/_app/immutable/entry/start.GMpxzxvd.js",
       "file_size_human": "68 B",
       "file_size": 68,
-      "file_last_modified": "2025-01-06T00:03:21+00:00",
-      "file_md5": "3f1845671230063e8ea528044307767f"
+      "file_last_modified": "2025-01-08T00:03:15+00:00",
+      "file_md5": "2dd268a41bd53820d600001255d52a3f"
     },
     {
       "file_name": "0.By2a-bOZ.js",
@@ -330,17 +330,17 @@
       "file_path": "/mnt/dashboard_skeleton_files/_app/immutable/nodes/0.By2a-bOZ.js",
       "file_size_human": "81.1 kB",
       "file_size": 81127,
-      "file_last_modified": "2025-01-06T00:03:21+00:00",
+      "file_last_modified": "2025-01-08T00:03:15+00:00",
       "file_md5": "4dbf1c5fe6b0c53e18cb3f4f29de6820"
     },
     {
-      "file_name": "1.BEUxMVWL.js",
+      "file_name": "1.rKyXapKY.js",
       "file_extension": "js",
-      "file_path": "/mnt/dashboard_skeleton_files/_app/immutable/nodes/1.BEUxMVWL.js",
+      "file_path": "/mnt/dashboard_skeleton_files/_app/immutable/nodes/1.rKyXapKY.js",
       "file_size_human": "1 kB",
       "file_size": 1017,
-      "file_last_modified": "2025-01-06T00:03:21+00:00",
-      "file_md5": "38c6c5657ace040e18ef7bcd5f792699"
+      "file_last_modified": "2025-01-08T00:03:15+00:00",
+      "file_md5": "0bcf9493faa43982efce979f7892f219"
     },
     {
       "file_name": "2.BLq2Hvx2.js",
@@ -348,7 +348,7 @@
       "file_path": "/mnt/dashboard_skeleton_files/_app/immutable/nodes/2.BLq2Hvx2.js",
       "file_size_human": "274.6 kB",
       "file_size": 274587,
-      "file_last_modified": "2025-01-06T00:03:21+00:00",
+      "file_last_modified": "2025-01-08T00:03:15+00:00",
       "file_md5": "66903c2e9a8ef8e64da70744defb792b"
     },
     {
@@ -357,8 +357,8 @@
       "file_path": "/mnt/dashboard_skeleton_files/_app/version.json",
       "file_size_human": "27 B",
       "file_size": 27,
-      "file_last_modified": "2025-01-06T00:03:21+00:00",
-      "file_md5": "e90a5a16000328821b4833249dc7a92b"
+      "file_last_modified": "2025-01-08T00:03:15+00:00",
+      "file_md5": "8c8aba4ff2bd1c3be9da1bd22550f5d1"
     },
     {
       "file_name": "favicon-32x32.png",
@@ -366,7 +366,7 @@
       "file_path": "/mnt/dashboard_skeleton_files/favicon-32x32.png",
       "file_size_human": "1.4 kB",
       "file_size": 1384,
-      "file_last_modified": "2025-01-06T00:03:21+00:00",
+      "file_last_modified": "2025-01-08T00:03:15+00:00",
       "file_md5": "a4660b4d2ddeba9d03de0afd9b6ba2fe"
     },
     {
@@ -374,9 +374,9 @@
       "file_extension": "html",
       "file_path": "/mnt/dashboard_skeleton_files/index.html",
       "file_size_human": "10.1 kB",
-      "file_size": 10074,
-      "file_last_modified": "2025-01-06T00:03:21+00:00",
-      "file_md5": "3688e79b6c7e4384f869b951ce27a968"
+      "file_size": 10072,
+      "file_last_modified": "2025-01-08T00:03:15+00:00",
+      "file_md5": "02e227978b95b6929c17e29e63d3e802"
     },
     {
       "file_name": "logo.png",
@@ -384,7 +384,7 @@
       "file_path": "/mnt/dashboard_skeleton_files/logo.png",
       "file_size_human": "15.4 kB",
       "file_size": 15384,
-      "file_last_modified": "2025-01-06T00:03:21+00:00",
+      "file_last_modified": "2025-01-08T00:03:15+00:00",
       "file_md5": "98ca4fb66d22c476da3786e98d9a86c4"
     },
     {
@@ -393,7 +393,7 @@
       "file_path": "/mnt/dashboard_skeleton_files/pacta_value_chain.svg",
       "file_size_human": "50.7 kB",
       "file_size": 50704,
-      "file_last_modified": "2025-01-06T00:03:21+00:00",
+      "file_last_modified": "2025-01-08T00:03:15+00:00",
       "file_md5": "0d29531f63537712c9274a40446ecfbc"
     },
     {
@@ -402,7 +402,7 @@
       "file_path": "/mnt/analysis_output_dir/audit_file.csv",
       "file_size_human": "280 B",
       "file_size": 280,
-      "file_last_modified": "2025-01-07T19:44:05+00:00",
+      "file_last_modified": "2025-01-08T17:00:23+00:00",
       "file_md5": "c9e05c2f41878155aa77b336b17f3406"
     },
     {
@@ -411,7 +411,7 @@
       "file_path": "/mnt/analysis_output_dir/audit_file.rds",
       "file_size_human": "363 B",
       "file_size": 363,
-      "file_last_modified": "2025-01-07T19:44:05+00:00",
+      "file_last_modified": "2025-01-08T17:00:23+00:00",
       "file_md5": "40eac58cff00e03ccb333b196d54484e"
     },
     {
@@ -420,7 +420,7 @@
       "file_path": "/mnt/analysis_output_dir/coveragegraph.json",
       "file_size_human": "38 B",
       "file_size": 38,
-      "file_last_modified": "2025-01-07T19:44:05+00:00",
+      "file_last_modified": "2025-01-08T17:00:23+00:00",
       "file_md5": "29fe4e3c3ca525dfc918ca7a6c8f5996"
     },
     {
@@ -429,7 +429,7 @@
       "file_path": "/mnt/analysis_output_dir/coveragegraphlegend.json",
       "file_size_human": "90 B",
       "file_size": 90,
-      "file_last_modified": "2025-01-07T19:44:05+00:00",
+      "file_last_modified": "2025-01-08T17:00:23+00:00",
       "file_md5": "221e0e839ef0dba901bcaf1cbfe3e098"
     },
     {
@@ -438,7 +438,7 @@
       "file_path": "/mnt/analysis_output_dir/coveragetextvar.json",
       "file_size_human": "64 B",
       "file_size": 64,
-      "file_last_modified": "2025-01-07T19:44:05+00:00",
+      "file_last_modified": "2025-01-08T17:00:23+00:00",
       "file_md5": "743b609ff9b2f545e4675f6f649b706d"
     },
     {
@@ -447,7 +447,7 @@
       "file_path": "/mnt/analysis_output_dir/emissions.rds",
       "file_size_human": "200 B",
       "file_size": 200,
-      "file_last_modified": "2025-01-07T19:44:05+00:00",
+      "file_last_modified": "2025-01-08T17:00:23+00:00",
       "file_md5": "97fabaddb83184c68b54bc129b51435b"
     },
     {
@@ -456,7 +456,7 @@
       "file_path": "/mnt/analysis_output_dir/Equity_results_company.rds",
       "file_size_human": "17.9 kB",
       "file_size": 17880,
-      "file_last_modified": "2025-01-07T19:44:53+00:00",
+      "file_last_modified": "2025-01-08T17:01:14+00:00",
       "file_md5": "3c0f08c27e6eb339e12cfb53a0837ddf"
     },
     {
@@ -465,7 +465,7 @@
       "file_path": "/mnt/analysis_output_dir/Equity_results_map.rds",
       "file_size_human": "5.9 kB",
       "file_size": 5943,
-      "file_last_modified": "2025-01-07T19:44:53+00:00",
+      "file_last_modified": "2025-01-08T17:01:14+00:00",
       "file_md5": "0eadab2b8e4dbc3340a32aa76fa065bb"
     },
     {
@@ -474,7 +474,7 @@
       "file_path": "/mnt/analysis_output_dir/Equity_results_portfolio.rds",
       "file_size_human": "17.4 kB",
       "file_size": 17357,
-      "file_last_modified": "2025-01-07T19:44:53+00:00",
+      "file_last_modified": "2025-01-08T17:01:14+00:00",
       "file_md5": "d89da02dcf6def26c3d4dea1c2efafc6"
     },
     {
@@ -483,7 +483,7 @@
       "file_path": "/mnt/analysis_output_dir/invalidsecurities.csv",
       "file_size_human": "32 B",
       "file_size": 32,
-      "file_last_modified": "2025-01-07T19:44:05+00:00",
+      "file_last_modified": "2025-01-08T17:00:23+00:00",
       "file_md5": "7ba6f760050eccb1ebf5d41a3caf7a01"
     },
     {
@@ -492,7 +492,7 @@
       "file_path": "/mnt/analysis_output_dir/invalidsecurities.json",
       "file_size_human": "54 B",
       "file_size": 54,
-      "file_last_modified": "2025-01-07T19:44:05+00:00",
+      "file_last_modified": "2025-01-08T17:00:23+00:00",
       "file_md5": "0af1f5afb4972d84e07827affef313db"
     },
     {
@@ -501,8 +501,8 @@
       "file_path": "/mnt/analysis_output_dir/manifest.json",
       "file_size_human": "41.8 kB",
       "file_size": 41778,
-      "file_last_modified": "2025-01-07T19:44:57+00:00",
-      "file_md5": "bde28a305fe1b72c6835e2dafa92aaf3"
+      "file_last_modified": "2025-01-08T17:01:17+00:00",
+      "file_md5": "2a0d698a516dfef6d6d99729c37c93ea"
     },
     {
       "file_name": "overview_portfolio.rds",
@@ -510,7 +510,7 @@
       "file_path": "/mnt/analysis_output_dir/overview_portfolio.rds",
       "file_size_human": "227 B",
       "file_size": 227,
-      "file_last_modified": "2025-01-07T19:44:05+00:00",
+      "file_last_modified": "2025-01-08T17:00:23+00:00",
       "file_md5": "4411b180c11d74770bef102113b2bb38"
     },
     {
@@ -519,7 +519,7 @@
       "file_path": "/mnt/analysis_output_dir/total_portfolio.rds",
       "file_size_human": "710 B",
       "file_size": 710,
-      "file_last_modified": "2025-01-07T19:44:05+00:00",
+      "file_last_modified": "2025-01-08T17:00:23+00:00",
       "file_md5": "bb8fbeede318133c09c0ffa8da7bc2f4"
     },
     {
@@ -528,7 +528,7 @@
       "file_path": "/mnt/benchmarks_dir/Indices_bonds_audit.rds",
       "file_size_human": "237.5 kB",
       "file_size": 237485,
-      "file_last_modified": "2025-01-07T19:40:56+00:00",
+      "file_last_modified": "2025-01-08T16:56:54+00:00",
       "file_md5": "2c0540d631950703c01b1cc778b32a34"
     },
     {
@@ -537,7 +537,7 @@
       "file_path": "/mnt/benchmarks_dir/Indices_bonds_emissions.rds",
       "file_size_human": "834 B",
       "file_size": 834,
-      "file_last_modified": "2025-01-07T19:40:56+00:00",
+      "file_last_modified": "2025-01-08T16:56:54+00:00",
       "file_md5": "7c238a24c2b52f6e59048907085faa26"
     },
     {
@@ -546,7 +546,7 @@
       "file_path": "/mnt/benchmarks_dir/Indices_bonds_results_portfolio.rds",
       "file_size_human": "30.9 kB",
       "file_size": 30927,
-      "file_last_modified": "2025-01-07T19:40:56+00:00",
+      "file_last_modified": "2025-01-08T16:56:54+00:00",
       "file_md5": "61a658c08eb8e9043375ca177c5986fe"
     },
     {
@@ -555,7 +555,7 @@
       "file_path": "/mnt/benchmarks_dir/Indices_equity_audit.rds",
       "file_size_human": "159.4 kB",
       "file_size": 159377,
-      "file_last_modified": "2025-01-07T19:40:56+00:00",
+      "file_last_modified": "2025-01-08T16:56:54+00:00",
       "file_md5": "163c223b5b84fbf226b149b6208e10ae"
     },
     {
@@ -564,7 +564,7 @@
       "file_path": "/mnt/benchmarks_dir/Indices_equity_emissions.rds",
       "file_size_human": "1.7 kB",
       "file_size": 1654,
-      "file_last_modified": "2025-01-07T19:40:56+00:00",
+      "file_last_modified": "2025-01-08T16:56:54+00:00",
       "file_md5": "f867691a60f21a9d34e2cf6018fa7b74"
     },
     {
@@ -573,7 +573,7 @@
       "file_path": "/mnt/benchmarks_dir/Indices_equity_results_portfolio.rds",
       "file_size_human": "488.4 kB",
       "file_size": 488355,
-      "file_last_modified": "2025-01-07T19:40:57+00:00",
+      "file_last_modified": "2025-01-08T16:56:55+00:00",
       "file_md5": "0cd62ae4981865794b113aa34d76ba44"
     }
   ],
@@ -584,7 +584,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/env.js",
       "file_size_human": "19 B",
       "file_size": 19,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
       "file_md5": "1a8e6f7f094e397490430113ade7500b"
     },
     {
@@ -593,7 +593,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/assets/_layout.Vga65ueh.css",
       "file_size_human": "95.5 kB",
       "file_size": 95486,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
       "file_md5": "f946656fb535036b351e393936622542"
     },
     {
@@ -602,7 +602,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/assets/_layout.y3CLZBjS.css",
       "file_size_human": "45.4 kB",
       "file_size": 45352,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
       "file_md5": "f23e4a586abd570f0551d4e40dde09d2"
     },
     {
@@ -611,7 +611,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/assets/_page.CJwvSlMY.css",
       "file_size_human": "5.6 kB",
       "file_size": 5612,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
       "file_md5": "3ddee8fba2c65716228ebbeed87f37c4"
     },
     {
@@ -620,7 +620,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/assets/0.DVzMohNk.css",
       "file_size_human": "141.6 kB",
       "file_size": 141613,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
       "file_md5": "9c7bfe4b2ef163bb4c60ac46f5a401ce"
     },
     {
@@ -629,7 +629,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/assets/2.CJwvSlMY.css",
       "file_size_human": "5.6 kB",
       "file_size": 5612,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
       "file_md5": "3ddee8fba2c65716228ebbeed87f37c4"
     },
     {
@@ -638,7 +638,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/assets/fa-brands-400.BU4mH_I_.woff2",
       "file_size_human": "118.7 kB",
       "file_size": 118724,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
       "file_md5": "0a879b097767ec1e91b4378e6e9368cf"
     },
     {
@@ -647,7 +647,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/assets/fa-brands-400.CArp7j8S.ttf",
       "file_size_human": "210.7 kB",
       "file_size": 210736,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
       "file_md5": "77304e852cc00ca18ddeb4f20ae153f0"
     },
     {
@@ -656,7 +656,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/assets/fa-regular-400.Cy4iLbxs.woff2",
       "file_size_human": "25.5 kB",
       "file_size": 25484,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
       "file_md5": "28deedcffdb1ecdc7c2c2e209e2e36d2"
     },
     {
@@ -665,7 +665,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/assets/fa-regular-400.D4OwLFL7.ttf",
       "file_size_human": "68.1 kB",
       "file_size": 68064,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
       "file_md5": "a23ed8fb8560e1bcf3936ff4b2d791cf"
     },
     {
@@ -674,7 +674,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/assets/fa-solid-900.BAw_JAW6.ttf",
       "file_size_human": "426.1 kB",
       "file_size": 426112,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
       "file_md5": "04a3a55b95709ec271b08720597f2108"
     },
     {
@@ -683,7 +683,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/assets/fa-solid-900.CcrrL0x0.woff2",
       "file_size_human": "158.2 kB",
       "file_size": 158224,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
       "file_md5": "8569e341029ad642d6f62398649236b4"
     },
     {
@@ -692,7 +692,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/assets/fa-v4compatibility.B9t6EWrS.woff2",
       "file_size_human": "4.8 kB",
       "file_size": 4788,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
       "file_md5": "d6a1b588b609d3cc1929776092451409"
     },
     {
@@ -701,7 +701,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/assets/fa-v4compatibility.ch80hpM0.ttf",
       "file_size_human": "10.8 kB",
       "file_size": 10836,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
       "file_md5": "961d7485e94b727abe09d23e09fb3754"
     },
     {
@@ -710,17 +710,17 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/assets/ProgressBar.Cirlo5Z8.css",
       "file_size_human": "283 B",
       "file_size": 283,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
       "file_md5": "b48bc7afa9cc7b244fcbdfa9b791e943"
     },
     {
-      "file_name": "entry.B0mryPZI.js",
+      "file_name": "entry.DhoBxnrQ.js",
       "file_extension": "js",
-      "file_path": "/mnt/dashboard_output_dir/_app/immutable/chunks/entry.B0mryPZI.js",
+      "file_path": "/mnt/dashboard_output_dir/_app/immutable/chunks/entry.DhoBxnrQ.js",
       "file_size_human": "27 kB",
       "file_size": 27045,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
-      "file_md5": "b8a65c8269f50f73b8e43bdf9a8378ec"
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
+      "file_md5": "32f265085ef2e6b62f4d8bf4b13afb1b"
     },
     {
       "file_name": "index.BuXUJeS7.js",
@@ -728,7 +728,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/chunks/index.BuXUJeS7.js",
       "file_size_human": "4.8 kB",
       "file_size": 4829,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
       "file_md5": "d7ed5444aae1049a2db431c1ed4086e8"
     },
     {
@@ -737,7 +737,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/chunks/index.VWMLtH-B.js",
       "file_size_human": "509 B",
       "file_size": 509,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
       "file_md5": "118689766ff31f029b7b11a9e9df5a0d"
     },
     {
@@ -746,7 +746,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/chunks/ProgressBar.svelte_svelte_type_style_lang.DeLMOYHc.js",
       "file_size_human": "912 B",
       "file_size": 912,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
       "file_md5": "6fd8bb33a2cea3d83286cd8e128bd59b"
     },
     {
@@ -755,26 +755,26 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/chunks/scheduler.DNdLcuuD.js",
       "file_size_human": "8.7 kB",
       "file_size": 8708,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
       "file_md5": "90ae9192dec02882910a4977359835a8"
     },
     {
-      "file_name": "app.DRl710Te.js",
+      "file_name": "app.BZrqz4xA.js",
       "file_extension": "js",
-      "file_path": "/mnt/dashboard_output_dir/_app/immutable/entry/app.DRl710Te.js",
+      "file_path": "/mnt/dashboard_output_dir/_app/immutable/entry/app.BZrqz4xA.js",
       "file_size_human": "6.2 kB",
       "file_size": 6224,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
-      "file_md5": "b6736dd08b002e62b758e6e3ef91525b"
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
+      "file_md5": "f221d51cafb5743988bb4a29774714db"
     },
     {
-      "file_name": "start.DcSTbaOA.js",
+      "file_name": "start.GMpxzxvd.js",
       "file_extension": "js",
-      "file_path": "/mnt/dashboard_output_dir/_app/immutable/entry/start.DcSTbaOA.js",
+      "file_path": "/mnt/dashboard_output_dir/_app/immutable/entry/start.GMpxzxvd.js",
       "file_size_human": "68 B",
       "file_size": 68,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
-      "file_md5": "3f1845671230063e8ea528044307767f"
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
+      "file_md5": "2dd268a41bd53820d600001255d52a3f"
     },
     {
       "file_name": "0.By2a-bOZ.js",
@@ -782,17 +782,17 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/nodes/0.By2a-bOZ.js",
       "file_size_human": "81.1 kB",
       "file_size": 81127,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
       "file_md5": "4dbf1c5fe6b0c53e18cb3f4f29de6820"
     },
     {
-      "file_name": "1.BEUxMVWL.js",
+      "file_name": "1.rKyXapKY.js",
       "file_extension": "js",
-      "file_path": "/mnt/dashboard_output_dir/_app/immutable/nodes/1.BEUxMVWL.js",
+      "file_path": "/mnt/dashboard_output_dir/_app/immutable/nodes/1.rKyXapKY.js",
       "file_size_human": "1 kB",
       "file_size": 1017,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
-      "file_md5": "38c6c5657ace040e18ef7bcd5f792699"
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
+      "file_md5": "0bcf9493faa43982efce979f7892f219"
     },
     {
       "file_name": "2.BLq2Hvx2.js",
@@ -800,7 +800,7 @@
       "file_path": "/mnt/dashboard_output_dir/_app/immutable/nodes/2.BLq2Hvx2.js",
       "file_size_human": "274.6 kB",
       "file_size": 274587,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
       "file_md5": "66903c2e9a8ef8e64da70744defb792b"
     },
     {
@@ -809,8 +809,8 @@
       "file_path": "/mnt/dashboard_output_dir/_app/version.json",
       "file_size_human": "27 B",
       "file_size": 27,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
-      "file_md5": "e90a5a16000328821b4833249dc7a92b"
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
+      "file_md5": "8c8aba4ff2bd1c3be9da1bd22550f5d1"
     },
     {
       "file_name": "archive.zip",
@@ -818,8 +818,8 @@
       "file_path": "/mnt/dashboard_output_dir/data/archive.zip",
       "file_size_human": "79.7 kB",
       "file_size": 79676,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
-      "file_md5": "dced3c09cfece0aeb8cbde311d3b255a"
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
+      "file_md5": "656fa84b5992403b0ac580e90698d317"
     },
     {
       "file_name": "data_company_bubble.json",
@@ -827,7 +827,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_company_bubble.json",
       "file_size_human": "2.2 kB",
       "file_size": 2216,
-      "file_last_modified": "2025-01-07T19:44:57+00:00",
+      "file_last_modified": "2025-01-08T17:01:18+00:00",
       "file_md5": "c466e4adddc40b94df385c1aa9202d9a"
     },
     {
@@ -836,7 +836,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_emissions_pie_bonds.json",
       "file_size_human": "3 B",
       "file_size": 3,
-      "file_last_modified": "2025-01-07T19:44:57+00:00",
+      "file_last_modified": "2025-01-08T17:01:18+00:00",
       "file_md5": "58e0494c51d30eb3494f7c9198986bb9"
     },
     {
@@ -845,7 +845,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_emissions_pie_equity.json",
       "file_size_human": "82 B",
       "file_size": 82,
-      "file_last_modified": "2025-01-07T19:44:57+00:00",
+      "file_last_modified": "2025-01-08T17:01:18+00:00",
       "file_md5": "f51ac8b15c1f31cf9c9edb4513861f18"
     },
     {
@@ -854,7 +854,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_emissions.json",
       "file_size_human": "241.5 kB",
       "file_size": 241458,
-      "file_last_modified": "2025-01-07T19:44:57+00:00",
+      "file_last_modified": "2025-01-08T17:01:18+00:00",
       "file_md5": "9d3710e4f7803bf65cd0bc9e3ec29785"
     },
     {
@@ -863,7 +863,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_exposure_stats.json",
       "file_size_human": "740 B",
       "file_size": 740,
-      "file_last_modified": "2025-01-07T19:44:57+00:00",
+      "file_last_modified": "2025-01-08T17:01:18+00:00",
       "file_md5": "4cb417d88f3974fb83830e8e81ad3909"
     },
     {
@@ -872,7 +872,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_included_table.json",
       "file_size_human": "354 B",
       "file_size": 354,
-      "file_last_modified": "2025-01-07T19:44:57+00:00",
+      "file_last_modified": "2025-01-08T17:01:18+00:00",
       "file_md5": "788efd602f59f9918dbed17b38d4d8e5"
     },
     {
@@ -881,7 +881,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_techexposure_company_companies.json",
       "file_size_human": "14.2 kB",
       "file_size": 14216,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
+      "file_last_modified": "2025-01-08T17:01:18+00:00",
       "file_md5": "5299ca427c76fa2648f65bbc185ecf20"
     },
     {
@@ -890,7 +890,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_techexposure_company_portfolio.json",
       "file_size_human": "31.7 kB",
       "file_size": 31683,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
       "file_md5": "0b2e754ce09f4d8d604da650fdd6e493"
     },
     {
@@ -899,7 +899,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_techexposure.json",
       "file_size_human": "18.5 kB",
       "file_size": 18471,
-      "file_last_modified": "2025-01-07T19:44:57+00:00",
+      "file_last_modified": "2025-01-08T17:01:18+00:00",
       "file_md5": "dd830c11fa6afa0d9eabbe3cd959a134"
     },
     {
@@ -908,7 +908,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_techmix_sector.json",
       "file_size_human": "109.4 kB",
       "file_size": 109424,
-      "file_last_modified": "2025-01-07T19:44:57+00:00",
+      "file_last_modified": "2025-01-08T17:01:18+00:00",
       "file_md5": "bd1ecd207d66d5a05e29f9484458dfed"
     },
     {
@@ -917,7 +917,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_trajectory_alignment.json",
       "file_size_human": "2.4 MB",
       "file_size": 2389337,
-      "file_last_modified": "2025-01-07T19:44:57+00:00",
+      "file_last_modified": "2025-01-08T17:01:18+00:00",
       "file_md5": "86d76557c87b92ee0a3f18f7b39eabf0"
     },
     {
@@ -926,7 +926,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_value_pie_bonds.json",
       "file_size_human": "3 B",
       "file_size": 3,
-      "file_last_modified": "2025-01-07T19:44:57+00:00",
+      "file_last_modified": "2025-01-08T17:01:18+00:00",
       "file_md5": "58e0494c51d30eb3494f7c9198986bb9"
     },
     {
@@ -935,7 +935,7 @@
       "file_path": "/mnt/dashboard_output_dir/data/data_value_pie_equity.json",
       "file_size_human": "82 B",
       "file_size": 82,
-      "file_last_modified": "2025-01-07T19:44:57+00:00",
+      "file_last_modified": "2025-01-08T17:01:18+00:00",
       "file_md5": "51fac95ab3c4f8e8aeb55034a5eeffd4"
     },
     {
@@ -944,7 +944,7 @@
       "file_path": "/mnt/dashboard_output_dir/favicon-32x32.png",
       "file_size_human": "1.4 kB",
       "file_size": 1384,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
       "file_md5": "a4660b4d2ddeba9d03de0afd9b6ba2fe"
     },
     {
@@ -952,9 +952,9 @@
       "file_extension": "html",
       "file_path": "/mnt/dashboard_output_dir/index.html",
       "file_size_human": "10.1 kB",
-      "file_size": 10074,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
-      "file_md5": "3688e79b6c7e4384f869b951ce27a968"
+      "file_size": 10072,
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
+      "file_md5": "02e227978b95b6929c17e29e63d3e802"
     },
     {
       "file_name": "logo.png",
@@ -962,7 +962,7 @@
       "file_path": "/mnt/dashboard_output_dir/logo.png",
       "file_size_human": "15.4 kB",
       "file_size": 15384,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
       "file_md5": "98ca4fb66d22c476da3786e98d9a86c4"
     },
     {
@@ -971,7 +971,7 @@
       "file_path": "/mnt/dashboard_output_dir/pacta_value_chain.svg",
       "file_size_human": "50.7 kB",
       "file_size": 50704,
-      "file_last_modified": "2025-01-07T19:44:58+00:00",
+      "file_last_modified": "2025-01-08T17:01:19+00:00",
       "file_md5": "0d29531f63537712c9274a40446ecfbc"
     }
   ],
@@ -1361,7 +1361,7 @@
           "library": "/usr/local/lib/R/site-library",
           "library_index": 1,
           "repository": null,
-          "built": "R 4.3.1; ; 2025-01-07 19:37:14 UTC; unix",
+          "built": "R 4.3.1; ; 2025-01-08 16:53:42 UTC; unix",
           "pkg_source": "Local",
           "remotepkgref": "local::/workflow.pacta.dashboard",
           "remoteref": null,
@@ -1903,7 +1903,7 @@
       }
     }
   },
-  "manifest_creation_datetime": "2025-01-07 19:44 UTC",
+  "manifest_creation_datetime": "2025-01-08 17:01 UTC",
   "params": {
     "reporting": {
       "scenarioGeography": "Global",
