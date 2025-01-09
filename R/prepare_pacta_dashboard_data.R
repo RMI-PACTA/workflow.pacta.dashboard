@@ -104,10 +104,6 @@ header_dictionary <- readr::read_csv(
   col_types = readr::cols()
 )
 
-js_translations <- jsonlite::fromJSON(
-  txt = system.file("extdata/translation/js_labels.json", package = "workflow.pacta.dashboard")
-)
-
 sector_order <- readr::read_csv(
   system.file("extdata/sector_order/sector_order.csv", package = "workflow.pacta.dashboard"),
   col_types = readr::cols()
