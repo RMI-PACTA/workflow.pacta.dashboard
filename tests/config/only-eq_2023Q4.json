@@ -1,0 +1,15 @@
+{
+  "holdingsDate": "2023Q4",
+  "pactaDataURL": "https://pactadatadev.blob.core.windows.net/pacta-data-webapp/2023Q4/2023Q4_20240424T120055Z",
+  "benchmarksURL": "https://pactadatadev.blob.core.windows.net/benchmarks-webapp/2023Q4/2023Q4_20240529T002355Z",
+  "parameters": {
+    "portfolio": {
+      "holdingsDate": "2023-12-31",
+      "files": [
+        "equity_portfolio.csv"
+      ],
+      "name": "Default Portfolio"
+    },
+    "inherit": "GENERAL_2023Q4"
+  }
+}

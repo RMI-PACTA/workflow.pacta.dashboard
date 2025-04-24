@@ -88,21 +88,35 @@ prepare_pacta_dashboard_data <- function(
   # load results from input directory
   log_debug("Loading results from input directory.")
 
-  audit_file <- readRDS(file.path(analysis_output_dir, "audit_file.rds"))
-  emissions <- readRDS(file.path(analysis_output_dir, "emissions.rds"))
-  equity_results_portfolio <- readRDS(
-    file.path(analysis_output_dir, "Equity_results_portfolio.rds")
-  )
-  bonds_results_portfolio <- readRDS(
-    file.path(analysis_output_dir, "Bonds_results_portfolio.rds")
-  )
-  equity_results_company <- readRDS(
-    file.path(analysis_output_dir, "Equity_results_company.rds")
-  )
-  bonds_results_company <- readRDS(
-    file.path(analysis_output_dir, "Bonds_results_company.rds")
-  )
+log_trace("Loading audit_file.rds")
+audit_file <- readRDS(file.path(analysis_output_dir, "audit_file.rds"))
 
+log_trace("Loading emissions.rds")
+emissions <- readRDS(file.path(analysis_output_dir, "emissions.rds"))
+
+equity_results_portfolio_path <- file.path(analysis_output_dir, "Equity_results_portfolio.rds")
+if (file.exists(equity_results_portfolio_path)) {
+  log_trace("Loading Equity_results_portfolio.rds")
+  equity_results_portfolio <- readRDS(equity_results_portfolio_path)
+  log_trace("Loading Equity_results_company.rds")
+  equity_results_company <- readRDS(file.path(analysis_output_dir, "Equity_results_company.rds"))
+} else {
+  log_warn("Equity_results_portfolio.rds not found. Creating empty data frame.")
+  equity_results_portfolio <- pacta.portfolio.utils::empty_portfolio_results()
+  equity_results_company <- pacta.portfolio.utils::empty_company_results()
+}
+
+bonds_results_portfolio_path <- file.path(analysis_output_dir, "Bonds_results_portfolio.rds")
+if (file.exists(bonds_results_portfolio_path)) {
+  log_trace("Loading Bonds_results_portfolio.rds")
+  bonds_results_portfolio <- readRDS(bonds_results_portfolio_path)
+  log_trace("Loading Bonds_results_company.rds")
+  bonds_results_company <- readRDS(file.path(analysis_output_dir, "Bonds_results_company.rds"))
+} else {
+  log_warn("Bonds_results_portfolio.rds not found. Creating empty data frame.")
+  bonds_results_portfolio <- pacta.portfolio.utils::empty_portfolio_results()
+  bonds_results_company <- pacta.portfolio.utils::empty_company_results()
+}
 
   # data from PACTA inputs used to generate the results
   log_debug("Loading benchmark results.")
@@ -138,20 +152,10 @@ prepare_pacta_dashboard_data <- function(
     col_types = readr::cols()
   )
 
-  js_translations <- jsonlite::fromJSON(
-    txt = system.file(
-      "extdata", "translation", "js_labels.json",
-      package = "workflow.pacta.dashboard"
-    )
-  )
-
-  sector_order <- readr::read_csv(
-    system.file(
-      "extdata", "sector_order", "sector_order.csv",
-      package = "workflow.pacta.dashboard"
-    ),
-    col_types = readr::cols()
-  )
+sector_order <- readr::read_csv(
+  system.file("extdata/sector_order/sector_order.csv", package = "workflow.pacta.dashboard"),
+  col_types = readr::cols()
+)
 
   dictionary <- choose_dictionary_language(
     data = dataframe_translations,
