@@ -1,59 +1,113 @@
 # workflow.pacta.dashboard
 
-In this preliminary state, this repo has a single R script [main.R](./main.R) that demonstrates generating the necessary JSON data files to drive the plots in the future PACTA "dashboard" from the outputs of a run of something like workflow.pacta. It is intended to be a thin translation layer between "running PACTA" and getting the standard "results", e.g. `audit_file.rds` and `Equity_results_portfolio.rds`, and a static(-ish) webpage that has JavaScript plots that need only to load data from JSON to work properly. To that end, the script only loads the data it needs (or sets it inline if it's not yet clear where it should get the data from) and then transforms it appropriately and exports it as proper JSON files as needed.
+## Quickstart
 
-To do the transformations, it leverages functions that already exist in pacta.portfolio.report which are designed to do exactly this task, though in a different context. It could be that in the future those functions are re-implemented here or elsewhere, specifically for this context.
+`docker compose up --build`, with the datasets noted below in locations defined in `docker-compose.yml` (or `docker-compose.override.yml`) will build the latest version of this image, and prepare the dashboard (requires internet connection to download dependencies from GitHub/ghcr).
 
-The script has three hard-coded paths that should be updated to be appropriate for the context in which it is run (eventually, these will likely be parameterized in something like a YML, JSON, or a .env file depending on whose preference prevails)
-- `input_dir` a path to the directory that contains the relevant results files from a run of PACTA
-- `output_dir` a path to the directory where the exported JSON files should be saved
-- `data_dir`  a path to the directory that contains the PACTA data inputs files (conceptually, this should be the exact same PACTA inputs that were used to generate the PACTA results); this is currently needed for the indices/benchmarks and peer files, but those could be made available to this script in some other way in the future
+NOTE:
+Although this application can be run locally, it is primarily intended to be run as a Docker image.
+These instructions document using the Docker image, and running the workflow locally is left as an exercise for the reader.
+Namely, the docker image includes built files from [`pacta-dashboard-svelte`](https://github.com/RMI-PACTA/pacta-dashboard-svelte/), while running locally requires accessing those files manually (using environment variables to control the path to rendered dashboard files).
 
-The files currently needed from the `input_dir` are:
-- `audit_file.rds`
-- `Equity_results_portfolio.rds`
-- `Bonds_results_portfolio.rds`
-- `Equity_results_company.rds`
-- `Bonds_results_company.rds`
-- `manifest.json`
-If/when more plots are added to the dashboard, other files from `input_dir` may also be needed.
+This R package is expected to be run from the corresponding docker image [ghcr.io/rmi-pacta/workflow.pacta.dashboard:main](https://github.com/RMI-PACTA/workflow.pacta.dashboard/pkgs/container/workflow.pacta.dashboard/?tag=main).
 
-The `manifest.json` is currently used to extract the following parameter values from the PACTA run that created the results in `input_dir` (in the future, these parameters could be passed to this script in some other intentional way):
-- `start_year`
-- `year_span`
-- `pacta_sectors`
-- `equity_market_levels`
-- `scen_geo_levels`
+## About
 
-It currently uses the following files from the `data_dir`:
-- `Indices_bonds_results_portfolio.rds`
-- `Indices_equity_results_portfolio.rds`
-It could also hypothetically pull the necessary peer files from `data_dir`, but since our process for adding the peer files to the PACTA inputs directory is completely automated and always done on-the-fly in CI/CD, it's not easy to get a PACTA inputs directory locally accessible that has the peer files without manually reconstructing it, so for now fake/null peer files are included using the utility function `pacta.portfolio.utils::empty_portfolio_results()`
+`workflow.pacta.dashboard` is a complement to [`workflow.pacta.webapp`](https://github.com/RMI-PACTA/workflow.pacta.webapp), as a drop-in replacement, with the exception of creating a PACTA interactive report, it creates a rendered dashboard showing the same results.
 
-The following parameters are also necessary, but it is currently unclear how or where this script would get these values, so they are hard-coded to defaults (these are generally user/portfolio level parameters/options):
-- `investor_name`
-- `portfolio_name`
-- `peer_group`
-- `language_select`
-- `currency_exchange_value`
-- `display_currency`
-- `select_scenario_other`
-- `select_scenario`
-- `green_techs`
-- `tech_roadmap_sectors`
-- `all_tech_levels`
-Some of these parameters may not be strictly necessary and could be ignored if the data transformation functions were re-implemented and adjusted specifically for this context, e.g. `investor_name` and `portfolio_name` are likely unnecessary holdovers from a former time when those functions had to deal with the possibility of multiple portfolios being processed at the same time.
+## Setup
 
-## Running using Docker
+### Overview
 
-First, you will need a `.env` file with:
+The application's deployment configuration (including for running locally) is by default controlled with environment variables (although this can be overridden by using non-default arguments to function calls).
+Largely these config-options are centered around paths to directories which contain, or are expected to recieve data files.
+See "Prerequisite Data" and "Application Config" (below) for more details.
+
+The behavior of the application code for a particular run of the application (rather than a deployment) is controlled via the command-line (JSON) parameters that are passed in when the application is invoked with `Rscript` or `R --args`.
+See "Command-line Parameters (`params`)" for more details.
+
+"### Prerequisite Data
+
+Running the application requires access to a number of prepared datasets, which should be accesible to the Docker image through bind mounts.
+Each of the data sets listed can live in their own directory for clarity, or they can reside in the same directory for simplicity.
+The application is configured by setting the value of enironment variables to point to the path of the bind mount *as referenced inside the container* (the `target` of the volume).
+
+- `BENCHMARKS_DIR`:
+  Outputs of [`workflow.prepare.pacta.indices`](https://github.com/RMI-PACTA/workflow.prepare.pacta.indices).
+  (May be read only)
+- `PACTA_DATA_DIR`:
+  Outputs of [`workflow.data.preparation`](https://github.com/RMI-PACTA/workflow.data.preparation).
+  Note that `workflow.data.preparation` prepares data for a given holdings date (denoted by strings such as `2022Q4` or `2023Q4`), so running this application for different portfolios may require mounting different directories.
+  (May be read only)
+
+#### Alternate run configuration
+
+It is also possible to place a prepared set of analysis outputs (results of `workflow.pacta`) in `$ANALYSIS_OUTPUT_DIR`, and `run_dashboard_workflow(..., run_analysis = FALSE)` (see `inst/extdata/scripts/prepare_dashboard_data.R`), which is considerably faster, since it only runs the steps to translate the analysis outputs to the dashboard format.
+**If doing this, `BENCHMARKS_DIR` and `PACTA_DATA_DIR` may be ignored.**
+In either case, `ANALYSIS_OUTPUT_DIR` will hold the results of `workflow.pacta` after running this workflow (since it automatically runs that process if results are not found).
+
+- (Alternate) `ANALYSIS_OUTPUT_DIR`:
+  Outputs of [`workflow.pacta`](https://github.com/RMI-PACTA/workflow.pacta).
+  (May be read only)
+
+### Application Config
+
+The following environment variables must be set.
+
+- `ANALYSIS_OUTPUT_DIR`:
+  Suggested value: `/mnt/analysis_output_dir`.
+  This holds the outputs from [`workflow.pacta`](https://github.com/RMI-PACTA/workflow.pacta)
+  *MUST* point to a directory that is writable by the `workflow-pacta-webapp` user if running analysis (see "Alternate run configuration" above)
+- `BENCHMARKS_DIR`:
+  Suggested value: `/mnt/benchmarks_dir`.
+  See [Prerequisite Data](#prerequisite-data) for interpretation.
+- `OUTPUT_DIR`:
+  Suggested value: `/mnt/analysis_output_dir`.
+  See [Prerequisite Data](#prerequisite-data) for interpretation.
+- `PACTA_DATA_DIR`:
+  Suggested value: `/mnt/pacta-data`.
+  See [Prerequisite Data](#prerequisite-data) for interpretation.
+- `PORTFOLIO_DIR`:
+  Suggested value: `/mnt/portfolios`.
+  This is the directory in which portfolio `.csv` files reside.
+  *Note*: The application does *not* do a recursive search, so if the application is searching for `foo.csv` in `/mnt/bar`, then the portfolio must be at `/mnt/bar/foo.csv`, not `/mnt/bar/bax/foo.csv`
+- `DASHBOARD_OUTPUT_DIR`:
+  Suggested value: `/mnt/dashboard_output_dir`.
+  This holds the dashboard `index.html` and friends, output from [`workflow.pacta.dashboard`](https://github.com/RMI-PACTA/workflow.pacta.dashboard)
+  *MUST* point to a directory that is writable by the `workflow-pacta-webapp` user.
+- `DASHBOARD_DATA_DIR`:
+  Suggested value: `/mnt/dashboard_output_dir/data`.
+  This holds the prepared JSON files that are read by the dashboard skeleton to populate plots and other elements for the user.
+  *MUST* point to a directory that is writable by the `workflow-pacta-webapp` user.
+
+The following envrionment variables are *optional*
+
+- `LOG_LEVEL`: Controls the verbosity of logging.
+  Accepts standard `log4j` levels (`ERROR`, `WARN`, `INFO`, `DEBUG`, `TRACE`).
+  Default is `INFO`.
+
+The following environment variable is optional if running from the docker image, but must be set if running locally:
+
+- `DASHBOARD_SKELETON_FILES_DIR`:
+  Suggested value (in docker image): `/mnt/dashboard_skeleton_files`.
+  Suggested value (local): `<path to pacta-dashboard-svelte repo >/build`.
+  This holds the rendered (`build/` directory) files from `pacta-dashboard-svelte`.
+
+## Command-line Parameters (`params`)
+
+`run_dashboard_workflow()`'s first argument is `params`, a JSON string.
+By default, this is read from the command line, so common invocation patterns are:
+
+```sh
+Rscript inst/extdata/scripts/prepare_dashboard_data.R {<params string>}
 ```
-INPUT_DIR=/path/to/input/dir
-DATA_DIR=/path/to/data/dir
-OUTPUT_DIR=/path/to/output/dir
+
+or for interactive sessions:
+
+```sh
+R --args {<params string>}
 ```
 
-Then, you can run the script using `docker-compose`:
-```
-docker-compose up --build
-```
+Very early in the `run_dashboard_workflow` process, the JSON string is validated against a JSON schema (available at `inst/extdata/schema/reportingParameters.json`).
+The key elements to control behavior of the dashboard outputs (rather than the analysis outputs) are in the `reporting` top-level key.
+The parameter parsing and validation process (`pacta.workflow.utils::parse_raw_params()`) allows for inheritance of default parameters (available in `inst/extdata/parameters/*.json`), and runs a (fast initial) validation of the raw parameter string (against `inst/extdata/schema/rawParameters.json`).
