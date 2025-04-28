@@ -30,7 +30,7 @@ See "Command-line Parameters (`params`)" for more details.
 
 Running the application requires access to a number of prepared datasets, which should be accesible to the Docker image through bind mounts.
 Each of the data sets listed can live in their own directory for clarity, or they can reside in the same directory for simplicity.
-The application is configured by setting the value of enironment variables to point to the path of the bind mound *as referenced inside the container* (the `target` of the volume).
+The application is configured by setting the value of enironment variables to point to the path of the bind mount *as referenced inside the container* (the `target` of the volume).
 
 - `BENCHMARKS_DIR`:
   Outputs of [`workflow.prepare.pacta.indices`](https://github.com/RMI-PACTA/workflow.prepare.pacta.indices).
@@ -86,7 +86,7 @@ The following envrionment variables are *optional*
   Accepts standard `log4j` levels (`ERROR`, `WARN`, `INFO`, `DEBUG`, `TRACE`).
   Default is `INFO`.
 
-The following environment variable is option if running from the docker image, but must be set if running locally:
+The following environment variable is optional if running from the docker image, but must be set if running locally:
 
 - `DASHBOARD_SKELETON_FILES_DIR`:
   Suggested value (in docker image): `/mnt/dashboard_skeleton_files`.
@@ -96,7 +96,7 @@ The following environment variable is option if running from the docker image, b
 ## Command-line Parameters (`params`)
 
 `run_dashboard_workflow()`'s first argument is `params`, a JSON string.
-By default, this is read from the command line, so common invoca tion patterns are:
+By default, this is read from the command line, so common invocation patterns are:
 
 ```sh
 Rscript inst/extdata/scripts/prepare_dashboard_data.R {<params string>}
@@ -109,5 +109,5 @@ R --args {<params string>}
 ```
 
 Very early in the `run_dashboard_workflow` process, the JSON string is validated against a JSON schema (available at `inst/extdata/schema/reportingParameters.json`).
-The key elements tto control behavior of the dashboard outputs (rather than the analysis outputs) are in the `reporting` top-level key.
-The parameter parsing and validation process (`pacta.workflow.utils::parse_raw_params()`) allows for inheretence of default parameters (available in `inst/extdata/parameters/*.json`), and runs a (fast initial) validation of the raw parameter string (against `inst/extdata/schema/rawParameters.json`).
+The key elements to control behavior of the dashboard outputs (rather than the analysis outputs) are in the `reporting` top-level key.
+The parameter parsing and validation process (`pacta.workflow.utils::parse_raw_params()`) allows for inheritance of default parameters (available in `inst/extdata/parameters/*.json`), and runs a (fast initial) validation of the raw parameter string (against `inst/extdata/schema/rawParameters.json`).
