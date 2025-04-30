@@ -57,7 +57,7 @@ RUN Rscript -e "pak::local_install_deps('/workflow.pacta.dashboard')"
 FROM base AS install-pacta
 
 ENV DASHBOARD_SKELETON_FILES_DIR="/mnt/dashboard_skeleton_files"
-COPY --from=ghcr.io/rmi-pacta/pacta-dashboard-svelte:main /app/build $DASHBOARD_SKELETON_FILES_DIR/
+COPY --from=ghcr.io/rmi-pacta/pacta-dashboard-ui:main /app/build $DASHBOARD_SKELETON_FILES_DIR/
 
 COPY . /workflow.pacta.dashboard/
 
