@@ -7,8 +7,8 @@
 prep_techmix_sector(
   equity_results_portfolio,
   bonds_results_portfolio,
-  indices_equity_results_portfolio,
-  indices_bonds_results_portfolio,
+  indices_eq_results_portfolio,
+  indices_cb_results_portfolio,
   peers_equity_results_portfolio,
   peers_bonds_results_portfolio,
   investor_name,
@@ -27,10 +27,10 @@ prep_techmix_sector(
 \item{bonds_results_portfolio}{(data.frame) Portfolio-level results from
 \code{workflow.pacta} for corporate bonds}
 
-\item{indices_equity_results_portfolio}{(data.frame) Benchmark results from
+\item{indices_eq_results_portfolio}{(data.frame) Benchmark results from
 \code{workflow.pacta} for listed equity}
 
-\item{indices_bonds_results_portfolio}{(data.frame) Benchmark results from
+\item{indices_cb_results_portfolio}{(data.frame) Benchmark results from
 \code{workflow.pacta} for corporate bonds}
 
 \item{peers_equity_results_portfolio}{(data.frame) Peer group results from
