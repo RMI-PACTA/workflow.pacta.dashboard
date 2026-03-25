@@ -1,5 +1,9 @@
 # workflow.pacta.dashboard
 
+[![Project Status: Unsupported](https://www.repostatus.org/badges/latest/unsupported.svg)](https://www.repostatus.org/#unsupported)
+
+**This project is archived for future reference, but no new work is expected in this repository.**
+
 ## Quickstart
 
 `docker compose up --build`, with the datasets noted below in locations defined in `docker-compose.yml` (or `docker-compose.override.yml`) will build the latest version of this image, and prepare the dashboard (requires internet connection to download dependencies from GitHub/ghcr).
